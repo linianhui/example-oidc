@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Web.Helpers;
+using IdentityServer3.Core;
 using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Models;
-using IdentityServer3.Core.Services.InMemory;
 using Owin;
 
 namespace Server.Ids3.Use
@@ -10,6 +10,7 @@ namespace Server.Ids3.Use
     {
         public static void UseIds3(this IAppBuilder app)
         {
+            AntiForgeryConfig.UniqueClaimTypeIdentifier = Constants.ClaimTypes.Subject;
             app.Map("/identity", idsApp =>
             {
                 idsApp.UseIdentityServer(new IdentityServerOptions
@@ -30,8 +31,8 @@ namespace Server.Ids3.Use
         private static IdentityServerServiceFactory BuildIdentityServerServiceFactory()
         {
             return new IdentityServerServiceFactory()
-                .UseInMemoryClients(new Client[0])
-                .UseInMemoryUsers(new List<InMemoryUser>())
+                .UseInMemoryClients(Clients.All)
+                .UseInMemoryUsers(Users.All)
                 .UseInMemoryScopes(StandardScopes.All);
         }
     }
