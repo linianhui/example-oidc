@@ -249,3 +249,6 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+# Cake tools
+tools/
