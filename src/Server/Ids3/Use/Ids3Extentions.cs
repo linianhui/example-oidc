@@ -15,7 +15,7 @@ namespace Server.Ids3.Use
                 idsApp.UseIdentityServer(new IdentityServerOptions
                 {
                     SiteName = "Ids3 Server Web Site",
-                    IssuerUri = "http://demo.server.ids3",
+                    IssuerUri = "http://demo.ids3.server",
                     RequireSsl = false,
                     SigningCertificate = Certificates.SigningCertificate,
                     Factory = BuildIdentityServerServiceFactory(),

@@ -1,5 +1,6 @@
 #addin "Cake.IIS"
 #addin "Cake.FileHelpers"
+#addin "Cake.Powershell"
 
 var target = Argument("target", "default");
 var appPoolName = "demo-ids3-app-pool";
@@ -30,20 +31,39 @@ Task("clean")
 
 /// deploy task
 Task("deploy")
-.IsDependentOn("create-demo.server.ids3-web-site");
+.IsDependentOn("create-app-pool")
+.IsDependentOn("create-demo.ids3.server-web-site")
+.IsDependentOn("create-demo.implicit.client-web-site");
 
-Task("create-demo.server.ids3-web-site")
-	.IsDependentOn("create-app-pool")
+Task("create-demo.ids3.server-web-site")
     .Does(() =>
 {
     CreateWebsite(new WebsiteSettings()
     {
-        Name = "demo.server.ids3",
+        Name = "demo.ids3.server",
         Binding = IISBindings.Http
-                    .SetHostName("demo.server.ids3")
+                    .SetHostName("demo.ids3.server")
                     .SetIpAddress("*")
                     .SetPort(80),
         PhysicalDirectory = "./src/server",
+        ApplicationPool = new ApplicationPoolSettings()
+        {
+            Name = appPoolName
+        }
+    });
+});
+
+Task("create-demo.implicit.client-web-site")
+    .Does(() =>
+{
+    CreateWebsite(new WebsiteSettings()
+    {
+        Name = "demo.implicit.client",
+        Binding = IISBindings.Http
+                    .SetHostName("demo.implicit.client")
+                    .SetIpAddress("*")
+                    .SetPort(80),
+        PhysicalDirectory = "./src/client.implicit",
         ApplicationPool = new ApplicationPoolSettings()
         {
             Name = appPoolName
@@ -63,9 +83,26 @@ Task("create-app-pool")
 	}
 });
 
+/// open browser task
+Task("open-browser")
+    .Does(() =>
+{
+    StartPowershellScript("Start-Process", args =>
+    {
+        args.Append("chrome.exe")
+            .AppendQuoted("-incognito")
+            .Append(",")
+            .AppendQuoted("http://demo.ids3.server")
+            .Append(",")
+            .AppendQuoted("http://demo.implicit.client");
+    });
+});
+
+
 /// default task
 Task("default")
 .IsDependentOn("build")
-.IsDependentOn("deploy");
+.IsDependentOn("deploy")
+.IsDependentOn("open-browser");
 
 RunTarget(target);
