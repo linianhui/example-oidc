@@ -19,9 +19,9 @@ namespace Client.Implicit.OpenIdConnect
 
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
-                Authority = "http://demo.ids3.server/identity",
+                Authority = "http://server.ids3.dev/auth",
                 ClientId = "implicit-client",
-                RedirectUri = "http://demo.implicit.client/",
+                RedirectUri = "http://client.implicit.dev/",
                 ResponseType = "id_token",
                 SignInAsAuthenticationType = "Cookies"
             });

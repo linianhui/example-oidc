@@ -2,8 +2,21 @@
 #addin "Cake.FileHelpers"
 #addin "Cake.Powershell"
 
+///params
 var target = Argument("target", "default");
-var appPoolName = "demo-ids3-app-pool";
+
+/// web sites config
+var webSites = new []{
+    new {
+        host="server.ids3.dev",
+        path= "./src/server"
+    },
+    new {
+        host="client.implicit.dev",
+        path="./src/client.implicit"
+    }
+};
+
 
 /// build task
 Task("build")
@@ -31,56 +44,24 @@ Task("clean")
 
 /// deploy task
 Task("deploy")
-.IsDependentOn("create-app-pool")
-.IsDependentOn("create-demo.ids3.server-web-site")
-.IsDependentOn("create-demo.implicit.client-web-site");
-
-Task("create-demo.ids3.server-web-site")
     .Does(() =>
 {
-    CreateWebsite(new WebsiteSettings()
-    {
-        Name = "demo.ids3.server",
-        Binding = IISBindings.Http
-                    .SetHostName("demo.ids3.server")
-                    .SetIpAddress("*")
-                    .SetPort(80),
-        PhysicalDirectory = "./src/server",
-        ApplicationPool = new ApplicationPoolSettings()
+    foreach(var website in webSites){
+        CreateWebsite(new WebsiteSettings()
         {
-            Name = appPoolName
-        }
-    });
-});
-
-Task("create-demo.implicit.client-web-site")
-    .Does(() =>
-{
-    CreateWebsite(new WebsiteSettings()
-    {
-        Name = "demo.implicit.client",
-        Binding = IISBindings.Http
-                    .SetHostName("demo.implicit.client")
-                    .SetIpAddress("*")
-                    .SetPort(80),
-        PhysicalDirectory = "./src/client.implicit",
-        ApplicationPool = new ApplicationPoolSettings()
-        {
-            Name = appPoolName
-        }
-    });
-});
-
-Task("create-app-pool")
-    .Does(() =>
-{
-	if(PoolExists(appPoolName) == false){
-		CreatePool(new ApplicationPoolSettings()
-		{
-			Name = appPoolName,
-			IdentityType=IdentityType.LocalSystem
-		});
-	}
+            Name = website.host,
+            Binding = IISBindings.Http
+                        .SetHostName(website.host)
+                        .SetIpAddress("*")
+                        .SetPort(80),
+            PhysicalDirectory = website.path,
+            ApplicationPool = new ApplicationPoolSettings()
+            {
+                Name = "ids3-dev",
+                IdentityType = IdentityType.LocalSystem
+            }
+        });
+    }
 });
 
 /// open browser task
@@ -89,12 +70,14 @@ Task("open-browser")
 {
     StartPowershellScript("Start-Process", args =>
     {
+        var urls = "";
+        foreach(var website in webSites){
+            urls += ",'http://" + website.host + "/'";
+        }
+
         args.Append("chrome.exe")
-            .AppendQuoted("-incognito")
-            .Append(",")
-            .AppendQuoted("http://demo.ids3.server")
-            .Append(",")
-            .AppendQuoted("http://demo.implicit.client");
+            .Append("'-incognito'")
+            .Append(urls);
     });
 });
 

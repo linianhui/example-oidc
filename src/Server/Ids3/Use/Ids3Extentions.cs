@@ -11,12 +11,12 @@ namespace Server.Ids3.Use
         public static void UseIds3(this IAppBuilder app)
         {
             AntiForgeryConfig.UniqueClaimTypeIdentifier = Constants.ClaimTypes.Subject;
-            app.Map("/identity", idsApp =>
+            app.Map("/auth", idsApp =>
             {
                 idsApp.UseIdentityServer(new IdentityServerOptions
                 {
                     SiteName = "Ids3 Server Web Site",
-                    IssuerUri = "http://demo.ids3.server",
+                    IssuerUri = "http://server.ids3.dev",
                     RequireSsl = false,
                     SigningCertificate = Certificates.SigningCertificate,
                     Factory = BuildIdentityServerServiceFactory(),

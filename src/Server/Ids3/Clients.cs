@@ -18,7 +18,7 @@ namespace Server.Ids3
             Flow = Flows.Implicit,
             RedirectUris = new List<string>
             {
-                "http://demo.implicit.client/"
+                "http://client.implicit.dev/"
             },
             AllowAccessToAllScopes = true
         };
