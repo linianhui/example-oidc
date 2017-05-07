@@ -20,6 +20,13 @@ namespace Server.Ids3
             {
                 "http://client.implicit.dev/"
             },
+            //退出登录后重定向的地址。
+            PostLogoutRedirectUris = new List<string>
+            {
+                "http://client.implicit.dev/"
+            },
+            //禁止退出登录的确认提示页面，直接退出。
+            RequireConsent = false,
             AllowAccessToAllScopes = true
         };
     }

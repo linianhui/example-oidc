@@ -23,6 +23,11 @@ namespace Server.Ids3.Use
                     LoggingOptions = new LoggingOptions
                     {
                         EnableWebApiDiagnostics = true
+                    },
+                    AuthenticationOptions = new AuthenticationOptions
+                    {
+                        //退出登录后直接重定向到Client的RedirectUrl.
+                        EnablePostSignOutAutoRedirect = true
                     }
                 });
             });

@@ -8,9 +8,19 @@
 <body>
     <header>
         <nav>
-            @Html.RouteLink("Login", "account-login", new { returnUri = this.Request.Url })
+            @if (this.User != null
+                && this.User.Identity != null
+                && this.User.Identity.IsAuthenticated == true)
+            {
+                @Html.RouteLink("Logout", "account-logout")
+            }
+            else
+            {
+                @Html.RouteLink("Login", "account-login", new { returnUri = this.Request.Url })
+            }
         </nav>
     </header>
+    <br />
     @RenderBody()
 </body>
 </html>

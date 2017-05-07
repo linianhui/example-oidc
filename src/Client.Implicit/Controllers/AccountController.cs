@@ -6,6 +6,7 @@ using Microsoft.Owin.Security;
 
 namespace Client.Implicit.Controllers
 {
+    [Authorize]
     [RoutePrefix("account")]
     public class AccountController : Controller
     {
@@ -24,6 +25,13 @@ namespace Client.Implicit.Controllers
                 }
             }
             Request.GetOwinContext().Authentication.Challenge(authenticationProperties, Constants.AuthenticationTypeOfOidc);
+        }
+
+        [HttpGet]
+        [Route("logout", Name = "account-logout")]
+        public void Login()
+        {
+            Request.GetOwinContext().Authentication.SignOut();
         }
     }
 }
