@@ -9,6 +9,7 @@
         {
             public static readonly string Subject = "sub";
             public static readonly string IdToken = "id_token";
+            public static readonly string SessionId = "sid";
         }
     }
 }

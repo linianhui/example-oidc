@@ -3,16 +3,16 @@
     ViewBag.Title = "User Claims";
 }
 
-<table>
+<table style="width:100%">
     <tr>
-        <th>Claim Type</th>
+        <th style="width:200px">Claim Type</th>
         <th>Claim Value</th>
     </tr>
     @foreach (var claim in Model)
     {
         <tr>
             <td>@claim.Type</td>
-            <td>@claim.Value</td>
+            <td style="word-break:break-all">@claim.Value</td>
         </tr>
     }
 </table>
