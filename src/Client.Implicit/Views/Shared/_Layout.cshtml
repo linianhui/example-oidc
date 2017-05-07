@@ -4,19 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Implicit Client - @ViewBag.Title</title>
-    <style>
-        table {
-            width:100%;
-        }
-        table,tr,th,td {
-            text-align: left;
-            border:1px solid #ccc;
-            border-collapse: collapse; 
-            padding:4px;
-        }
-    </style>
 </head>
 <body>
+    <header>
+        <nav>
+            @Html.RouteLink("Login", "account-login", new { returnUri = this.Request.Url })
+        </nav>
+    </header>
     @RenderBody()
 </body>
 </html>

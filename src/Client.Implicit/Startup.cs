@@ -1,4 +1,4 @@
-﻿using Client.Implicit.OpenIdConnect;
+﻿using Client.Implicit.Oidc;
 using Microsoft.Owin;
 using Owin;
 
@@ -10,7 +10,7 @@ namespace Client.Implicit
     {
         public void Configuration(IAppBuilder app)
         {
-            app.UseOpenIdConnectClient();
+            app.UseOidcAuthentication();
         }
     }
 }
