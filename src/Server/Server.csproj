@@ -109,8 +109,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Ids3\Certificates.cs" />
+    <Compile Include="Ids3\UserService.cs" />
     <Compile Include="Ids3\Clients.cs" />
-    <Compile Include="Ids3\Users.cs" />
     <Compile Include="Ids3\Use\Ids3Extentions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

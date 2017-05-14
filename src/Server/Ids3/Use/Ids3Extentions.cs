@@ -2,6 +2,7 @@
 using IdentityServer3.Core;
 using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Models;
+using IdentityServer3.Core.Services;
 using Owin;
 
 namespace Server.Ids3.Use
@@ -35,10 +36,13 @@ namespace Server.Ids3.Use
 
         private static IdentityServerServiceFactory BuildIdentityServerServiceFactory()
         {
-            return new IdentityServerServiceFactory()
+            var serviceFactory = new IdentityServerServiceFactory()
                 .UseInMemoryClients(Clients.All)
-                .UseInMemoryUsers(Users.All)
                 .UseInMemoryScopes(StandardScopes.All);
+
+            serviceFactory.UserService = new Registration<IUserService, UserService>();
+
+            return serviceFactory;
         }
     }
 }
