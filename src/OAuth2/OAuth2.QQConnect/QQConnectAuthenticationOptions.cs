@@ -12,6 +12,7 @@ namespace OAuth2.QQConnect
             AuthenticationMode = AuthenticationMode.Passive;
             CallbackPath = "/qq-connect/callback";
             AuthorizationEndpoint = Constants.AuthorizationEndpoint;
+            AccessTokenEndpoint = Constants.AccessTokenEndpoint;
         }
 
         public string AppId { get; set; }
@@ -28,6 +29,8 @@ namespace OAuth2.QQConnect
 
         public string AuthorizationEndpoint { get; set; }
 
+        public string AccessTokenEndpoint { get; set; }
+
         public string CallbackPath { get; set; }
 
         public List<string> Scopes { get; set; }
@@ -35,5 +38,6 @@ namespace OAuth2.QQConnect
         public ISecureDataFormat<AuthenticationProperties> StateDataFormat { get; set; }
 
         public string DisplayMode { get; set; }
+        
     }
 }

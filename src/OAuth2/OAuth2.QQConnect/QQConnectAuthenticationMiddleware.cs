@@ -2,6 +2,7 @@
 using Microsoft.Owin.Security.Infrastructure;
 using Owin;
 using System;
+using System.Net.Http;
 using Microsoft.Owin.Logging;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataHandler;
@@ -44,7 +45,7 @@ namespace OAuth2.QQConnect
 
         protected override AuthenticationHandler<QQConnectAuthenticationOptions> CreateHandler()
         {
-            return new QQConnectAuthenticationHandler(_logger);
+            return new QQConnectAuthenticationHandler(_logger, new HttpClient());
         }
     }
 }

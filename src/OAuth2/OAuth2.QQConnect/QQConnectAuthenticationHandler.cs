@@ -2,6 +2,8 @@ using Microsoft.Owin.Logging;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Infrastructure;
 using System;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,10 +12,12 @@ namespace OAuth2.QQConnect
     internal class QQConnectAuthenticationHandler : AuthenticationHandler<QQConnectAuthenticationOptions>
     {
         private readonly ILogger _logger;
+        private readonly HttpClient _httpClient;
 
-        public QQConnectAuthenticationHandler(ILogger logger)
+        public QQConnectAuthenticationHandler(ILogger logger, HttpClient httpClient)
         {
             _logger = logger;
+            _httpClient = httpClient;
         }
 
         public override async Task<bool> InvokeAsync()
@@ -56,7 +60,13 @@ namespace OAuth2.QQConnect
                     return new AuthenticationTicket(null, properties);
                 }
 
-                _logger.WriteInformation(code);
+                var accessTokenResult = await GetAccessTokenResult(code);
+                var accessToken = accessTokenResult["access_token"];
+                if (string.IsNullOrWhiteSpace(accessToken))
+                {
+                    _logger.WriteError("access_token was not found");
+                    return new AuthenticationTicket(null, properties);
+                }
 
                 return null;
             }
@@ -65,6 +75,20 @@ namespace OAuth2.QQConnect
                 _logger.WriteError("Authentication failed", ex);
                 return new AuthenticationTicket(null, properties);
             }
+        }
+
+        private async Task<IReadOnlyDictionary<string, string>> GetAccessTokenResult(string code)
+        {
+            var response = await _httpClient.GetAsync(BuildAccessTokenUrl(code), Request.CallCancelled);
+            response.EnsureSuccessStatusCode();
+            var text = await response.Content.ReadAsStringAsync();
+            var keyValues = new Dictionary<string, string>();
+            foreach (var param in text.Split('&'))
+            {
+                var keyValue = param.Split('=');
+                keyValues.Add(keyValue[0],keyValue[1]);
+            }
+            return keyValues;
         }
 
         protected override Task ApplyResponseChallengeAsync()
@@ -92,6 +116,19 @@ namespace OAuth2.QQConnect
             }
 
             return Task.FromResult<object>(null);
+        }
+
+        private string BuildAccessTokenUrl(string code)
+        {
+            var accessTokenUrlBuilder = new StringBuilder(Options.AccessTokenEndpoint);
+
+            accessTokenUrlBuilder.Append("?grant_type=authorization_code");
+            accessTokenUrlBuilder.Append($"&client_id={Uri.EscapeDataString(Options.AppId)}");
+            accessTokenUrlBuilder.Append($"&client_secret={Uri.EscapeDataString(Options.AppSecret)}");
+            accessTokenUrlBuilder.Append($"&redirect_uri={Uri.EscapeDataString(RedirectUri)}");
+            accessTokenUrlBuilder.Append($"&code={Uri.EscapeDataString(code)}");
+
+            return accessTokenUrlBuilder.ToString();
         }
 
         private string BuildAuthorizationUrl(AuthenticationProperties authenticationProperties)
