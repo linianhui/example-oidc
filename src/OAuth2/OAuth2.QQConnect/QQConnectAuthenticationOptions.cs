@@ -14,6 +14,11 @@ namespace OAuth2.QQConnect
             AuthorizationEndpoint = Constants.AuthorizationEndpoint;
             AccessTokenEndpoint = Constants.AccessTokenEndpoint;
             OpenIdEndpoint = Constants.OpenIdEndpoint;
+            UserInfoEndpoint = Constants.UserInfoEndpoint;
+            Scopes = new List<string>
+            {
+                "get_user_info"
+            };
         }
 
         public string AppId { get; set; }
@@ -34,6 +39,8 @@ namespace OAuth2.QQConnect
 
         public string OpenIdEndpoint { get; set; }
 
+        public string UserInfoEndpoint { get; set; }
+
         public string CallbackPath { get; set; }
 
         public List<string> Scopes { get; set; }
@@ -41,6 +48,5 @@ namespace OAuth2.QQConnect
         public ISecureDataFormat<AuthenticationProperties> StateDataFormat { get; set; }
 
         public string DisplayMode { get; set; }
-        
     }
 }

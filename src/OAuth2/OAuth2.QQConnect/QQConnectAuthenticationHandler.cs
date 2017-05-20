@@ -76,6 +76,8 @@ namespace OAuth2.QQConnect
                     _logger.WriteError("openid was not found");
                     return new AuthenticationTicket(null, properties);
                 }
+
+                var userInfoResult = await GetUserInfoResult(accessToken, openId);
                 return null;
             }
             catch (Exception ex)
@@ -112,6 +114,14 @@ namespace OAuth2.QQConnect
             return Task.FromResult<object>(null);
         }
 
+        private async Task<JObject> GetUserInfoResult(string accessToken, string openId)
+        {
+            var response = await _httpClient.GetAsync(BuilUserInfoUrl(accessToken, openId), Request.CallCancelled);
+            response.EnsureSuccessStatusCode();
+            var json = await response.Content.ReadAsStringAsync();
+            return JObject.Parse(json);
+        }
+
         private async Task<JObject> GetOpenIdResult(string accessToken)
         {
             var response = await _httpClient.GetAsync(BuildOpenIdUrl(accessToken), Request.CallCancelled);
@@ -133,6 +143,17 @@ namespace OAuth2.QQConnect
                 keyValues.Add(keyValue[0], keyValue[1]);
             }
             return keyValues;
+        }
+
+        private string BuilUserInfoUrl(string accessToken, string openId)
+        {
+            var userInfoUrlBuilder = new StringBuilder(Options.UserInfoEndpoint);
+
+            userInfoUrlBuilder.Append($"?access_token={Uri.EscapeDataString(accessToken)}");
+            userInfoUrlBuilder.Append($"&oauth_consumer_key={Uri.EscapeDataString(Options.AppId)}");
+            userInfoUrlBuilder.Append($"&openid={Uri.EscapeDataString(openId)}");
+
+            return userInfoUrlBuilder.ToString();
         }
 
         private string BuildOpenIdUrl(string accessToken)
@@ -160,6 +181,7 @@ namespace OAuth2.QQConnect
         private string BuildAuthorizationUrl(AuthenticationProperties authenticationProperties)
         {
             var state = Options.StateDataFormat.Protect(authenticationProperties);
+            var scope = string.Join(",", Options.Scopes);
 
             var authorizationUrlBuilder = new StringBuilder(Options.AuthorizationEndpoint);
 
@@ -167,12 +189,7 @@ namespace OAuth2.QQConnect
             authorizationUrlBuilder.Append($"&client_id={Uri.EscapeDataString(Options.AppId)}");
             authorizationUrlBuilder.Append($"&redirect_uri={Uri.EscapeDataString(RedirectUri)}");
             authorizationUrlBuilder.Append($"&state={Uri.EscapeDataString(state)}");
-
-            if (Options.Scopes != null && Options.Scopes.Count > 0)
-            {
-                var scope = string.Join(",", Options.Scopes);
-                authorizationUrlBuilder.Append($"&scope={Uri.EscapeDataString(scope)}");
-            }
+            authorizationUrlBuilder.Append($"&scope={Uri.EscapeDataString(scope)}");
 
             if (string.IsNullOrWhiteSpace(Options.DisplayMode) == false)
             {
