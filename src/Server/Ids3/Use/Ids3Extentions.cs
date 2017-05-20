@@ -1,9 +1,10 @@
 ﻿using System.Web.Helpers;
-using IdentityServer3.Core;
 using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Models;
 using IdentityServer3.Core.Services;
+using OAuth2.QQConnect;
 using Owin;
+using Constants = IdentityServer3.Core.Constants;
 
 namespace Server.Ids3.Use
 {
@@ -28,7 +29,8 @@ namespace Server.Ids3.Use
                     AuthenticationOptions = new AuthenticationOptions
                     {
                         //退出登录后直接重定向到Client的RedirectUrl.
-                        EnablePostSignOutAutoRedirect = true
+                        EnablePostSignOutAutoRedirect = true,
+                        IdentityProviders = ConfigureIdentityProviders
                     }
                 });
             });
@@ -44,5 +46,17 @@ namespace Server.Ids3.Use
 
             return serviceFactory;
         }
+
+        private static void ConfigureIdentityProviders(IAppBuilder app, string signInAsAuthenticationType)
+        {
+            app.UseQQConnectAuthentication(new QQConnectAuthenticationOptions
+            {
+                Caption = "QQ",
+                SignInAsAuthenticationType = signInAsAuthenticationType,
+                AppId = "You App Id",
+                AppSecret = "You App Secret"
+            });
+        }
+
     }
 }
