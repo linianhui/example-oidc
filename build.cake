@@ -58,7 +58,8 @@ Task("deploy")
             ApplicationPool = new ApplicationPoolSettings()
             {
                 Name = "ids3-dev",
-                IdentityType = IdentityType.LocalSystem
+                IdentityType = IdentityType.LocalSystem,
+		MaxProcesses = 1
             }
         });
     }
