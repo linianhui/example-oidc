@@ -17,6 +17,8 @@
             else
             {
                 @Html.RouteLink("Login", "account-login", new { returnUri = this.Request.Url })
+                <br />
+                @Html.RouteLink("QQ Login", "account-qq-login", new { returnUri = this.Request.Url })
             }
         </nav>
     </header>

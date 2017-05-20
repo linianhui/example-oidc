@@ -63,6 +63,11 @@ namespace Client.Implicit.Oidc
                     context.ProtocolMessage.IdTokenHint = idToken.Value;
                 }
             }
+            if (context.ProtocolMessage.RequestType == OpenIdConnectRequestType.AuthenticationRequest)
+            {
+                var idp = context.OwinContext.Get<string>("idp");
+                context.ProtocolMessage.AcrValues = "idp:" + idp;
+            }
             return Task.FromResult(0);
         }
     }

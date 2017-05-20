@@ -16,6 +16,24 @@ namespace Client.Implicit.Controllers
         [Route("login", Name = "account-login")]
         public void Login(Uri returnUri)
         {
+            Request.GetOwinContext()
+                .Authentication
+                .Challenge(BuildAuthenticationProperties(returnUri), Constants.AuthenticationTypeOfOidc);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("qq-login", Name = "account-qq-login")]
+        public void QQLogin(Uri returnUri)
+        {
+            Request.GetOwinContext()
+                .Set("idp", "QQ.Connect")
+                .Authentication
+                .Challenge(BuildAuthenticationProperties(returnUri), Constants.AuthenticationTypeOfOidc);
+        }
+
+        private AuthenticationProperties BuildAuthenticationProperties(Uri returnUri)
+        {
             var authenticationProperties = new AuthenticationProperties();
             if (returnUri != null)
             {
@@ -25,7 +43,7 @@ namespace Client.Implicit.Controllers
                     authenticationProperties.RedirectUri = returnUri.ToString();
                 }
             }
-            Request.GetOwinContext().Authentication.Challenge(authenticationProperties, Constants.AuthenticationTypeOfOidc);
+            return authenticationProperties;
         }
 
         [HttpGet]
