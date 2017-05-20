@@ -27,33 +27,34 @@ namespace OAuth2.QQConnect
 
         public override async Task<bool> InvokeAsync()
         {
-            if (Options.CallbackPath == Request.Path.Value)
+            if (Options.CallbackPath != Request.Path.Value)
             {
-                var ticket = await AuthenticateAsync();
-                if (ticket?.Identity != null)
-                {
-                    var identity = ticket.Identity;
-                    if (identity.AuthenticationType != Options.SignInAsAuthenticationType)
-                    {
-                        identity = new ClaimsIdentity(
-                            ticket.Identity.Claims,
-                            Options.SignInAsAuthenticationType,
-                            ticket.Identity.NameClaimType,
-                            ticket.Identity.RoleClaimType);
-                    }
-
-                    Context.Authentication.SignIn(ticket.Properties, identity);
-
-                    Context.Response.Redirect(ticket.Properties.RedirectUri);
-                }
-                else
-                {
-                    _logger.WriteWarning("Invalid return state, unable to redirect.");
-                    Response.StatusCode = 500;
-                }
-                return true;
+                return false;
             }
-            return false;
+            var ticket = await AuthenticateAsync();
+            if (ticket?.Identity != null)
+            {
+                var identity = ticket.Identity;
+                if (identity.AuthenticationType != Options.SignInAsAuthenticationType)
+                {
+                    identity = new ClaimsIdentity(
+                        ticket.Identity.Claims,
+                        Options.SignInAsAuthenticationType,
+                        ticket.Identity.NameClaimType,
+                        ticket.Identity.RoleClaimType);
+                }
+
+                Context.Authentication.SignIn(ticket.Properties, identity);
+
+                Context.Response.Redirect(ticket.Properties.RedirectUri);
+            }
+            else
+            {
+                _logger.WriteError("Invalid return state, unable to redirect.");
+                Response.StatusCode = 500;
+            }
+
+            return true;
         }
 
         protected override async Task<AuthenticationTicket> AuthenticateCoreAsync()
@@ -238,11 +239,10 @@ namespace OAuth2.QQConnect
             return authorizationUrlBuilder.ToString();
         }
 
-        private string RedirectUri => BaseUri + Options.CallbackPath;
-
-        private string BaseUri => Request.Scheme +
-                                  Uri.SchemeDelimiter +
-                                  Request.Host +
-                                  Request.PathBase;
+        private string RedirectUri => Request.Scheme +
+                                      Uri.SchemeDelimiter +
+                                      Request.Host +
+                                      Request.PathBase +
+                                      Options.CallbackPath;
     }
 }
