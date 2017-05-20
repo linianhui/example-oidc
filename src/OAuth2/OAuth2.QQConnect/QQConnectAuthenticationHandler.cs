@@ -1,6 +1,7 @@
 using Microsoft.Owin.Logging;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Infrastructure;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -68,6 +69,13 @@ namespace OAuth2.QQConnect
                     return new AuthenticationTicket(null, properties);
                 }
 
+                var openIdResult = await GetOpenIdResult(accessToken);
+                var openId = openIdResult.Value<string>("openid");
+                if (string.IsNullOrWhiteSpace(openId))
+                {
+                    _logger.WriteError("openid was not found");
+                    return new AuthenticationTicket(null, properties);
+                }
                 return null;
             }
             catch (Exception ex)
@@ -75,20 +83,6 @@ namespace OAuth2.QQConnect
                 _logger.WriteError("Authentication failed", ex);
                 return new AuthenticationTicket(null, properties);
             }
-        }
-
-        private async Task<IReadOnlyDictionary<string, string>> GetAccessTokenResult(string code)
-        {
-            var response = await _httpClient.GetAsync(BuildAccessTokenUrl(code), Request.CallCancelled);
-            response.EnsureSuccessStatusCode();
-            var text = await response.Content.ReadAsStringAsync();
-            var keyValues = new Dictionary<string, string>();
-            foreach (var param in text.Split('&'))
-            {
-                var keyValue = param.Split('=');
-                keyValues.Add(keyValue[0],keyValue[1]);
-            }
-            return keyValues;
         }
 
         protected override Task ApplyResponseChallengeAsync()
@@ -116,6 +110,38 @@ namespace OAuth2.QQConnect
             }
 
             return Task.FromResult<object>(null);
+        }
+
+        private async Task<JObject> GetOpenIdResult(string accessToken)
+        {
+            var response = await _httpClient.GetAsync(BuildOpenIdUrl(accessToken), Request.CallCancelled);
+            response.EnsureSuccessStatusCode();
+            var text = await response.Content.ReadAsStringAsync();
+            var json = text.Substring(8).Trim().Trim('(', ')', ';');
+            return JObject.Parse(json);
+        }
+
+        private async Task<IReadOnlyDictionary<string, string>> GetAccessTokenResult(string code)
+        {
+            var response = await _httpClient.GetAsync(BuildAccessTokenUrl(code), Request.CallCancelled);
+            response.EnsureSuccessStatusCode();
+            var text = await response.Content.ReadAsStringAsync();
+            var keyValues = new Dictionary<string, string>();
+            foreach (var param in text.Split('&'))
+            {
+                var keyValue = param.Split('=');
+                keyValues.Add(keyValue[0], keyValue[1]);
+            }
+            return keyValues;
+        }
+
+        private string BuildOpenIdUrl(string accessToken)
+        {
+            var openIdUrlBuilder = new StringBuilder(Options.OpenIdEndpoint);
+
+            openIdUrlBuilder.Append($"?access_token={Uri.EscapeDataString(accessToken)}");
+
+            return openIdUrlBuilder.ToString();
         }
 
         private string BuildAccessTokenUrl(string code)

@@ -13,6 +13,7 @@ namespace OAuth2.QQConnect
             CallbackPath = "/qq-connect/callback";
             AuthorizationEndpoint = Constants.AuthorizationEndpoint;
             AccessTokenEndpoint = Constants.AccessTokenEndpoint;
+            OpenIdEndpoint = Constants.OpenIdEndpoint;
         }
 
         public string AppId { get; set; }
@@ -30,6 +31,8 @@ namespace OAuth2.QQConnect
         public string AuthorizationEndpoint { get; set; }
 
         public string AccessTokenEndpoint { get; set; }
+
+        public string OpenIdEndpoint { get; set; }
 
         public string CallbackPath { get; set; }
 
