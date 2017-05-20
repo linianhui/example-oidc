@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7C815EEB-B2A1-4B34-83BA-03BB3DDC28CB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "src\Server\Server.csproj", "{03801CD6-09FB-4135-977B-5A87C23EFC1B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Implicit", "src\Client.Implicit\Client.Implicit.csproj", "{3379C679-CFFB-4A66-A75B-3A97F44FC1D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OAuth2", "OAuth2", "{EBD4DCD1-E3CC-4EDB-AE2B-53655CAB49F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth2.QQConnect", "src\OAuth2\OAuth2.QQConnect\OAuth2.QQConnect.csproj", "{1C5B12E4-C741-4B26-AD95-1365440C1237}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +27,10 @@ Global
 		{3379C679-CFFB-4A66-A75B-3A97F44FC1D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3379C679-CFFB-4A66-A75B-3A97F44FC1D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3379C679-CFFB-4A66-A75B-3A97F44FC1D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C5B12E4-C741-4B26-AD95-1365440C1237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C5B12E4-C741-4B26-AD95-1365440C1237}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C5B12E4-C741-4B26-AD95-1365440C1237}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C5B12E4-C741-4B26-AD95-1365440C1237}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{03801CD6-09FB-4135-977B-5A87C23EFC1B} = {7C815EEB-B2A1-4B34-83BA-03BB3DDC28CB}
 		{3379C679-CFFB-4A66-A75B-3A97F44FC1D0} = {7C815EEB-B2A1-4B34-83BA-03BB3DDC28CB}
+		{EBD4DCD1-E3CC-4EDB-AE2B-53655CAB49F0} = {7C815EEB-B2A1-4B34-83BA-03BB3DDC28CB}
+		{1C5B12E4-C741-4B26-AD95-1365440C1237} = {EBD4DCD1-E3CC-4EDB-AE2B-53655CAB49F0}
 	EndGlobalSection
 EndGlobal
