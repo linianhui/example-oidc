@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="QQConnectAuthenticationHandler.cs" />
     <Compile Include="QQConnectAuthenticationExtensions.cs" />
     <Compile Include="QQConnectAuthenticationMiddleware.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

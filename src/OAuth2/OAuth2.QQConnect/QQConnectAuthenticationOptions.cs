@@ -1,4 +1,5 @@
 using Microsoft.Owin.Security;
+using System.Collections.Generic;
 
 namespace OAuth2.QQConnect
 {
@@ -9,6 +10,8 @@ namespace OAuth2.QQConnect
         {
             Caption = Constants.DefaultAuthenticationType;
             AuthenticationMode = AuthenticationMode.Passive;
+            CallbackPath = "/qq-connect/callback";
+            AuthorizationEndpoint = Constants.AuthorizationEndpoint;
         }
 
         public string AppId { get; set; }
@@ -22,5 +25,15 @@ namespace OAuth2.QQConnect
             get { return base.Description.Caption; }
             set { base.Description.Caption = value; }
         }
+
+        public string AuthorizationEndpoint { get; set; }
+
+        public string CallbackPath { get; set; }
+
+        public List<string> Scopes { get; set; }
+
+        public ISecureDataFormat<AuthenticationProperties> StateDataFormat { get; set; }
+
+        public string DisplayMode { get; set; }
     }
 }
