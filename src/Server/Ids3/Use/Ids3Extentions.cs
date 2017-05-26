@@ -13,12 +13,12 @@ namespace Server.Ids3.Use
         public static void UseIds3(this IAppBuilder app)
         {
             AntiForgeryConfig.UniqueClaimTypeIdentifier = Constants.ClaimTypes.Subject;
-            app.Map("/auth", idsApp =>
+            app.Map($"/{Ids3Constants.ServerPath}", idsApp =>
             {
                 idsApp.UseIdentityServer(new IdentityServerOptions
                 {
-                    SiteName = "Ids3 Server Web Site",
-                    IssuerUri = "http://server.ids3.dev",
+                    SiteName = Ids3Constants.SiteName,
+                    IssuerUri = Ids3Constants.IssuerUri,
                     RequireSsl = false,
                     SigningCertificate = Certificates.SigningCertificate,
                     Factory = BuildIdentityServerServiceFactory(),
@@ -52,6 +52,7 @@ namespace Server.Ids3.Use
             app.UseQQConnectAuthentication(new QQConnectAuthenticationOptions
             {
                 Caption = "QQ",
+                AuthenticationType = Ids3Constants.QQIdp,
                 SignInAsAuthenticationType = signInAsAuthenticationType,
                 AppId = "You App Id",
                 AppSecret = "You App Secret"

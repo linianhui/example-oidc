@@ -27,7 +27,7 @@ namespace Client.Implicit.Controllers
         public void QQLogin(Uri returnUri)
         {
             Request.GetOwinContext()
-                .Set("idp", "QQ.Connect")
+                .Set("idp", "qq")
                 .Authentication
                 .Challenge(BuildAuthenticationProperties(returnUri), Constants.AuthenticationTypeOfOidc);
         }
