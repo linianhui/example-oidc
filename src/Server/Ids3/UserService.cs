@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using OAuth2.QQConnect;
 
 namespace Server.Ids3
 {
@@ -32,16 +33,18 @@ namespace Server.Ids3
         {
             var externalIdentity = context.ExternalIdentity;
 
+            var qqConncetProfile = new QQConncetProfile(externalIdentity.Claims);
+
             var user = Users.SingleOrDefault(u => u.Provider == externalIdentity.Provider && u.ProviderId == externalIdentity.ProviderId);
 
             //默认用户名
-            string nickName = externalIdentity.Provider;
+            string nickName = "new user";
             //bool isNewUser = false;
             //新用户
             if (user == null)
             {
                 var nickNameClaimValue = externalIdentity.Claims.FirstOrDefault(x => x.Type == Constants.ClaimTypes.NickName)?.Value;
-                if (string.IsNullOrWhiteSpace(nickNameClaimValue) ==false)
+                if (string.IsNullOrWhiteSpace(nickNameClaimValue) == false)
                 {
                     nickName = nickNameClaimValue;
                 }

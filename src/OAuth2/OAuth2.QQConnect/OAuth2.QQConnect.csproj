@@ -47,6 +47,8 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="QQConncetProfile.cs" />
+    <Compile Include="TryExtensions.cs" />
     <Compile Include="QQConnectConstants.cs" />
     <Compile Include="QQConnectAuthenticationHandler.cs" />
     <Compile Include="QQConnectAuthenticationExtensions.cs" />

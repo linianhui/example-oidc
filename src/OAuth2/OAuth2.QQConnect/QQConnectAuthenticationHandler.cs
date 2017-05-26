@@ -14,7 +14,7 @@ namespace OAuth2.QQConnect
     /// <summary>
     /// <see cref="http://wiki.connect.qq.com/%e5%bc%80%e5%8f%91%e6%94%bb%e7%95%a5_server-side"/>
     /// </summary>
-    internal class QQConnectAuthenticationHandler : AuthenticationHandler<QQConnectAuthenticationOptions>
+    public class QQConnectAuthenticationHandler : AuthenticationHandler<QQConnectAuthenticationOptions>
     {
         private readonly ILogger _logger;
         private readonly HttpClient _httpClient;
@@ -100,11 +100,20 @@ namespace OAuth2.QQConnect
 
                 var userInfoResult = await GetUserInfoResult(accessToken, openId);
 
-                var identity = new ClaimsIdentity(Options.AuthenticationType, ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.NameIdentifier,openId,ClaimValueTypes.String, Options.AuthenticationType),
+                    new Claim(QQConnectConstants.IdpClaimType,Options.AuthenticationType,ClaimValueTypes.String, Options.AuthenticationType),
+                    new Claim(QQConnectConstants.AppIdClaimType,Options.AppId,ClaimValueTypes.String, Options.AuthenticationType),
+                    new Claim(QQConnectConstants.OpenIdClaimType,openId,ClaimValueTypes.String, Options.AuthenticationType),
+                    new Claim(QQConnectConstants.AccessTokenClaimType, accessToken, ClaimValueTypes.String, Options.AuthenticationType),
+                    new Claim(QQConnectConstants.RefreshTokenClaimType, accessTokenResult.TryGetValue(QQConnectConstants.RefreshTokenField), ClaimValueTypes.String, Options.AuthenticationType),
+                    new Claim(QQConnectConstants.ExpiresInClaimType, accessTokenResult.TryGetValue(QQConnectConstants.ExpiresInField), ClaimValueTypes.String, Options.AuthenticationType),
+                    new Claim(QQConnectConstants.NickNameClaimType, userInfoResult.TryGetValue(QQConnectConstants.NickNameField), ClaimValueTypes.String, Options.AuthenticationType),
+                    new Claim(QQConnectConstants.AvatarUrlClaimType, userInfoResult.TryGetValue(QQConnectConstants.AvatarUrlField), ClaimValueTypes.String, Options.AuthenticationType),
+                };
 
-                identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, openId));
-                identity.AddClaim(new Claim("nickname", GetJsonValue(userInfoResult, "nickname")));
-                identity.AddClaim(new Claim("avatar", GetJsonValue(userInfoResult, "figureurl_qq_1")));
+                var identity = new ClaimsIdentity(claims, Options.AuthenticationType, ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
 
                 return new AuthenticationTicket(identity, authenticationProperties);
             }

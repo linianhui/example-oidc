@@ -1,5 +1,5 @@
-using System;
 using Owin;
+using System;
 
 namespace OAuth2.QQConnect
 {

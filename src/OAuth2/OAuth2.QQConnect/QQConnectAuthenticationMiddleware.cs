@@ -1,12 +1,12 @@
 ﻿using Microsoft.Owin;
-using Microsoft.Owin.Security.Infrastructure;
-using Owin;
-using System;
-using System.Net.Http;
 using Microsoft.Owin.Logging;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataHandler;
 using Microsoft.Owin.Security.DataProtection;
+using Microsoft.Owin.Security.Infrastructure;
+using Owin;
+using System;
+using System.Net.Http;
 
 namespace OAuth2.QQConnect
 {
