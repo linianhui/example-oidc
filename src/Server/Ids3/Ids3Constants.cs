@@ -6,7 +6,7 @@
 
         public const string QQIdp = "qq";
 
-        public const string SiteName = "http://server.ids3.dev";
+        public const string SiteName = "Ids3 Server";
 
         public const string IssuerUri = "http://server.ids3.dev";
     }

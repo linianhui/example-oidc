@@ -16,7 +16,7 @@ namespace OAuth2.QQConnect
 
         internal const string ErrorCodeField = "ret";
 
-        internal const string OpenIdJsonField = "openid";
+        internal const string OpenIdField = "openid";
 
         internal const string AccessTokenField = "access_token";
 
@@ -32,7 +32,7 @@ namespace OAuth2.QQConnect
 
         internal const string AppIdClaimType = ClaimTypePrefix + "appid";
 
-        internal const string OpenIdClaimType = ClaimTypePrefix + OpenIdJsonField;
+        internal const string OpenIdClaimType = ClaimTypePrefix + OpenIdField;
 
         internal const string AccessTokenClaimType = ClaimTypePrefix + AccessTokenField;
 
