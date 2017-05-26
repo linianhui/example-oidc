@@ -1,6 +1,6 @@
 namespace OAuth2.QQConnect
 {
-    public static class Constants
+    public static class QQConnectConstants
     {
         public const string DefaultAuthenticationType = "QQ.Connect";
 

@@ -6,15 +6,15 @@ namespace OAuth2.QQConnect
     public class QQConnectAuthenticationOptions : AuthenticationOptions
     {
         public QQConnectAuthenticationOptions()
-            : base(Constants.DefaultAuthenticationType)
+            : base(QQConnectConstants.DefaultAuthenticationType)
         {
-            Caption = Constants.DefaultAuthenticationType;
+            Caption = QQConnectConstants.DefaultAuthenticationType;
             AuthenticationMode = AuthenticationMode.Passive;
             CallbackPath = "/qq-connect/callback";
-            AuthorizationEndpoint = Constants.AuthorizationEndpoint;
-            AccessTokenEndpoint = Constants.AccessTokenEndpoint;
-            OpenIdEndpoint = Constants.OpenIdEndpoint;
-            UserInfoEndpoint = Constants.UserInfoEndpoint;
+            AuthorizationEndpoint = QQConnectConstants.AuthorizationEndpoint;
+            AccessTokenEndpoint = QQConnectConstants.AccessTokenEndpoint;
+            OpenIdEndpoint = QQConnectConstants.OpenIdEndpoint;
+            UserInfoEndpoint = QQConnectConstants.UserInfoEndpoint;
             Scopes = new List<string>
             {
                 "get_user_info"
