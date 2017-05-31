@@ -7,7 +7,8 @@ namespace Server.Ids3
     {
         public static IEnumerable<Client> All => new[]
         {
-            ImplicitClient
+            ImplicitClient,
+            JSClient
         };
 
         private static Client ImplicitClient
@@ -36,6 +37,31 @@ namespace Server.Ids3
                     AllowAccessToAllScopes = true,
                     LogoutUri = host + "account/logout-callback",
                     LogoutSessionRequired = true
+                };
+            }
+        }
+
+        public static Client JSClient
+        {
+            get
+            {
+                var host = "http://client.js.dev/";
+                return new Client
+                {
+                    Enabled = true,
+                    ClientName = "JS Client",
+                    ClientId = "js-client",
+                    Flow = Flows.Implicit,
+                    RedirectUris = new List<string>
+                    {
+                        $"{host}popup.html"
+                    },
+
+                    AllowedCorsOrigins = new List<string>
+                    {
+                        host
+                    },
+                    AllowAccessToAllScopes = true
                 };
             }
         }
