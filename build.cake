@@ -14,6 +14,10 @@ var webSites = new []{
     new {
         host="client.implicit.dev",
         path="./src/client.implicit"
+    },
+    new {
+        host="client.js.dev",
+        path="./src/client.js"
     }
 };
 

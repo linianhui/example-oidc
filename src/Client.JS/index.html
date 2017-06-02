@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Client</title>
+    <meta charset="utf-8" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/oidc-client.min.js"></script>
+    <script type="text/javascript">
+
+        var ids3Options = {
+            authority: 'http://server.ids3.dev/auth',
+            client_id: 'js-client',
+            popup_redirect_uri: 'http://client.js.dev/popup.html',
+            post_logout_redirect_uri: 'http://client.js.dev/index.html',
+            response_type: 'id_token',
+            scope: 'openid profile',
+            filterProtocolClaims: true
+        };
+
+        Oidc.Log.logger = console;
+
+    </script>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:void(0);" class="js-login">Login</a>
+        <a href="javascript:void(0);" class="js-logout">Logout</a>
+    </nav>
+
+    <table>
+        <tr>
+            <th style="width:666px">User</th>
+        </tr>
+        <tr>
+            <td>
+                <pre class="js-user" style="overflow-x:auto"></pre>
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+        var user;
+        var manager = new Oidc.UserManager(ids3Options);
+
+        manager.getUser().then(function (result) {
+            if (result) {
+                user = result;
+                display('.js-user', user);
+            }
+        })
+
+        manager.events.addUserLoaded(function (loadedUser) {
+            user = loadedUser;
+            display('.js-user', user);
+        });
+
+        $('.js-login').on('click', function () {
+            if (user) {
+                alert("已经登录！");
+                return;
+            }
+            manager
+                .signinPopup()
+                .catch(function (error) {
+                    console.error('error while logging in through the popup', error);
+                });
+        });
+
+        $('.js-logout').on('click', function () {
+            if (!user) {
+                alert("已经注销！");
+                return;
+            }
+            manager
+                .signoutRedirect()
+                .catch(function (error) {
+                    console.error('error while signing out user', error);
+                });
+        });
+
+        function display(selector, data) {
+            if (data && typeof data === 'string') {
+                data = JSON.parse(data);
+            }
+            if (data) {
+                data = JSON.stringify(data, null, 2);
+            }
+            $(selector).text(data);
+        }
+    </script>
+</body>
+</html>
