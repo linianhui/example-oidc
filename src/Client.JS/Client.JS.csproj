@@ -46,14 +46,6 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="index.html" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\oidc-client.min.js" />
