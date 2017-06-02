@@ -56,7 +56,10 @@ namespace Server.Ids3
                     {
                         $"{host}popup.html"
                     },
-
+                    PostLogoutRedirectUris = new List<string>
+                    {
+                        $"{host}index.html"
+                    },
                     AllowedCorsOrigins = new List<string>
                     {
                         host
