@@ -8,7 +8,8 @@ namespace Server.Ids3
         public static IEnumerable<Client> All => new[]
         {
             ImplicitClient,
-            JSClient
+            JSClient,
+            OAuth2AuthorizationCodeFlowClientForUWP
         };
 
         private static Client ImplicitClient
@@ -63,6 +64,34 @@ namespace Server.Ids3
                     AllowedCorsOrigins = new List<string>
                     {
                         host
+                    },
+                    AllowAccessToAllScopes = true
+                };
+            }
+        }
+
+        public static Client OAuth2AuthorizationCodeFlowClientForUWP
+        {
+            get
+            {
+                var host = "http://uwp.oauth2-authorization-code-flow.dev";
+
+                return new Client
+                {
+                    Enabled = true,
+                    ClientName = "OAuth2 Authorization Code Flow Client",
+                    ClientId = "oauth2-authorization-code-flow.uwp",
+                    Flow = Flows.AuthorizationCode,
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("lnh".Sha256())
+                    },
+                    RequireConsent = true,
+                    AllowRememberConsent = true,
+                    ClientUri = host,
+                    RedirectUris = new List<string>
+                    {
+                        $"{host}/oauth2-callback",
                     },
                     AllowAccessToAllScopes = true
                 };
