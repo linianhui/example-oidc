@@ -9,12 +9,16 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
           Padding="24">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
             <Button Content="Login"
                     Click="Login_Click" />
+
+            <Button Content="QQ Login"
+                    Click="QQLogin_Click"
+                    Margin="12,0" />
         </StackPanel>
     </Grid>
 </Page>

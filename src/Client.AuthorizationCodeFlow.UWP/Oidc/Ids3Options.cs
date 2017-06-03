@@ -13,9 +13,9 @@ namespace Client.AuthorizationCodeFlow.UWP.Oidc
         public string ClientSecret => "lnh";
         public string RedirectUri => "http://uwp.oauth2-authorization-code-flow.dev/oauth2-callback";
 
-        public string BuildAuthorizeUrl()
+        public string BuildAuthorizeUrl(string idp = null)
         {
-            return AuthorizeEndpoint
+            var authorizeUrl = AuthorizeEndpoint
                       + $"?client_id={ClientId}"
                       + "&scope=openid"
                       + "&response_type=code"
@@ -23,6 +23,11 @@ namespace Client.AuthorizationCodeFlow.UWP.Oidc
                       + $"&redirect_uri={RedirectUri}"
                       + $"&state={Guid.NewGuid()}"
                       + $"&nonce={Guid.NewGuid()}";
+            if (idp != null)
+            {
+                authorizeUrl += $"&acr_values=idp:{idp}";
+            }
+            return authorizeUrl;
         }
 
         public static string GetCode(string querySring)

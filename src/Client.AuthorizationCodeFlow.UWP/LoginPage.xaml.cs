@@ -34,7 +34,8 @@ namespace Client.AuthorizationCodeFlow.UWP
         {
             if (e.NavigationMode == NavigationMode.New)
             {
-                this.NameLoginWebView.Navigate(new Uri(this._ids3Options.BuildAuthorizeUrl(), UriKind.Absolute));
+                var idp = ((dynamic)e.Parameter)?.idp;
+                this.NameLoginWebView.Navigate(new Uri(this._ids3Options.BuildAuthorizeUrl(idp?.ToString()), UriKind.Absolute));
             }
             base.OnNavigatedTo(e);
         }

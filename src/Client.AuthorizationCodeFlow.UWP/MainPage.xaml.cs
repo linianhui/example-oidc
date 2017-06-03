@@ -18,5 +18,10 @@ namespace Client.AuthorizationCodeFlow.UWP
         {
             this.Frame.Navigate(typeof(LoginPage));
         }
+
+        private void QQLogin_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(LoginPage), new { idp = "qq" });
+        }
     }
 }
