@@ -7,7 +7,7 @@
       mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-          Padding="24">
+          Padding="12">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -20,5 +20,45 @@
                     Click="QQLogin_Click"
                     Margin="12,0" />
         </StackPanel>
+        <ScrollViewer Grid.Row="1"
+                      Margin="0,12,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.ColumnSpan="2">
+                    <TextBlock Text="User" />
+                    <TextBox Name="NameUserTextBlock"
+                             Margin="0,12"
+                             TextWrapping="Wrap"
+                             IsReadOnly="True" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1"
+                            Grid.Column="0">
+                    <TextBlock Text="ID Token" />
+                    <TextBox Name="NameIdTokenTextBox"
+                             Margin="0,12,6,0"
+                             TextWrapping="Wrap"
+                             IsReadOnly="True" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="6,0,0,0">
+                    <TextBlock Text="Access Token" />
+                    <TextBox Name="NameAccessTokenTextBox"
+                             Margin="0,12"
+                             TextWrapping="Wrap"
+                             IsReadOnly="True" />
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

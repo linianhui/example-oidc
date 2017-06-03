@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Client.AuthorizationCodeFlow.UWP.Oidc
 {
     /// <summary>
     /// <see cref="http://server.ids3.dev/auth/.well-known/openid-configuration"/>
     /// </summary>
-    public class Ids3Options
+    public class OidcOptions
     {
         public string AuthorizeEndpoint => "http://server.ids3.dev/auth/connect/authorize";
-        public string AccessTokenEndpoint { get; set; }
+        public string TokenEndpoint => "http://server.ids3.dev/auth/connect/token";
         public string ClientId => "oauth2-authorization-code-flow.uwp";
         public string ClientSecret => "lnh";
         public string RedirectUri => "http://uwp.oauth2-authorization-code-flow.dev/oauth2-callback";
@@ -28,6 +29,18 @@ namespace Client.AuthorizationCodeFlow.UWP.Oidc
                 authorizeUrl += $"&acr_values=idp:{idp}";
             }
             return authorizeUrl;
+        }
+
+        public IReadOnlyDictionary<string, string> BuildTokenParams(string code)
+        {
+            return new Dictionary<string, string>
+            {
+                ["client_id"] = ClientId,
+                ["client_secret"] = ClientSecret,
+                ["grant_type"] = "authorization_code",
+                ["code"] = code,
+                ["redirect_uri"] = RedirectUri
+            };
         }
 
         public static string GetCode(string querySring)

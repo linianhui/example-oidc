@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Net.Http;
+using System.Text;
+using Windows.Storage;
 using Client.AuthorizationCodeFlow.UWP.Oidc;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -23,7 +16,7 @@ namespace Client.AuthorizationCodeFlow.UWP
     /// </summary>
     public sealed partial class LoginPage : Page
     {
-        private readonly Ids3Options _ids3Options = new Ids3Options();
+        private readonly OidcOptions _oidcOptions = new OidcOptions();
 
         public LoginPage()
         {
@@ -35,20 +28,33 @@ namespace Client.AuthorizationCodeFlow.UWP
             if (e.NavigationMode == NavigationMode.New)
             {
                 var idp = ((dynamic)e.Parameter)?.idp;
-                this.NameLoginWebView.Navigate(new Uri(this._ids3Options.BuildAuthorizeUrl(idp?.ToString()), UriKind.Absolute));
+                this.NameLoginWebView.Navigate(new Uri(this._oidcOptions.BuildAuthorizeUrl(idp?.ToString()), UriKind.Absolute));
             }
             base.OnNavigatedTo(e);
         }
 
-        private void NameLoginWebView_NavigationStarting(WebView sender, WebViewNavigationStartingEventArgs args)
+        private async void NameLoginWebView_NavigationStarting(WebView sender, WebViewNavigationStartingEventArgs args)
         {
             var uri = args.Uri;
-            if (uri.ToString().StartsWith(this._ids3Options.RedirectUri))
+            if (uri.ToString().StartsWith(this._oidcOptions.RedirectUri))
             {
-                var code = Ids3Options.GetCode(uri.Query);
+                var code = OidcOptions.GetCode(uri.Query);
+                var httpClient = new HttpClient();
+                var tokenParams = new FormUrlEncodedContent(this._oidcOptions.BuildTokenParams(code));
+                var tokenReponse = await httpClient.PostAsync(this._oidcOptions.TokenEndpoint, tokenParams);
+                var jsonText = await tokenReponse.Content.ReadAsStringAsync();
+                //todo:http://openid.net/specs/openid-connect-core-1_0.html#TokenResponseValidation
+                var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("user-token.json", CreationCollisionOption.ReplaceExisting);
+                using (var fileStream = await file.OpenStreamForWriteAsync())
+                {
+                    var jsonBytes = Encoding.UTF8.GetBytes(jsonText);
+                    fileStream.Write(jsonBytes, 0, jsonBytes.Length);
+                }
+                if (this.Frame.CanGoBack)
+                {
+                    this.Frame.GoBack();
+                }
             }
         }
-
-
     }
 }
