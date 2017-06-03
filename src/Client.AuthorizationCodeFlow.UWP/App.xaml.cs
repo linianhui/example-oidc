@@ -1,6 +1,7 @@
 ﻿using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -39,6 +40,7 @@ namespace Client.AuthorizationCodeFlow.UWP
                 rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
+                rootFrame.Navigated += RootFrame_Navigated;
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
@@ -48,6 +50,8 @@ namespace Client.AuthorizationCodeFlow.UWP
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
+
+            SystemNavigationManager.GetForCurrentView().BackRequested += TitleBar_BackRequested;
 
             if (e.PrelaunchActivated == false)
             {
@@ -60,6 +64,32 @@ namespace Client.AuthorizationCodeFlow.UWP
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
+            }
+        }
+
+        private void RootFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            var backButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+            if (((Frame)sender).CanGoBack)
+            {
+                backButtonVisibility = AppViewBackButtonVisibility.Visible;
+            }
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = backButtonVisibility;
+        }
+
+        private void TitleBar_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            var frame = Window.Current.Content as Frame;
+
+            if (frame == null)
+            {
+                return;
+            }
+
+            if (frame.CanGoBack && e.Handled == false)
+            {
+                e.Handled = true;
+                frame.GoBack();
             }
         }
 
