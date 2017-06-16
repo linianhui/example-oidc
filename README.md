@@ -1,7 +1,7 @@
 # Ids3.demo
 demo for https://github.com/IdentityServer/IdentityServer3.
 
-If you want use QQ Login,please fill in *your AppId and AppSercet*.
+Use administrator run build.ps1 to deploy demo web site to local IIS. If you want use QQ Login,please fill in *your AppId and AppSercet*.
 ``` csharp
 app.UseQQConnectAuthentication(new QQConnectAuthenticationOptions
  {
