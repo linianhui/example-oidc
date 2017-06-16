@@ -1,8 +1,9 @@
 #addin "Cake.IIS"
+#addin "Cake.Hosts"
 #addin "Cake.FileHelpers"
 #addin "Cake.Powershell"
 
-///params
+/// params
 var target = Argument("target", "default");
 
 /// web sites config
@@ -69,6 +70,15 @@ Task("deploy")
     }
 });
 
+/// set local dns task
+Task("set-local-dns")
+    .Does(() =>
+{
+    foreach(var website in webSites){
+        AddHostsRecord("127.0.0.1", website.host);
+    }
+});
+
 /// open browser task
 Task("open-browser")
     .Does(() =>
@@ -91,6 +101,7 @@ Task("open-browser")
 Task("default")
 .IsDependentOn("build")
 .IsDependentOn("deploy")
+.IsDependentOn("set-local-dns")
 .IsDependentOn("open-browser");
 
 RunTarget(target);
