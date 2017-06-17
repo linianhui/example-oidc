@@ -1,10 +1,11 @@
-﻿using Microsoft.Owin;
+﻿using Ids3.Host;
+using Ids3.Host.Ids3.Use;
+using Microsoft.Owin;
 using Owin;
-using Server.Ids3.Use;
 
-[assembly: OwinStartup(typeof(Server.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
-namespace Server
+namespace Ids3.Host
 {
     public class Startup
     {

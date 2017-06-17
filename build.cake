@@ -10,7 +10,7 @@ var target = Argument("target", "default");
 var webSites = new []{
     new {
         host="server.ids3.dev",
-        path= "./src/servers/server"
+        path= "./src/servers/ids3.host"
     },
     new {
         host="client.implicit.dev",

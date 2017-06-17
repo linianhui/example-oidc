@@ -3,7 +3,7 @@ using System.Security.Claims;
 using IdentityServer3.Core;
 using IdentityServer3.Core.Services.InMemory;
 
-namespace Server.Ids3
+namespace Ids3.Host.Ids3
 {
     public static class InMemoryUsers
     {

@@ -1,13 +1,13 @@
-﻿using IdentityServer3.Core.Extensions;
-using IdentityServer3.Core.Models;
-using IdentityServer3.Core.Services.Default;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using IdentityServer3.Core.Extensions;
+using IdentityServer3.Core.Models;
+using IdentityServer3.Core.Services.Default;
 
-namespace Server.Ids3
+namespace Ids3.Host.Ids3
 {
     public class UserService : UserServiceBase
     {

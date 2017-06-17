@@ -6,7 +6,7 @@ using OAuth2.QQConnect;
 using Owin;
 using Constants = IdentityServer3.Core.Constants;
 
-namespace Server.Ids3.Use
+namespace Ids3.Host.Ids3.Use
 {
     public static class Ids3Extentions
     {
