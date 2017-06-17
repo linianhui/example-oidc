@@ -10,15 +10,15 @@ var target = Argument("target", "default");
 var webSites = new []{
     new {
         host="server.ids3.dev",
-        path= "./src/server"
+        path= "./src/servers/server"
     },
     new {
         host="client.implicit.dev",
-        path="./src/client.implicit"
+        path="./src/clients/client.implicit"
     },
     new {
         host="client.js.dev",
-        path="./src/client.js"
+        path="./src/clients/client.js"
     }
 };
 
@@ -52,6 +52,7 @@ Task("deploy")
     .Does(() =>
 {
     foreach(var website in webSites){
+        DeleteSite(website.host);
         CreateWebsite(new WebsiteSettings()
         {
             Name = website.host,
@@ -64,7 +65,7 @@ Task("deploy")
             {
                 Name = "ids3-dev",
                 IdentityType = IdentityType.LocalSystem,
-		MaxProcesses = 1
+		        MaxProcesses = 1
             }
         });
     }

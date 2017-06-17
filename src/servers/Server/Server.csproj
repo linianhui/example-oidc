@@ -138,12 +138,11 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OAuth2\OAuth2.QQConnect\OAuth2.QQConnect.csproj">
+    <ProjectReference Include="..\OAuth2.QQConnect\OAuth2.QQConnect.csproj">
       <Project>{1c5b12e4-c741-4b26-ad95-1365440c1237}</Project>
       <Name>OAuth2.QQConnect</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Views\ExternalLogin\QQLogin.cshtml" />
   </ItemGroup>
