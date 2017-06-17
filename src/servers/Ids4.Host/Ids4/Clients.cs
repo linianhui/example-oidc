@@ -23,6 +23,7 @@ namespace Ids4.Host.Ids4
                     ClientName = "Implicit Client",
                     ClientId = "implicit-client",
                     AllowedGrantTypes = GrantTypes.Implicit,
+                    RequireConsent = false,
                     RedirectUris = new List<string>
                     {
                         host

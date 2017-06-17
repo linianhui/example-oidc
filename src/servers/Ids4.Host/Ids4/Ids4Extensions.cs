@@ -19,6 +19,13 @@ namespace Ids4.Host.Ids4
         private static void SetIdentityServerOptions(IdentityServerOptions options)
         {
             options.IssuerUri = "http://server.ids4.dev";
+            options.UserInteraction = new UserInteractionOptions
+            {
+                LoginUrl = "/account/login",
+                LoginReturnUrlParameter = "resumeUrl",
+                ErrorUrl = "/ids4/error",
+                ErrorIdParameter = "errorId"
+            };
         }
 
         public static void UseIds4(this IApplicationBuilder app)
