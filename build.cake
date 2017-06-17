@@ -29,7 +29,7 @@ Task("build")
     .IsDependentOn("restore-nuget-packages")
     .Does(() =>
 {
-    MSBuild("./ids3.demo.sln",new MSBuildSettings {
+    MSBuild("./oidc.example.sln",new MSBuildSettings {
 		Verbosity = Verbosity.Minimal
     });
 });
@@ -37,13 +37,14 @@ Task("build")
 Task("restore-nuget-packages")
     .Does(() =>
 {
-    NuGetRestore("./ids3.demo.sln");
+    NuGetRestore("./oidc.example.sln");
 });
 
 Task("clean")
     .Does(() =>
 {
-	CleanDirectories(GetDirectories("./src/*/bin"));
+	CleanDirectories("./src/**/bin");
+    CleanDirectories("./src/**/obj");
 });
 
 
@@ -63,7 +64,7 @@ Task("deploy")
             PhysicalDirectory = website.path,
             ApplicationPool = new ApplicationPoolSettings()
             {
-                Name = "ids3-dev",
+                Name = "oidc-example",
                 IdentityType = IdentityType.LocalSystem,
 		        MaxProcesses = 1
             }
