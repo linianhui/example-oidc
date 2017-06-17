@@ -252,3 +252,7 @@ paket-files/
 
 # Cake tools
 tools/
+
+# Asp.Net Core
+**/_publish/
+**/launchSettings.json
