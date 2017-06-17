@@ -62,5 +62,16 @@ namespace Ids4.Host.Ids4.Account
                 return View(new LoginViewModel(form));
             }
         }
+
+        [HttpPost]
+        [Route("logout")]
+        public async Task<IActionResult> Logout(string logoutId)
+        {
+            var logout = await _idsInteraction.GetLogoutContextAsync(logoutId);
+
+            await HttpContext.Authentication.SignOutAsync();
+
+            return Redirect(logout.PostLogoutRedirectUri);
+        }
     }
 }

@@ -23,6 +23,8 @@ namespace Ids4.Host.Ids4
             {
                 LoginUrl = "/account/login",
                 LoginReturnUrlParameter = "resumeUrl",
+                LogoutUrl = "/account/logout",
+                LogoutIdParameter = "logoutId",
                 ErrorUrl = "/ids4/error",
                 ErrorIdParameter = "errorId"
             };
