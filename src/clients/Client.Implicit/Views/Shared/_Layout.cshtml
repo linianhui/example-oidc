@@ -16,9 +16,13 @@
             }
             else
             {
-                @Html.RouteLink("Login", "account-login", new { returnUri = this.Request.Url })
+                @Html.RouteLink("Use ids3 Login", "account-login", new { returnUri = this.Request.Url })
                 <br />
-                @Html.RouteLink("QQ Login", "account-qq-login", new { returnUri = this.Request.Url })
+                @Html.RouteLink("Use ids4 Login", "account-login", new { returnUri = this.Request.Url , authType= Constants.AuthenticationTypeOfIds4 })
+                <br />
+                @Html.RouteLink("QQ Login(ids3)", "account-qq-login", new { returnUri = this.Request.Url })
+                <br />
+                @Html.RouteLink("QQ Login(ids4)", "account-qq-login", new { returnUri = this.Request.Url, authType = Constants.AuthenticationTypeOfIds4 })
             }
         </nav>
     </header>

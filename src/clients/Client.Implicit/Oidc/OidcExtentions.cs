@@ -3,7 +3,6 @@ using System.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Helpers;
-using Client.Implicit.Oidc.Cleartext;
 using Microsoft.IdentityModel.Protocols;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Notifications;
@@ -12,9 +11,9 @@ using Owin;
 
 namespace Client.Implicit.Oidc
 {
-    public static class OidcAuthenticationExtentions
+    public static class OidcExtentions
     {
-        public static void UseOidcAuthentication(this IAppBuilder app)
+        public static void UseBaseAuthentication(this IAppBuilder app)
         {
             AntiForgeryConfig.UniqueClaimTypeIdentifier = Constants.ClaimTypes.Subject;
             JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
@@ -23,14 +22,17 @@ namespace Client.Implicit.Oidc
             {
                 AuthenticationType = Constants.AuthenticationTypeOfCookies,
                 CookieHttpOnly = true,
-                CookieName = Constants.AuthenticationTypeOfCookies + Constants.AuthenticationTypeOfOidc,
+                CookieName = Constants.AuthenticationTypeOfCookies + Constants.AuthenticationTypeOfIds3,
                 // 方便调试，明文。
                 //TicketDataFormat = new AuthenticationTicketCleartextDataFormat()
             });
+        }
 
+        public static void UseIds3Authentication(this IAppBuilder app)
+        {
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
-                AuthenticationType = Constants.AuthenticationTypeOfOidc,
+                AuthenticationType = Constants.AuthenticationTypeOfIds3,
                 Authority = "http://server.ids3.dev/auth",
                 ClientId = "implicit-client",
                 RedirectUri = "http://client.implicit.dev/",
@@ -38,6 +40,24 @@ namespace Client.Implicit.Oidc
                 SignInAsAuthenticationType = Constants.AuthenticationTypeOfCookies,
                 //方便调试，明文。
                 //StateDataFormat = new AuthenticationPropertiesCleartextDataFormat(),
+                Notifications = new OpenIdConnectAuthenticationNotifications
+                {
+                    SecurityTokenValidated = HandleSecurityTokenValidatedNotification,
+                    RedirectToIdentityProvider = HandleRedirectToIdentityProviderNotification
+                }
+            });
+        }
+
+        public static void UseIds4Authentication(this IAppBuilder app)
+        {
+            app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
+            {
+                AuthenticationType = Constants.AuthenticationTypeOfIds4,
+                Authority = "http://server.ids4.dev",
+                ClientId = "implicit-client",
+                RedirectUri = "http://client.implicit.dev/",
+                ResponseType = "id_token",
+                SignInAsAuthenticationType = Constants.AuthenticationTypeOfCookies,
                 Notifications = new OpenIdConnectAuthenticationNotifications
                 {
                     SecurityTokenValidated = HandleSecurityTokenValidatedNotification,
@@ -66,7 +86,10 @@ namespace Client.Implicit.Oidc
             if (context.ProtocolMessage.RequestType == OpenIdConnectRequestType.AuthenticationRequest)
             {
                 var idp = context.OwinContext.Get<string>("idp");
-                context.ProtocolMessage.AcrValues = "idp:" + idp;
+                if (string.IsNullOrWhiteSpace(idp) == false)
+                {
+                    context.ProtocolMessage.AcrValues = "idp:" + idp;
+                }
             }
             return Task.FromResult(0);
         }

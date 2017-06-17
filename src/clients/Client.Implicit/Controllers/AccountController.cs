@@ -14,22 +14,22 @@ namespace Client.Implicit.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("login", Name = "account-login")]
-        public void Login(Uri returnUri)
+        public void Login(Uri returnUri, string authType = Constants.AuthenticationTypeOfIds3)
         {
             Request.GetOwinContext()
                 .Authentication
-                .Challenge(BuildAuthenticationProperties(returnUri), Constants.AuthenticationTypeOfOidc);
+                .Challenge(BuildAuthenticationProperties(returnUri), authType);
         }
 
         [HttpGet]
         [AllowAnonymous]
         [Route("qq-login", Name = "account-qq-login")]
-        public void QQLogin(Uri returnUri)
+        public void QQLogin(Uri returnUri, string authType = Constants.AuthenticationTypeOfIds3)
         {
             Request.GetOwinContext()
                 .Set("idp", "qq")
                 .Authentication
-                .Challenge(BuildAuthenticationProperties(returnUri), Constants.AuthenticationTypeOfOidc);
+                .Challenge(BuildAuthenticationProperties(returnUri), authType);
         }
 
         private AuthenticationProperties BuildAuthenticationProperties(Uri returnUri)

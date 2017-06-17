@@ -10,7 +10,9 @@ namespace Client.Implicit
     {
         public void Configuration(IAppBuilder app)
         {
-            app.UseOidcAuthentication();
+            app.UseBaseAuthentication();
+            app.UseIds3Authentication();
+            app.UseIds4Authentication();
         }
     }
 }
