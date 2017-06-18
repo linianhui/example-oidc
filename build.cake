@@ -7,38 +7,40 @@
 var target = Argument("target", "default");
 
 /// iis app pool config
-var appPoolConfigs = new []{
-    new {
-        name = "clr4.oidc-example",
-        clrVersion = "v4.0",
-    },
-    new {
-        name = "noclr.oidc-example",
-        clrVersion = "",
-    }
-};
+var appPoolClr4 = "clr4.oidc-example";
+var appPoolNoClr = "noclr.oidc-example";
 
 /// iis web sites config
 var webSiteConfigs = new []{
     new {
         host = "server.ids3.dev",
         path = "./src/servers/ids3.host",
-        appPoolName = appPoolConfigs[0].name
-    },
-    new {
-        host = "server.ids4.dev",
-        path = "./src/servers/ids4.host/_publish",
-        appPoolName = appPoolConfigs[1].name
+        appPoolName = appPoolClr4
     },
     new {
         host = "client.implicit.dev",
         path = "./src/clients/client.implicit",
-        appPoolName = appPoolConfigs[0].name
+        appPoolName = appPoolClr4
     },
     new {
         host = "client.js.dev",
         path = "./src/clients/client.js",
-        appPoolName = appPoolConfigs[0].name
+        appPoolName = appPoolClr4
+    },
+    new {
+        host = "oauth2.owin.dev",
+        path = "./src/middleware/hosts/owin.oauth2.host",
+        appPoolName = appPoolClr4
+    },
+    new {
+        host = "oauth2.asp-net-core.dev",
+        path = "./src/middleware/hosts/core.oauth2.host/_publish",
+        appPoolName = appPoolNoClr
+    },
+    new {
+        host = "server.ids4.dev",
+        path = "./src/servers/ids4.host/_publish",
+        appPoolName = appPoolNoClr
     }
 };
 
@@ -72,45 +74,49 @@ Task("build")
 Task("publish")
     .Does(() =>
 { 
+    StopPool(appPoolNoClr);
+
+    CleanDirectories("./src/**/_publish");
+
+    DotNetCorePublish("./src/middleware/hosts/core.oauth2.host/core.oauth2.host.csproj", new DotNetCorePublishSettings
+    {
+        Framework = "netcoreapp1.1",
+        OutputDirectory = "./src/middleware/hosts/core.oauth2.host/_publish/"
+    });
+
     DotNetCorePublish("./src/servers/ids4.host/ids4.host.csproj", new DotNetCorePublishSettings
     {
         Framework = "netcoreapp1.1",
         OutputDirectory = "./src/servers/ids4.host/_publish/"
     });
-});
 
-/// undeploy task
-Task("undeploy")
-    .Does(() =>
-{
-    foreach(var appPoolConfig in appPoolConfigs){
-        StopPool(appPoolConfig.name);
-    }
-
-    foreach(var webSiteConfig in webSiteConfigs){
-        DeleteSite(webSiteConfig.host);
-    }
+    StartPool(appPoolNoClr);
 });
 
 /// deploy task
 Task("deploy")
     .Does(() =>
 {
-    foreach(var appPoolConfig in appPoolConfigs){
-        CreatePool(new ApplicationPoolSettings()
-        {
-            Name = appPoolConfig.name,
-            IdentityType = IdentityType.LocalSystem,
-            MaxProcesses = 1,
-            ManagedRuntimeVersion = appPoolConfig.clrVersion
-        });
+    CreatePool(new ApplicationPoolSettings()
+    {
+        Name = appPoolClr4,
+        IdentityType = IdentityType.LocalSystem,
+        MaxProcesses = 1,
+        ManagedRuntimeVersion = "v4.0"
+    });
 
-        StartPool(appPoolConfig.name);
-    }
+     CreatePool(new ApplicationPoolSettings()
+    {
+        Name = appPoolNoClr,
+        IdentityType = IdentityType.LocalSystem,
+        MaxProcesses = 1,
+        ManagedRuntimeVersion = null
+    });
 
     foreach(var webSiteConfig in webSiteConfigs){
-        AddHostsRecord("127.0.0.1", webSiteConfig.host);
-        
+
+        DeleteSite(webSiteConfig.host);
+
         CreateWebsite(new WebsiteSettings()
         {
             Name = webSiteConfig.host,
@@ -125,6 +131,8 @@ Task("deploy")
                 Name = webSiteConfig.appPoolName
             }
         });
+        
+        AddHostsRecord("127.0.0.1", webSiteConfig.host);
 
         StartSite(webSiteConfig.host);
     }
@@ -150,7 +158,6 @@ Task("open-browser")
 
 /// default task
 Task("default")
-.IsDependentOn("undeploy")
 .IsDependentOn("build")
 .IsDependentOn("publish")
 .IsDependentOn("deploy")

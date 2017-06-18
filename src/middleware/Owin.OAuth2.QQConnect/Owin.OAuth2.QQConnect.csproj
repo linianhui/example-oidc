@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1C5B12E4-C741-4B26-AD95-1365440C1237}</ProjectGuid>
+    <ProjectGuid>{5061D3C7-03B2-4651-9B3E-9C828F52AC13}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OAuth2.QQConnect</RootNamespace>
-    <AssemblyName>OAuth2.QQConnect</AssemblyName>
+    <AssemblyName>Owin.OAuth2.QQConnect</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -47,14 +47,26 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="QQConncetProfile.cs" />
-    <Compile Include="TryExtensions.cs" />
-    <Compile Include="QQConnectConstants.cs" />
-    <Compile Include="QQConnectAuthenticationHandler.cs" />
-    <Compile Include="QQConnectAuthenticationExtensions.cs" />
-    <Compile Include="QQConnectAuthenticationMiddleware.cs" />
+    <Compile Include="..\OAuth2.QQConnect\QQConncetHelper.cs">
+      <Link>QQConncetHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\OAuth2.QQConnect\QQConncetProfile.cs">
+      <Link>QQConncetProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\OAuth2.QQConnect\QQConnectDefaults.cs">
+      <Link>QQConnectDefaults.cs</Link>
+    </Compile>
+    <Compile Include="..\OAuth2.QQConnect\QQConnectSignInParams.cs">
+      <Link>QQConnectSignInParams.cs</Link>
+    </Compile>
+    <Compile Include="..\OAuth2.QQConnect\TryExtensions.cs">
+      <Link>TryExtensions.cs</Link>
+    </Compile>
+    <Compile Include="QQConnectHandler.cs" />
+    <Compile Include="QQConnectExtensions.cs" />
+    <Compile Include="QQConnectMiddleware.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QQConnectAuthenticationOptions.cs" />
+    <Compile Include="QQConnectOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

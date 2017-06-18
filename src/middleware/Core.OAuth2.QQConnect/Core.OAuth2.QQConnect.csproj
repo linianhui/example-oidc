@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <RootNamespace>OAuth2.QQConnect</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\OAuth2.QQConnect\QQConncetHelper.cs" Link="QQConncetHelper.cs" />
+    <Compile Include="..\OAuth2.QQConnect\QQConncetProfile.cs" Link="QQConncetProfile.cs" />
+    <Compile Include="..\OAuth2.QQConnect\QQConnectDefaults.cs" Link="QQConnectDefaults.cs" />
+    <Compile Include="..\OAuth2.QQConnect\QQConnectSignInParams.cs" Link="QQConnectSignInParams.cs" />
+    <Compile Include="..\OAuth2.QQConnect\TryExtensions.cs" Link="TryExtensions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OAuth" Version="1.1.2" />
+  </ItemGroup>
+
+</Project>

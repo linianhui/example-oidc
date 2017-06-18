@@ -10,23 +10,23 @@ using System.Net.Http;
 
 namespace OAuth2.QQConnect
 {
-    public class QQConnectAuthenticationMiddleware : AuthenticationMiddleware<QQConnectAuthenticationOptions>
+    public class QQConnectMiddleware : AuthenticationMiddleware<QQConnectOptions>
     {
         private readonly ILogger _logger;
 
-        public QQConnectAuthenticationMiddleware(
+        public QQConnectMiddleware(
             OwinMiddleware next,
             IAppBuilder app,
-            QQConnectAuthenticationOptions options)
+            QQConnectOptions options)
             : base(next, options)
         {
-            if (string.IsNullOrWhiteSpace(Options.AppId))
+            if (string.IsNullOrWhiteSpace(Options.ClientId))
             {
-                throw new ArgumentNullException(nameof(Options.AppId));
+                throw new ArgumentNullException(nameof(Options.ClientId));
             }
-            if (string.IsNullOrWhiteSpace(Options.AppSecret))
+            if (string.IsNullOrWhiteSpace(Options.ClientSecret))
             {
-                throw new ArgumentNullException(nameof(Options.AppSecret));
+                throw new ArgumentNullException(nameof(Options.ClientSecret));
             }
 
             if (string.IsNullOrEmpty(Options.SignInAsAuthenticationType))
@@ -36,16 +36,16 @@ namespace OAuth2.QQConnect
 
             if (Options.StateDataFormat == null)
             {
-                var dataProtector = app.CreateDataProtector(typeof(QQConnectAuthenticationMiddleware).FullName, Options.AuthenticationType, "v1");
+                var dataProtector = app.CreateDataProtector(typeof(QQConnectMiddleware).FullName, Options.AuthenticationType, "v1");
                 Options.StateDataFormat = new PropertiesDataFormat(dataProtector);
             }
 
-            _logger = app.CreateLogger<QQConnectAuthenticationMiddleware>();
+            _logger = app.CreateLogger<QQConnectMiddleware>();
         }
 
-        protected override AuthenticationHandler<QQConnectAuthenticationOptions> CreateHandler()
+        protected override AuthenticationHandler<QQConnectOptions> CreateHandler()
         {
-            return new QQConnectAuthenticationHandler(_logger, new HttpClient());
+            return new QQConnectHandler(_logger, new HttpClient());
         }
     }
 }
