@@ -19,6 +19,10 @@ var webSites = new []{
     new {
         host="client.js.dev",
         path="./src/clients/client.js"
+    },
+    new {
+        host="oauth2.owin.dev",
+        path="./src/middleware/hosts/owin.oauth2.host"
     }
 };
 

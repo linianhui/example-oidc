@@ -14,21 +14,21 @@ namespace OAuth2.QQConnect
                 throw new ArgumentNullException(nameof(claims));
             }
             this.Claims = claims;
-            this.Idp = FindFirst(QQConnectConstants.IdpClaimType);
-            this.AppId = FindFirst(QQConnectConstants.AppIdClaimType);
-            this.OpenId = FindFirst(QQConnectConstants.OpenIdClaimType);
-            this.NickName = FindFirst(QQConnectConstants.NickNameClaimType);
-            this.AvatarUrl = FindFirst(QQConnectConstants.AvatarUrlClaimType);
-            this.AccessToken = FindFirst(QQConnectConstants.AccessTokenClaimType);
-            this.RefreshToken = FindFirst(QQConnectConstants.RefreshTokenClaimType);
-            this.ExpiresIn = int.Parse(FindFirst(QQConnectConstants.ExpiresInClaimType));
+            this.Idp = FindFirst(QQConnectDefaults.IdpClaimType);
+            this.ClientId = FindFirst(QQConnectDefaults.ClientIdClaimType);
+            this.OpenId = FindFirst(QQConnectDefaults.OpenIdClaimType);
+            this.NickName = FindFirst(QQConnectDefaults.NickNameClaimType);
+            this.AvatarUrl = FindFirst(QQConnectDefaults.AvatarUrlClaimType);
+            this.AccessToken = FindFirst(QQConnectDefaults.AccessTokenClaimType);
+            this.RefreshToken = FindFirst(QQConnectDefaults.RefreshTokenClaimType);
+            this.ExpiresIn = int.Parse(FindFirst(QQConnectDefaults.ExpiresInClaimType));
         }
 
         public IEnumerable<Claim> Claims { get; }
 
         public string Idp { get; }
 
-        public string AppId { get; }
+        public string ClientId { get; }
 
         public string OpenId { get; }
 
