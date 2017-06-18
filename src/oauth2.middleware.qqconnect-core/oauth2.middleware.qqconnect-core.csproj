@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <RootNamespace>OAuth2.QQConnect</RootNamespace>
+    <AssemblyName>AspNetCore.OAuth2.QQConnect</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

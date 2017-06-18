@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Web;
 using System.Web.Mvc;
+using ClientSite.OAuth2;
 using Microsoft.Owin.Security;
 using OAuth2.QQConnect;
-using Owin.OAuth2.Host.OAuth2;
 
-namespace Owin.OAuth2.Host.Controllers
+namespace ClientSite.Controllers
 {
     [Authorize]
     [RoutePrefix("account")]

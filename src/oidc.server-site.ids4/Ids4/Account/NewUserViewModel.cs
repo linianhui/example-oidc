@@ -1,4 +1,4 @@
-﻿namespace Ids4.Host.Ids4.Account
+﻿namespace ServerSite.Ids4.Account
 {
     public class NewUserViewModel
     {

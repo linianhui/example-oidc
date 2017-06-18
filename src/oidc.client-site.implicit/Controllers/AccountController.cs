@@ -2,10 +2,10 @@
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
-using Client.Implicit.Oidc;
+using ClientSite.Oidc;
 using Microsoft.Owin.Security;
 
-namespace Client.Implicit.Controllers
+namespace ClientSite.Controllers
 {
     [Authorize]
     [RoutePrefix("account")]

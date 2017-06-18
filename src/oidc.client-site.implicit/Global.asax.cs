@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Routing;
 
-namespace Client.Implicit
+namespace ClientSite
 {
     public class MvcApplication : HttpApplication
     {

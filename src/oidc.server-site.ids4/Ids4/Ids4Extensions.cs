@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using OAuth2.QQConnect;
 
-namespace Ids4.Host.Ids4
+namespace ServerSite.Ids4
 {
     public static class Ids4Extensions
     {

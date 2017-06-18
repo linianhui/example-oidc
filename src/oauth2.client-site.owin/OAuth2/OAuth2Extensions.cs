@@ -1,7 +1,8 @@
 ﻿using Microsoft.Owin.Security.Cookies;
 using OAuth2.QQConnect;
+using Owin;
 
-namespace Owin.OAuth2.Host.OAuth2
+namespace ClientSite.OAuth2
 {
     public static class OAuth2Extensions
     {

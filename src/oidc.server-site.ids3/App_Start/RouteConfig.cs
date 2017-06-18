@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Ids3.Host
+namespace ServerSite
 {
     public class RouteConfig
     {

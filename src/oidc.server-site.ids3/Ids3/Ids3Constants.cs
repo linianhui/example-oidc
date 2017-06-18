@@ -1,4 +1,4 @@
-﻿namespace Ids3.Host.Ids3
+﻿namespace ServerSite.Ids3
 {
     public static class Ids3Constants
     {

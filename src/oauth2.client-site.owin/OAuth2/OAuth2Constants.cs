@@ -1,4 +1,4 @@
-﻿namespace Owin.OAuth2.Host.OAuth2
+﻿namespace ClientSite.OAuth2
 {
     public static class OAuth2Constants
     {

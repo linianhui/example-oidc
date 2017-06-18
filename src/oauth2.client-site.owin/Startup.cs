@@ -1,10 +1,11 @@
-﻿using Microsoft.Owin;
-using Owin.OAuth2.Host;
-using Owin.OAuth2.Host.OAuth2;
+﻿using ClientSite;
+using ClientSite.OAuth2;
+using Microsoft.Owin;
+using Owin;
 
 [assembly: OwinStartup(typeof(Startup))]
 
-namespace Owin.OAuth2.Host
+namespace ClientSite
 {
     public class Startup
     {

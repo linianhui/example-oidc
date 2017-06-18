@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using System.IO;
+﻿using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
-namespace Ids4.Host
+namespace ServerSite
 {
     public class Program
     {

@@ -3,7 +3,7 @@ using System.Security.Claims;
 using IdentityModel;
 using IdentityServer4.Test;
 
-namespace Ids4.Host.Ids4
+namespace ServerSite.Ids4
 {
     public static class Users
     {

@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Web.Mvc;
 
-namespace Client.Implicit.Controllers
+namespace ClientSite.Controllers
 {
     public class HomeController : Controller
     {

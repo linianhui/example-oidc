@@ -1,7 +1,6 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Core.OAuth2.Host.Controllers
+namespace ClientSite.Controllers
 {
     public class HomeController : Controller
     {

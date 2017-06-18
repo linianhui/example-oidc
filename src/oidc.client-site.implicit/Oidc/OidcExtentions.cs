@@ -9,7 +9,7 @@ using Microsoft.Owin.Security.Notifications;
 using Microsoft.Owin.Security.OpenIdConnect;
 using Owin;
 
-namespace Client.Implicit.Oidc
+namespace ClientSite.Oidc
 {
     public static class OidcExtentions
     {

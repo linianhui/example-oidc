@@ -1,12 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-using Core.OAuth2.Host.OAuth2;
+﻿using System.Threading.Tasks;
+using ClientSite.OAuth2;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using OAuth2.QQConnect;
 
-namespace Core.OAuth2.Host.Controllers
+namespace ClientSite.Controllers
 {
     [Authorize]
     [Route("account")]

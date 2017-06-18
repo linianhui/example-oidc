@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Ids4.Host.Ids4.Account
+namespace ServerSite.Ids4.Account
 {
     public class LoginViewModel : LoginFormModel
     {

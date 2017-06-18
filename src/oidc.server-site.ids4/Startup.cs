@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Ids4.Host.Ids4;
+using ServerSite.Ids4;
 
-namespace Ids4.Host
+namespace ServerSite
 {
     public class Startup
     {

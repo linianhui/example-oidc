@@ -1,10 +1,11 @@
-﻿using Client.Implicit.Oidc;
+﻿using ClientSite;
+using ClientSite.Oidc;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(Client.Implicit.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
-namespace Client.Implicit
+namespace ClientSite
 {
     public class Startup
     {

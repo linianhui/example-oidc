@@ -6,10 +6,10 @@ using System.Web.Mvc;
 using IdentityServer3.Core;
 using IdentityServer3.Core.Extensions;
 using IdentityServer3.Core.Services.InMemory;
-using Ids3.Host.Ids3;
 using OAuth2.QQConnect;
+using ServerSite.Ids3;
 
-namespace Ids3.Host.Controllers
+namespace ServerSite.Controllers
 {
     [RouteArea(Ids3Constants.ServerPath)]
     [RoutePrefix("external-login")]

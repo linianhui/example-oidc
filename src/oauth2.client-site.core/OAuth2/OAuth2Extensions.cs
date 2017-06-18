@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using OAuth2.QQConnect;
 
-namespace Core.OAuth2.Host.OAuth2
+namespace ClientSite.OAuth2
 {
     public static class OAuth2Extensions
     {

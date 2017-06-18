@@ -3,7 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Owin.OAuth2.Host
+namespace ClientSite
 {
     public class Global : HttpApplication
     {

@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
+    <AssemblyName>OAuth2.ClientSite.AspNetCore</AssemblyName>
+    <RootNamespace>ClientSite</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

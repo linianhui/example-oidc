@@ -10,7 +10,7 @@ using IdentityServer4.Test;
 using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Ids4.Host.Ids4.Account
+namespace ServerSite.Ids4.Account
 {
     [Route("account")]
     public class AccountController : Controller

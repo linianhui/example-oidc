@@ -1,10 +1,10 @@
-﻿using Core.OAuth2.Host.OAuth2;
+﻿using ClientSite.OAuth2;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Core.OAuth2.Host
+namespace ClientSite
 {
     public class Startup
     {

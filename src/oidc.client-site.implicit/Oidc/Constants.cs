@@ -1,4 +1,4 @@
-﻿namespace Client.Implicit.Oidc
+﻿namespace ClientSite.Oidc
 {
     public class Constants
     {

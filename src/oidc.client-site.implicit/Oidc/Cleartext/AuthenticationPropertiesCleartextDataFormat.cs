@@ -2,7 +2,7 @@
 using Microsoft.Owin.Security;
 using Newtonsoft.Json;
 
-namespace Client.Implicit.Oidc.Cleartext
+namespace ClientSite.Oidc.Cleartext
 {
     /// <summary>
     /// 方便调试，明文。

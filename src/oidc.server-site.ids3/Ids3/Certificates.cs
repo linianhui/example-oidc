@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Ids3.Host.Ids3
+namespace ServerSite.Ids3
 {
     internal static class Certificates
     {

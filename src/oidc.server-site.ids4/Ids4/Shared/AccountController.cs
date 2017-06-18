@@ -2,7 +2,7 @@
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Ids4.Host.Ids4.Shared
+namespace ServerSite.Ids4.Shared
 {
     public class SharedController : Controller
     {

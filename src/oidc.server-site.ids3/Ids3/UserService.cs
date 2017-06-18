@@ -7,7 +7,7 @@ using IdentityServer3.Core.Extensions;
 using IdentityServer3.Core.Models;
 using IdentityServer3.Core.Services.Default;
 
-namespace Ids3.Host.Ids3
+namespace ServerSite.Ids3
 {
     public class UserService : UserServiceBase
     {

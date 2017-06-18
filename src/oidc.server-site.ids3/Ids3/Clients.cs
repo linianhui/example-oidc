@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using IdentityServer3.Core.Models;
 
-namespace Ids3.Host.Ids3
+namespace ServerSite.Ids3
 {
     public static class Clients
     {

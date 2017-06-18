@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using IdentityServer4.Models;
 
-namespace Ids4.Host.Ids4
+namespace ServerSite.Ids4
 {
     public static class Resources
     {
