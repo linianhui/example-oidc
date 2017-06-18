@@ -14,32 +14,32 @@ var appPoolNoClr = "noclr.oidc-example";
 var webSiteConfigs = new []{
     new {
         host = "server.ids3.dev",
-        path = "./src/servers/ids3.host",
+        path = "./src/oidc.server-site.ids3",
         appPoolName = appPoolClr4
     },
     new {
         host = "client.implicit.dev",
-        path = "./src/clients/client.implicit",
+        path = "./src/oidc.client-site.implicit",
         appPoolName = appPoolClr4
     },
     new {
         host = "client.js.dev",
-        path = "./src/clients/client.js",
+        path = "./src/oidc.client-site.js",
         appPoolName = appPoolClr4
     },
     new {
-        host = "oauth2.owin.dev",
-        path = "./src/middleware/hosts/owin.oauth2.host",
+        host = "oauth2.asp-net-owin.dev",
+        path = "./src/oauth2.client-site.owin",
         appPoolName = appPoolClr4
     },
     new {
         host = "oauth2.asp-net-core.dev",
-        path = "./src/middleware/hosts/core.oauth2.host/_publish",
+        path = "./src/oauth2.client-site.core/_publish",
         appPoolName = appPoolNoClr
     },
     new {
         host = "server.ids4.dev",
-        path = "./src/servers/ids4.host/_publish",
+        path = "./src/oidc.server-site.ids4/_publish",
         appPoolName = appPoolNoClr
     }
 };
@@ -78,16 +78,16 @@ Task("publish")
 
     CleanDirectories("./src/**/_publish");
 
-    DotNetCorePublish("./src/middleware/hosts/core.oauth2.host/core.oauth2.host.csproj", new DotNetCorePublishSettings
+    DotNetCorePublish("./src/oauth2.client-site.core/oauth2.client-site.core.csproj", new DotNetCorePublishSettings
     {
         Framework = "netcoreapp1.1",
-        OutputDirectory = "./src/middleware/hosts/core.oauth2.host/_publish/"
+        OutputDirectory = "./src/oauth2.client-site.core/_publish/"
     });
 
-    DotNetCorePublish("./src/servers/ids4.host/ids4.host.csproj", new DotNetCorePublishSettings
+    DotNetCorePublish("./src/oidc.server-site.ids4/oidc.server-site.ids4.csproj", new DotNetCorePublishSettings
     {
         Framework = "netcoreapp1.1",
-        OutputDirectory = "./src/servers/ids4.host/_publish/"
+        OutputDirectory = "./src/oidc.server-site.ids4/_publish/"
     });
 
     StartPool(appPoolNoClr);

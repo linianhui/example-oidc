@@ -3,143 +3,97 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7C815EEB-B2A1-4B34-83BA-03BB3DDC28CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "oauth2.client-site.core", "src\oauth2.client-site.core\oauth2.client-site.core.csproj", "{19D054C8-D764-4657-859D-8CF0E13B9666}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "clients", "clients", "{47D6CE69-A9A6-4F35-9BB0-956C88B51489}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oauth2.client-site.owin", "src\oauth2.client-site.owin\oauth2.client-site.owin.csproj", "{01459E23-51CD-4250-B035-E07B79A9FA8F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "servers", "servers", "{30C3E4FA-C7DB-4F96-B458-1C595D4B16E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "oauth2.middleware.qqconnect-core", "src\oauth2.middleware.qqconnect-core\oauth2.middleware.qqconnect-core.csproj", "{963D6168-7BDF-4440-9F7C-BAE5B0121321}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.JS", "src\clients\Client.JS\Client.JS.csproj", "{161DFF05-0927-4B7E-AA1B-915F264A3382}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oauth2.middleware.qqconnect-owin", "src\oauth2.middleware.qqconnect-owin\oauth2.middleware.qqconnect-owin.csproj", "{5061D3C7-03B2-4651-9B3E-9C828F52AC13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Implicit", "src\clients\Client.Implicit\Client.Implicit.csproj", "{3379C679-CFFB-4A66-A75B-3A97F44FC1D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oidc.client-site.implicit", "src\oidc.client-site.implicit\oidc.client-site.implicit.csproj", "{3379C679-CFFB-4A66-A75B-3A97F44FC1D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.AuthorizationCodeFlow.UWP", "src\clients\Client.AuthorizationCodeFlow.UWP\Client.AuthorizationCodeFlow.UWP.csproj", "{CA720E28-6B7D-4494-97A9-0335331041AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oidc.client-site.js", "src\oidc.client-site.js\oidc.client-site.js.csproj", "{161DFF05-0927-4B7E-AA1B-915F264A3382}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ids3.Host", "src\servers\Ids3.Host\Ids3.Host.csproj", "{03801CD6-09FB-4135-977B-5A87C23EFC1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oidc.client-uwp.authorization-code-flow", "src\oidc.client-uwp.authorization-code-flow\oidc.client-uwp.authorization-code-flow.csproj", "{CA720E28-6B7D-4494-97A9-0335331041AB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "middleware", "middleware", "{65BD71F3-8055-4E9D-8E71-87EB609AB207}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oidc.server-site.ids3", "src\oidc.server-site.ids3\oidc.server-site.ids3.csproj", "{03801CD6-09FB-4135-977B-5A87C23EFC1B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OAuth2.QQConnect", "OAuth2.QQConnect", "{C1AF77C9-12D0-4759-8F6B-03A91D02A954}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "oidc.server-site.ids4", "src\oidc.server-site.ids4\oidc.server-site.ids4.csproj", "{936CA61B-6EA7-4147-B7BA-251F7C8BC7AE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "middleware", "middleware", "{B5BC7B37-F3D7-469A-B740-96001AFE9B37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oauth2.middleware.qqconnect", "oauth2.middleware.qqconnect", "{3B57B03B-1DC5-4A1B-84D1-F781D76CA663}"
 	ProjectSection(SolutionItems) = preProject
-		src\middleware\OAuth2.QQConnect\QQConncetHelper.cs = src\middleware\OAuth2.QQConnect\QQConncetHelper.cs
-		src\middleware\OAuth2.QQConnect\QQConncetProfile.cs = src\middleware\OAuth2.QQConnect\QQConncetProfile.cs
-		src\middleware\OAuth2.QQConnect\QQConnectDefaults.cs = src\middleware\OAuth2.QQConnect\QQConnectDefaults.cs
-		src\middleware\OAuth2.QQConnect\QQConnectSignInParams.cs = src\middleware\OAuth2.QQConnect\QQConnectSignInParams.cs
-		src\middleware\OAuth2.QQConnect\TryExtensions.cs = src\middleware\OAuth2.QQConnect\TryExtensions.cs
+		src\oauth2.middleware.qqconnect\QQConncetHelper.cs = src\oauth2.middleware.qqconnect\QQConncetHelper.cs
+		src\oauth2.middleware.qqconnect\QQConncetProfile.cs = src\oauth2.middleware.qqconnect\QQConncetProfile.cs
+		src\oauth2.middleware.qqconnect\QQConnectDefaults.cs = src\oauth2.middleware.qqconnect\QQConnectDefaults.cs
+		src\oauth2.middleware.qqconnect\QQConnectSignInParams.cs = src\oauth2.middleware.qqconnect\QQConnectSignInParams.cs
+		src\oauth2.middleware.qqconnect\TryExtensions.cs = src\oauth2.middleware.qqconnect\TryExtensions.cs
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hosts", "hosts", "{3ACB1A51-176F-4368-ADA9-369740574FA8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oauth2", "oauth2", "{04E113C1-CFAD-463F-9EA1-53ED81C301AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Owin.OAuth2.Host", "src\middleware\hosts\Owin.OAuth2.Host\Owin.OAuth2.Host.csproj", "{01459E23-51CD-4250-B035-E07B79A9FA8F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oidc.clients", "oidc.clients", "{CB88D70E-F90F-407A-8680-C8327076B3F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Owin.OAuth2.QQConnect", "src\middleware\Owin.OAuth2.QQConnect\Owin.OAuth2.QQConnect.csproj", "{5061D3C7-03B2-4651-9B3E-9C828F52AC13}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.OAuth2.QQConnect", "src\middleware\Core.OAuth2.QQConnect\Core.OAuth2.QQConnect.csproj", "{09E4DF06-7B73-4729-929B-7AE8A785F97E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.OAuth2.Host", "src\middleware\hosts\Core.OAuth2.Host\Core.OAuth2.Host.csproj", "{E0A6B4FB-AA59-4368-9487-0C314B2C491E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ids4.Host", "src\servers\Ids4.Host\Ids4.Host.csproj", "{577822A5-1B63-445E-8A85-9B72FFCDFF39}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oidc.servers", "oidc.servers", "{E1945585-1D4D-4E67-96EE-BD277306FCD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Debug|ARM = Debug|ARM
-		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{161DFF05-0927-4B7E-AA1B-915F264A3382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{161DFF05-0927-4B7E-AA1B-915F264A3382}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{161DFF05-0927-4B7E-AA1B-915F264A3382}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{161DFF05-0927-4B7E-AA1B-915F264A3382}.Debug|ARM.Build.0 = Debug|Any CPU
-		{161DFF05-0927-4B7E-AA1B-915F264A3382}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{161DFF05-0927-4B7E-AA1B-915F264A3382}.Debug|x64.Build.0 = Debug|Any CPU
-		{161DFF05-0927-4B7E-AA1B-915F264A3382}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{161DFF05-0927-4B7E-AA1B-915F264A3382}.Debug|x86.Build.0 = Debug|Any CPU
+		{19D054C8-D764-4657-859D-8CF0E13B9666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19D054C8-D764-4657-859D-8CF0E13B9666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19D054C8-D764-4657-859D-8CF0E13B9666}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{19D054C8-D764-4657-859D-8CF0E13B9666}.Debug|x86.Build.0 = Debug|Any CPU
+		{01459E23-51CD-4250-B035-E07B79A9FA8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01459E23-51CD-4250-B035-E07B79A9FA8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01459E23-51CD-4250-B035-E07B79A9FA8F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{01459E23-51CD-4250-B035-E07B79A9FA8F}.Debug|x86.Build.0 = Debug|Any CPU
+		{963D6168-7BDF-4440-9F7C-BAE5B0121321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{963D6168-7BDF-4440-9F7C-BAE5B0121321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{963D6168-7BDF-4440-9F7C-BAE5B0121321}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{963D6168-7BDF-4440-9F7C-BAE5B0121321}.Debug|x86.Build.0 = Debug|Any CPU
+		{5061D3C7-03B2-4651-9B3E-9C828F52AC13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5061D3C7-03B2-4651-9B3E-9C828F52AC13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5061D3C7-03B2-4651-9B3E-9C828F52AC13}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5061D3C7-03B2-4651-9B3E-9C828F52AC13}.Debug|x86.Build.0 = Debug|Any CPU
 		{3379C679-CFFB-4A66-A75B-3A97F44FC1D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3379C679-CFFB-4A66-A75B-3A97F44FC1D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3379C679-CFFB-4A66-A75B-3A97F44FC1D0}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{3379C679-CFFB-4A66-A75B-3A97F44FC1D0}.Debug|ARM.Build.0 = Debug|Any CPU
-		{3379C679-CFFB-4A66-A75B-3A97F44FC1D0}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{3379C679-CFFB-4A66-A75B-3A97F44FC1D0}.Debug|x64.Build.0 = Debug|Any CPU
 		{3379C679-CFFB-4A66-A75B-3A97F44FC1D0}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{3379C679-CFFB-4A66-A75B-3A97F44FC1D0}.Debug|x86.Build.0 = Debug|Any CPU
+		{161DFF05-0927-4B7E-AA1B-915F264A3382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{161DFF05-0927-4B7E-AA1B-915F264A3382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{161DFF05-0927-4B7E-AA1B-915F264A3382}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{161DFF05-0927-4B7E-AA1B-915F264A3382}.Debug|x86.Build.0 = Debug|Any CPU
 		{CA720E28-6B7D-4494-97A9-0335331041AB}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{CA720E28-6B7D-4494-97A9-0335331041AB}.Debug|ARM.ActiveCfg = Debug|ARM
-		{CA720E28-6B7D-4494-97A9-0335331041AB}.Debug|ARM.Build.0 = Debug|ARM
-		{CA720E28-6B7D-4494-97A9-0335331041AB}.Debug|ARM.Deploy.0 = Debug|ARM
-		{CA720E28-6B7D-4494-97A9-0335331041AB}.Debug|x64.ActiveCfg = Debug|x64
-		{CA720E28-6B7D-4494-97A9-0335331041AB}.Debug|x64.Build.0 = Debug|x64
-		{CA720E28-6B7D-4494-97A9-0335331041AB}.Debug|x64.Deploy.0 = Debug|x64
 		{CA720E28-6B7D-4494-97A9-0335331041AB}.Debug|x86.ActiveCfg = Debug|x86
 		{CA720E28-6B7D-4494-97A9-0335331041AB}.Debug|x86.Build.0 = Debug|x86
 		{CA720E28-6B7D-4494-97A9-0335331041AB}.Debug|x86.Deploy.0 = Debug|x86
 		{03801CD6-09FB-4135-977B-5A87C23EFC1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{03801CD6-09FB-4135-977B-5A87C23EFC1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{03801CD6-09FB-4135-977B-5A87C23EFC1B}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{03801CD6-09FB-4135-977B-5A87C23EFC1B}.Debug|ARM.Build.0 = Debug|Any CPU
-		{03801CD6-09FB-4135-977B-5A87C23EFC1B}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{03801CD6-09FB-4135-977B-5A87C23EFC1B}.Debug|x64.Build.0 = Debug|Any CPU
 		{03801CD6-09FB-4135-977B-5A87C23EFC1B}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{03801CD6-09FB-4135-977B-5A87C23EFC1B}.Debug|x86.Build.0 = Debug|Any CPU
-		{01459E23-51CD-4250-B035-E07B79A9FA8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01459E23-51CD-4250-B035-E07B79A9FA8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01459E23-51CD-4250-B035-E07B79A9FA8F}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{01459E23-51CD-4250-B035-E07B79A9FA8F}.Debug|ARM.Build.0 = Debug|Any CPU
-		{01459E23-51CD-4250-B035-E07B79A9FA8F}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{01459E23-51CD-4250-B035-E07B79A9FA8F}.Debug|x64.Build.0 = Debug|Any CPU
-		{01459E23-51CD-4250-B035-E07B79A9FA8F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{01459E23-51CD-4250-B035-E07B79A9FA8F}.Debug|x86.Build.0 = Debug|Any CPU
-		{5061D3C7-03B2-4651-9B3E-9C828F52AC13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5061D3C7-03B2-4651-9B3E-9C828F52AC13}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5061D3C7-03B2-4651-9B3E-9C828F52AC13}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{5061D3C7-03B2-4651-9B3E-9C828F52AC13}.Debug|ARM.Build.0 = Debug|Any CPU
-		{5061D3C7-03B2-4651-9B3E-9C828F52AC13}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{5061D3C7-03B2-4651-9B3E-9C828F52AC13}.Debug|x64.Build.0 = Debug|Any CPU
-		{5061D3C7-03B2-4651-9B3E-9C828F52AC13}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5061D3C7-03B2-4651-9B3E-9C828F52AC13}.Debug|x86.Build.0 = Debug|Any CPU
-		{09E4DF06-7B73-4729-929B-7AE8A785F97E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{09E4DF06-7B73-4729-929B-7AE8A785F97E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{09E4DF06-7B73-4729-929B-7AE8A785F97E}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{09E4DF06-7B73-4729-929B-7AE8A785F97E}.Debug|ARM.Build.0 = Debug|Any CPU
-		{09E4DF06-7B73-4729-929B-7AE8A785F97E}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{09E4DF06-7B73-4729-929B-7AE8A785F97E}.Debug|x64.Build.0 = Debug|Any CPU
-		{09E4DF06-7B73-4729-929B-7AE8A785F97E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{09E4DF06-7B73-4729-929B-7AE8A785F97E}.Debug|x86.Build.0 = Debug|Any CPU
-		{E0A6B4FB-AA59-4368-9487-0C314B2C491E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E0A6B4FB-AA59-4368-9487-0C314B2C491E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E0A6B4FB-AA59-4368-9487-0C314B2C491E}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{E0A6B4FB-AA59-4368-9487-0C314B2C491E}.Debug|ARM.Build.0 = Debug|Any CPU
-		{E0A6B4FB-AA59-4368-9487-0C314B2C491E}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E0A6B4FB-AA59-4368-9487-0C314B2C491E}.Debug|x64.Build.0 = Debug|Any CPU
-		{E0A6B4FB-AA59-4368-9487-0C314B2C491E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E0A6B4FB-AA59-4368-9487-0C314B2C491E}.Debug|x86.Build.0 = Debug|Any CPU
-		{577822A5-1B63-445E-8A85-9B72FFCDFF39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{577822A5-1B63-445E-8A85-9B72FFCDFF39}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{577822A5-1B63-445E-8A85-9B72FFCDFF39}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{577822A5-1B63-445E-8A85-9B72FFCDFF39}.Debug|ARM.Build.0 = Debug|Any CPU
-		{577822A5-1B63-445E-8A85-9B72FFCDFF39}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{577822A5-1B63-445E-8A85-9B72FFCDFF39}.Debug|x64.Build.0 = Debug|Any CPU
-		{577822A5-1B63-445E-8A85-9B72FFCDFF39}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{577822A5-1B63-445E-8A85-9B72FFCDFF39}.Debug|x86.Build.0 = Debug|Any CPU
+		{936CA61B-6EA7-4147-B7BA-251F7C8BC7AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{936CA61B-6EA7-4147-B7BA-251F7C8BC7AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{936CA61B-6EA7-4147-B7BA-251F7C8BC7AE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{936CA61B-6EA7-4147-B7BA-251F7C8BC7AE}.Debug|x86.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{47D6CE69-A9A6-4F35-9BB0-956C88B51489} = {7C815EEB-B2A1-4B34-83BA-03BB3DDC28CB}
-		{30C3E4FA-C7DB-4F96-B458-1C595D4B16E9} = {7C815EEB-B2A1-4B34-83BA-03BB3DDC28CB}
-		{161DFF05-0927-4B7E-AA1B-915F264A3382} = {47D6CE69-A9A6-4F35-9BB0-956C88B51489}
-		{3379C679-CFFB-4A66-A75B-3A97F44FC1D0} = {47D6CE69-A9A6-4F35-9BB0-956C88B51489}
-		{CA720E28-6B7D-4494-97A9-0335331041AB} = {47D6CE69-A9A6-4F35-9BB0-956C88B51489}
-		{03801CD6-09FB-4135-977B-5A87C23EFC1B} = {30C3E4FA-C7DB-4F96-B458-1C595D4B16E9}
-		{65BD71F3-8055-4E9D-8E71-87EB609AB207} = {7C815EEB-B2A1-4B34-83BA-03BB3DDC28CB}
-		{C1AF77C9-12D0-4759-8F6B-03A91D02A954} = {65BD71F3-8055-4E9D-8E71-87EB609AB207}
-		{3ACB1A51-176F-4368-ADA9-369740574FA8} = {65BD71F3-8055-4E9D-8E71-87EB609AB207}
-		{01459E23-51CD-4250-B035-E07B79A9FA8F} = {3ACB1A51-176F-4368-ADA9-369740574FA8}
-		{5061D3C7-03B2-4651-9B3E-9C828F52AC13} = {65BD71F3-8055-4E9D-8E71-87EB609AB207}
-		{09E4DF06-7B73-4729-929B-7AE8A785F97E} = {65BD71F3-8055-4E9D-8E71-87EB609AB207}
-		{E0A6B4FB-AA59-4368-9487-0C314B2C491E} = {3ACB1A51-176F-4368-ADA9-369740574FA8}
-		{577822A5-1B63-445E-8A85-9B72FFCDFF39} = {30C3E4FA-C7DB-4F96-B458-1C595D4B16E9}
+		{19D054C8-D764-4657-859D-8CF0E13B9666} = {04E113C1-CFAD-463F-9EA1-53ED81C301AD}
+		{01459E23-51CD-4250-B035-E07B79A9FA8F} = {04E113C1-CFAD-463F-9EA1-53ED81C301AD}
+		{963D6168-7BDF-4440-9F7C-BAE5B0121321} = {B5BC7B37-F3D7-469A-B740-96001AFE9B37}
+		{5061D3C7-03B2-4651-9B3E-9C828F52AC13} = {B5BC7B37-F3D7-469A-B740-96001AFE9B37}
+		{3379C679-CFFB-4A66-A75B-3A97F44FC1D0} = {CB88D70E-F90F-407A-8680-C8327076B3F9}
+		{161DFF05-0927-4B7E-AA1B-915F264A3382} = {CB88D70E-F90F-407A-8680-C8327076B3F9}
+		{CA720E28-6B7D-4494-97A9-0335331041AB} = {CB88D70E-F90F-407A-8680-C8327076B3F9}
+		{03801CD6-09FB-4135-977B-5A87C23EFC1B} = {E1945585-1D4D-4E67-96EE-BD277306FCD0}
+		{936CA61B-6EA7-4147-B7BA-251F7C8BC7AE} = {E1945585-1D4D-4E67-96EE-BD277306FCD0}
+		{3B57B03B-1DC5-4A1B-84D1-F781D76CA663} = {B5BC7B37-F3D7-469A-B740-96001AFE9B37}
 	EndGlobalSection
 EndGlobal
