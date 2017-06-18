@@ -1,0 +1,31 @@
+﻿@model ErrorMessage
+@{
+    ViewBag.Title = "Error";
+}
+<h1 style="color:red">Error</h1>
+<table>
+    <tr>
+        <th>name</th>
+        <th>value</th>
+    </tr>
+    <tr>
+        <td>DisplayMode</td>
+        <td>@Model.DisplayMode</td>
+    </tr>
+    <tr>
+        <td>Error</td>
+        <td>@Model.Error</td>
+    </tr>
+    <tr>
+        <td>ErrorDescription</td>
+        <td>@Model.ErrorDescription</td>
+    </tr>
+    <tr>
+        <td>RequestId</td>
+        <td>@Model.RequestId</td>
+    </tr>
+    <tr>
+        <td>UiLocales</td>
+        <td>@Model.UiLocales</td>
+    </tr>
+</table>

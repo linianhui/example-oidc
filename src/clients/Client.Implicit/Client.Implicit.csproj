@@ -135,7 +135,7 @@
     <Compile Include="Oidc\Cleartext\AuthenticationTicketCleartextDataFormat.cs" />
     <Compile Include="Oidc\Cleartext\AuthenticationPropertiesCleartextDataFormat.cs" />
     <Compile Include="Oidc\Constants.cs" />
-    <Compile Include="Oidc\OidcAuthenticationExtentions.cs" />
+    <Compile Include="Oidc\OidcExtentions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
