@@ -89,6 +89,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\_shared\QQConnectConfig.cs">
+      <Link>OAuth2\QQConnectConfig.cs</Link>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

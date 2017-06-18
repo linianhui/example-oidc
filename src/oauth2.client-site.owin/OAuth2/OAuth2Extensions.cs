@@ -18,8 +18,8 @@ namespace ClientSite.OAuth2
                 Caption = "QQ",
                 AuthenticationType = OAuth2Constants.AuthenticationTypeOfQQ,
                 SignInAsAuthenticationType = OAuth2Constants.AuthenticationTypeOfCookie,
-                ClientId = "You App Id",
-                ClientSecret = "You App Secret"
+                ClientId = QQConnectConfig.ClientId,
+                ClientSecret = QQConnectConfig.ClientSecret
             });
         }
     }

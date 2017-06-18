@@ -42,8 +42,8 @@ namespace ServerSite.Ids4
                 AuthenticationScheme = "qq",
                 DisplayName = "QQ",
                 SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme,
-                ClientId = "You App Id",
-                ClientSecret = "You App Secret"
+                ClientId = QQConnectConfig.ClientId,
+                ClientSecret = QQConnectConfig.ClientSecret
             });
         }
     }

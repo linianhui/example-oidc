@@ -6,7 +6,7 @@ using OAuth2.QQConnect;
 using Owin;
 using Constants = IdentityServer3.Core.Constants;
 
-namespace ServerSite.Ids3.Use
+namespace ServerSite.Ids3
 {
     public static class Ids3Extentions
     {
@@ -54,8 +54,8 @@ namespace ServerSite.Ids3.Use
                 Caption = "QQ",
                 AuthenticationType = Ids3Constants.QQIdp,
                 SignInAsAuthenticationType = signInAsAuthenticationType,
-                ClientId = "You App Id",
-                ClientSecret = "You App Secret"
+                ClientId = QQConnectConfig.ClientId,
+                ClientSecret = QQConnectConfig.ClientSecret
             });
         }
 

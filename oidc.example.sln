@@ -38,6 +38,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oidc.clients", "oidc.client
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oidc.servers", "oidc.servers", "{E1945585-1D4D-4E67-96EE-BD277306FCD0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_shared", "_shared", "{7BED3B30-A933-4783-BB29-209D53B8938D}"
+	ProjectSection(SolutionItems) = preProject
+		src\_shared\QQConnectConfig.cs = src\_shared\QQConnectConfig.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

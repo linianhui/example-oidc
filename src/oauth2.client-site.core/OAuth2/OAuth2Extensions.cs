@@ -16,8 +16,8 @@ namespace ClientSite.OAuth2
             {
                 AuthenticationScheme = OAuth2Constants.AuthenticationSchemeOfQQ,
                 SignInScheme = OAuth2Constants.AuthenticationSchemeOfCookie,
-                ClientId = "You App Id",
-                ClientSecret = "You App Secret"
+                ClientId = QQConnectConfig.ClientId,
+                ClientSecret = QQConnectConfig.ClientSecret
             });
         }
     }

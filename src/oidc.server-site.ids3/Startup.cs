@@ -1,7 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
 using ServerSite;
-using ServerSite.Ids3.Use;
+using ServerSite.Ids3;
 
 [assembly: OwinStartup(typeof(Startup))]
 
