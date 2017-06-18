@@ -8,10 +8,22 @@
     <form method="post">
         <h3 style="color:red">@ViewBag.Error</h3>
         <input type="hidden" name="resumeUrl" value="@Model.ResumeUrl" />
-        <input type="text" name="userName" value="@Model.UserName"/>
+        <input type="text" name="userName" value="@Model.UserName" />
         <br />
-        <input type="password" name="password" value="@Model.Password"/>
+        <input type="password" name="password" value="@Model.Password" />
         <br />
         <button type="submit">Submit</button>
     </form>
+</fieldset>
+
+<fieldset>
+    <legend>Exernal Login</legend>
+    @if (Model.ExternalLoginList != null)
+    {
+        foreach (var externalLogin in Model.ExternalLoginList)
+        {
+            <a href="@externalLogin.LoginUrl">@externalLogin.DisplayName</a>
+            <br />
+        }
+    }
 </fieldset>

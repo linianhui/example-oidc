@@ -1,6 +1,8 @@
-﻿using IdentityServer4.Configuration;
+﻿using IdentityServer4;
+using IdentityServer4.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using OAuth2.QQConnect;
 
 namespace Ids4.Host.Ids4
 {
@@ -30,9 +32,19 @@ namespace Ids4.Host.Ids4
             };
         }
 
+        
         public static void UseIds4(this IApplicationBuilder app)
         {
             app.UseIdentityServer();
+
+            app.UseQQConnectAuthentication(new QQConnectOptions
+            {
+                AuthenticationScheme = "qq",
+                DisplayName = "QQ",
+                SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme,
+                ClientId = "You App Id",
+                ClientSecret = "You App Secret"
+            });
         }
     }
 }
