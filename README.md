@@ -8,12 +8,12 @@ Use administrator run build.ps1 to deploy demo web site to local IIS.
 
 If you want use QQ Login,please fill in *your AppId and AppSercet*.
 ``` csharp
-app.UseQQConnectAuthentication(new QQConnectAuthenticationOptions
+app.UseQQConnectAuthentication(new QQConnectOptions
  {
     Caption = "QQ",
     AuthenticationType = Ids3Constants.QQIdp,
     SignInAsAuthenticationType = signInAsAuthenticationType,
-    AppId = "You App Id",
-    AppSecret = "You App Secret"
+    ClientId = "You App Id",
+    ClientSecret = "You App Secret"
 });
 ```

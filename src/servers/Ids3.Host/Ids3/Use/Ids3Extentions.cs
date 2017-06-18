@@ -49,13 +49,13 @@ namespace Ids3.Host.Ids3.Use
 
         private static void ConfigureIdentityProviders(IAppBuilder app, string signInAsAuthenticationType)
         {
-            app.UseQQConnectAuthentication(new QQConnectAuthenticationOptions
+            app.UseQQConnectAuthentication(new QQConnectOptions
             {
                 Caption = "QQ",
                 AuthenticationType = Ids3Constants.QQIdp,
                 SignInAsAuthenticationType = signInAsAuthenticationType,
-                AppId = "You App Id",
-                AppSecret = "You App Secret"
+                ClientId = "You App Id",
+                ClientSecret = "You App Secret"
             });
         }
 

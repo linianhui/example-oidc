@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace OAuth2.QQConnect
@@ -14,12 +13,12 @@ namespace OAuth2.QQConnect
     /// <summary>
     /// <see cref="http://wiki.connect.qq.com/%e5%bc%80%e5%8f%91%e6%94%bb%e7%95%a5_server-side"/>
     /// </summary>
-    public class QQConnectAuthenticationHandler : AuthenticationHandler<QQConnectAuthenticationOptions>
+    public class QQConnectHandler : AuthenticationHandler<QQConnectOptions>
     {
         private readonly ILogger _logger;
         private readonly HttpClient _httpClient;
 
-        public QQConnectAuthenticationHandler(ILogger logger, HttpClient httpClient)
+        public QQConnectHandler(ILogger logger, HttpClient httpClient)
         {
             _logger = logger;
             _httpClient = httpClient;
@@ -83,7 +82,7 @@ namespace OAuth2.QQConnect
                 }
 
                 var accessTokenResult = await GetAccessTokenResult(code);
-                var accessToken = accessTokenResult["access_token"];
+                var accessToken = accessTokenResult[QQConnectDefaults.AccessTokenField];
                 if (string.IsNullOrWhiteSpace(accessToken))
                 {
                     _logger.WriteError("access_token was not found");
@@ -91,7 +90,7 @@ namespace OAuth2.QQConnect
                 }
 
                 var openIdResult = await GetOpenIdResult(accessToken);
-                var openId = GetJsonValue(openIdResult, "openid");
+                var openId = openIdResult.TryGetValue(QQConnectDefaults.OpenIdField);
                 if (string.IsNullOrWhiteSpace(openId))
                 {
                     _logger.WriteError("openid was not found");
@@ -100,20 +99,7 @@ namespace OAuth2.QQConnect
 
                 var userInfoResult = await GetUserInfoResult(accessToken, openId);
 
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.NameIdentifier,openId,ClaimValueTypes.String, Options.AuthenticationType),
-                    new Claim(QQConnectConstants.IdpClaimType,Options.AuthenticationType,ClaimValueTypes.String, Options.AuthenticationType),
-                    new Claim(QQConnectConstants.AppIdClaimType,Options.AppId,ClaimValueTypes.String, Options.AuthenticationType),
-                    new Claim(QQConnectConstants.OpenIdClaimType,openId,ClaimValueTypes.String, Options.AuthenticationType),
-                    new Claim(QQConnectConstants.AccessTokenClaimType, accessToken, ClaimValueTypes.String, Options.AuthenticationType),
-                    new Claim(QQConnectConstants.RefreshTokenClaimType, accessTokenResult.TryGetValue(QQConnectConstants.RefreshTokenField), ClaimValueTypes.String, Options.AuthenticationType),
-                    new Claim(QQConnectConstants.ExpiresInClaimType, accessTokenResult.TryGetValue(QQConnectConstants.ExpiresInField), ClaimValueTypes.String, Options.AuthenticationType),
-                    new Claim(QQConnectConstants.NickNameClaimType, userInfoResult.TryGetValue(QQConnectConstants.NickNameField), ClaimValueTypes.String, Options.AuthenticationType),
-                    new Claim(QQConnectConstants.AvatarUrlClaimType, userInfoResult.TryGetValue(QQConnectConstants.AvatarUrlField), ClaimValueTypes.String, Options.AuthenticationType),
-                };
-
-                var identity = new ClaimsIdentity(claims, Options.AuthenticationType, ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+                var identity = QQConncetHelper.BuildClaimsIdentity(Options.ClientId, Options.AuthenticationType, accessTokenResult, openIdResult, userInfoResult);
 
                 return new AuthenticationTicket(identity, authenticationProperties);
             }
@@ -122,13 +108,6 @@ namespace OAuth2.QQConnect
                 _logger.WriteError("Authentication failed", ex);
                 return new AuthenticationTicket(null, authenticationProperties);
             }
-        }
-
-        private static string GetJsonValue(JObject json, string name)
-        {
-            JToken value;
-            json.TryGetValue(name, out value);
-            return value?.ToString() ?? string.Empty;
         }
 
         protected override Task ApplyResponseChallengeAsync()
@@ -162,90 +141,81 @@ namespace OAuth2.QQConnect
         {
             var response = await _httpClient.GetAsync(BuilUserInfoUrl(accessToken, openId), Request.CallCancelled);
             response.EnsureSuccessStatusCode();
-            //狗日的腾讯！！！json
-            var json = await response.Content.ReadAsStringAsync();
-            return JObject.Parse(json);
+            var text = await response.Content.ReadAsStringAsync();
+            return QQConncetHelper.ParseUserInfoResult(text);
         }
 
         private async Task<JObject> GetOpenIdResult(string accessToken)
         {
             var response = await _httpClient.GetAsync(BuildOpenIdUrl(accessToken), Request.CallCancelled);
             response.EnsureSuccessStatusCode();
-            //狗日的腾讯！！！jsonp
-            //callback( {"client_id":"YOUR_APPID","openid":"YOUR_OPENID"} );
-            var jsonp = await response.Content.ReadAsStringAsync();
-            var json = jsonp.Substring(8).Trim().Trim('(', ')', ';');
-            return JObject.Parse(json);
+            var text = await response.Content.ReadAsStringAsync();
+            return QQConncetHelper.ParseOpenIdResult(text);
         }
 
         private async Task<IReadOnlyDictionary<string, string>> GetAccessTokenResult(string code)
         {
             var response = await _httpClient.GetAsync(BuildAccessTokenUrl(code), Request.CallCancelled);
             response.EnsureSuccessStatusCode();
-            //狗日的腾讯！！！Content-Type是text/html,格式却是form-urlencoded
-            //access_token=YOUR_ACCESS_TOKEN&expires_in=3600
             var text = await response.Content.ReadAsStringAsync();
-            var keyValues = new Dictionary<string, string>();
-            foreach (var param in text.Split('&'))
-            {
-                var keyValue = param.Split('=');
-                keyValues.Add(keyValue[0], keyValue[1]);
-            }
-            return keyValues;
+            return QQConncetHelper.ParseAccessTokenResult(text);
         }
 
         private string BuilUserInfoUrl(string accessToken, string openId)
         {
-            var userInfoUrlBuilder = new StringBuilder(Options.UserInfoEndpoint);
-
-            userInfoUrlBuilder.Append($"?access_token={Uri.EscapeDataString(accessToken)}");
-            userInfoUrlBuilder.Append($"&oauth_consumer_key={Uri.EscapeDataString(Options.AppId)}");
-            userInfoUrlBuilder.Append($"&openid={Uri.EscapeDataString(openId)}");
-
-            return userInfoUrlBuilder.ToString();
+            return QQConncetHelper.BuilUserInfoUrl(
+                userInfoEndpoint: Options.UserInformationEndpoint,
+                clientId: Options.ClientId,
+                openId: openId,
+                accessToken: accessToken);
         }
 
         private string BuildOpenIdUrl(string accessToken)
         {
-            var openIdUrlBuilder = new StringBuilder(Options.OpenIdEndpoint);
-
-            openIdUrlBuilder.Append($"?access_token={Uri.EscapeDataString(accessToken)}");
-
-            return openIdUrlBuilder.ToString();
+            return QQConncetHelper.BuildOpenIdUrl(
+                    openIdEndpoint: Options.OpenIdEndpoint,
+                    accessToken: accessToken);
         }
 
         private string BuildAccessTokenUrl(string code)
         {
-            var accessTokenUrlBuilder = new StringBuilder(Options.AccessTokenEndpoint);
-
-            accessTokenUrlBuilder.Append("?grant_type=authorization_code");
-            accessTokenUrlBuilder.Append($"&client_id={Uri.EscapeDataString(Options.AppId)}");
-            accessTokenUrlBuilder.Append($"&client_secret={Uri.EscapeDataString(Options.AppSecret)}");
-            accessTokenUrlBuilder.Append($"&redirect_uri={Uri.EscapeDataString(RedirectUri)}");
-            accessTokenUrlBuilder.Append($"&code={Uri.EscapeDataString(code)}");
-
-            return accessTokenUrlBuilder.ToString();
+            return QQConncetHelper.BuildAccessTokenUrl(
+                    accessTokenEndpoint: Options.TokenEndpoint,
+                    clientId: Options.ClientId,
+                    clientSecret: Options.ClientSecret,
+                    code: code,
+                    redirectUri: RedirectUri);
         }
 
         private string BuildAuthorizationUrl(AuthenticationProperties authenticationProperties)
         {
-            var state = Options.StateDataFormat.Protect(authenticationProperties);
-            var scope = string.Join(",", Options.Scopes);
-
-            var authorizationUrlBuilder = new StringBuilder(Options.AuthorizationEndpoint);
-
-            authorizationUrlBuilder.Append("?response_type=code");
-            authorizationUrlBuilder.Append($"&client_id={Uri.EscapeDataString(Options.AppId)}");
-            authorizationUrlBuilder.Append($"&redirect_uri={Uri.EscapeDataString(RedirectUri)}");
-            authorizationUrlBuilder.Append($"&state={Uri.EscapeDataString(state)}");
-            authorizationUrlBuilder.Append($"&scope={Uri.EscapeDataString(scope)}");
-
-            if (string.IsNullOrWhiteSpace(Options.DisplayMode) == false)
+            var signInParams = authenticationProperties.GetQQConncetSignInParams();
+            var scopes = Options.Scopes;
+            var displayMode = Options.DisplayMode;
+            if (signInParams != null)
             {
-                authorizationUrlBuilder.Append($"&display={Uri.EscapeDataString(Options.DisplayMode)}");
+                if (signInParams.Scopes != null && signInParams.Scopes.Length > 0)
+                {
+                    scopes = signInParams.Scopes;
+                }
+
+                if (string.IsNullOrWhiteSpace(signInParams.DisplayMode) == false)
+                {
+                    displayMode = signInParams.DisplayMode;
+                }
+
+                authenticationProperties.RemoveQQConncetSignInParams();
             }
 
-            return authorizationUrlBuilder.ToString();
+            var state = Options.StateDataFormat.Protect(authenticationProperties);
+
+            return QQConncetHelper.BuildAuthorizationUrl(
+                    authorizationEndpoint: Options.AuthorizationEndpoint,
+                    clientId: Options.ClientId,
+                    scopes: scopes,
+                    state: state,
+                    redirectUri: RedirectUri,
+                    displayMode: displayMode);
         }
 
         private string RedirectUri => Request.Scheme +
