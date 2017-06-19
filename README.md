@@ -20,3 +20,5 @@ public static class QQConnectConfig
     public static readonly string ClientSecret = "You App Secret";
 }
 ```
+# Blog
+http://www.cnblogs.com/linianhui/category/929878.html
