@@ -1,15 +1,15 @@
 ﻿using System;
 using System.IO;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 using System.Net.Http;
 using System.Text;
 using Windows.Storage;
-using Client.AuthorizationCodeFlow.UWP.Oidc;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
+using ClientUwp.Oidc;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Client.AuthorizationCodeFlow.UWP
+namespace ClientUwp
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

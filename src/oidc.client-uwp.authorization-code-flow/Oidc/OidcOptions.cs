@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Client.AuthorizationCodeFlow.UWP.Oidc
+namespace ClientUwp.Oidc
 {
     /// <summary>
     /// <see cref="http://server.ids3.dev/auth/.well-known/openid-configuration"/>

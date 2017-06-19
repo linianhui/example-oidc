@@ -62,7 +62,7 @@ namespace ServerSite.Controllers
                 }
             };
 
-            InMemoryUsers.All.Add(newUser);
+            Users.All.Add(newUser);
 
             var resumeUrl = await owinContext.Environment.GetPartialLoginResumeUrlAsync();
 

@@ -7,8 +7,8 @@
     <ProjectGuid>{CA720E28-6B7D-4494-97A9-0335331041AB}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Client.AuthorizationCodeFlow.UWP</RootNamespace>
-    <AssemblyName>Client.AuthorizationCodeFlow.UWP</AssemblyName>
+    <RootNamespace>ClientUwp</RootNamespace>
+    <AssemblyName>Oidc.AuthorizationCodeFlow.ClientUwp</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.15063.0</TargetPlatformVersion>
@@ -17,7 +17,8 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
-    <PackageCertificateKeyFile>Client.AuthorizationCodeFlow.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>uwp.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>A9B4EF49D0BB05F34F2FD3D14E465BCAAA94A308</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -108,7 +109,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="Client.AuthorizationCodeFlow.UWP_TemporaryKey.pfx" />
+    <None Include="uwp.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />

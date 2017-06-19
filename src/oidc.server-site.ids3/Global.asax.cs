@@ -1,4 +1,5 @@
 ﻿using System.Web;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace ServerSite
@@ -7,7 +8,15 @@ namespace ServerSite
     {
         protected void Application_Start()
         {
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            RouteTable.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            RouteTable.Routes.MapMvcAttributeRoutes();
+
+            RouteTable.Routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "home", action = "index", id = UrlParameter.Optional }
+            );
         }
     }
 }

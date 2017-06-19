@@ -14,7 +14,7 @@ namespace ServerSite.Ids3
         public override Task AuthenticateExternalAsync(ExternalAuthenticationContext context)
         {
             var externalIdentity = context.ExternalIdentity;
-            var user = InMemoryUsers.All.SingleOrDefault(u => u.Provider == externalIdentity.Provider && u.ProviderId == externalIdentity.ProviderId);
+            var user = Users.All.SingleOrDefault(u => u.Provider == externalIdentity.Provider && u.ProviderId == externalIdentity.ProviderId);
             if (user == null)
             {
                 context.AuthenticateResult = new AuthenticateResult($"~/external-login/{externalIdentity.Provider}", externalIdentity);
@@ -29,7 +29,7 @@ namespace ServerSite.Ids3
 
         public override Task AuthenticateLocalAsync(LocalAuthenticationContext context)
         {
-            var user = InMemoryUsers.All.SingleOrDefault(u => u.Username == context.UserName && u.Password == context.Password);
+            var user = Users.All.SingleOrDefault(u => u.Username == context.UserName && u.Password == context.Password);
 
             if (user != null)
             {
@@ -53,7 +53,7 @@ namespace ServerSite.Ids3
                 throw new ArgumentNullException(nameof(context));
             }
 
-            var user = InMemoryUsers.All.SingleOrDefault(u => u.Subject == context.Subject.GetSubjectId());
+            var user = Users.All.SingleOrDefault(u => u.Subject == context.Subject.GetSubjectId());
             if (user != null && user.Enabled == true)
             {
                 context.IsActive = true;

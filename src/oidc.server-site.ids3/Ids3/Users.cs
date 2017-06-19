@@ -5,7 +5,7 @@ using IdentityServer3.Core.Services.InMemory;
 
 namespace ServerSite.Ids3
 {
-    public static class InMemoryUsers
+    public static class Users
     {
         public static List<InMemoryUser> All = new List<InMemoryUser>
         {
