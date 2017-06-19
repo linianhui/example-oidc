@@ -18,6 +18,11 @@ var webSiteConfigs = new []{
         appPoolName = appPoolClr4
     },
     new {
+        host = "server.ids4.dev",
+        path = "./src/oidc.server-site.ids4/_publish",
+        appPoolName = appPoolNoClr
+    },
+    new {
         host = "client.implicit.dev",
         path = "./src/oidc.client-site.implicit",
         appPoolName = appPoolClr4
@@ -25,7 +30,7 @@ var webSiteConfigs = new []{
     new {
         host = "client.js.dev",
         path = "./src/oidc.client-site.js",
-        appPoolName = appPoolClr4
+        appPoolName = appPoolNoClr
     },
     new {
         host = "oauth2.asp-net-owin.dev",
@@ -35,11 +40,6 @@ var webSiteConfigs = new []{
     new {
         host = "oauth2.asp-net-core.dev",
         path = "./src/oauth2.client-site.core/_publish",
-        appPoolName = appPoolNoClr
-    },
-    new {
-        host = "server.ids4.dev",
-        path = "./src/oidc.server-site.ids4/_publish",
         appPoolName = appPoolNoClr
     }
 };
