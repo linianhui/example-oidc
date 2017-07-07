@@ -12,7 +12,7 @@
 # How to run?
 Use administrator run build.ps1 to deploy demo web site to local IIS. 
 
-If you want use QQ Connect, please replace `*ClientId and ClientSercet*` in `*src/_shared/QQConnectConfig.cs*` file.
+If you want use QQ Connect, please replace `ClientId` and `ClientSercet` in `src/_shared/QQConnectConfig.cs` file.
 ``` csharp
 public static class QQConnectConfig
 {
