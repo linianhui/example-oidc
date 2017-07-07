@@ -62,6 +62,13 @@
             console.error('SilentRenewError：', arguments);
         });
 
+        manager.events.addUserSignedOut(function () {
+            alert("已经退出！");
+            console.log('UserSignedOut：', arguments);
+            user = null;
+            display('.js-user', user);
+        });
+
         $('.js-login').on('click', function () {
             if (user) {
                 alert("已经登录！");
