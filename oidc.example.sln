@@ -46,6 +46,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oidc.client-site.js", "oidc
 		src\oidc.client-site.js\index.html = src\oidc.client-site.js\index.html
 		src\oidc.client-site.js\popup.html = src\oidc.client-site.js\popup.html
 		src\oidc.client-site.js\readme.txt = src\oidc.client-site.js\readme.txt
+		src\oidc.client-site.js\refresh-token.html = src\oidc.client-site.js\refresh-token.html
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{5733CF4B-3C1D-4706-A4C6-5E8EF939564B}"

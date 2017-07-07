@@ -46,7 +46,7 @@ namespace ServerSite.Ids3
         {
             get
             {
-                var host = "http://client.js.dev/";
+                var host = "http://client.js.dev";
                 return new Client
                 {
                     Enabled = true,
@@ -55,17 +55,19 @@ namespace ServerSite.Ids3
                     Flow = Flows.Implicit,
                     RedirectUris = new List<string>
                     {
-                        $"{host}popup.html"
+                        $"{host}/popup.html",
+                        $"{host}/refresh-token.html"
                     },
                     PostLogoutRedirectUris = new List<string>
                     {
-                        $"{host}index.html"
+                        $"{host}/index.html"
                     },
                     AllowedCorsOrigins = new List<string>
                     {
                         host
                     },
-                    AllowAccessToAllScopes = true
+                    AllowAccessToAllScopes = true,
+                    AccessTokenLifetime = 10
                 };
             }
         }

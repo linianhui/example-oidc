@@ -12,6 +12,9 @@
             client_id: 'js-client',
             popup_redirect_uri: 'http://client.js.dev/popup.html',
             post_logout_redirect_uri: 'http://client.js.dev/index.html',
+            silent_redirect_uri: 'http://client.js.dev/refresh-token.html',
+            accessTokenExpiringNotificationTime: 4,
+            automaticSilentRenew: true,
             response_type: 'id_token token',
             scope: 'openid profile',
             filterProtocolClaims: true
@@ -44,6 +47,19 @@
         manager.events.addUserLoaded(function (loadedUser) {
             user = loadedUser;
             display('.js-user', user);
+            console.log('UserLoaded：', arguments);
+        });
+
+        manager.events.addAccessTokenExpiring(function () {
+            console.log('AccessTokenExpiring：', arguments);
+        });
+
+        manager.events.addAccessTokenExpired(function () {
+            console.log('AccessTokenExpired：', arguments);
+        });
+
+        manager.events.addSilentRenewError(function () {
+            console.error('SilentRenewError：', arguments);
         });
 
         $('.js-login').on('click', function () {
