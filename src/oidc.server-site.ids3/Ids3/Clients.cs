@@ -55,7 +55,7 @@ namespace ServerSite.Ids3
                     Flow = Flows.Implicit,
                     RedirectUris = new List<string>
                     {
-                        $"{host}/popup.html",
+                        $"{host}/login.html",
                         $"{host}/refresh-token.html"
                     },
                     PostLogoutRedirectUris = new List<string>

@@ -44,7 +44,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oidc.client-site.js", "oidc.client-site.js", "{D78EBBEA-134B-4AE6-8AE4-9AAABD51E510}"
 	ProjectSection(SolutionItems) = preProject
 		src\oidc.client-site.js\index.html = src\oidc.client-site.js\index.html
-		src\oidc.client-site.js\popup.html = src\oidc.client-site.js\popup.html
+		src\oidc.client-site.js\login.html = src\oidc.client-site.js\login.html
 		src\oidc.client-site.js\readme.txt = src\oidc.client-site.js\readme.txt
 		src\oidc.client-site.js\refresh-token.html = src\oidc.client-site.js\refresh-token.html
 	EndProjectSection
