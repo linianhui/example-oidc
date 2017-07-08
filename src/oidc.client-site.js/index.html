@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <script src="/js/jquery.min.js"></script>
     <script src="/js/oidc-client.min.js"></script>
+    <!--var accounnt = { is_login: true };-->
+    <script src="http://server.ids3.dev/auth/js/account"></script>
     <script type="text/javascript">
 
         var ids3Options = {
@@ -22,10 +24,11 @@
 
         Oidc.Log.logger = console;
 
+        console.log(account);
     </script>
 </head>
 <body>
-
+    <a href="https://github.com/IdentityModel/oidc-client-js/wiki" target="_blank">oidc-client.js wiki</a>
     <nav>
         <a href="javascript:void(0);" class="js-login">Login</a>
         <a href="javascript:void(0);" class="js-logout">Logout</a>
@@ -37,7 +40,7 @@
         var user;
         var manager = new Oidc.UserManager(ids3Options);
 
-        manager.getUser().then(function(result) {
+        manager.getUser().then(function (result) {
             if (result) {
                 user = result;
                 display('.js-user', user);

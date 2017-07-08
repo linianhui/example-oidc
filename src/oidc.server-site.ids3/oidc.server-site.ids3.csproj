@@ -109,12 +109,14 @@
     <Compile Include="..\_shared\QQConnectConfig.cs">
       <Link>Ids3\QQConnectConfig.cs</Link>
     </Compile>
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ExternalLoginController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Ids3\Certificates.cs" />
+    <Compile Include="Ids3\TryAuthenticationAttribute.cs" />
     <Compile Include="Ids3\Ids3Constants.cs" />
     <Compile Include="Ids3\Users.cs" />
     <Compile Include="Ids3\UserService.cs" />
@@ -148,6 +150,7 @@
       <Name>oauth2.middleware.qqconnect-owin</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
