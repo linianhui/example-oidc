@@ -69,6 +69,7 @@
             alert("已经退出！");
             console.log('UserSignedOut：', arguments);
             user = null;
+            manager.removeUser();
             display('.js-user', user);
         });
 
