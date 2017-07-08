@@ -38,8 +38,15 @@
 
     <script type="text/javascript">
         var manager = new Oidc.UserManager(ids3Options);
-
-        getUser(display);
+        if (account.is_login) {
+            getUser(function (user) {
+                if (user) {
+                    display(user);
+                } else {
+                    manager.signinPopup();
+                }
+            });
+        }
 
         manager.events.addUserLoaded(function () {
             getUser(display);
