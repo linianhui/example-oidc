@@ -1,9 +1,9 @@
-﻿using System.IdentityModel.Tokens;
+﻿using IdentityServer3.AccessTokenValidation;
 using Microsoft.Owin;
 using Owin;
+using System.IdentityModel.Tokens;
 using System.Web.Http;
-using IdentityServer3.AccessTokenValidation;
-using Microsoft.Owin.Security.OAuth;
+using System.Web.Http.Cors;
 
 [assembly: OwinStartup(typeof(OAuth2.Resources.Startup))]
 
@@ -29,6 +29,8 @@ namespace OAuth2.Resources
             var config = new HttpConfiguration();
 
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
 
             config.MapHttpAttributeRoutes();
 
