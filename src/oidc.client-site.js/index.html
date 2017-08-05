@@ -32,6 +32,7 @@
     <nav>
         <a href="javascript:login();">Login</a>
         <a href="javascript:logout();">Logout</a>
+        <a href="javascript:useAccessTokenCallAPI();">Use Access Token Call API</a>
     </nav>
 
     <pre id="result" style="overflow-x: auto;"></pre>
@@ -91,6 +92,26 @@
                     logoutCore();
                 }
             });
+        }
+
+        function useAccessTokenCallAPI() {
+            getUser(function (user) {
+                if (user) {
+                    var accessToken = user.access_token;
+                    $.ajax({
+                        url: "http://oauth2.resources.dev/values",
+                        headers: {
+                            Authorization: "Bearer " + accessToken
+                        },
+                        dataType: "json",
+                        success: display,
+                        error: display,
+                    });
+                } else {
+                    alert("请先登录！");
+                }
+            });
+
         }
 
         function loginCore() {
