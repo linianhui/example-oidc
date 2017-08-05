@@ -41,7 +41,12 @@ var webSiteConfigs = new []{
         host = "oauth2.asp-net-core.dev",
         path = "./src/oauth2.client-site.core/_publish",
         appPoolName = appPoolNoClr
-    }
+    },
+    new {
+        host = "oauth2.resources.dev",
+        path = "./src/oauth2.resources-site",
+        appPoolName = appPoolClr4
+    },
 };
 
 /// clean task
