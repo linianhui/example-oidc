@@ -55,6 +55,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{5733CF4B-3C1D-
 		src\oidc.client-site.js\js\oidc-client.min.js = src\oidc.client-site.js\js\oidc-client.min.js
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oauth2.resources-site", "src\oauth2.resources-site\oauth2.resources-site.csproj", "{0E9CE5AA-875E-497F-8EEC-CAB68895689C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{936CA61B-6EA7-4147-B7BA-251F7C8BC7AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{936CA61B-6EA7-4147-B7BA-251F7C8BC7AE}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{936CA61B-6EA7-4147-B7BA-251F7C8BC7AE}.Debug|x86.Build.0 = Debug|Any CPU
+		{0E9CE5AA-875E-497F-8EEC-CAB68895689C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E9CE5AA-875E-497F-8EEC-CAB68895689C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E9CE5AA-875E-497F-8EEC-CAB68895689C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0E9CE5AA-875E-497F-8EEC-CAB68895689C}.Debug|x86.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,5 +115,6 @@ Global
 		{3B57B03B-1DC5-4A1B-84D1-F781D76CA663} = {B5BC7B37-F3D7-469A-B740-96001AFE9B37}
 		{D78EBBEA-134B-4AE6-8AE4-9AAABD51E510} = {CB88D70E-F90F-407A-8680-C8327076B3F9}
 		{5733CF4B-3C1D-4706-A4C6-5E8EF939564B} = {D78EBBEA-134B-4AE6-8AE4-9AAABD51E510}
+		{0E9CE5AA-875E-497F-8EEC-CAB68895689C} = {04E113C1-CFAD-463F-9EA1-53ED81C301AD}
 	EndGlobalSection
 EndGlobal
