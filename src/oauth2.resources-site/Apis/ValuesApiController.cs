@@ -2,6 +2,7 @@
 
 namespace OAuth2.Resources.Apis
 {
+    [Authorize]
     [RoutePrefix("values")]
     public class ValuesApiController : ApiController
     {
