@@ -4,7 +4,7 @@
 1. `src/oidc.client-site.implicit` : web site, implicit flow.
 1. `src/oidc.client-site.js` : js client, implicit flow.
 1. `src/oidc.client-uwp.authorization-code-flow` : uwp app, use authorization code flow.
-1. `src/oauth2.resources-site` : use oauth2 access token protected api.
+1. `src/oauth2.resources-site` : use oauth2 access token protected api(https://github.com/IdentityServer/IdentityServer3.AccessTokenValidation).
 
 # OAuth2 QQConnect Middleware
 1. `src/oauth2.middleware.qqconnect-owin` : asp.net owin.
