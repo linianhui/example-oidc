@@ -43,6 +43,7 @@ namespace ServerSite.Ids3
                 .UseInMemoryScopes(StandardScopes.All);
 
             serviceFactory.UserService = new Registration<IUserService, UserService>();
+            serviceFactory.TokenService = new Registration<ITokenService, TokenService>();
 
             return serviceFactory;
         }

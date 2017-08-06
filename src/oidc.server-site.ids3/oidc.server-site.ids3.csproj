@@ -116,6 +116,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Ids3\Certificates.cs" />
+    <Compile Include="Ids3\TokenService.cs" />
     <Compile Include="Ids3\TryAuthenticationAttribute.cs" />
     <Compile Include="Ids3\Ids3Constants.cs" />
     <Compile Include="Ids3\Users.cs" />
