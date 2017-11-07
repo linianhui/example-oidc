@@ -256,3 +256,5 @@ tools/
 # Asp.Net Core
 **/_publish/
 **/launchSettings.json
+
+.vscode/
