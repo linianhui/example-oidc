@@ -21,6 +21,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -118,9 +119,13 @@
     <Content Include="Views\web.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\oauth2.middleware.qqconnect-owin\oauth2.middleware.qqconnect-owin.csproj">
-      <Project>{5061d3c7-03b2-4651-9b3e-9c828f52ac13}</Project>
-      <Name>oauth2.middleware.qqconnect-owin</Name>
+    <ProjectReference Include="..\oauth2.qqconnect.owin\oauth2.qqconnect.owin.csproj">
+      <Project>{75208fb9-233e-462f-8437-075234f8225c}</Project>
+      <Name>oauth2.qqconnect.owin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\oauth2.qqconnect\oauth2.qqconnect.csproj">
+      <Project>{c6e8379b-9f94-4174-918b-565f02beea2b}</Project>
+      <Name>oauth2.qqconnect</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

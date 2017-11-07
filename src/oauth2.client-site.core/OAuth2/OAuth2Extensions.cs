@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using OAuth2.QQConnect;
+using OAuth2.QQConnect.Core1;
 
 namespace ClientSite.OAuth2
 {
@@ -12,7 +13,7 @@ namespace ClientSite.OAuth2
                 AuthenticationScheme = OAuth2Constants.AuthenticationSchemeOfCookie
             });
 
-            return app.UseQQConnectAuthentication(new QQConnectOptions
+            return app.UseQQConnectAuthentication(new CoreQQConnectOptions
             {
                 AuthenticationScheme = OAuth2Constants.AuthenticationSchemeOfQQ,
                 SignInScheme = OAuth2Constants.AuthenticationSchemeOfCookie,

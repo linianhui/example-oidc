@@ -27,8 +27,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\oauth2.middleware.qqconnect-core\oauth2.middleware.qqconnect-core.csproj" />
+    <ProjectReference Include="..\oauth2.qqconnect.core1\oauth2.qqconnect.core1.csproj" />
+    <ProjectReference Include="..\oauth2.qqconnect\oauth2.qqconnect.csproj" />
   </ItemGroup>
 
 </Project>

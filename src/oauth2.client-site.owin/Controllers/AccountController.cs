@@ -14,7 +14,7 @@ namespace ClientSite.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("qq-login", Name = "account-qq-login")]
-        public void QQLogin(Uri returnUri, string displayMode)
+        public void QQLogin(Uri returnUri, bool isMobile)
         {
             var authenticationProperties = new AuthenticationProperties();
             if (returnUri != null)
@@ -25,9 +25,9 @@ namespace ClientSite.Controllers
                 }
             }
 
-            authenticationProperties = authenticationProperties.SetQQConncetSignInParams(new QQConnectSignInParams
+            authenticationProperties.Dictionary.SetQQConnectProperties(new QQConnectProperties
             {
-                DisplayMode = displayMode
+                IsMobile = isMobile
             });
 
             Request.GetOwinContext()

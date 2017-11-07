@@ -2,7 +2,7 @@
 using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Models;
 using IdentityServer3.Core.Services;
-using OAuth2.QQConnect;
+using OAuth2.QQConnect.Owin;
 using Owin;
 using Constants = IdentityServer3.Core.Constants;
 
@@ -50,9 +50,8 @@ namespace ServerSite.Ids3
 
         private static void ConfigureIdentityProviders(IAppBuilder app, string signInAsAuthenticationType)
         {
-            app.UseQQConnectAuthentication(new QQConnectOptions
+            app.UseQQConnectAuthentication(new OwinQQConnectOptions
             {
-                Caption = "QQ",
                 AuthenticationType = Ids3Constants.QQIdp,
                 SignInAsAuthenticationType = signInAsAuthenticationType,
                 ClientId = QQConnectConfig.ClientId,

@@ -14,7 +14,7 @@ namespace ClientSite.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("qq-login", Name = "account-qq-login")]
-        public async void QQLogin(string returnUri, string displayMode)
+        public async void QQLogin(string returnUri, bool isMobile)
         {
             var authenticationProperties = new AuthenticationProperties();
             if (returnUri != null)
@@ -22,9 +22,9 @@ namespace ClientSite.Controllers
                 authenticationProperties.RedirectUri = returnUri;
             }
 
-            authenticationProperties = authenticationProperties.SetQQConncetSignInParams(new QQConnectSignInParams
+            authenticationProperties.Items.SetQQConnectProperties(new QQConnectProperties
             {
-                DisplayMode = displayMode
+                IsMobile = isMobile
             });
 
             await this.HttpContext

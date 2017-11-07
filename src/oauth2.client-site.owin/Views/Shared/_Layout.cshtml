@@ -18,7 +18,7 @@
             {
                 @Html.RouteLink("QQ Login", "account-qq-login", new { returnUri = this.Request.Url })
                 <br />
-                @Html.RouteLink("QQ Login (Mobile)", "account-qq-login", new { returnUri = this.Request.Url, displayMode = "mobile" })
+                @Html.RouteLink("QQ Login (Mobile)", "account-qq-login", new { returnUri = this.Request.Url, isMobile = true })
             }
         </nav>
     </header>

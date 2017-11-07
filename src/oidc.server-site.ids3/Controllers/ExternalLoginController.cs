@@ -31,7 +31,7 @@ namespace ServerSite.Controllers
             return View(new NewUserViewModel
             {
                 UserName = qqConnectProfile.NickName,
-                AvatarUrl = qqConnectProfile.AvatarUrl
+                AvatarUrl = qqConnectProfile.Avatar
             });
         }
 
@@ -53,12 +53,12 @@ namespace ServerSite.Controllers
                 Username = viewModel.UserName ?? "Default Name",
                 Subject = Guid.NewGuid().ToString(),
                 Enabled = true,
-                Provider = qqConnectProfile.Idp,
+                Provider = qqConnectProfile.Issuer,
                 ProviderId = qqConnectProfile.OpenId,
                 Claims = new[]
                 {
                     new Claim(Constants.ClaimTypes.NickName, qqConnectProfile.NickName),
-                    new Claim(Constants.ClaimTypes.Picture, qqConnectProfile.AvatarUrl),
+                    new Claim(Constants.ClaimTypes.Picture, qqConnectProfile.Avatar),
                 }
             };
 
