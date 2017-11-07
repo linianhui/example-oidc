@@ -14,7 +14,7 @@ namespace ClientSite.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("qq-login", Name = "account-qq-login")]
-        public void QQLogin(Uri returnUri, bool isMobile)
+        public void QQLogin(Uri returnUri, bool isMobile = false)
         {
             var authenticationProperties = new AuthenticationProperties();
             if (returnUri != null)

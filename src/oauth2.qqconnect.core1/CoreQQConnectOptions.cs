@@ -8,6 +8,8 @@ namespace OAuth2.QQConnect.Core1
     {
         public CoreQQConnectOptions()
         {
+            base.AuthorizationEndpoint = "xx";
+            base.TokenEndpoint = "yy";
             base.AuthenticationScheme = "qq.connect";
             base.DisplayName = "QQ Connect";
             base.CallbackPath = new PathString("/oauth2/qq-connect/callback");

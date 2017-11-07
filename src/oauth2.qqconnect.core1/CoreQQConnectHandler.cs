@@ -10,12 +10,23 @@ namespace OAuth2.QQConnect.Core1
 {
     internal class CoreQQConnectHandler : OAuthHandler<CoreQQConnectOptions>
     {
-        private readonly QQConncetHandler _inner;
+        private QQConncetHandler _innerHandler;
+
+        private QQConncetHandler InnerHandler
+        {
+            get
+            {
+                if (_innerHandler == null)
+                {
+                    var qqConnectOptions = Options.BuildQQConnectOptions(GetRedirectUrl);
+                    _innerHandler = new QQConncetHandler(Backchannel, qqConnectOptions);
+                }
+                return _innerHandler;
+            }
+        }
 
         public CoreQQConnectHandler(HttpClient httpClient) : base(httpClient)
         {
-            var qqConnectOptions = Options.BuildQQConnectOptions(GetRedirectUrl);
-            _inner = new QQConncetHandler(httpClient, qqConnectOptions);
         }
 
         protected override async Task<AuthenticateResult> HandleRemoteAuthenticateAsync()
@@ -41,7 +52,7 @@ namespace OAuth2.QQConnect.Core1
                     return AuthenticateResult.Fail("Code was not found.");
                 }
 
-                var token = await _inner.GetTokenAsync(
+                var token = await InnerHandler.GetTokenAsync(
                     code,
                     Context.RequestAborted);
 
@@ -51,7 +62,7 @@ namespace OAuth2.QQConnect.Core1
                 }
 
 
-                var openId = await _inner.GetOpenIdAsync(
+                var openId = await InnerHandler.GetOpenIdAsync(
                     token.AccessToken,
                     Context.RequestAborted);
 
@@ -61,7 +72,7 @@ namespace OAuth2.QQConnect.Core1
                 }
 
 
-                var user = await _inner.GetUserAsync(
+                var user = await InnerHandler.GetUserAsync(
                     token.AccessToken,
                     openId.OpenId,
                     Context.RequestAborted);
@@ -87,7 +98,7 @@ namespace OAuth2.QQConnect.Core1
 
             var state = Options.StateDataFormat.Protect(properties);
 
-            return _inner.BuildAuthorizationUrl(qqConnectProperties, state);
+            return InnerHandler.BuildAuthorizationUrl(qqConnectProperties, state);
         }
 
         private string GetRedirectUrl()

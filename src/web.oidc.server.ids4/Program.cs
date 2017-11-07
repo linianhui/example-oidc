@@ -8,6 +8,7 @@ namespace ServerSite
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
+                .UseSetting(WebHostDefaults.DetailedErrorsKey, "true")
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()

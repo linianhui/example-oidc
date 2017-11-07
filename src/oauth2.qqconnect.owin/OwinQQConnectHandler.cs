@@ -11,13 +11,27 @@ namespace OAuth2.QQConnect.Owin
     public class OwinQQConnectHandler : AuthenticationHandler<OwinQQConnectOptions>
     {
         private readonly ILogger _logger;
-        private readonly QQConncetHandler _inner;
+        private readonly HttpClient _httpClient;
+
+        private QQConncetHandler _innerHandler;
+
+        private QQConncetHandler InnerHandler
+        {
+            get
+            {
+                if (_innerHandler == null)
+                {
+                    var qqConnectOptions = Options.BuildQQConnectOptions(GetRedirectUrl);
+                    _innerHandler = new QQConncetHandler(_httpClient, qqConnectOptions);
+                }
+                return _innerHandler;
+            }
+        }
 
         public OwinQQConnectHandler(ILogger logger, HttpClient httpClient)
         {
             _logger = logger;
-            var qqConnectOptions = Options.BuildQQConnectOptions(GetRedirectUrl);
-            _inner = new QQConncetHandler(httpClient, qqConnectOptions);
+            _httpClient = httpClient;
         }
 
         public override async Task<bool> InvokeAsync()
@@ -77,7 +91,7 @@ namespace OAuth2.QQConnect.Owin
                     return new AuthenticationTicket(null, properties);
                 }
 
-                var token = await _inner.GetTokenAsync(
+                var token = await InnerHandler.GetTokenAsync(
                     code,
                     Request.CallCancelled);
 
@@ -88,7 +102,7 @@ namespace OAuth2.QQConnect.Owin
                 }
 
 
-                var openId = await _inner.GetOpenIdAsync(
+                var openId = await InnerHandler.GetOpenIdAsync(
                     token.AccessToken,
                     Request.CallCancelled);
 
@@ -99,7 +113,7 @@ namespace OAuth2.QQConnect.Owin
                 }
 
 
-                var user = await _inner.GetUserAsync(
+                var user = await InnerHandler.GetUserAsync(
                     token.AccessToken,
                     openId.OpenId,
                     Request.CallCancelled);
@@ -149,7 +163,7 @@ namespace OAuth2.QQConnect.Owin
 
             var state = Options.StateDataFormat.Protect(authenticationProperties);
 
-            return _inner.BuildAuthorizationUrl(qqConnectProperties, state);
+            return InnerHandler.BuildAuthorizationUrl(qqConnectProperties, state);
         }
 
         private string GetRedirectUrl()
