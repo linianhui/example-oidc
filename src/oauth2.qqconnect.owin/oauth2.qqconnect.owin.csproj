@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net452</TargetFrameworks>
+    <AssemblyName>OAuth2.QQConnect.Owin</AssemblyName>
+    <RootNamespace>OAuth2.QQConnect.Owin</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Owin.Security" Version="3.1.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\oauth2.qqconnect\oauth2.qqconnect.csproj" />
+  </ItemGroup>
+
+</Project>
