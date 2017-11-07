@@ -8,7 +8,7 @@
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ClientUwp</RootNamespace>
-    <AssemblyName>Oidc.AuthorizationCodeFlow.ClientUwp</AssemblyName>
+    <AssemblyName>uwp.Oidc.Client.AuthorizationCodeFlow</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.15063.0</TargetPlatformVersion>

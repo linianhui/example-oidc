@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
-    <AssemblyName>Oidc.Ids4.ServerSite</AssemblyName>
+    <AssemblyName>Web.Oidc.Server.Ids4</AssemblyName>
     <RootNamespace>ServerSite</RootNamespace>
   </PropertyGroup>
 

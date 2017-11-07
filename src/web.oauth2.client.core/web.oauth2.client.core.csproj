@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
-    <AssemblyName>OAuth2.ClientSite.AspNetCore</AssemblyName>
+    <AssemblyName>Web.OAuth2.Client.AspNet.Core1</AssemblyName>
     <RootNamespace>ClientSite</RootNamespace>
   </PropertyGroup>
 

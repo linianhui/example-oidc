@@ -11,7 +11,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ClientSite</RootNamespace>
-    <AssemblyName>OAuth2.ClientSite.Owin</AssemblyName>
+    <AssemblyName>Web.OAuth2.Client.AspNet.Owin</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
