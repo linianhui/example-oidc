@@ -2,7 +2,6 @@
 using IdentityServer4.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using OAuth2.QQConnect.Core1;
 
 namespace ServerSite.Ids4
 {
@@ -36,15 +35,6 @@ namespace ServerSite.Ids4
         public static void UseIds4(this IApplicationBuilder app)
         {
             app.UseIdentityServer();
-
-            app.UseQQConnectAuthentication(new CoreQQConnectOptions
-            {
-                AuthenticationScheme = "qq",
-                DisplayName = "QQ",
-                SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme,
-                ClientId = QQConnectConfig.ClientId,
-                ClientSecret = QQConnectConfig.ClientSecret
-            });
         }
     }
 }
