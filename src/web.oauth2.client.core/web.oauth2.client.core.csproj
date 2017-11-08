@@ -30,7 +30,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\oauth2.qqconnect.core1\oauth2.qqconnect.core1.csproj" />
-    <ProjectReference Include="..\oauth2.qqconnect\oauth2.qqconnect.csproj" />
+    <ProjectReference Include="..\oauth2.qqconnect.basic\oauth2.qqconnect.basic.csproj" />
   </ItemGroup>
 
 </Project>

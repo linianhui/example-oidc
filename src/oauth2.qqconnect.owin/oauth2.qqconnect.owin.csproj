@@ -9,13 +9,13 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Owin.Security" Version="3.1.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\oauth2.qqconnect.basic\oauth2.qqconnect.basic.csproj" />
+  </ItemGroup>
   
   <ItemGroup>
     <Reference Include="System.Net.Http" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\oauth2.qqconnect\oauth2.qqconnect.csproj" />
   </ItemGroup>
 
 </Project>
