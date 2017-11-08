@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <AssemblyName>OAuth2.QQConnect.AspNetCore</AssemblyName>
+    <RootNamespace>OAuth2.QQConnect.AspNetCore</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OAuth" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\oauth2.qqconnect.basic\oauth2.qqconnect.basic.csproj" />
+  </ItemGroup>
+
+</Project>
