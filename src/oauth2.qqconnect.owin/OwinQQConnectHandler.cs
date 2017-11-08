@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Owin.Logging;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Infrastructure;
+using OAuth2.QQConnect.Basic;
 
 namespace OAuth2.QQConnect.Owin
 {
@@ -13,16 +14,16 @@ namespace OAuth2.QQConnect.Owin
         private readonly ILogger _logger;
         private readonly HttpClient _httpClient;
 
-        private QQConncetHandler _innerHandler;
+        private QQConnectHandler _innerHandler;
 
-        private QQConncetHandler InnerHandler
+        private QQConnectHandler InnerHandler
         {
             get
             {
                 if (_innerHandler == null)
                 {
                     var qqConnectOptions = Options.BuildQQConnectOptions(GetRedirectUrl);
-                    _innerHandler = new QQConncetHandler(_httpClient, qqConnectOptions);
+                    _innerHandler = new QQConnectHandler(_httpClient, qqConnectOptions);
                 }
                 return _innerHandler;
             }
@@ -118,7 +119,7 @@ namespace OAuth2.QQConnect.Owin
                     openId.OpenId,
                     Request.CallCancelled);
 
-                var identity = QQConncetProfile.BuildClaimsIdentity(Options.AuthenticationType, token, openId, user);
+                var identity = QQConnectProfile.BuildClaimsIdentity(Options.AuthenticationType, token, openId, user);
 
                 return new AuthenticationTicket(identity, properties);
             }

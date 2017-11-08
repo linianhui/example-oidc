@@ -2,14 +2,14 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using OAuth2.QQConnect.Models;
+using OAuth2.QQConnect.Basic.Models;
 
-namespace OAuth2.QQConnect
+namespace OAuth2.QQConnect.Basic
 {
     /// <summary>
     /// <see cref="http://wiki.connect.qq.com/%e5%bc%80%e5%8f%91%e6%94%bb%e7%95%a5_server-side"/>
     /// </summary>
-    public class QQConncetHandler
+    public class QQConnectHandler
     {
         private const string AuthorizationEndpoint = "https://graph.qq.com/oauth2.0/authorize";
         private const string TokenEndpoint = "https://graph.qq.com/oauth2.0/token";
@@ -19,7 +19,7 @@ namespace OAuth2.QQConnect
         private readonly HttpClient _httpClient;
         private readonly QQConnectOptions _options;
 
-        public QQConncetHandler(
+        public QQConnectHandler(
             HttpClient httpClient,
             QQConnectOptions options)
         {

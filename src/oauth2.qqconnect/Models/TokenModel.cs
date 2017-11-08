@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace OAuth2.QQConnect.Models
+namespace OAuth2.QQConnect.Basic.Models
 {
     public sealed class TokenModel
     {

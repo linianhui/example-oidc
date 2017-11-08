@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using OAuth2.QQConnect;
+using OAuth2.QQConnect.Basic;
 
 namespace ClientSite.Controllers
 {

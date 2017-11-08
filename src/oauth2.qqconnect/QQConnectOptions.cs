@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace OAuth2.QQConnect
+namespace OAuth2.QQConnect.Basic
 {
     public sealed class QQConnectOptions
     {

@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Owin.Security;
+using OAuth2.QQConnect.Basic;
 
 namespace OAuth2.QQConnect.Owin
 {

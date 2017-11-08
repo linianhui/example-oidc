@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-
-namespace OAuth2.QQConnect
+namespace OAuth2.QQConnect.Basic
 {
     public sealed class QQConnectProperties
     {

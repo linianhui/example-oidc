@@ -5,21 +5,22 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Http.Authentication;
+using OAuth2.QQConnect.Basic;
 
 namespace OAuth2.QQConnect.Core1
 {
     internal class CoreQQConnectHandler : OAuthHandler<CoreQQConnectOptions>
     {
-        private QQConncetHandler _innerHandler;
+        private QQConnectHandler _innerHandler;
 
-        private QQConncetHandler InnerHandler
+        private QQConnectHandler InnerHandler
         {
             get
             {
                 if (_innerHandler == null)
                 {
                     var qqConnectOptions = Options.BuildQQConnectOptions(GetRedirectUrl);
-                    _innerHandler = new QQConncetHandler(Backchannel, qqConnectOptions);
+                    _innerHandler = new QQConnectHandler(Backchannel, qqConnectOptions);
                 }
                 return _innerHandler;
             }
@@ -77,7 +78,7 @@ namespace OAuth2.QQConnect.Core1
                     openId.OpenId,
                     Context.RequestAborted);
 
-                var identity = QQConncetProfile.BuildClaimsIdentity(Options.AuthenticationScheme, token, openId, user);
+                var identity = QQConnectProfile.BuildClaimsIdentity(Options.AuthenticationScheme, token, openId, user);
 
                 var principal = new ClaimsPrincipal(identity);
 

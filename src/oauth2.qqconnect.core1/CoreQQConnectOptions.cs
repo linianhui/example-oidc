@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using OAuth2.QQConnect.Basic;
 
 namespace OAuth2.QQConnect.Core1
 {

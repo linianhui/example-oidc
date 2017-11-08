@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net452;netcoreapp1.1</TargetFrameworks>
-    <AssemblyName>OAuth2.QQConnect</AssemblyName>
-    <RootNamespace>OAuth2.QQConnect</RootNamespace>
+    <TargetFrameworks>net452;netcoreapp1.1;netstandard2.0</TargetFrameworks>
+    <AssemblyName>OAuth2.QQConnect.Basic</AssemblyName>
+    <RootNamespace>OAuth2.QQConnect.Basic</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
