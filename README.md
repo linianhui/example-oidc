@@ -1,14 +1,22 @@
-# OIDC Example
-1. `src/web.oidc.server.ids3` : ids3 (https://github.com/IdentityServer/IdentityServer3) example.
-1. `src/web.oidc.server.ids4` : ids4 (https://github.com/IdentityServer/IdentityServer4) example.
-1. `src/web.oidc.client.implicit` : web site, implicit flow.
-1. `src/web.oidc.client.js` : js client, implicit flow.
-1. `src/uwp.oidc.client.authorization-code-flow` : uwp app, use authorization code flow.
-1. `src/web.oauth2.resources` : use oauth2 access token protected api(https://github.com/IdentityServer/IdentityServer3.AccessTokenValidation).
+# OIDC Servers
+1. `src/web.oidc.server.ids3` : ids3 (https://github.com/IdentityServer/IdentityServer3) example (with qqconnect external login).
+1. `src/web.oidc.server.ids4` : ids4 (https://github.com/IdentityServer/IdentityServer4) example (with qqconnect external login).
+
+# OIDC Clients
+1. `src/web.oidc.client.implicit` : web site, implicit flow (use ids3 and ids4).
+1. `src/web.oidc.client.js` : static web site, js client, implicit flow (use ids3).
+1. `src/uwp.oidc.client.authorization-code-flow` : uwp app, use authorization code flow(use ids3).
+
+# OAuth2 Protected Resource
+1. `src/web.oauth2.resources` : use oauth2 access token protected api(https://github.com/IdentityServer/IdentityServer3.AccessTokenValidation)，authz server is ids3.
+
+# OAuth2 Clients
+1. `src/web.oauth2.client.aspnetcore` : asp.net core2 and qqconnect.
+1. `src/web.oauth2.client.owin` : asp.net owin and qqconnect.
 
 # OAuth2 QQConnect Middleware
 1. `src/oauth2.qqconnect.owin` : asp.net owin.
-1. `src/oauth2.qqconnect.core1` : asp.net core 1.
+1. `src/oauth2.qqconnect.aspnetcore` : asp.net core 2.
 
 # How to run?
 Use administrator run build.ps1 to deploy demo web site to local IIS. 
