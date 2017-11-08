@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
 namespace ServerSite
@@ -7,15 +8,16 @@ namespace ServerSite
     {
         public static void Main(string[] args)
         {
-            var host = new WebHostBuilder()
+            BuildWebHost(args).Run();
+        }
+
+        public static IWebHost BuildWebHost(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .CaptureStartupErrors(true)
                 .UseSetting(WebHostDefaults.DetailedErrorsKey, "true")
-                .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
-
-            host.Run();
-        }
     }
 }

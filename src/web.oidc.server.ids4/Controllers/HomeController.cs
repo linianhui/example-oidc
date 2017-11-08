@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace ClientSite.Controllers
+namespace ServerSite.Controllers
 {
     public class HomeController : Controller
     {
         [HttpGet]
         public ActionResult Index()
         {
-            return View(User?.Claims);
+            return Content("<h1>ids4 ok</h1>");
         }
     }
 }
