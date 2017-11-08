@@ -91,7 +91,7 @@ Task("publish")
 
     DotNetCorePublish("./src/web.oidc.server.ids4/web.oidc.server.ids4.csproj", new DotNetCorePublishSettings
     {
-        Framework = "netcoreapp1.1",
+        Framework = "netcoreapp2.0",
         OutputDirectory = "./src/web.oidc.server.ids4/_publish/"
     });
 

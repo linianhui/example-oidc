@@ -1,5 +1,4 @@
-﻿using IdentityServer4;
-using IdentityServer4.Configuration;
+﻿using IdentityServer4.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,11 +6,11 @@ namespace ServerSite.Ids4
 {
     public static class Ids4Extensions
     {
-        public static void ConfigIds4(this IServiceCollection services)
+        public static void AddIds4(this IServiceCollection services)
         {
             services
                 .AddIdentityServer(SetIdentityServerOptions)
-                .AddTemporarySigningCredential()
+                .AddDeveloperSigningCredential()
                 .AddInMemoryIdentityResources(Resources.AllIdentityResources)
                 .AddInMemoryClients(Clients.All)
                 .AddTestUsers(Users.All);
