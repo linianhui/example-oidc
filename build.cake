@@ -39,7 +39,7 @@ var webSiteConfigs = new []{
     },
     new {
         host = "oauth2.asp-net-core.dev",
-        path = "./src/web.oauth2.client.core/_publish",
+        path = "./src/web.oauth2.client.aspnetcore/_publish",
         appPoolName = appPoolNoClr
     },
     new {
@@ -83,10 +83,10 @@ Task("publish")
 
     CleanDirectories("./src/**/_publish");
 
-    DotNetCorePublish("./src/web.oauth2.client.core/web.oauth2.client.core.csproj", new DotNetCorePublishSettings
+    DotNetCorePublish("./src/web.oauth2.client.aspnetcore/web.oauth2.client.aspnetcore.csproj", new DotNetCorePublishSettings
     {
-        Framework = "netcoreapp1.1",
-        OutputDirectory = "./src/web.oauth2.client.core/_publish/"
+        Framework = "netcoreapp2.0",
+        OutputDirectory = "./src/web.oauth2.client.aspnetcore/_publish/"
     });
 
     DotNetCorePublish("./src/web.oidc.server.ids4/web.oidc.server.ids4.csproj", new DotNetCorePublishSettings
