@@ -1,36 +1,42 @@
 using System;
-using System.Net.Http;
 using System.Security.Claims;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OAuth;
-using Microsoft.AspNetCore.Http.Authentication;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using OAuth2.QQConnect.Basic;
+using BasicQQConnectHandler = OAuth2.QQConnect.Basic.QQConnectHandler;
 
-namespace OAuth2.QQConnect.Core1
+namespace OAuth2.QQConnect.AspNetCore
 {
-    internal class CoreQQConnectHandler : OAuthHandler<CoreQQConnectOptions>
+    internal class QQConnectHandler : OAuthHandler<QQConnectOptions>
     {
-        private QQConnectHandler _innerHandler;
+        private BasicQQConnectHandler _innerHandler;
 
-        private QQConnectHandler InnerHandler
+        private BasicQQConnectHandler InnerHandler
         {
             get
             {
                 if (_innerHandler == null)
                 {
-                    var qqConnectOptions = Options.BuildQQConnectOptions(GetRedirectUrl);
-                    _innerHandler = new QQConnectHandler(Backchannel, qqConnectOptions);
+                    var basicQQConnectOptions = Options.BuildQQConnectOptions(GetRedirectUrl);
+                    _innerHandler = new BasicQQConnectHandler(Backchannel, basicQQConnectOptions);
                 }
                 return _innerHandler;
             }
         }
 
-        public CoreQQConnectHandler(HttpClient httpClient) : base(httpClient)
-        {
-        }
+        public QQConnectHandler(
+            IOptionsMonitor<QQConnectOptions> options,
+            ILoggerFactory logger,
+            UrlEncoder encoder,
+            ISystemClock clock)
+            : base(options, logger, encoder, clock)
+        { }
 
-        protected override async Task<AuthenticateResult> HandleRemoteAuthenticateAsync()
+        protected override async Task<HandleRequestResult> HandleRemoteAuthenticateAsync()
         {
             try
             {
@@ -40,17 +46,17 @@ namespace OAuth2.QQConnect.Core1
                 var properties = Options.StateDataFormat.Unprotect(state);
                 if (properties == null)
                 {
-                    return AuthenticateResult.Fail("The oauth state was missing or invalid.");
+                    return HandleRequestResult.Fail("The oauth state was missing or invalid.");
                 }
 
                 if (ValidateCorrelationId(properties) == false)
                 {
-                    return AuthenticateResult.Fail("Correlation failed.");
+                    return HandleRequestResult.Fail("Correlation failed.");
                 }
 
                 if (code == null)
                 {
-                    return AuthenticateResult.Fail("Code was not found.");
+                    return HandleRequestResult.Fail("Code was not found.");
                 }
 
                 var token = await InnerHandler.GetTokenAsync(
@@ -59,7 +65,7 @@ namespace OAuth2.QQConnect.Core1
 
                 if (string.IsNullOrWhiteSpace(token.AccessToken))
                 {
-                    return AuthenticateResult.Fail("OAuth token endpoint failure.");
+                    return HandleRequestResult.Fail("OAuth token endpoint failure.");
                 }
 
 
@@ -69,7 +75,7 @@ namespace OAuth2.QQConnect.Core1
 
                 if (string.IsNullOrWhiteSpace(openId.OpenId))
                 {
-                    return AuthenticateResult.Fail("openid was not found.");
+                    return HandleRequestResult.Fail("openid was not found.");
                 }
 
 
@@ -78,17 +84,17 @@ namespace OAuth2.QQConnect.Core1
                     openId.OpenId,
                     Context.RequestAborted);
 
-                var identity = QQConnectProfile.BuildClaimsIdentity(Options.AuthenticationScheme, token, openId, user);
+                var identity = QQConnectProfile.BuildClaimsIdentity(Scheme.Name, token, openId, user);
 
                 var principal = new ClaimsPrincipal(identity);
 
-                var ticket = new AuthenticationTicket(principal, properties, Options.AuthenticationScheme);
+                var ticket = new AuthenticationTicket(principal, properties, Scheme.Name);
 
-                return AuthenticateResult.Success(ticket);
+                return HandleRequestResult.Success(ticket);
             }
             catch (Exception ex)
             {
-                return AuthenticateResult.Fail(ex);
+                return HandleRequestResult.Fail(ex);
             }
         }
 

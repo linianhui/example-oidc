@@ -7,6 +7,7 @@ using IdentityServer3.Core;
 using IdentityServer3.Core.Extensions;
 using IdentityServer3.Core.Services.InMemory;
 using OAuth2.QQConnect;
+using OAuth2.QQConnect.Basic;
 using ServerSite.Ids3;
 
 namespace ServerSite.Controllers
@@ -26,7 +27,7 @@ namespace ServerSite.Controllers
                 return new HttpUnauthorizedResult();
             }
 
-            var qqConnectProfile = new QQConncetProfile(identity.Claims);
+            var qqConnectProfile = new QQConnectProfile(identity.Claims);
 
             return View(new NewUserViewModel
             {
@@ -46,7 +47,7 @@ namespace ServerSite.Controllers
                 return new HttpUnauthorizedResult();
             }
 
-            var qqConnectProfile = new QQConncetProfile(identity.Claims);
+            var qqConnectProfile = new QQConnectProfile(identity.Claims);
 
             var newUser = new InMemoryUser
             {

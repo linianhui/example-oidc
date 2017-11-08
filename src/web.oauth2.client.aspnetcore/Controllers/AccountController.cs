@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
 using ClientSite.OAuth2;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Mvc;
-using OAuth2.QQConnect;
 using OAuth2.QQConnect.Basic;
 
 namespace ClientSite.Controllers
@@ -17,27 +16,25 @@ namespace ClientSite.Controllers
         [Route("qq-login", Name = "account-qq-login")]
         public async void QQLogin(string returnUri, bool isMobile = false)
         {
-            var authenticationProperties = new AuthenticationProperties();
+            var properties = new AuthenticationProperties();
             if (returnUri != null)
             {
-                authenticationProperties.RedirectUri = returnUri;
+                properties.RedirectUri = returnUri;
             }
 
-            authenticationProperties.Items.SetQQConnectProperties(new QQConnectProperties
+            properties.Items.SetQQConnectProperties(new QQConnectProperties
             {
                 IsMobile = isMobile
             });
 
-            await this.HttpContext
-                 .Authentication
-                 .ChallengeAsync(OAuth2Constants.AuthenticationSchemeOfQQ, authenticationProperties);
+            await HttpContext.ChallengeAsync(OAuth2Constants.AuthenticationSchemeOfQQ, properties);
         }
 
         [HttpGet]
         [Route("logout", Name = "account-logout")]
         public async Task<RedirectResult> Logout()
         {
-            await this.HttpContext.Authentication.SignOutAsync(OAuth2Constants.AuthenticationSchemeOfCookie);
+            await HttpContext.SignOutAsync(OAuth2Constants.AuthenticationSchemeOfCookie);
             return Redirect("~/");
         }
     }

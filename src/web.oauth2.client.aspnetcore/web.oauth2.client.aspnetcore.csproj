@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
-    <AssemblyName>Web.OAuth2.Client.AspNet.Core1</AssemblyName>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>Web.OAuth2.Client.AspNetCore</AssemblyName>
     <RootNamespace>ClientSite</RootNamespace>
   </PropertyGroup>
 
@@ -23,13 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\oauth2.qqconnect.core1\oauth2.qqconnect.core1.csproj" />
+    <ProjectReference Include="..\oauth2.qqconnect.aspnetcore\oauth2.qqconnect.aspnetcore.csproj" />
     <ProjectReference Include="..\oauth2.qqconnect.basic\oauth2.qqconnect.basic.csproj" />
   </ItemGroup>
 

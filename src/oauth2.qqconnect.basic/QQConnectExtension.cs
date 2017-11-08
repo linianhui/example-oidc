@@ -1,10 +1,10 @@
 ﻿using System;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
-namespace OAuth2.QQConnect
+namespace OAuth2.QQConnect.Basic
 {
-    public static class QQConncetExtension
+    public static class QQConnectExtension
     {
         internal static string TryGetValue(this JObject json, string name)
         {

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using OAuth2.QQConnect.Models;
+using OAuth2.QQConnect.Basic.Models;
 
-namespace OAuth2.QQConnect
+namespace OAuth2.QQConnect.Basic
 {
-    public sealed class QQConncetProfile
+    public sealed class QQConnectProfile
     {
-        public QQConncetProfile(IEnumerable<Claim> claims)
+        public QQConnectProfile(IEnumerable<Claim> claims)
         {
             Claims = claims ?? throw new ArgumentNullException(nameof(claims));
             Issuer = FindFirst(ClaimTypes.Issuer);

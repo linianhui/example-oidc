@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace OAuth2.QQConnect.Models
+namespace OAuth2.QQConnect.Basic.Models
 {
     public sealed class UserModel
     {
