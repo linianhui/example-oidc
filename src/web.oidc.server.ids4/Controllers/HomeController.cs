@@ -7,7 +7,7 @@ namespace ServerSite.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return Content("<h1>ids4 ok</h1>");
+            return Content("<a href='/.well-known/openid-configuration'>ids4 discovery api</a>", "text/html");
         }
     }
 }
