@@ -33,7 +33,7 @@ namespace ClientSite.Oidc
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
                 AuthenticationType = Constants.AuthenticationTypeOfIds3,
-                Authority = "http://server.ids3.dev/auth",
+                Authority = "http://server.oidc.dev",
                 ClientId = "implicit-client",
                 RedirectUri = "http://client.implicit.dev/",
                 ResponseType = "id_token",

@@ -13,13 +13,13 @@ var appPoolNoClr = "noclr.oidc-example";
 /// iis web sites config
 var webSiteConfigs = new []{
     new {
-        host = "server.ids3.dev",
-        path = "./src/web.oidc.server.ids3",
-        appPoolName = appPoolClr4
+        host = "server.oidc.dev",
+        path = "./src/web.oidc.server.ids4/_publish",
+        appPoolName = appPoolNoClr
     },
     new {
-        host = "server.ids4.dev",
-        path = "./src/web.oidc.server.ids4/_publish",
+        host = "oauth2.asp-net-core.dev",
+        path = "./src/web.oauth2.client.aspnetcore/_publish",
         appPoolName = appPoolNoClr
     },
     new {
@@ -36,11 +36,6 @@ var webSiteConfigs = new []{
         host = "oauth2.asp-net-owin.dev",
         path = "./src/web.oauth2.client.owin",
         appPoolName = appPoolClr4
-    },
-    new {
-        host = "oauth2.asp-net-core.dev",
-        path = "./src/web.oauth2.client.aspnetcore/_publish",
-        appPoolName = appPoolNoClr
     },
     new {
         host = "oauth2.resources.dev",
