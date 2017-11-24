@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Http.Extensions
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header>
+        <nav>
+            @if (this.User != null
+                && this.User.Identity != null
+                && this.User.Identity.IsAuthenticated == true)
+            {
+                @Html.RouteLink("Logout", "account-logout")
+            }
+            else
+            {
+                @Html.RouteLink("Oidc Login", "account-login", new { returnUri = this.Context.Request.GetDisplayUrl() })
+                <br />
+                @Html.RouteLink("Oidc Login(QQ)", "account-qq-login", new { returnUri = this.Context.Request.GetDisplayUrl() })
+            }
+        </nav>
+    </header>
+    <br />
+    @RenderBody()
+</body>
+</html>

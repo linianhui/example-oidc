@@ -8,6 +8,7 @@ namespace ServerSite.Ids4
     {
         public static IEnumerable<Client> All => new[]
         {
+            HybridClient,
             ImplicitClient,
             JSClient,
             OAuth2AuthorizationCodeFlowClientForUWP
@@ -17,7 +18,7 @@ namespace ServerSite.Ids4
         {
             get
             {
-                var host = "http://oidc-client-implicit.dev/";
+                var host = "http://oidc-client-implicit.dev";
 
                 return new Client
                 {
@@ -28,18 +29,57 @@ namespace ServerSite.Ids4
                     RequireConsent = false,
                     RedirectUris = new List<string>
                     {
-                        host
+                        host + "/"
                     },
                     PostLogoutRedirectUris = new List<string>
                     {
-                        host
+                        host + "/"
                     },
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email
-                    }
+                    },
+                    FrontChannelLogoutUri = host + "/account/logout-callback",
+                    FrontChannelLogoutSessionRequired = true
+                };
+            }
+        }
+
+        private static Client HybridClient
+        {
+            get
+            {
+                var host = "http://oidc-client-hybrid.dev";
+
+                return new Client
+                {
+                    Enabled = true,
+                    ClientName = "AuthorizationCode Client",
+                    ClientId = "authorization-code-client",
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("lnh".Sha256())
+                    },
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    RequireConsent = false,
+                    RedirectUris = new List<string>
+                    {
+                        host + "/oidc/signin-callback"
+                    },
+                    PostLogoutRedirectUris = new List<string>
+                    {
+                        host + "/"
+                    },
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email
+                    },
+                    FrontChannelLogoutUri = host + "/oidc/signout-callback",
+                    FrontChannelLogoutSessionRequired = true
                 };
             }
         }

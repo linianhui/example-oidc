@@ -1,12 +1,10 @@
-﻿using IdentityServer4;
+﻿using ClientSite.Oidc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using OAuth2.QQConnect.AspNetCore;
-using ServerSite.Ids4;
 
-namespace ServerSite
+namespace ClientSite
 {
     public class Startup
     {
@@ -14,15 +12,15 @@ namespace ServerSite
         {
             services.AddMvc();
 
-            services.AddIds4();
+            services.AddOidcAuthentication();
         }
+
+       
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
             app.UseDeveloperExceptionPage();
-
-            app.UseIds4();
 
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();

@@ -18,6 +18,11 @@ var webSiteConfigs = new []{
         appPoolName = appPoolNoClr
     },
     new {
+        host = "oidc-client-hybrid.dev",
+        path = "./src/web.oidc.client.hybrid/_publish",
+        appPoolName = appPoolClr4
+    },
+    new {
         host = "oidc-client-implicit.dev",
         path = "./src/web.oidc.client.implicit",
         appPoolName = appPoolClr4
@@ -77,6 +82,12 @@ Task("publish")
     StopPool(appPoolNoClr);
 
     CleanDirectories("./src/**/_publish");
+
+    DotNetCorePublish("./src/web.oidc.client.hybrid/web.oidc.client.hybrid.csproj", new DotNetCorePublishSettings
+    {
+        Framework = "netcoreapp2.0",
+        OutputDirectory = "./src/web.oidc.client.hybrid/_publish"
+    });
 
     DotNetCorePublish("./src/web.oauth2.client.aspnetcore/web.oauth2.client.aspnetcore.csproj", new DotNetCorePublishSettings
     {

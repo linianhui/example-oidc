@@ -13,7 +13,7 @@ namespace ServerSite.Ids4
             {
                 Username = "lnh",
                 Password = "123",
-                SubjectId = "lnh-123",
+                SubjectId = "000001",
                 Claims = new[]
                 {
                     new Claim(JwtClaimTypes.NickName, "blackheart")

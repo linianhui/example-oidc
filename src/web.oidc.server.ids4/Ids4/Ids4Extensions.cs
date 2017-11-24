@@ -1,6 +1,8 @@
-﻿using IdentityServer4.Configuration;
+﻿using IdentityServer4;
+using IdentityServer4.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using OAuth2.QQConnect.AspNetCore;
 
 namespace ServerSite.Ids4
 {
@@ -8,6 +10,14 @@ namespace ServerSite.Ids4
     {
         public static void AddIds4(this IServiceCollection services)
         {
+
+            services.AddAuthentication()
+                .AddQQConnect(options =>
+                {
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                    options.ClientId = QQConnectConfig.ClientId;
+                    options.ClientSecret = QQConnectConfig.ClientSecret;
+                },"qq");
             services
                 .AddIdentityServer(SetIdentityServerOptions)
                 .AddDeveloperSigningCredential()

@@ -2,12 +2,13 @@
 1. `src/web.oidc.server.ids4` : ids4 (https://github.com/IdentityServer/IdentityServer4) example (with qqconnect external login).
 
 # OIDC Clients
-1. `src/web.oidc.client.implicit` : web site, implicit flow (use ids3 and ids4).
-1. `src/web.oidc.client.js` : static web site, js client, implicit flow (use ids3).
-1. `src/uwp.oidc.client.authorization-code-flow` : uwp app, use authorization code flow(use ids3).
+1. `src/web.oidc.client.hybrid` : web site, hybrid flow.
+1. `src/web.oidc.client.implicit` : web site, implicit flow.
+1. `src/web.oidc.client.js` : web site(static), implicit flow .
+1. `src/uwp.oidc.client.authorization-code-flow` : uwp app, authorization code flow.
 
 # OAuth2 Protected Resource
-1. `src/web.oauth2.resources` : use oauth2 access token protected api(https://github.com/IdentityServer/IdentityServer3.AccessTokenValidation)，authz server is ids3.
+1. `src/web.oauth2.resources` : oauth2 access token protected api(https://github.com/IdentityServer/IdentityServer3.AccessTokenValidation).
 
 # OAuth2 Clients
 1. `src/web.oauth2.client.aspnetcore` : asp.net core2 and qqconnect.
