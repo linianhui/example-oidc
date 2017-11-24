@@ -1,5 +1,4 @@
 # OIDC Servers
-1. `src/web.oidc.server.ids3` : ids3 (https://github.com/IdentityServer/IdentityServer3) example (with qqconnect external login).
 1. `src/web.oidc.server.ids4` : ids4 (https://github.com/IdentityServer/IdentityServer4) example (with qqconnect external login).
 
 # OIDC Clients
@@ -31,3 +30,6 @@ public static class QQConnectConfig
 ```
 # Blog
 http://www.cnblogs.com/linianhui/category/929878.html
+
+# ids3
+ids3 (https://github.com/IdentityServer/IdentityServer3) example (with qqconnect external login)：https://github.com/linianhui/oidc.example/tree/old 

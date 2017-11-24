@@ -13,33 +13,33 @@ var appPoolNoClr = "noclr.oidc-example";
 /// iis web sites config
 var webSiteConfigs = new []{
     new {
-        host = "server.oidc.dev",
+        host = "oidc-server.dev",
         path = "./src/web.oidc.server.ids4/_publish",
         appPoolName = appPoolNoClr
     },
     new {
-        host = "oauth2.asp-net-core.dev",
-        path = "./src/web.oauth2.client.aspnetcore/_publish",
-        appPoolName = appPoolNoClr
-    },
-    new {
-        host = "client.implicit.dev",
+        host = "oidc-client-implicit.dev",
         path = "./src/web.oidc.client.implicit",
         appPoolName = appPoolClr4
     },
     new {
-        host = "client.js.dev",
+        host = "oidc-client-js.dev",
         path = "./src/web.oidc.client.js",
         appPoolName = appPoolNoClr
     },
     new {
-        host = "oauth2.asp-net-owin.dev",
-        path = "./src/web.oauth2.client.owin",
+        host = "oauth2-protected-resources.dev",
+        path = "./src/web.oauth2.resources",
         appPoolName = appPoolClr4
     },
     new {
-        host = "oauth2.resources.dev",
-        path = "./src/web.oauth2.resources",
+        host = "oauth2-client-asp-net-core.dev",
+        path = "./src/web.oauth2.client.aspnetcore/_publish",
+        appPoolName = appPoolNoClr
+    },
+    new {
+        host = "oauth2-client-asp-net-owin.dev",
+        path = "./src/web.oauth2.client.owin",
         appPoolName = appPoolClr4
     },
 };

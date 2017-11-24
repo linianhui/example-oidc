@@ -11,9 +11,7 @@ namespace ClientSite
     {
         public void Configuration(IAppBuilder app)
         {
-            app.UseBaseAuthentication();
-            app.UseIds3Authentication();
-            app.UseIds4Authentication();
+            app.UseOidcAuthentication();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace ClientSite.Oidc
 {
     public static class OidcExtentions
     {
-        public static void UseBaseAuthentication(this IAppBuilder app)
+        public static void UseOidcAuthentication(this IAppBuilder app)
         {
             AntiForgeryConfig.UniqueClaimTypeIdentifier = Constants.ClaimTypes.Subject;
             JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
@@ -22,40 +22,17 @@ namespace ClientSite.Oidc
             {
                 AuthenticationType = Constants.AuthenticationTypeOfCookies,
                 CookieHttpOnly = true,
-                CookieName = Constants.AuthenticationTypeOfCookies + Constants.AuthenticationTypeOfIds3,
+                CookieName = Constants.CookieName,
                 // 方便调试，明文。
                 //TicketDataFormat = new AuthenticationTicketCleartextDataFormat()
             });
-        }
 
-        public static void UseIds3Authentication(this IAppBuilder app)
-        {
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
-                AuthenticationType = Constants.AuthenticationTypeOfIds3,
-                Authority = "http://server.oidc.dev",
+                AuthenticationType = Constants.AuthenticationTypeOfOidc,
+                Authority = "http://oidc-server.dev",
                 ClientId = "implicit-client",
-                RedirectUri = "http://client.implicit.dev/",
-                ResponseType = "id_token",
-                SignInAsAuthenticationType = Constants.AuthenticationTypeOfCookies,
-                //方便调试，明文。
-                //StateDataFormat = new AuthenticationPropertiesCleartextDataFormat(),
-                Notifications = new OpenIdConnectAuthenticationNotifications
-                {
-                    SecurityTokenValidated = HandleSecurityTokenValidatedNotification,
-                    RedirectToIdentityProvider = HandleRedirectToIdentityProviderNotification
-                }
-            });
-        }
-
-        public static void UseIds4Authentication(this IAppBuilder app)
-        {
-            app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
-            {
-                AuthenticationType = Constants.AuthenticationTypeOfIds4,
-                Authority = "http://server.ids4.dev",
-                ClientId = "implicit-client",
-                RedirectUri = "http://client.implicit.dev/",
+                RedirectUri = "http://oidc-client-implicit.dev/",
                 ResponseType = "id_token",
                 SignInAsAuthenticationType = Constants.AuthenticationTypeOfCookies,
                 Notifications = new OpenIdConnectAuthenticationNotifications

@@ -133,8 +133,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Oidc\Cleartext\AuthenticationTicketCleartextDataFormat.cs" />
-    <Compile Include="Oidc\Cleartext\AuthenticationPropertiesCleartextDataFormat.cs" />
     <Compile Include="Oidc\Constants.cs" />
     <Compile Include="Oidc\OidcExtentions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

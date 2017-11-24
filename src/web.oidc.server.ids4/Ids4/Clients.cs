@@ -17,7 +17,7 @@ namespace ServerSite.Ids4
         {
             get
             {
-                var host = "http://client.implicit.dev/";
+                var host = "http://oidc-client-implicit.dev/";
 
                 return new Client
                 {
@@ -48,7 +48,7 @@ namespace ServerSite.Ids4
         {
             get
             {
-                var host = "http://client.js.dev";
+                var host = "http://oidc-client-js.dev";
                 return new Client
                 {
                     Enabled = true,
@@ -74,7 +74,9 @@ namespace ServerSite.Ids4
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email
                     },
-                    AccessTokenLifetime = 10
+                    AccessTokenLifetime = 600,
+                    AllowAccessTokensViaBrowser = true,
+                    RequireConsent = false,
                 };
             }
         }

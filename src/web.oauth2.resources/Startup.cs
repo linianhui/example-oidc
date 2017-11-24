@@ -19,7 +19,7 @@ namespace OAuth2.Resources
 
             app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
             {
-                Authority = "http://server.oidc.dev",
+                Authority = "http://oidc-server.dev",
                 ValidationMode = ValidationMode.Both,
                 TokenProvider = new OAuthBearerAuthenticationProvider
                 {

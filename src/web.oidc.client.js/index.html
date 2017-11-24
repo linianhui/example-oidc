@@ -1,20 +1,19 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>JS Client</title>
     <meta charset="utf-8" />
     <script src="/js/jquery.min.js"></script>
     <script src="/js/oidc-client.min.js"></script>
     <!--var accounnt = { is_login: true };-->
-    <script src="http://server.oidc.dev/js/account"></script>
+    <script src="http://oidc-server.dev/account/js"></script>
     <script type="text/javascript">
 
-        var ids3Options = {
-            authority: 'http://server.oidc.dev',
+        var oidcOptions = {
+            authority: 'http://oidc-server.dev',
             client_id: 'js-client',
-            popup_redirect_uri: 'http://client.js.dev/login.html',
-            post_logout_redirect_uri: 'http://client.js.dev/index.html',
-            silent_redirect_uri: 'http://client.js.dev/refresh-token.html',
+            popup_redirect_uri: 'http://oidc-client-js.dev/login.html',
+            post_logout_redirect_uri: 'http://oidc-client-js.dev/index.html',
+            silent_redirect_uri: 'http://oidc-client-js.dev/refresh-token.html',
             accessTokenExpiringNotificationTime: 4,
             automaticSilentRenew: false,
             response_type: 'id_token token',
@@ -38,7 +37,7 @@
     <pre id="result" style="overflow-x: auto;"></pre>
 
     <script type="text/javascript">
-        var manager = new Oidc.UserManager(ids3Options);
+        var manager = new Oidc.UserManager(oidcOptions);
         if (account.is_login) {
             getUser(function (user) {
                 if (user) {
@@ -99,7 +98,7 @@
                 if (user) {
                     var accessToken = user.access_token;
                     $.ajax({
-                        url: "http://oauth2.resources.dev/values",
+                        url: "http://oauth2-protected-resources.dev/values",
                         headers: {
                             Authorization: "Bearer " + accessToken
                         },

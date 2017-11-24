@@ -4,12 +4,12 @@ using System.Collections.Generic;
 namespace ClientUwp.Oidc
 {
     /// <summary>
-    /// <see cref="http://server.oidc.dev/.well-known/openid-configuration"/>
+    /// <see cref="http://oidc-server.dev/.well-known/openid-configuration"/>
     /// </summary>
     public class OidcOptions
     {
-        public string AuthorizeEndpoint => "http://server.oidc.dev/connect/authorize";
-        public string TokenEndpoint => "http://server.oidc.dev/connect/token";
+        public string AuthorizeEndpoint => "http://oidc-server.dev/connect/authorize";
+        public string TokenEndpoint => "http://oidc-server.dev/connect/token";
         public string ClientId => "oauth2-authorization-code-flow.uwp";
         public string ClientSecret => "lnh";
         public string RedirectUri => "http://uwp.oauth2-authorization-code-flow.dev/oauth2-callback";

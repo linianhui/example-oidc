@@ -109,7 +109,7 @@ namespace ServerSite.Ids4.Account
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("logout")]
         public async Task<IActionResult> Logout(string logoutId)
         {
@@ -170,6 +170,19 @@ namespace ServerSite.Ids4.Account
 
             return Redirect(resumeUrl);
         }
+
+        [HttpGet]
+        [Route("js")]
+        public ActionResult IsLogin()
+        {
+
+            var isLogin = base.User?.Identity?.IsAuthenticated ?? false;
+            var javaScript = "var account={"
+                           + "is_login:" + isLogin.ToString().ToLower()
+                           + "};";
+            return Content(javaScript, "application/javascript");
+        }
+
         private static string GetScheme(AuthenticateResult externalLogin)
         {
             return externalLogin.Properties.Items["scheme"];
