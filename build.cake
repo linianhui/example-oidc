@@ -20,7 +20,7 @@ var webSiteConfigs = new []{
     new {
         host = "oidc-client-hybrid.dev",
         path = "./src/web.oidc.client.hybrid/_publish",
-        appPoolName = appPoolClr4
+        appPoolName = appPoolNoClr
     },
     new {
         host = "oidc-client-implicit.dev",
