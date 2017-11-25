@@ -31,7 +31,9 @@ public static class QQConnectConfig
 }
 ```
 # Blog
-http://www.cnblogs.com/linianhui/category/929878.html
+Authentication and Authorization: http://www.cnblogs.com/linianhui/category/929878.html
+
+OIDC in Action: http://www.cnblogs.com/linianhui/category/1121078.html
 
 # ids3
 ids3 (https://github.com/IdentityServer/IdentityServer3) example (with qqconnect external login)：https://github.com/linianhui/oidc.example/tree/old 
