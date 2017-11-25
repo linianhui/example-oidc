@@ -5,14 +5,14 @@
 1. `src/web.oidc.client.hybrid` : web site, hybrid flow.
 1. `src/web.oidc.client.implicit` : web site, implicit flow.
 1. `src/web.oidc.client.js` : web site(static), implicit flow .
-1. `src/uwp.oidc.client.authorization-code-flow` : uwp app, authorization code flow.
+1. `src/uwp.oidc.client.authorization-code` : uwp app, authorization code flow.
 
 # OAuth2 Protected Resource
-1. `src/web.oauth2.resources` : oauth2 access token protected api(https://github.com/IdentityServer/IdentityServer3.AccessTokenValidation).
+1. `src/web.oauth2.resources` : resources api.
 
 # OAuth2 Clients
-1. `src/web.oauth2.client.aspnetcore` : asp.net core2 and qqconnect.
-1. `src/web.oauth2.client.owin` : asp.net owin and qqconnect.
+1. `src/web.oauth2.client.aspnetcore` : asp.net core2 with qqconnect.
+1. `src/web.oauth2.client.owin` : asp.net owin with qqconnect.
 
 # OAuth2 QQConnect Middleware
 1. `src/oauth2.qqconnect.owin` : asp.net owin.

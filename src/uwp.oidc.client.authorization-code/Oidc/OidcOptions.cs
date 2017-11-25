@@ -10,9 +10,9 @@ namespace ClientUwp.Oidc
     {
         public string AuthorizeEndpoint => "http://oidc-server.dev/connect/authorize";
         public string TokenEndpoint => "http://oidc-server.dev/connect/token";
-        public string ClientId => "oauth2-authorization-code-flow.uwp";
+        public string ClientId => "oidc-authorization-code-client";
         public string ClientSecret => "lnh";
-        public string RedirectUri => "http://uwp.oauth2-authorization-code-flow.dev/oauth2-callback";
+        public string RedirectUri => "http://oidc-client-authorization-code.dev/oidc/login-callback";
 
         public string BuildAuthorizeUrl(string idp = null)
         {

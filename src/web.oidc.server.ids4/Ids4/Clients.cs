@@ -130,7 +130,7 @@ namespace ServerSite.Ids4
                         new Secret("lnh".Sha256())
                     },
 
-                    RequireConsent = true,
+                    RequireConsent = false,
                     AllowRememberConsent = true,
 
                     RedirectUris = { home + OidcLoginCallback },
