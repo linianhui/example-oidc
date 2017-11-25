@@ -35,6 +35,7 @@ namespace ClientSite.Oidc
                 _.GetClaimsFromUserInfoEndpoint = false;
                 _.CallbackPath = new PathString("/oidc/login-callback");
                 _.SignOutScheme = Constants.AuthenticationSchemeOfCookies;
+                _.RemoteSignOutPath = new PathString("/oidc/front-channel-logout-callback");
                 _.Events = new OpenIdConnectEvents
                 {
                     OnRedirectToIdentityProvider = OnRedirectToIdentityProvider,
