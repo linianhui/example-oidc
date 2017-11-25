@@ -11,5 +11,10 @@ namespace ServerSite.Ids4
             new IdentityResources.Profile(),
             new IdentityResources.Email()
         };
+
+        public static IEnumerable<ApiResource> AllApiResources => new List<ApiResource>
+        {
+            new ApiResource("my-api", "My API")
+        };
     }
 }

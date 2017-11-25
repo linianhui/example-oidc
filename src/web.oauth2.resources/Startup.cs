@@ -26,7 +26,8 @@ namespace OAuth2.Resources
                     OnRequestToken = HandlerRequestToken,
                     OnValidateIdentity = HandlerValidateIdentity,
                     OnApplyChallenge = HandlerApplyChallenge,
-                }
+                },
+                RequiredScopes = new[] { "my-api" }
             });
 
             app.UseWebApi(GetWebApiConfig());

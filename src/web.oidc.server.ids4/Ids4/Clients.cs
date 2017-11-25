@@ -14,7 +14,8 @@ namespace ServerSite.Ids4
             HybridClient,
             ImplicitClient,
             JsClient,
-            AuthorizationCodeClient
+            AuthorizationCodeClient,
+            ClientCredentialsClient
         };
 
         private static Client ImplicitClient
@@ -105,7 +106,8 @@ namespace ServerSite.Ids4
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        IdentityServerConstants.StandardScopes.Email
+                        IdentityServerConstants.StandardScopes.Email,
+                        "my-api"
                     },
                     AccessTokenLifetime = 3600,
                     AllowAccessTokensViaBrowser = true,
@@ -148,5 +150,14 @@ namespace ServerSite.Ids4
                 };
             }
         }
+
+
+        private static Client ClientCredentialsClient => new Client
+        {
+            ClientId = "client-credentials-client",
+            AllowedGrantTypes = GrantTypes.ClientCredentials,
+            ClientSecrets = { new Secret("lnh".Sha256()) },
+            AllowedScopes = { "my-api" }
+        };
     }
 }

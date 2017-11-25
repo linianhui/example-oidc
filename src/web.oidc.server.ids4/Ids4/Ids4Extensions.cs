@@ -17,11 +17,12 @@ namespace ServerSite.Ids4
                     options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
                     options.ClientId = QQConnectConfig.ClientId;
                     options.ClientSecret = QQConnectConfig.ClientSecret;
-                },"qq");
+                }, "qq");
             services
                 .AddIdentityServer(SetIdentityServerOptions)
                 .AddDeveloperSigningCredential()
                 .AddInMemoryIdentityResources(Resources.AllIdentityResources)
+                .AddInMemoryApiResources(Resources.AllApiResources)
                 .AddInMemoryClients(Clients.All)
                 .AddTestUsers(Users.All);
         }
@@ -40,7 +41,7 @@ namespace ServerSite.Ids4
             };
         }
 
-        
+
         public static void UseIds4(this IApplicationBuilder app)
         {
             app.UseIdentityServer();
