@@ -1,5 +1,7 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,10 +14,10 @@ namespace ClientSite.Oidc
         {
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-            services.AddAuthentication(options =>
+            services.AddAuthentication(_ =>
             {
-                options.DefaultScheme = Constants.AuthenticationSchemeOfCookies;
-                options.DefaultChallengeScheme = Constants.AuthenticationSchemeOfOidc;
+                _.DefaultScheme = Constants.AuthenticationSchemeOfCookies;
+                _.DefaultChallengeScheme = Constants.AuthenticationSchemeOfOidc;
             })
             .AddCookie(Constants.AuthenticationSchemeOfCookies, _ =>
             {
@@ -26,29 +28,89 @@ namespace ClientSite.Oidc
                 _.SignInScheme = Constants.AuthenticationSchemeOfCookies;
                 _.Authority = "http://oidc-server.dev";
                 _.RequireHttpsMetadata = false;
-                _.ClientId = "authorization-code-client";
+                _.ClientId = "hybrid-client";
                 _.ClientSecret = "lnh";
                 _.ResponseType = "code id_token";
                 _.SaveTokens = true;
                 _.GetClaimsFromUserInfoEndpoint = false;
-                _.CallbackPath = new PathString("/oidc/signin-callback");
-                _.SignedOutCallbackPath = new PathString("/oidc/signout-callback");
+                _.CallbackPath = new PathString("/oidc/login-callback");
+                _.SignOutScheme = Constants.AuthenticationSchemeOfCookies;
                 _.Events = new OpenIdConnectEvents
                 {
-                    OnRedirectToIdentityProvider = OnRedirectToIdentityProvider
+                    OnRedirectToIdentityProvider = OnRedirectToIdentityProvider,
+                    OnRemoteSignOut = OnRemoteSignOut,
+                    OnRemoteFailure = OnRemoteFailure,
+                    OnAuthenticationFailed = OnAuthenticationFailed,
+                    OnRedirectToIdentityProviderForSignOut = OnRedirectToIdentityProviderForSignOut,
+                    OnAuthorizationCodeReceived = OnAuthorizationCodeReceived,
+                    OnMessageReceived = OnMessageReceived,
+                    OnTicketReceived = OnTicketReceived,
+                    OnTokenResponseReceived = OnTokenResponseReceived,
+                    OnTokenValidated = OnTokenValidated,
+                    OnUserInformationReceived = OnUserInformationReceived
                 };
             });
         }
 
-        private static Task OnRedirectToIdentityProvider(RedirectContext redirectContext)
+        private static Task OnRedirectToIdentityProvider(RedirectContext context)
         {
-            if (redirectContext.HttpContext.Items.ContainsKey("idp"))
+            if (context.HttpContext.Items.ContainsKey("idp"))
             {
-                var idp = redirectContext.HttpContext.Items["idp"];
-                redirectContext.ProtocolMessage.AcrValues = "idp:" + idp;
+                var idp = context.HttpContext.Items["idp"];
+                context.ProtocolMessage.AcrValues = "idp:" + idp;
             }
 
             return Task.FromResult(0);
         }
+
+        private static Task OnRemoteSignOut(RemoteSignOutContext context)
+        {
+            return Task.FromResult(0);
+        }
+
+        private static Task OnRemoteFailure(RemoteFailureContext context)
+        {
+            return Task.FromResult(0);
+        }
+
+        private static Task OnAuthenticationFailed(AuthenticationFailedContext context)
+        {
+            return Task.FromResult(0);
+        }
+
+        private static Task OnRedirectToIdentityProviderForSignOut(RedirectContext context)
+        {
+            context.ProtocolMessage.PostLogoutRedirectUri = context.Request.Scheme + "://" + context.Request.Host;
+            return Task.FromResult(0);
+        }
+        private static Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedContext context)
+        {
+            return Task.FromResult(0);
+        }
+        private static Task OnMessageReceived(MessageReceivedContext context)
+        {
+            return Task.FromResult(0);
+        }
+
+        private static Task OnTicketReceived(TicketReceivedContext context)
+        {
+            return Task.FromResult(0);
+        }
+
+        private static Task OnTokenResponseReceived(TokenResponseReceivedContext context)
+        {
+            return Task.FromResult(0);
+        }
+
+        private static Task OnTokenValidated(TokenValidatedContext context)
+        {
+            return Task.FromResult(0);
+        }
+
+        private static Task OnUserInformationReceived(UserInformationReceivedContext context)
+        {
+            return Task.FromResult(0);
+        }
+
     }
 }

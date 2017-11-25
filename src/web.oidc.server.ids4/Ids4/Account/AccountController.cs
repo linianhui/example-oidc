@@ -117,7 +117,10 @@ namespace ServerSite.Ids4.Account
 
             await HttpContext.SignOutAsync();
 
-            return Redirect(logout.PostLogoutRedirectUri);
+            ViewBag.SignOutIframeUrl = logout.SignOutIFrameUrl;
+            ViewBag.RedirectUri = new Uri(logout.PostLogoutRedirectUri).GetLeftPart(UriPartial.Authority);
+
+            return View("LoggedOut");
         }
 
 

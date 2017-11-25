@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using ClientSite.Oidc;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -14,16 +13,24 @@ namespace ClientSite.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("login", Name = "account-login")]
-        public ChallengeResult Login(Uri returnUri)
+        public IActionResult Login(Uri returnUri)
         {
+            if (User?.Identity?.IsAuthenticated==true)
+            {
+                return Redirect("/");
+            }
             return Challenge(BuildAuthenticationProperties(returnUri), Constants.AuthenticationSchemeOfOidc);
         }
 
         [HttpGet]
         [AllowAnonymous]
-        [Route("qq-login", Name = "account-qq-login")]
-        public ChallengeResult QQLogin(Uri returnUri)
+        [Route("login-qq", Name = "account-login-qq")]
+        public IActionResult LoginQQ(Uri returnUri)
         {
+            if (User?.Identity?.IsAuthenticated == true)
+            {
+                return Redirect("/");
+            }
             base.HttpContext.Items["idp"] = "qq";
             return Challenge(BuildAuthenticationProperties(returnUri), Constants.AuthenticationSchemeOfOidc);
         }

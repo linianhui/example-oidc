@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using ClientSite.Oidc;
@@ -14,22 +13,36 @@ namespace ClientSite.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("login", Name = "account-login")]
-        public void Login(Uri returnUri)
+        public ActionResult Login(Uri returnUri)
         {
+            if (User?.Identity?.IsAuthenticated == true)
+            {
+                return Redirect("/");
+            }
+
             Request.GetOwinContext()
                 .Authentication
                 .Challenge(BuildAuthenticationProperties(returnUri), Constants.AuthenticationTypeOfOidc);
+
+            return new EmptyResult();
         }
 
         [HttpGet]
         [AllowAnonymous]
-        [Route("qq-login", Name = "account-qq-login")]
-        public void QQLogin(Uri returnUri)
+        [Route("login-qq", Name = "account-login-qq")]
+        public ActionResult LoginQQ(Uri returnUri)
         {
+            if (User?.Identity?.IsAuthenticated == true)
+            {
+                return Redirect("/");
+            }
+
             Request.GetOwinContext()
                 .Set("idp", "qq")
                 .Authentication
                 .Challenge(BuildAuthenticationProperties(returnUri), Constants.AuthenticationTypeOfOidc);
+
+            return new EmptyResult();
         }
 
         private AuthenticationProperties BuildAuthenticationProperties(Uri returnUri)
@@ -51,19 +64,6 @@ namespace ClientSite.Controllers
         public void Logout()
         {
             Request.GetOwinContext().Authentication.SignOut();
-        }
-
-        [HttpGet]
-        [AllowAnonymous]
-        [Route("logout-callback")]
-        public void LogoutCallback(string sid)
-        {
-            var claimsPrincipal = User as ClaimsPrincipal;
-            var sessionId = claimsPrincipal?.FindFirst(Constants.ClaimTypes.SessionId)?.Value;
-            if (sessionId != null && sessionId == sid)
-            {
-                Request.GetOwinContext().Authentication.SignOut(Constants.AuthenticationTypeOfCookies);
-            }
         }
     }
 }

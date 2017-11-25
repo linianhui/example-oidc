@@ -6,42 +6,43 @@ namespace ServerSite.Ids4
 {
     public static class Clients
     {
+        private const string OidcLoginCallback = "/oidc/login-callback";
+        private const string OidcFrontChannelLogoutCallback = "/oidc/front-channel-logout-callback";
+
         public static IEnumerable<Client> All => new[]
         {
             HybridClient,
             ImplicitClient,
-            JSClient,
-            OAuth2AuthorizationCodeFlowClientForUWP
+            JsClient,
+            AuthorizationCodeClient
         };
 
         private static Client ImplicitClient
         {
             get
             {
-                var host = "http://oidc-client-implicit.dev";
+                const string home = "http://oidc-client-implicit.dev";
+
 
                 return new Client
                 {
-                    Enabled = true,
-                    ClientName = "Implicit Client",
                     ClientId = "implicit-client",
+                    ClientName = "Implicit Client",
                     AllowedGrantTypes = GrantTypes.Implicit,
+
                     RequireConsent = false,
-                    RedirectUris = new List<string>
-                    {
-                        host + "/"
-                    },
-                    PostLogoutRedirectUris = new List<string>
-                    {
-                        host + "/"
-                    },
+
+                    RedirectUris = { home + OidcLoginCallback },
+                    PostLogoutRedirectUris = { home },
+
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email
                     },
-                    FrontChannelLogoutUri = host + "/account/logout-callback",
+
+                    FrontChannelLogoutUri = home + OidcFrontChannelLogoutCallback,
                     FrontChannelLogoutSessionRequired = true
                 };
             }
@@ -51,105 +52,99 @@ namespace ServerSite.Ids4
         {
             get
             {
-                var host = "http://oidc-client-hybrid.dev";
+                const string home = "http://oidc-client-hybrid.dev";
 
                 return new Client
                 {
-                    Enabled = true,
-                    ClientName = "AuthorizationCode Client",
-                    ClientId = "authorization-code-client",
+                    ClientId = "hybrid-client",
+                    ClientName = "Hybrid Client",
+                    AllowedGrantTypes = GrantTypes.Hybrid,
                     ClientSecrets = new List<Secret>
                     {
                         new Secret("lnh".Sha256())
                     },
-                    AllowedGrantTypes = GrantTypes.Hybrid,
+
                     RequireConsent = false,
-                    RedirectUris = new List<string>
-                    {
-                        host + "/oidc/signin-callback"
-                    },
-                    PostLogoutRedirectUris = new List<string>
-                    {
-                        host + "/"
-                    },
+
+                    RedirectUris = { home + OidcLoginCallback },
+                    PostLogoutRedirectUris = { home },
+
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email
                     },
-                    FrontChannelLogoutUri = host + "/oidc/signout-callback",
+
+                    FrontChannelLogoutUri = home + OidcFrontChannelLogoutCallback,
                     FrontChannelLogoutSessionRequired = true
                 };
             }
         }
 
-        private static Client JSClient
+        private static Client JsClient
         {
             get
             {
-                var host = "http://oidc-client-js.dev";
+                const string host = "http://oidc-client-js.dev";
                 return new Client
                 {
-                    Enabled = true,
-                    ClientName = "JS Client",
                     ClientId = "js-client",
+                    ClientName = "JS Client",
                     AllowedGrantTypes = GrantTypes.Implicit,
-                    RedirectUris = new List<string>
+
+                    RedirectUris =
                     {
                         $"{host}/login.html",
                         $"{host}/refresh-token.html"
                     },
-                    PostLogoutRedirectUris = new List<string>
-                    {
-                        $"{host}/index.html"
-                    },
-                    AllowedCorsOrigins = new List<string>
-                    {
-                        host
-                    },
+                    PostLogoutRedirectUris = { $"{host}/index.html" },
+
+                    AllowedCorsOrigins = { host },
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email
                     },
-                    AccessTokenLifetime = 600,
+                    AccessTokenLifetime = 3600,
                     AllowAccessTokensViaBrowser = true,
                     RequireConsent = false,
                 };
             }
         }
 
-        private static Client OAuth2AuthorizationCodeFlowClientForUWP
+        private static Client AuthorizationCodeClient
         {
             get
             {
-                var host = "http://uwp.oauth2-authorization-code-flow.dev";
+                const string home = "http://oidc-client-authorization-code.dev";
 
                 return new Client
                 {
-                    Enabled = true,
-                    ClientName = "OAuth2 Authorization Code Flow Client",
-                    ClientId = "oauth2-authorization-code-flow.uwp",
+                    ClientId = "oidc-authorization-code-client",
+                    ClientName = "Oidc Authorization Code Client",
                     AllowedGrantTypes = GrantTypes.Code,
                     ClientSecrets = new List<Secret>
                     {
                         new Secret("lnh".Sha256())
                     },
+
                     RequireConsent = true,
                     AllowRememberConsent = true,
-                    ClientUri = host,
-                    RedirectUris = new List<string>
-                    {
-                        $"{host}/oauth2-callback",
-                    },
+
+                    RedirectUris = { home + OidcLoginCallback },
+                    PostLogoutRedirectUris = { home },
+
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email
                     },
+
+                    FrontChannelLogoutUri = home + OidcFrontChannelLogoutCallback,
+                    FrontChannelLogoutSessionRequired = true
                 };
             }
         }

@@ -1,6 +1,5 @@
 ﻿using ClientSite.Oidc;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -15,14 +14,17 @@ namespace ClientSite
             services.AddOidcAuthentication();
         }
 
-       
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
             app.UseDeveloperExceptionPage();
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
+
             app.UseMvcWithDefaultRoute();
         }
     }
