@@ -7,13 +7,14 @@
     <!--var accounnt = { is_login: true };-->
     <script src="http://oidc-server.dev/account/js"></script>
     <script type="text/javascript">
+        var host = "http://oidc-client-js.dev";
 
         var oidcOptions = {
             authority: 'http://oidc-server.dev',
             client_id: 'js-client',
-            popup_redirect_uri: 'http://oidc-client-js.dev/login.html',
-            post_logout_redirect_uri: 'http://oidc-client-js.dev/index.html',
-            silent_redirect_uri: 'http://oidc-client-js.dev/refresh-token.html',
+            post_logout_redirect_uri: host + '/index.html',
+            redirect_uri: host + '/oidc/login-callback.html',
+            silent_redirect_uri: host + '/oidc/refresh-token.html',
             accessTokenExpiringNotificationTime: 4,
             automaticSilentRenew: false,
             response_type: 'id_token token',
@@ -114,9 +115,9 @@
         }
 
         function loginCore() {
-            manager.signinPopup()
+            manager.signinRedirect()
                 .catch(function (error) {
-                    console.error('error while logging in through the popup', error);
+                    console.error('error while logging', error);
                 });
         }
 
@@ -142,4 +143,5 @@
         }
     </script>
 </body>
+
 </html>

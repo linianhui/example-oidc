@@ -29,15 +29,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web.oidc.client.js", "web.oidc.client.js", "{0D2741E3-A8BC-4930-A4D8-444AF6988224}"
 	ProjectSection(SolutionItems) = preProject
 		src\web.oidc.client.js\index.html = src\web.oidc.client.js\index.html
-		src\web.oidc.client.js\login.html = src\web.oidc.client.js\login.html
-		src\web.oidc.client.js\readme.txt = src\web.oidc.client.js\readme.txt
-		src\web.oidc.client.js\refresh-token.html = src\web.oidc.client.js\refresh-token.html
+		src\web.oidc.client.js\README.md = src\web.oidc.client.js\README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{477BFAC1-F7DC-495D-B823-113B7692B265}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oidc", "oidc", "{477BFAC1-F7DC-495D-B823-113B7692B265}"
 	ProjectSection(SolutionItems) = preProject
-		src\web.oidc.client.js\js\jquery.min.js = src\web.oidc.client.js\js\jquery.min.js
-		src\web.oidc.client.js\js\oidc-client.min.js = src\web.oidc.client.js\js\oidc-client.min.js
+		src\web.oidc.client.js\oidc\login-callback.html = src\web.oidc.client.js\oidc\login-callback.html
+		src\web.oidc.client.js\oidc\refresh-token.html = src\web.oidc.client.js\oidc\refresh-token.html
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web.oidc.server.ids4", "src\web.oidc.server.ids4\web.oidc.server.ids4.csproj", "{ACEBC330-D4F6-4C4D-98CD-18FF4CA45260}"
@@ -50,7 +48,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web.oidc.client.hybrid", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uwp.oidc.client.authorization-code", "src\uwp.oidc.client.authorization-code\uwp.oidc.client.authorization-code.csproj", "{B101D8E1-7EE2-4884-9A72-6F4A6B4DBF2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "console.oidc.client.client-credentials", "src\console.oidc.client.client-credentials\console.oidc.client.client-credentials.csproj", "{E9C6A35A-D909-499C-BC9F-1F65A02B732B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "console.oidc.client.client-credentials", "src\console.oidc.client.client-credentials\console.oidc.client.client-credentials.csproj", "{E9C6A35A-D909-499C-BC9F-1F65A02B732B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

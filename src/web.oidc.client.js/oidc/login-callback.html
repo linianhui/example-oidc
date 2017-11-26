@@ -6,7 +6,9 @@
 </head>
 <body>
     <script type="text/javascript">
-        new Oidc.UserManager().signinPopupCallback();
+        new Oidc.UserManager().signinRedirectCallback().then(function(){
+            window.location = "/index.html";
+        });
     </script>
 </body>
 </html>

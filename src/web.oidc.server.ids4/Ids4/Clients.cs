@@ -96,8 +96,8 @@ namespace ServerSite.Ids4
 
                     RedirectUris =
                     {
-                        $"{host}/login.html",
-                        $"{host}/refresh-token.html"
+                        $"{host}/oidc/login-callback.html",
+                        $"{host}/oidc/refresh-token.html"
                     },
                     PostLogoutRedirectUris = { $"{host}/index.html" },
 
