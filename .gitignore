@@ -255,6 +255,7 @@ tools/
 
 # Asp.Net Core
 **/_publish/
+**/_log/
 **/launchSettings.json
 
 .vscode/
