@@ -7,14 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\**" />
-    <Compile Remove="_publish\**" />
-    <Content Remove="wwwroot\**" />
-    <Content Remove="_publish\**" />
-    <EmbeddedResource Remove="wwwroot\**" />
-    <EmbeddedResource Remove="_publish\**" />
-    <None Remove="wwwroot\**" />
-    <None Remove="_publish\**" />
     <Content Remove="Properties\launchSettings.json" />
   </ItemGroup>
 

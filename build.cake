@@ -14,12 +14,12 @@ var appPoolNoClr = "noclr.oidc-example";
 var webSiteConfigs = new []{
     new {
         host = "oidc-server.dev",
-        path = "./src/web.oidc.server.ids4/_publish",
+        path = "./src/web.oidc.server.ids4/bin/publish",
         appPoolName = appPoolNoClr
     },
     new {
         host = "oidc-client-hybrid.dev",
-        path = "./src/web.oidc.client.hybrid/_publish",
+        path = "./src/web.oidc.client.hybrid/bin/publish",
         appPoolName = appPoolNoClr
     },
     new {
@@ -39,7 +39,7 @@ var webSiteConfigs = new []{
     },
     new {
         host = "oauth2-client-asp-net-core.dev",
-        path = "./src/web.oauth2.client.aspnetcore/_publish",
+        path = "./src/web.oauth2.client.aspnetcore/bin/publish",
         appPoolName = appPoolNoClr
     },
     new {
@@ -81,24 +81,24 @@ Task("publish")
 { 
     StopPool(appPoolNoClr);
 
-    CleanDirectories("./src/**/_publish");
+    CleanDirectories("./src/**/bin/publish");
 
     DotNetCorePublish("./src/web.oidc.client.hybrid/web.oidc.client.hybrid.csproj", new DotNetCorePublishSettings
     {
         Framework = "netcoreapp2.0",
-        OutputDirectory = "./src/web.oidc.client.hybrid/_publish"
+        OutputDirectory = "./src/web.oidc.client.hybrid/bin/publish"
     });
 
     DotNetCorePublish("./src/web.oauth2.client.aspnetcore/web.oauth2.client.aspnetcore.csproj", new DotNetCorePublishSettings
     {
         Framework = "netcoreapp2.0",
-        OutputDirectory = "./src/web.oauth2.client.aspnetcore/_publish/"
+        OutputDirectory = "./src/web.oauth2.client.aspnetcore/bin/publish"
     });
 
     DotNetCorePublish("./src/web.oidc.server.ids4/web.oidc.server.ids4.csproj", new DotNetCorePublishSettings
     {
         Framework = "netcoreapp2.0",
-        OutputDirectory = "./src/web.oidc.server.ids4/_publish/"
+        OutputDirectory = "./src/web.oidc.server.ids4/bin/publish"
     });
 
     StartPool(appPoolNoClr);
