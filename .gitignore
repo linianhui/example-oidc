@@ -251,7 +251,9 @@ paket-files/
 *.sln.iml
 
 # Cake tools
-tools/
+tools/*
+!tools/nuget.exe
+!tools/packages.config
 
 # Asp.Net Core
 **/_publish/

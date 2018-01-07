@@ -1,6 +1,5 @@
 #addin "Cake.IIS"
 #addin "Cake.Hosts"
-#addin "Cake.FileHelpers"
 #addin "Cake.Powershell"
 
 /// params
