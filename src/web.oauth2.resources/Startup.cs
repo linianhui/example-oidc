@@ -1,90 +1,45 @@
-﻿using IdentityServer3.AccessTokenValidation;
-using Microsoft.Owin;
-using Owin;
-using System.IdentityModel.Tokens;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Cors;
-using Microsoft.Owin.Security.OAuth;
+﻿using System.IdentityModel.Tokens.Jwt;
+using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Web.OAuth2.Resources.Permissions;
 
-[assembly: OwinStartup(typeof(OAuth2.Resources.Startup))]
-
-namespace OAuth2.Resources
+namespace Web.OAuth2.Resources
 {
     public class Startup
     {
-        public void Configuration(IAppBuilder app)
+        public void ConfigureServices(IServiceCollection services)
         {
-            JwtSecurityTokenHandler.InboundClaimTypeMap.Clear();
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-            app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
-            {
-                Authority = "http://oidc-server.dev",
-                ValidationMode = ValidationMode.Both,
-                TokenProvider = new OAuthBearerAuthenticationProvider
-                {
-                    OnRequestToken = HandlerRequestToken,
-                    OnValidateIdentity = HandlerValidateIdentity,
-                    OnApplyChallenge = HandlerApplyChallenge,
-                },
-                RequiredScopes = new[] { "my-api" }
-            });
+            services.AddMvcCore()
+               .AddAuthorization()
+               .AddJsonFormatters();
 
-            app.UseWebApi(GetWebApiConfig());
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                    .AddIdentityServerAuthentication(options =>
+                    {
+                        options.Authority = "http://oidc-server.dev";
+                        options.RequireHttpsMetadata = false;
+                    });
+
+            services.AddPermissions();
+
+            services.AddCors();
         }
 
-        /// <summary>
-        /// 获取Token
-        /// </summary>
-        /// <param name="context"></param>
-        /// <returns></returns>
-        private static Task HandlerRequestToken(OAuthRequestTokenContext context)
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            //默认从context.Request.Headers["Authorization"]获取
-            var token = context.Token;
-            return Task.FromResult(0);
-        }
+            loggerFactory.AddConsole();
 
-        /// <summary>
-        /// 验证Token
-        /// </summary>
-        /// <param name="context"></param>
-        /// <returns></returns>
-        private static Task HandlerValidateIdentity(OAuthValidateIdentityContext context)
-        {
-            //处理一些额外的验证逻辑
-            //失败后调用context.Rejected();
-            return Task.FromResult(0);
-        }
+            app.UseDeveloperExceptionPage();
 
-        /// <summary>
-        /// Token验证失败
-        /// </summary>
-        /// <param name="context"></param>
-        /// <returns></returns>
-        private static Task HandlerApplyChallenge(OAuthChallengeContext context)
-        {
-            //默认返回401
-            return Task.FromResult(0);
-        }
+            app.UseAuthentication();
 
-        private static HttpConfiguration GetWebApiConfig()
-        {
-            var config = new HttpConfiguration();
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
-            config.Formatters.Remove(config.Formatters.XmlFormatter);
-
-            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
-
-            config.MapHttpAttributeRoutes();
-
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "{controller}",
-                defaults: new { id = RouteParameter.Optional }
-            );
-
-            return config;
+            app.UseMvc();
         }
     }
 }

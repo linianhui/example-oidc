@@ -46,7 +46,14 @@ namespace ClientCredentials
             var client = new HttpClient();
             client.SetBearerToken(tokenResponse.AccessToken);
 
-            var response = await client.GetAsync("http://oauth2-protected-resources.dev/values");
+            var response = await client.GetAsync("http://oauth2-protected-resources.dev");
+            await WriteLineResponse(response);
+            var response2 = await client.GetAsync("http://oauth2-protected-resources.dev/books");
+            await WriteLineResponse(response2);
+        }
+
+        private static async Task WriteLineResponse(HttpResponseMessage response)
+        {
             if (!response.IsSuccessStatusCode)
             {
                 Console.WriteLine(response.StatusCode);

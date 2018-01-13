@@ -32,7 +32,8 @@
     <nav>
         <a href="javascript:login();">Login</a>
         <a href="javascript:logout();">Logout</a>
-        <a href="javascript:useAccessTokenCallAPI();">Use Access Token Call API</a>
+        <a href="javascript:useAccessTokenCallAPI1();">Use Access Token Call API 1</a>
+        <a href="javascript:useAccessTokenCallAPI2();">Use Access Token Call API 2</a>
     </nav>
 
     <pre id="result" style="overflow-x: auto;"></pre>
@@ -94,18 +95,38 @@
             });
         }
 
-        function useAccessTokenCallAPI() {
+        function useAccessTokenCallAPI2() {
             getUser(function (user) {
                 if (user) {
                     var accessToken = user.access_token;
                     $.ajax({
-                        url: "http://oauth2-protected-resources.dev/values",
+                        url: "http://oauth2-protected-resources.dev/books",
                         headers: {
                             Authorization: "Bearer " + accessToken
                         },
                         dataType: "json",
                         success: display,
                         error: display,
+                    });
+                } else {
+                    alert("请先登录！");
+                }
+            });
+
+        }
+
+        function useAccessTokenCallAPI1() {
+            getUser(function (user) {
+                if (user) {
+                    var accessToken = user.access_token;
+                    $.ajax({
+                        url: "http://oauth2-protected-resources.dev",
+                        headers: {
+                            Authorization: "Bearer " + accessToken
+                        },
+                        dataType: "json",
+                        success: display,
+                        error: display
                     });
                 } else {
                     alert("请先登录！");
