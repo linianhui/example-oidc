@@ -14,8 +14,7 @@ namespace Web.OAuth2.Resources
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
             services.AddMvcCore()
-               .AddAuthorization()
-               .AddJsonFormatters();
+                    .AddJsonFormatters();
 
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                     .AddIdentityServerAuthentication(options =>
