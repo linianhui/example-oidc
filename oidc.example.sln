@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "middleware", "middleware", "{B5BC7B37-F3D7-469A-B740-96001AFE9B37}"
 EndProject
@@ -50,9 +50,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "console.oidc.client.client-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "filters", "filters", "{AC8AAA8F-4684-4158-B1B3-4FBC1870CFA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web.oauth2.resources.aspnetcore", "src\web.oauth2.resources.aspnetcore\web.oauth2.resources.aspnetcore.csproj", "{7E592C54-3E5C-4666-84DC-3C4115CA71A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web.oauth2.resources.aspnetcore", "src\web.oauth2.resources.aspnetcore\web.oauth2.resources.aspnetcore.csproj", "{7E592C54-3E5C-4666-84DC-3C4115CA71A6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aspnetcore.filters.permissions", "src\aspnetcore.filters.permissions\aspnetcore.filters.permissions.csproj", "{F5AD4B2E-000A-4F9B-9223-2AC1B7E9DF4C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oauth2.resources", "oauth2.resources", "{ABBE4B77-AA7C-4B50-B7AB-BC854C44D0C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web.oauth2.resources.owin", "src\web.oauth2.resources.owin\web.oauth2.resources.owin.csproj", "{DED7DCFE-9D7D-4E46-90A8-8D2A70729A41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -158,6 +162,14 @@ Global
 		{F5AD4B2E-000A-4F9B-9223-2AC1B7E9DF4C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F5AD4B2E-000A-4F9B-9223-2AC1B7E9DF4C}.Release|x86.ActiveCfg = Release|Any CPU
 		{F5AD4B2E-000A-4F9B-9223-2AC1B7E9DF4C}.Release|x86.Build.0 = Release|Any CPU
+		{DED7DCFE-9D7D-4E46-90A8-8D2A70729A41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DED7DCFE-9D7D-4E46-90A8-8D2A70729A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DED7DCFE-9D7D-4E46-90A8-8D2A70729A41}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DED7DCFE-9D7D-4E46-90A8-8D2A70729A41}.Debug|x86.Build.0 = Debug|Any CPU
+		{DED7DCFE-9D7D-4E46-90A8-8D2A70729A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DED7DCFE-9D7D-4E46-90A8-8D2A70729A41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DED7DCFE-9D7D-4E46-90A8-8D2A70729A41}.Release|x86.ActiveCfg = Release|Any CPU
+		{DED7DCFE-9D7D-4E46-90A8-8D2A70729A41}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -175,8 +187,9 @@ Global
 		{868A5075-A471-4EE0-8573-20DA53A62D31} = {CB88D70E-F90F-407A-8680-C8327076B3F9}
 		{B101D8E1-7EE2-4884-9A72-6F4A6B4DBF2A} = {CB88D70E-F90F-407A-8680-C8327076B3F9}
 		{E9C6A35A-D909-499C-BC9F-1F65A02B732B} = {CB88D70E-F90F-407A-8680-C8327076B3F9}
-		{7E592C54-3E5C-4666-84DC-3C4115CA71A6} = {04E113C1-CFAD-463F-9EA1-53ED81C301AD}
+		{7E592C54-3E5C-4666-84DC-3C4115CA71A6} = {ABBE4B77-AA7C-4B50-B7AB-BC854C44D0C9}
 		{F5AD4B2E-000A-4F9B-9223-2AC1B7E9DF4C} = {AC8AAA8F-4684-4158-B1B3-4FBC1870CFA8}
+		{DED7DCFE-9D7D-4E46-90A8-8D2A70729A41} = {ABBE4B77-AA7C-4B50-B7AB-BC854C44D0C9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A2B65627-3B20-45AA-A09E-871C3D44B264}

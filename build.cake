@@ -38,6 +38,11 @@ var webSiteConfigs = new []{
         appPoolName = appPoolNoClr
     },
     new {
+        host = "oauth2-resources-owin.test",
+        path = "./src/web.oauth2.resources.owin",
+        appPoolName = appPoolClr4
+    },
+    new {
         host = "oauth2-client-aspnetcore.test",
         path = "./src/web.oauth2.client.aspnetcore/bin/publish",
         appPoolName = appPoolNoClr
