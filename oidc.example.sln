@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "middleware", "middleware", "{B5BC7B37-F3D7-469A-B740-96001AFE9B37}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oauth2", "oauth2", "{04E113C1-CFAD-463F-9EA1-53ED81C301AD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oauth2.clients", "oauth2.clients", "{04E113C1-CFAD-463F-9EA1-53ED81C301AD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oidc.clients", "oidc.clients", "{CB88D70E-F90F-407A-8680-C8327076B3F9}"
 EndProject
