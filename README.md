@@ -1,6 +1,5 @@
 # OIDC Servers
 1. `src/web.oidc.server.ids4` : ids4 (https://github.com/IdentityServer/IdentityServer4) example (with qqconnect external login).
-> ids3 (https://github.com/IdentityServer/IdentityServer3) example (with qqconnect external login)：https://github.com/linianhui/oidc.example/tree/ids3 
 
 # OIDC Clients
 1. `src/web.oidc.client.hybrid` : web site, hybrid flow.
@@ -36,3 +35,6 @@ public static class QQConnectConfig
 Authentication and Authorization: http://www.cnblogs.com/linianhui/category/929878.html
 
 OIDC in Action: http://www.cnblogs.com/linianhui/category/1121078.html
+
+# ids3
+https://github.com/linianhui/oidc.example/tree/ids3 
