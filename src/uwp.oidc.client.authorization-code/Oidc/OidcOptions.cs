@@ -4,15 +4,15 @@ using System.Collections.Generic;
 namespace ClientUwp.Oidc
 {
     /// <summary>
-    /// <see cref="http://oidc-server.dev/.well-known/openid-configuration"/>
+    /// <see cref="http://oidc-server.test/.well-known/openid-configuration"/>
     /// </summary>
     public class OidcOptions
     {
-        public string AuthorizeEndpoint => "http://oidc-server.dev/connect/authorize";
-        public string TokenEndpoint => "http://oidc-server.dev/connect/token";
+        public string AuthorizeEndpoint => "http://oidc-server.test/connect/authorize";
+        public string TokenEndpoint => "http://oidc-server.test/connect/token";
         public string ClientId => "oidc-authorization-code-client";
         public string ClientSecret => "lnh";
-        public string RedirectUri => "http://oidc-client-authorization-code.dev/oidc/login-callback";
+        public string RedirectUri => "http://oidc-client-authorization-code.test/oidc/login-callback";
 
         public string BuildAuthorizeUrl(string idp = null)
         {

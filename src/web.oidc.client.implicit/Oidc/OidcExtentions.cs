@@ -31,7 +31,7 @@ namespace ClientSite.Oidc
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
                 AuthenticationType = Constants.AuthenticationTypeOfOidc,
-                Authority = "http://oidc-server.dev",
+                Authority = "http://oidc-server.test",
                 ClientId = "implicit-client",
                 ResponseType = "id_token",
                 CallbackPath = new PathString("/oidc/login-callback"),

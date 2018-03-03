@@ -29,7 +29,7 @@ namespace ServerSite.Ids4
 
         private static void SetIdentityServerOptions(IdentityServerOptions options)
         {
-            options.IssuerUri = "http://oidc-server.dev";
+            options.IssuerUri = "http://oidc-server.test";
             options.UserInteraction = new UserInteractionOptions
             {
                 LoginUrl = "/account/login",

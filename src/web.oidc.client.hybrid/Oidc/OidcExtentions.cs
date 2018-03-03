@@ -26,7 +26,7 @@ namespace ClientSite.Oidc
             .AddOpenIdConnect(Constants.AuthenticationSchemeOfOidc, _ =>
             {
                 _.SignInScheme = Constants.AuthenticationSchemeOfCookies;
-                _.Authority = "http://oidc-server.dev";
+                _.Authority = "http://oidc-server.test";
                 _.RequireHttpsMetadata = false;
                 _.ClientId = "hybrid-client";
                 _.ClientSecret = "lnh";

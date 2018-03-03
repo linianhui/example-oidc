@@ -22,7 +22,7 @@ namespace ServerSite.Ids4
         {
             get
             {
-                const string home = "http://oidc-client-implicit.dev";
+                const string home = "http://oidc-client-implicit.test";
 
 
                 return new Client
@@ -53,7 +53,7 @@ namespace ServerSite.Ids4
         {
             get
             {
-                const string home = "http://oidc-client-hybrid.dev";
+                const string home = "http://oidc-client-hybrid.test";
 
                 return new Client
                 {
@@ -87,7 +87,7 @@ namespace ServerSite.Ids4
         {
             get
             {
-                const string host = "http://oidc-client-js.dev";
+                const string host = "http://oidc-client-js.test";
                 return new Client
                 {
                     ClientId = "js-client",
@@ -120,7 +120,7 @@ namespace ServerSite.Ids4
         {
             get
             {
-                const string home = "http://oidc-client-authorization-code.dev";
+                const string home = "http://oidc-client-authorization-code.test";
 
                 return new Client
                 {

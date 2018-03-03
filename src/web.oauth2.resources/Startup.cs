@@ -19,7 +19,7 @@ namespace Web.OAuth2.Resources
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                     .AddIdentityServerAuthentication(options =>
                     {
-                        options.Authority = "http://oidc-server.dev";
+                        options.Authority = "http://oidc-server.test";
                         options.RequireHttpsMetadata = false;
                     });
 

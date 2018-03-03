@@ -5,12 +5,12 @@
     <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/oidc-client/1.4.1/oidc-client.min.js"></script>
     <!--var accounnt = { is_login: true };-->
-    <script src="http://oidc-server.dev/account/js"></script>
+    <script src="http://oidc-server.test/account/js"></script>
     <script type="text/javascript">
-        var host = "http://oidc-client-js.dev";
+        var host = "http://oidc-client-js.test";
 
         var oidcOptions = {
-            authority: 'http://oidc-server.dev',
+            authority: 'http://oidc-server.test',
             client_id: 'js-client',
             post_logout_redirect_uri: host + '/index.html',
             redirect_uri: host + '/oidc/login-callback.html',
@@ -100,7 +100,7 @@
                 if (user) {
                     var accessToken = user.access_token;
                     $.ajax({
-                        url: "http://oauth2-protected-resources.dev/books",
+                        url: "http://oauth2-protected-resources.test/books",
                         headers: {
                             Authorization: "Bearer " + accessToken
                         },
@@ -120,7 +120,7 @@
                 if (user) {
                     var accessToken = user.access_token;
                     $.ajax({
-                        url: "http://oauth2-protected-resources.dev",
+                        url: "http://oauth2-protected-resources.test",
                         headers: {
                             Authorization: "Bearer " + accessToken
                         },

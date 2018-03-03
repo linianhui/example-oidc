@@ -16,7 +16,7 @@ namespace ClientCredentials
 
         private static async Task MainAsync()
         {
-            var discoveryClient = new DiscoveryClient("http://oidc-server.dev")
+            var discoveryClient = new DiscoveryClient("http://oidc-server.test")
             {
                 Policy =
                 {
@@ -46,9 +46,9 @@ namespace ClientCredentials
             var client = new HttpClient();
             client.SetBearerToken(tokenResponse.AccessToken);
 
-            var response = await client.GetAsync("http://oauth2-protected-resources.dev");
+            var response = await client.GetAsync("http://oauth2-protected-resources.test");
             await WriteLineResponse(response);
-            var response2 = await client.GetAsync("http://oauth2-protected-resources.dev/books");
+            var response2 = await client.GetAsync("http://oauth2-protected-resources.test/books");
             await WriteLineResponse(response2);
         }
 

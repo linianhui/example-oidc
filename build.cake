@@ -9,40 +9,41 @@ var target = Argument("target", "default");
 var appPoolClr4 = "clr4.oidc-example";
 var appPoolNoClr = "noclr.oidc-example";
 
+/// 修改.dev域名为.test域名（原因：新版chrome强制.dev采用HTTPS https://chromium-review.googlesource.com/c/chromium/src/+/669923）
 /// iis web sites config
 var webSiteConfigs = new []{
     new {
-        host = "oidc-server.dev",
+        host = "oidc-server.test",
         path = "./src/web.oidc.server.ids4/bin/publish",
         appPoolName = appPoolNoClr
     },
     new {
-        host = "oidc-client-hybrid.dev",
+        host = "oidc-client-hybrid.test",
         path = "./src/web.oidc.client.hybrid/bin/publish",
         appPoolName = appPoolNoClr
     },
     new {
-        host = "oidc-client-implicit.dev",
+        host = "oidc-client-implicit.test",
         path = "./src/web.oidc.client.implicit",
         appPoolName = appPoolClr4
     },
     new {
-        host = "oidc-client-js.dev",
+        host = "oidc-client-js.test",
         path = "./src/web.oidc.client.js",
         appPoolName = appPoolNoClr
     },
     new {
-        host = "oauth2-protected-resources.dev",
+        host = "oauth2-protected-resources.test",
         path = "./src/web.oauth2.resources/bin/publish",
         appPoolName = appPoolNoClr
     },
     new {
-        host = "oauth2-client-asp-net-core.dev",
+        host = "oauth2-client-asp-net-core.test",
         path = "./src/web.oauth2.client.aspnetcore/bin/publish",
         appPoolName = appPoolNoClr
     },
     new {
-        host = "oauth2-client-asp-net-owin.dev",
+        host = "oauth2-client-asp-net-owin.test",
         path = "./src/web.oauth2.client.owin",
         appPoolName = appPoolClr4
     },
