@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Helpers;
-using Microsoft.IdentityModel.Protocols;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Notifications;
@@ -18,7 +17,7 @@ namespace ClientSite.Oidc
         public static void UseOidcAuthentication(this IAppBuilder app)
         {
             AntiForgeryConfig.UniqueClaimTypeIdentifier = Constants.ClaimTypes.Subject;
-            JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
@@ -54,7 +53,7 @@ namespace ClientSite.Oidc
         private static Task HandleRedirectToIdentityProviderNotification(RedirectToIdentityProviderNotification<OpenIdConnectMessage, OpenIdConnectAuthenticationOptions> context)
         {
             context.ProtocolMessage.RedirectUri = context.Request.Uri.GetLeftPart(UriPartial.Authority);
-            if (context.ProtocolMessage.RequestType == OpenIdConnectRequestType.LogoutRequest)
+            if (context.ProtocolMessage.RequestType == OpenIdConnectRequestType.Logout)
             {
                 var idToken = context.OwinContext.Authentication.User.FindFirst(Constants.ClaimTypes.IdToken);
                 if (idToken != null)
@@ -62,7 +61,7 @@ namespace ClientSite.Oidc
                     context.ProtocolMessage.IdTokenHint = idToken.Value;
                 }
             }
-            if (context.ProtocolMessage.RequestType == OpenIdConnectRequestType.AuthenticationRequest)
+            if (context.ProtocolMessage.RequestType == OpenIdConnectRequestType.Authentication)
             {
                 context.ProtocolMessage.RedirectUri += context.Options.CallbackPath.ToString();
                 var idp = context.OwinContext.Get<string>("idp");
