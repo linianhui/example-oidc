@@ -6,8 +6,8 @@
 var target = Argument("target", "default");
 
 /// iis app pool config
-var appPoolClr4 = "clr4.oidc-example";
-var appPoolNoClr = "noclr.oidc-example";
+var appPoolClr4 = "oidc-example.clr4";
+var appPoolNoClr = "oidc-example.noclr";
 
 /// 修改.dev域名为.test域名（原因：新版chrome强制.dev采用HTTPS https://chromium-review.googlesource.com/c/chromium/src/+/669923）
 /// iis web sites config
