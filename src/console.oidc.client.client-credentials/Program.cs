@@ -46,9 +46,9 @@ namespace ClientCredentials
             var client = new HttpClient();
             client.SetBearerToken(tokenResponse.AccessToken);
 
-            var response = await client.GetAsync("http://oauth2-protected-resources.test");
+            var response = await client.GetAsync("http://oauth2-resources-aspnetcore.test");
             await WriteLineResponse(response);
-            var response2 = await client.GetAsync("http://oauth2-protected-resources.test/books");
+            var response2 = await client.GetAsync("http://oauth2-resources-aspnetcore.test/books");
             await WriteLineResponse(response2);
         }
 

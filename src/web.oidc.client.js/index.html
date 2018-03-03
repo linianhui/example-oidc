@@ -100,7 +100,7 @@
                 if (user) {
                     var accessToken = user.access_token;
                     $.ajax({
-                        url: "http://oauth2-protected-resources.test/books",
+                        url: "http://oauth2-resources-aspnetcore.test/books",
                         headers: {
                             Authorization: "Bearer " + accessToken
                         },
@@ -120,7 +120,7 @@
                 if (user) {
                     var accessToken = user.access_token;
                     $.ajax({
-                        url: "http://oauth2-protected-resources.test",
+                        url: "http://oauth2-resources-aspnetcore.test",
                         headers: {
                             Authorization: "Bearer " + accessToken
                         },

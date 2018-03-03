@@ -33,17 +33,17 @@ var webSiteConfigs = new []{
         appPoolName = appPoolNoClr
     },
     new {
-        host = "oauth2-protected-resources.test",
-        path = "./src/web.oauth2.resources/bin/publish",
+        host = "oauth2-resources-aspnetcore.test",
+        path = "./src/web.oauth2.resources.aspnetcore/bin/publish",
         appPoolName = appPoolNoClr
     },
     new {
-        host = "oauth2-client-asp-net-core.test",
+        host = "oauth2-client-aspnetcore.test",
         path = "./src/web.oauth2.client.aspnetcore/bin/publish",
         appPoolName = appPoolNoClr
     },
     new {
-        host = "oauth2-client-asp-net-owin.test",
+        host = "oauth2-client-owin.test",
         path = "./src/web.oauth2.client.owin",
         appPoolName = appPoolClr4
     },
@@ -83,10 +83,10 @@ Task("publish")
 
     CleanDirectories("./src/**/bin/publish");
 
-    DotNetCorePublish("./src/web.oauth2.resources/web.oauth2.resources.csproj", new DotNetCorePublishSettings
+    DotNetCorePublish("./src/web.oauth2.resources.aspnetcore/web.oauth2.resources.aspnetcore.csproj", new DotNetCorePublishSettings
     {
         Framework = "netcoreapp2.0",
-        OutputDirectory = "./src/web.oauth2.resources/bin/publish"
+        OutputDirectory = "./src/web.oauth2.resources.aspnetcore/bin/publish"
     });
 
      DotNetCorePublish("./src/web.oidc.client.hybrid/web.oidc.client.hybrid.csproj", new DotNetCorePublishSettings

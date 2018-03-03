@@ -2,13 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Web.OAuth2.Resources</AssemblyName>
+    <AssemblyName>Web.OAuth2.Resources.AspNetCore</AssemblyName>
     <RootNamespace>Web.OAuth2.Resources</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.4.0" />

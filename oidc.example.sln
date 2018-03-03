@@ -50,7 +50,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "console.oidc.client.client-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "filters", "filters", "{AC8AAA8F-4684-4158-B1B3-4FBC1870CFA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web.oauth2.resources", "src\web.oauth2.resources\web.oauth2.resources.csproj", "{7E592C54-3E5C-4666-84DC-3C4115CA71A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web.oauth2.resources.aspnetcore", "src\web.oauth2.resources.aspnetcore\web.oauth2.resources.aspnetcore.csproj", "{7E592C54-3E5C-4666-84DC-3C4115CA71A6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aspnetcore.filters.permissions", "src\aspnetcore.filters.permissions\aspnetcore.filters.permissions.csproj", "{F5AD4B2E-000A-4F9B-9223-2AC1B7E9DF4C}"
 EndProject
