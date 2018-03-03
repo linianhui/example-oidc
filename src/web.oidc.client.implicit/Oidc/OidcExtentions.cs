@@ -34,6 +34,7 @@ namespace ClientSite.Oidc
                 Authority = "http://oidc-server.test",
                 ClientId = "implicit-client",
                 ResponseType = "id_token",
+                RequireHttpsMetadata = false,
                 CallbackPath = new PathString("/oidc/login-callback"),
                 SignInAsAuthenticationType = Constants.AuthenticationTypeOfCookies,
                 Notifications = new OpenIdConnectAuthenticationNotifications
