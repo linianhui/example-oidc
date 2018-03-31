@@ -37,6 +37,8 @@ public static class QQConnectConfig
 ```powershell
 build.ps1 -help
 
+build.ps1 -target {Task}
+
 Task                          Description
 ================================================================================
 clean                         清理项目缓存
