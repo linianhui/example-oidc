@@ -54,23 +54,24 @@ var webSiteConfigs = new []{
     },
 };
 
-/// clean task
 Task("clean")
+    .Description("清理项目缓存")
     .Does(() =>
 {
 	CleanDirectories("./src/**/bin");
 });
 
 
-/// restor nuget packages task
 Task("restore")
+    .Description("还原项目依赖")
     .Does(() =>
 {
     NuGetRestore("./oidc.example.sln");
 });
 
-/// build task
+
 Task("build")
+    .Description("编译项目")
     .IsDependentOn("clean")
     .IsDependentOn("restore")
     .Does(() =>
@@ -80,8 +81,9 @@ Task("build")
     });
 });
 
-/// publish asp.net core project task
+
 Task("publish")
+    .Description("发布项目")
     .Does(() =>
 { 
     StopPool(appPoolNoClr);
@@ -115,8 +117,9 @@ Task("publish")
     StartPool(appPoolNoClr);
 });
 
-/// deploy task
+
 Task("deploy")
+    .Description("部署到本机IIS")
     .Does(() =>
 {
     CreatePool(new ApplicationPoolSettings()
@@ -160,8 +163,9 @@ Task("deploy")
     }
 });
 
-/// open browser task
+
 Task("open-browser")
+    .Description("用浏览器打开部署的站点")
     .Does(() =>
 {
     StartPowershellScript("Start-Process", args =>
@@ -178,11 +182,11 @@ Task("open-browser")
 });
 
 
-/// default task
 Task("default")
-.IsDependentOn("build")
-.IsDependentOn("publish")
-.IsDependentOn("deploy")
-.IsDependentOn("open-browser");
+    .Description("默认执行open-browser")
+    .IsDependentOn("build")
+    .IsDependentOn("publish")
+    .IsDependentOn("deploy")
+    .IsDependentOn("open-browser");
 
 RunTarget(target);

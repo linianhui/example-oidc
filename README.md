@@ -31,6 +31,22 @@ public static class QQConnectConfig
     public static readonly string ClientSecret = "You App Secret";
 }
 ```
+
+# build.ps1
+
+```powershell
+build.ps1 -help
+
+Task                          Description
+================================================================================
+clean                         清理项目缓存
+restore                       还原项目依赖
+build                         编译项目
+publish                       发布项目
+deploy                        部署到本机IIS
+open-browser                  用浏览器打开部署的站点
+default                       默认执行open-browser
+```
 # Blog
 Authentication and Authorization: http://www.cnblogs.com/linianhui/category/929878.html
 
