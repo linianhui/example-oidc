@@ -1,6 +1,6 @@
-#addin "Cake.IIS"
-#addin "Cake.Hosts"
-#addin "Cake.Powershell"
+#addin nuget:?package=cake.iis&version=0.3.0
+#addin nuget:?package=cake.hosts&version=1.1.0
+#addin nuget:?package=cake.powershell&version=0.4.5
 
 /// params
 var target = Argument("target", "default");
