@@ -23,7 +23,7 @@ services:
     build: ./www/oidc-client-js.test/
     restart: on-failure
     ports:
-      - "8003:8003"
+      - "8003:80"
     networks:
       - oidc-example
 
