@@ -1,0 +1,49 @@
+version: "3.6"
+
+
+services:
+
+  oidc-server:
+    build: ./www/oidc-server.test/
+    restart: on-failure
+    ports:
+      - "8001:8001"
+    networks:
+      - oidc-example
+
+  oidc-client-hybrid:
+    build: ./www/oidc-client-hybrid.test/
+    restart: on-failure
+    ports:
+      - "8002:8002"
+    networks:
+      - oidc-example
+
+  oidc-client-js:
+    build: ./www/oidc-client-js.test/
+    restart: on-failure
+    ports:
+      - "8003:8003"
+    networks:
+      - oidc-example
+
+  oauth2-resources-aspnetcore:
+    build: ./www/oauth2-resources-aspnetcore.test/
+    restart: on-failure
+    ports:
+      - "9001:9001"
+    networks:
+      - oidc-example
+
+  oauth2-client-aspnetcore:
+    build: ./www/oauth2-client-aspnetcore.test
+    restart: on-failure
+    ports:
+      - "9002:9002"
+    networks:
+      - oidc-example
+
+
+networks:
+  oidc-example:
+    driver: bridge
