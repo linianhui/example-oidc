@@ -1,0 +1,4 @@
+{
+    "host": "oidc-client-hybrid.test",
+    "framework": "netcoreapp2.0"
+}

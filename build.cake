@@ -1,64 +1,19 @@
 #addin nuget:?package=cake.iis&version=0.3.0
 #addin nuget:?package=cake.hosts&version=1.1.0
 #addin nuget:?package=cake.powershell&version=0.4.5
+#load web.project.cake
 
 /// params
 var target = Argument("target", "default");
 
-/// iis app pool config
-var appPoolClr4 = "oidc-example.clr4";
-var appPoolNoClr = "oidc-example.noclr";
-
-/// 修改.dev域名为.test域名（原因：新版chrome强制.dev采用HTTPS https://chromium-review.googlesource.com/c/chromium/src/+/669923）
-/// iis web sites config
-var webSiteConfigs = new []{
-    new {
-        host = "oidc-server.test",
-        path = "./src/web.oidc.server.ids4/bin/publish",
-        appPoolName = appPoolNoClr
-    },
-    new {
-        host = "oidc-client-hybrid.test",
-        path = "./src/web.oidc.client.hybrid/bin/publish",
-        appPoolName = appPoolNoClr
-    },
-    new {
-        host = "oidc-client-implicit.test",
-        path = "./src/web.oidc.client.implicit",
-        appPoolName = appPoolClr4
-    },
-    new {
-        host = "oidc-client-js.test",
-        path = "./src/web.oidc.client.js",
-        appPoolName = appPoolNoClr
-    },
-    new {
-        host = "oauth2-resources-aspnetcore.test",
-        path = "./src/web.oauth2.resources.aspnetcore/bin/publish",
-        appPoolName = appPoolNoClr
-    },
-    new {
-        host = "oauth2-resources-owin.test",
-        path = "./src/web.oauth2.resources.owin",
-        appPoolName = appPoolClr4
-    },
-    new {
-        host = "oauth2-client-aspnetcore.test",
-        path = "./src/web.oauth2.client.aspnetcore/bin/publish",
-        appPoolName = appPoolNoClr
-    },
-    new {
-        host = "oauth2-client-owin.test",
-        path = "./src/web.oauth2.client.owin",
-        appPoolName = appPoolClr4
-    },
-};
+IList<WebProject> webProjects = GetWebProjects("./src");
 
 Task("clean")
     .Description("清理项目缓存")
     .Does(() =>
 {
-	CleanDirectories("./src/**/bin");
+    CleanDirectories("./www");
+    CleanDirectories("./src/**/bin");
 });
 
 
@@ -77,7 +32,7 @@ Task("build")
     .Does(() =>
 {
     MSBuild("./oidc.example.sln", new MSBuildSettings {
-		Verbosity = Verbosity.Minimal
+        Verbosity = Verbosity.Minimal
     });
 });
 
@@ -85,36 +40,20 @@ Task("build")
 Task("publish")
     .Description("发布项目")
     .Does(() =>
-{ 
-    StopPool(appPoolNoClr);
+{
+    foreach(var webProject in webProjects){
 
-    CleanDirectories("./src/**/bin/publish");
+        if(webProject.IsNetCore){
+            DotNetCorePublish(webProject.ProjectFile, new DotNetCorePublishSettings{
+                Framework = webProject.Framework,
+                OutputDirectory = webProject.WWWPath
+            });
+        }
 
-    DotNetCorePublish("./src/web.oauth2.resources.aspnetcore/web.oauth2.resources.aspnetcore.csproj", new DotNetCorePublishSettings
-    {
-        Framework = "netcoreapp2.0",
-        OutputDirectory = "./src/web.oauth2.resources.aspnetcore/bin/publish"
-    });
-
-     DotNetCorePublish("./src/web.oidc.client.hybrid/web.oidc.client.hybrid.csproj", new DotNetCorePublishSettings
-    {
-        Framework = "netcoreapp2.0",
-        OutputDirectory = "./src/web.oidc.client.hybrid/bin/publish"
-    });
-
-    DotNetCorePublish("./src/web.oauth2.client.aspnetcore/web.oauth2.client.aspnetcore.csproj", new DotNetCorePublishSettings
-    {
-        Framework = "netcoreapp2.0",
-        OutputDirectory = "./src/web.oauth2.client.aspnetcore/bin/publish"
-    });
-
-    DotNetCorePublish("./src/web.oidc.server.ids4/web.oidc.server.ids4.csproj", new DotNetCorePublishSettings
-    {
-        Framework = "netcoreapp2.0",
-        OutputDirectory = "./src/web.oidc.server.ids4/bin/publish"
-    });
-
-    StartPool(appPoolNoClr);
+        if(webProject.IsStatic){
+            CopyDirectory(webProject.ProjectPath, webProject.WWWPath);
+        }
+    }
 });
 
 
@@ -122,44 +61,25 @@ Task("deploy")
     .Description("部署到本机IIS")
     .Does(() =>
 {
-    CreatePool(new ApplicationPoolSettings()
-    {
-        Name = appPoolClr4,
-        IdentityType = IdentityType.LocalSystem,
-        MaxProcesses = 1,
-        ManagedRuntimeVersion = "v4.0"
-    });
 
-     CreatePool(new ApplicationPoolSettings()
-    {
-        Name = appPoolNoClr,
-        IdentityType = IdentityType.LocalSystem,
-        MaxProcesses = 1,
-        ManagedRuntimeVersion = null
-    });
+    foreach(var webProject in webProjects){
 
-    foreach(var webSiteConfig in webSiteConfigs){
+        DeleteSite(webProject.Host);
 
-        DeleteSite(webSiteConfig.host);
-
-        CreateWebsite(new WebsiteSettings()
-        {
-            Name = webSiteConfig.host,
+        CreateWebsite(new WebsiteSettings {
+            Name = webProject.Host,
             Binding = IISBindings.Http
-                                 .SetHostName(webSiteConfig.host)
+                                 .SetHostName(webProject.Host)
                                  .SetIpAddress("*")
                                  .SetPort(80),
             ServerAutoStart = true,
-            PhysicalDirectory = webSiteConfig.path,
-            ApplicationPool = new ApplicationPoolSettings()
-            {
-                Name = webSiteConfig.appPoolName
-            }
+            PhysicalDirectory = webProject.WWWPath,
+            ApplicationPool = webProject.ApplicationPool
         });
         
-        AddHostsRecord("127.0.0.1", webSiteConfig.host);
+        AddHostsRecord("127.0.0.1", webProject.Host);
 
-        StartSite(webSiteConfig.host);
+        StartSite(webProject.Host);
     }
 });
 
@@ -171,8 +91,8 @@ Task("open-browser")
     StartPowershellScript("Start-Process", args =>
     {
         var urls = "";
-        foreach(var webSiteConfig in webSiteConfigs){
-            urls += ",'http://" + webSiteConfig.host + "/'";
+        foreach(var webProject in webProjects){
+            urls += ",'http://" + webProject.Host + "/'";
         }
 
         args.Append("chrome.exe")

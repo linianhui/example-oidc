@@ -1,0 +1,4 @@
+{
+    "host": "oauth2-client-aspnetcore.test",
+    "framework": "netcoreapp2.0"
+}

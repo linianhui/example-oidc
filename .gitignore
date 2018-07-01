@@ -261,3 +261,4 @@ tools/*
 **/launchSettings.json
 
 .vscode/
+www/*
