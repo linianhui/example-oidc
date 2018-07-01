@@ -1,4 +1,4 @@
-FROM traefik:apline
+FROM traefik:alpine
 
 COPY . /etc/traefik
 
