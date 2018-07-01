@@ -7,7 +7,7 @@ services:
     build: ./www/oidc-server.test/
     restart: on-failure
     ports:
-      - "8001:8001"
+      - "8001:80"
     networks:
       - oidc-example
 
@@ -15,7 +15,7 @@ services:
     build: ./www/oidc-client-hybrid.test/
     restart: on-failure
     ports:
-      - "8002:8002"
+      - "8002:80"
     networks:
       - oidc-example
 
@@ -31,7 +31,7 @@ services:
     build: ./www/oauth2-resources-aspnetcore.test/
     restart: on-failure
     ports:
-      - "9001:9001"
+      - "9001:80"
     networks:
       - oidc-example
 
@@ -39,7 +39,7 @@ services:
     build: ./www/oauth2-client-aspnetcore.test
     restart: on-failure
     ports:
-      - "9002:9002"
+      - "9002:80"
     networks:
       - oidc-example
 

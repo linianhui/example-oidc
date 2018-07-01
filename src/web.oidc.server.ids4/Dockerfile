@@ -4,6 +4,6 @@ COPY . /app
 
 WORKDIR /app
 
-EXPOSE 8001
+EXPOSE 80
 
-ENTRYPOINT ["dotnet", "Web.Oidc.Server.Ids4.dll", "--server.urls", "http://*:8001"]
+ENTRYPOINT ["dotnet", "Web.Oidc.Server.Ids4.dll"]
