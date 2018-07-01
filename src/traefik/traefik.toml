@@ -8,49 +8,49 @@ defaultEntryPoints = ["http"]
 
 
 [frontends]
-  [frontends.oidc-server]
-  backend = "oidc-server"
-    [frontends.oidc-server.routes.host]
+  [frontends.oidc_server]
+  backend = "oidc_server"
+    [frontends.oidc_server.routes.host]
     rule = "Host:oidc-server.test"
   
-  [frontends.oidc-client-hybrid]
-  backend = "oidc-client-hybrid"
-    [frontends.oidc-client-hybrid.routes.host]
+  [frontends.oidc_client_hybrid]
+  backend = "oidc_client_hybrid"
+    [frontends.oidc_client_hybrid.routes.host]
     rule = "Host:oidc-client-hybrid.test"
   
-  [frontends.oidc-client-js]
-  backend = "oidc-client-js"
-    [frontends.oidc-client-js.routes.host]
+  [frontends.oidc_client_js]
+  backend = "oidc_client_js"
+    [frontends.oidc_client_js.routes.host]
     rule = "Host:oidc-client-js.test"
   
-  [frontends.oauth2-resources-aspnetcore]
-  backend = "oauth2-resources-aspnetcore"
-    [frontends.oauth2-resources-aspnetcore.routes.host]
+  [frontends.oauth2_resources_aspnetcore]
+  backend = "oauth2_resources_aspnetcore"
+    [frontends.oauth2_resources_aspnetcore.routes.host]
     rule = "Host:oauth2-resources-aspnetcore.test"
 
-  [frontends.oauth2-client-aspnetcore]
-  backend = "oauth2-client-aspnetcore"
-    [frontends.oauth2-client-aspnetcore.routes.host]
+  [frontends.oauth2_client_aspnetcore]
+  backend = "oauth2_client_aspnetcore"
+    [frontends.oauth2_client_aspnetcore.routes.host]
     rule = "Host:oauth2-client-aspnetcore.test"
 
 
 [backends]
-  [backends.oidc-server]
-    [backends.oidc-server.servers.server1]
+  [backends.oidc_server]
+    [backends.oidc_server.servers.server1]
     url = "http://172.16.0.3:8003"
 
-  [backends.oidc-client-hybrid]
-    [backends.oidc-client-hybrid.servers.server1]
+  [backends.oidc_client_hybrid]
+    [backends.oidc_client_hybrid.servers.server1]
     url = "http://172.16.0.5:8005"
 
-  [backends.oidc-client-js]
-    [backends.oidc-client-js.servers.server1]
+  [backends.oidc_client_js]
+    [backends.oidc_client_js.servers.server1]
     url = "http://172.16.0.7:8007"
 
-  [backends.oauth2-resources-aspnetcore]
-    [backends.oauth2-resources-aspnetcore.servers.server1]
+  [backends.oauth2_resources_aspnetcore]
+    [backends.oauth2_resources_aspnetcore.servers.server1]
     url = "http://172.16.0.11:8011"
 
-  [backends.oauth2-client-aspnetcore]
-    [backends.oauth2-client-aspnetcore.servers.server1]
+  [backends.oauth2_client_aspnetcore]
+    [backends.oauth2_client_aspnetcore.servers.server1]
     url = "http://172.16.0.13:8013"
