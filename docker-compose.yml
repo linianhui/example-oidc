@@ -3,6 +3,18 @@ version: "3.6"
 
 services:
 
+  traefik-reverse-proxy:
+    build: ./www/traefik
+    command: --api --docker
+    ports:
+      - "80:80"
+      - "8080:8080"
+    networks:
+      oidc_network:
+        ipv4_address: 172.16.0.2
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
   oidc-server:
     build: ./www/oidc-server.test/
     restart: on-failure

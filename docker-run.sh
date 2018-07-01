@@ -10,4 +10,6 @@ dotnet publish ./src/web.oauth2.client.aspnetcore/web.oauth2.client.aspnetcore.c
 
 cp -f -r ./src/web.oidc.client.js ./www/oidc-client-js.test
 
+cp -f -r ./src/traefik ./www/traefik
+
 docker-compose up -d

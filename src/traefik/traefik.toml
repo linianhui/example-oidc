@@ -1,0 +1,56 @@
+logLevel = "DEBUG"
+
+defaultEntryPoints = ["http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+
+
+[frontends]
+  [frontends.oidc-server]
+  backend = "oidc-server"
+    [frontends.oidc-server.routes.host]
+    rule = "Host:oidc-server.test"
+  
+  [frontends.oidc-client-hybrid]
+  backend = "oidc-client-hybrid"
+    [frontends.oidc-client-hybrid.routes.host]
+    rule = "Host:oidc-client-hybrid.test"
+  
+  [frontends.oidc-client-js]
+  backend = "oidc-client-js"
+    [frontends.oidc-client-js.routes.host]
+    rule = "Host:oidc-client-js.test"
+  
+  [frontends.oauth2-resources-aspnetcore]
+  backend = "oauth2-resources-aspnetcore"
+    [frontends.oauth2-resources-aspnetcore.routes.host]
+    rule = "Host:oauth2-resources-aspnetcore.test"
+
+  [frontends.oauth2-client-aspnetcore]
+  backend = "oauth2-client-aspnetcore"
+    [frontends.oauth2-client-aspnetcore.routes.host]
+    rule = "Host:oauth2-client-aspnetcore.test"
+
+
+[backends]
+  [backends.oidc-server]
+    [backends.oidc-server.servers.server1]
+    url = "http://172.16.0.3:8003"
+
+  [backends.oidc-client-hybrid]
+    [backends.oidc-client-hybrid.servers.server1]
+    url = "http://172.16.0.5:8005"
+
+  [backends.oidc-client-js]
+    [backends.oidc-client-js.servers.server1]
+    url = "http://172.16.0.7:8007"
+
+  [backends.oauth2-resources-aspnetcore]
+    [backends.oauth2-resources-aspnetcore.servers.server1]
+    url = "http://172.16.0.11:8011"
+
+  [backends.oauth2-client-aspnetcore]
+    [backends.oauth2-client-aspnetcore.servers.server1]
+    url = "http://172.16.0.13:8013"
