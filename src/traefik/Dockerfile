@@ -1,5 +1,7 @@
 FROM traefik:alpine
 
-COPY . /etc/traefik
+COPY . /app
+
+WORKDIR /app
 
 EXPOSE 80 8080
