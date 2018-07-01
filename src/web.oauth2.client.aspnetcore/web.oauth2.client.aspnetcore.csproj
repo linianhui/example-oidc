@@ -23,4 +23,10 @@
     <ProjectReference Include="..\oauth2.qqconnect.basic\oauth2.qqconnect.basic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Dockerfile">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

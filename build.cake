@@ -44,9 +44,11 @@ Task("publish")
     foreach(var webProject in webProjects){
 
         if(webProject.IsNetCore){
-            DotNetCorePublish(webProject.ProjectFile, new DotNetCorePublishSettings{
+            DotNetCorePublish(webProject.ProjectFile, new DotNetCorePublishSettings {
+                ArgumentCustomization = args=>args.Append("/p:DebugType=None"),
                 Framework = webProject.Framework,
-                OutputDirectory = webProject.WWWPath
+                OutputDirectory = webProject.WWWPath,
+                Configuration = "Release"
             });
         }
 

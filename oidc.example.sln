@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
@@ -26,6 +26,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web.oidc.client.implicit", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web.oidc.client.js", "web.oidc.client.js", "{0D2741E3-A8BC-4930-A4D8-444AF6988224}"
 	ProjectSection(SolutionItems) = preProject
+		src\web.oidc.client.js\Dockerfile = src\web.oidc.client.js\Dockerfile
 		src\web.oidc.client.js\index.html = src\web.oidc.client.js\index.html
 		src\web.oidc.client.js\README.md = src\web.oidc.client.js\README.md
 	EndProjectSection
