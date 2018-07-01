@@ -7,43 +7,51 @@ services:
     build: ./www/oidc-server.test/
     restart: on-failure
     ports:
-      - "8001:80"
+      - "8003:80"
     networks:
-      - oidc-example
+      oidc_network:
+        ipv4_address: 172.16.0.3
 
   oidc-client-hybrid:
     build: ./www/oidc-client-hybrid.test/
     restart: on-failure
     ports:
-      - "8002:80"
+      - "8005:80"
     networks:
-      - oidc-example
+      oidc_network:
+        ipv4_address: 172.16.0.5
 
   oidc-client-js:
     build: ./www/oidc-client-js.test/
     restart: on-failure
     ports:
-      - "8003:80"
+      - "8007:80"
     networks:
-      - oidc-example
+      oidc_network:
+        ipv4_address: 172.16.0.7
 
   oauth2-resources-aspnetcore:
     build: ./www/oauth2-resources-aspnetcore.test/
     restart: on-failure
     ports:
-      - "9001:80"
+      - "8011:80"
     networks:
-      - oidc-example
+      oidc_network:
+        ipv4_address: 172.16.0.11
 
   oauth2-client-aspnetcore:
-    build: ./www/oauth2-client-aspnetcore.test
+    build: ./www/oauth2-client-aspnetcore.test/
     restart: on-failure
     ports:
-      - "9002:80"
+      - "8013:80"
     networks:
-      - oidc-example
+      oidc_network:
+        ipv4_address: 172.16.0.13
 
 
 networks:
-  oidc-example:
+  oidc_network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.0.0/18
