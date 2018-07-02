@@ -12,4 +12,4 @@ cp -frv ./src/web.oidc.client.js ./www/oidc-client-js.test
 
 cp -frv ./src/traefik ./www/traefik
 
-docker-compose up -d --build
+docker-compose --project-name lnh up --detach --build
