@@ -50,10 +50,12 @@ open-browser                  用浏览器打开部署的站点
 default                       默认执行open-browser
 ```
 
-## docker-run.sh
-If you want run with docker, run `docker-run.sh`.
+## docker-start.sh
+If you want run with docker, run `docker-start.sh`.
 ```bash
-docker-run.sh
+docker-start.sh
+
+docker-stop.sh
 ```
 
 # Blog
