@@ -3,9 +3,9 @@ version: "3.6"
 
 services:
 
-  traefik-reverse-proxy:
+  traefik_reverse_proxy:
     build: ./www/traefik
-    command: --api --docker
+    command: --api
     ports:
       - "80:80"
       - "8080:8080"
@@ -15,7 +15,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  oidc-server:
+  oidc_server:
     build: ./www/oidc-server.test/
     restart: on-failure
     ports:
@@ -24,7 +24,7 @@ services:
       oidc_network:
         ipv4_address: 172.16.0.3
 
-  oidc-client-hybrid:
+  oidc_client_hybrid:
     build: ./www/oidc-client-hybrid.test/
     restart: on-failure
     ports:
@@ -33,7 +33,7 @@ services:
       oidc_network:
         ipv4_address: 172.16.0.5
 
-  oidc-client-js:
+  oidc_client_js:
     build: ./www/oidc-client-js.test/
     restart: on-failure
     ports:
@@ -42,7 +42,7 @@ services:
       oidc_network:
         ipv4_address: 172.16.0.7
 
-  oauth2-resources-aspnetcore:
+  oauth2_resources_aspnetcore:
     build: ./www/oauth2-resources-aspnetcore.test/
     restart: on-failure
     ports:
@@ -51,7 +51,7 @@ services:
       oidc_network:
         ipv4_address: 172.16.0.11
 
-  oauth2-client-aspnetcore:
+  oauth2_client_aspnetcore:
     build: ./www/oauth2-client-aspnetcore.test/
     restart: on-failure
     ports:
