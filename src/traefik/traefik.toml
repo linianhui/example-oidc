@@ -6,7 +6,7 @@ defaultEntryPoints = ["http"]
   [entryPoints.http]
   address = ":80"
 
-
+[file]
 [frontends]
   [frontends.oidc_server]
   backend = "oidc_server"
