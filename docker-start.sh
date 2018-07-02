@@ -12,4 +12,4 @@ cp -f -r ./src/web.oidc.client.js ./www/oidc-client-js.test
 
 cp -f -r ./src/traefik ./www/traefik
 
-docker-compose up -d
+docker-compose up -d --build
