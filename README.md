@@ -32,7 +32,18 @@ public static class QQConnectConfig
 }
 ```
 
-## build.ps1
+## deploy weh site
+
+1. http://oidc-server.test
+1. http://oidc-client-hybrid.test
+1. http://oidc-client-implicit.test (only windows)
+1. http://oidc-client-js.test
+1. http://oauth2-resources-aspnetcore.test
+1. http://oauth2-resources-owin.test (only windows)
+1. http://oauth2-client-aspnetcore.test
+1. http://oauth2-client-owin.test (only windows)
+
+## build.ps1 (windows)
 
 ```powershell
 build.ps1 -help
@@ -50,12 +61,14 @@ open-browser                  用浏览器打开部署的站点
 default                       默认执行open-browser
 ```
 
-## docker-start.sh
+## docker-start.sh (linux)
 If you want run with docker, run `docker-start.sh`.
 ```bash
-docker-start.sh
+chmod +x ./docker-start.sh
+./docker-start.sh
 
-docker-stop.sh
+chmod +x ./docker-stop.sh
+./docker-stop.sh
 ```
 
 # Blog
