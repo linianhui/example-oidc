@@ -8,8 +8,8 @@ dotnet publish ./src/web.oauth2.resources.aspnetcore/web.oauth2.resources.aspnet
 
 dotnet publish ./src/web.oauth2.client.aspnetcore/web.oauth2.client.aspnetcore.csproj --output ../../www/oauth2-client-aspnetcore.test
 
-yes | cp -rfv ./src/web.oidc.client.js ./www/oidc-client-js.test
+yes | cp -rfv ./src/web.oidc.client.js/* ./www/oidc-client-js.test
 
-yes | cp -rfv ./src/traefik ./www/traefik
+yes | cp -rfv ./src/traefik/* ./www/traefik
 
 docker-compose up --detach --build
