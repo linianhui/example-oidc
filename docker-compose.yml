@@ -18,8 +18,6 @@ services:
   oidc_server:
     build: ./www/oidc-server.test/
     restart: on-failure
-    ports:
-      - "8003:80"
     networks:
       oidc_network:
         ipv4_address: 172.16.0.3
@@ -27,8 +25,8 @@ services:
   oidc_client_hybrid:
     build: ./www/oidc-client-hybrid.test/
     restart: on-failure
-    ports:
-      - "8005:80"
+    extra_hosts:
+      - "oidc-server.test:172.16.0.2"
     networks:
       oidc_network:
         ipv4_address: 172.16.0.5
@@ -36,8 +34,8 @@ services:
   oidc_client_js:
     build: ./www/oidc-client-js.test/
     restart: on-failure
-    ports:
-      - "8007:80"
+    extra_hosts:
+      - "oidc-server.test:172.16.0.2"
     networks:
       oidc_network:
         ipv4_address: 172.16.0.7
@@ -45,8 +43,8 @@ services:
   oauth2_resources_aspnetcore:
     build: ./www/oauth2-resources-aspnetcore.test/
     restart: on-failure
-    ports:
-      - "8011:80"
+    extra_hosts:
+      - "oidc-server.test:172.16.0.2"
     networks:
       oidc_network:
         ipv4_address: 172.16.0.11
@@ -54,8 +52,8 @@ services:
   oauth2_client_aspnetcore:
     build: ./www/oauth2-client-aspnetcore.test/
     restart: on-failure
-    ports:
-      - "8013:80"
+    extra_hosts:
+      - "oidc-server.test:172.16.0.2"
     networks:
       oidc_network:
         ipv4_address: 172.16.0.13
