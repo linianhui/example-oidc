@@ -1,4 +1,4 @@
-FROM traefik:alpine
+FROM traefik:v1.6.4-alpine
 
 COPY . /app
 
