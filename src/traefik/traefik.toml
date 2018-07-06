@@ -10,26 +10,31 @@ defaultEntryPoints = ["http"]
 [frontends]
   [frontends.oidc_server]
   backend = "oidc_server"
+  passHostHeader = true
     [frontends.oidc_server.routes.host]
     rule = "Host:oidc-server.test"
   
   [frontends.oidc_client_hybrid]
   backend = "oidc_client_hybrid"
+  passHostHeader = true
     [frontends.oidc_client_hybrid.routes.host]
     rule = "Host:oidc-client-hybrid.test"
   
   [frontends.oidc_client_js]
   backend = "oidc_client_js"
+  passHostHeader = true
     [frontends.oidc_client_js.routes.host]
     rule = "Host:oidc-client-js.test"
   
   [frontends.oauth2_resources_aspnetcore]
   backend = "oauth2_resources_aspnetcore"
+  passHostHeader = true
     [frontends.oauth2_resources_aspnetcore.routes.host]
     rule = "Host:oauth2-resources-aspnetcore.test"
 
   [frontends.oauth2_client_aspnetcore]
   backend = "oauth2_client_aspnetcore"
+  passHostHeader = true
     [frontends.oauth2_client_aspnetcore.routes.host]
     rule = "Host:oauth2-client-aspnetcore.test"
 
@@ -37,20 +42,20 @@ defaultEntryPoints = ["http"]
 [backends]
   [backends.oidc_server]
     [backends.oidc_server.servers.server1]
-    url = "http://172.16.0.3:8003"
+    url = "http://172.16.0.3"
 
   [backends.oidc_client_hybrid]
     [backends.oidc_client_hybrid.servers.server1]
-    url = "http://172.16.0.5:8005"
+    url = "http://172.16.0.5"
 
   [backends.oidc_client_js]
     [backends.oidc_client_js.servers.server1]
-    url = "http://172.16.0.7:8007"
+    url = "http://172.16.0.7"
 
   [backends.oauth2_resources_aspnetcore]
     [backends.oauth2_resources_aspnetcore.servers.server1]
-    url = "http://172.16.0.11:8011"
+    url = "http://172.16.0.11"
 
   [backends.oauth2_client_aspnetcore]
     [backends.oauth2_client_aspnetcore.servers.server1]
-    url = "http://172.16.0.13:8013"
+    url = "http://172.16.0.13"
