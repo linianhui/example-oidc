@@ -34,6 +34,7 @@ public static class QQConnectConfig
 
 ## deploy weh site
 
+1. http://localhost:8080 (traefik web ui:only docker)
 1. http://oidc-server.test
 1. http://oidc-client-hybrid.test
 1. http://oidc-client-implicit.test (only windows)
