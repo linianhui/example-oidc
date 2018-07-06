@@ -71,6 +71,16 @@ chmod +x ./docker-stop.sh
 ./docker-stop.sh
 ```
 
+Update local `/etc/hosts`.
+```bash
+echo "\
+\n127.0.0.1 oidc-server.test \
+\n127.0.0.1 oidc-client-hybrid.test \
+\n127.0.0.1 oidc-client-js.test \
+\n127.0.0.1 oauth2-resources-aspnetcore.test \
+\n127.0.0.1 oauth2-client-aspnetcore.test " | sudo tee -a /etc/hosts
+```
+
 # Blog
 Authentication and Authorization: http://www.cnblogs.com/linianhui/category/929878.html
 
