@@ -1,4 +1,4 @@
-FROM microsoft/aspnetcore:2.0
+FROM microsoft/dotnet:2.1.1-aspnetcore-runtime-alpine3.7
  
 COPY . /app
 

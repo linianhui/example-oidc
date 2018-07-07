@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>Web.OAuth2.Resources.AspNetCore</AssemblyName>
     <RootNamespace>Web.OAuth2.Resources</RootNamespace>
   </PropertyGroup>
 
 
   <ItemGroup>
-    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.4.0" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.6.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
