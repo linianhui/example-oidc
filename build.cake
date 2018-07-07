@@ -14,6 +14,7 @@ Task("clean")
 {
     CleanDirectories("./www");
     CleanDirectories("./src/**/bin");
+    CleanDirectories("./src/**/obj");
 });
 
 

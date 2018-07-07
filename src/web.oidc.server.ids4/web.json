@@ -1,4 +1,4 @@
 {
     "host": "oidc-server.test",
-    "framework": "netcoreapp2.0"
+    "framework": "netcoreapp2.1"
 }
