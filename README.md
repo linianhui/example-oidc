@@ -65,10 +65,8 @@ default                       默认执行open-browser
 ## docker-start.sh (linux)
 If you want run with docker, run `docker-start.sh`.
 ```bash
-chmod +x ./docker-start.sh
 ./docker-start.sh
 
-chmod +x ./docker-stop.sh
 ./docker-stop.sh
 ```
 
