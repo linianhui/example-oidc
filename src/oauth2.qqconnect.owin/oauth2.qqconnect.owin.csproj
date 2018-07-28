@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net452</TargetFrameworks>
@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\oauth2.qqconnect.basic\oauth2.qqconnect.basic.csproj" />
+    <ProjectReference Include="..\oauth2.qqconnect\oauth2.qqconnect.csproj" />
   </ItemGroup>
   
   <ItemGroup>

@@ -1,21 +1,22 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
-namespace OAuth2.QQConnect.Basic
+namespace OAuth2.QQConnect
 {
     public sealed class QQConnectProperties
     {
-        internal static readonly string Key = "qq-connect.props";
+        public static readonly string Key = "qq-connect.props";
 
-        public string[] Scopes { get; set; }
+        public ISet<string> Scopes { get; set; }
 
         public bool IsMobile { get; set; }
 
-        internal string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.None);
         }
 
-        internal static QQConnectProperties From(string json)
+        public static QQConnectProperties From(string json)
         {
             return JsonConvert.DeserializeObject<QQConnectProperties>(json);
         }

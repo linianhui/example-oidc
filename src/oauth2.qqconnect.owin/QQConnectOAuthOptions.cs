@@ -1,12 +1,12 @@
-using System;
 using Microsoft.Owin.Security;
-using OAuth2.QQConnect.Basic;
+using System;
+using System.Collections.Generic;
 
 namespace OAuth2.QQConnect.Owin
 {
-    public class OwinQQConnectOptions : AuthenticationOptions
+    public class QQConnectOAuthOptions : AuthenticationOptions
     {
-        public OwinQQConnectOptions()
+        public QQConnectOAuthOptions()
             : base("qq.connect")
         {
             DisplayName = "QQ Connect";
@@ -19,7 +19,7 @@ namespace OAuth2.QQConnect.Owin
 
         public bool IsMobile { get; set; } = false;
 
-        public string[] Scopes { get; set; } = { "get_user_info" };
+        public ISet<string> Scopes { get; set; } = new HashSet<string> { "get_user_info" };
 
         public string CallbackPath { get; set; } = "/oauth2/qq-connect/callback";
 

@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using ClientSite.OAuth2;
 using Microsoft.Owin.Security;
 using OAuth2.QQConnect;
-using OAuth2.QQConnect.Basic;
+using OAuth2.QQConnect.Extensions;
 
 namespace ClientSite.Controllers
 {

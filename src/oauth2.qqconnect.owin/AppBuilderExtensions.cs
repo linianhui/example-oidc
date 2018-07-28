@@ -15,7 +15,7 @@ namespace OAuth2.QQConnect.Owin
                 throw new ArgumentNullException(nameof(app));
             }
 
-            return app.UseQQConnectAuthentication(new OwinQQConnectOptions
+            return app.UseQQConnectAuthentication(new QQConnectOAuthOptions
             {
                 ClientId = clientId,
                 ClientSecret = clientSercet
@@ -24,7 +24,7 @@ namespace OAuth2.QQConnect.Owin
 
         public static IAppBuilder UseQQConnectAuthentication(
             this IAppBuilder app,
-            OwinQQConnectOptions options)
+            QQConnectOAuthOptions options)
         {
             if (app == null)
             {
@@ -35,7 +35,7 @@ namespace OAuth2.QQConnect.Owin
                 throw new ArgumentNullException(nameof(options));
             }
 
-            return app.Use(typeof(OwinQQConnectMiddleware), app, options);
+            return app.Use(typeof(QQConnectOAuthMiddleware), app, options);
         }
     }
 }

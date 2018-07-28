@@ -9,7 +9,7 @@ namespace ClientSite.OAuth2
         public static AuthenticationBuilder AddQQConnect(this IServiceCollection services)
         {
             return services.AddAuthentication(OAuth2Constants.AuthenticationSchemeOfCookie)
-                  .AddQQConnect(options =>
+                .AddQQConnectAuthentication(options =>
                   {
                       options.SignInScheme = OAuth2Constants.AuthenticationSchemeOfCookie;
                       options.ClientId = QQConnectConfig.ClientId;

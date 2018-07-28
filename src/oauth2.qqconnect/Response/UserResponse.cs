@@ -1,19 +1,22 @@
 ﻿using Newtonsoft.Json.Linq;
+using OAuth2.QQConnect.Extensions;
 
-namespace OAuth2.QQConnect.Basic.Models
+namespace OAuth2.QQConnect.Response
 {
-    public sealed class UserModel
+    public sealed class UserResponse
     {
-        private UserModel() { }
+        private UserResponse()
+        {
+        }
 
         public string NickName { get; private set; }
 
         public string Avatar { get; private set; }
 
-        public static UserModel From(string jsonUser)
+        public static UserResponse From(string userJson)
         {
-            var user = JObject.Parse(jsonUser);
-            return new UserModel
+            var user = JObject.Parse(userJson);
+            return new UserResponse
             {
                 NickName = user.TryGetValue("nickname"),
                 Avatar = user.TryGetValue("figureurl_qq_1")

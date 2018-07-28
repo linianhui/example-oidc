@@ -12,7 +12,7 @@ namespace ServerSite.Ids4
         {
 
             services.AddAuthentication()
-                .AddQQConnect(options =>
+                .AddQQConnectAuthentication(options =>
                 {
                     options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
                     options.ClientId = QQConnectConfig.ClientId;

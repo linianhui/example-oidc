@@ -14,7 +14,7 @@ namespace ClientSite.OAuth2
                 AuthenticationType = OAuth2Constants.AuthenticationTypeOfCookie
             });
 
-            return app.UseQQConnectAuthentication(new OwinQQConnectOptions
+            return app.UseQQConnectAuthentication(new QQConnectOAuthOptions
             {
                 AuthenticationType = OAuth2Constants.AuthenticationTypeOfQQ,
                 SignInAsAuthenticationType = OAuth2Constants.AuthenticationTypeOfCookie,

@@ -1,24 +1,24 @@
-﻿using System;
-using System.Net.Http;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Microsoft.Owin.Logging;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataHandler;
 using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Owin.Security.Infrastructure;
 using Owin;
+using System;
+using System.Net.Http;
 
 namespace OAuth2.QQConnect.Owin
 {
-    public class OwinQQConnectMiddleware : AuthenticationMiddleware<OwinQQConnectOptions>
+    public class QQConnectOAuthMiddleware : AuthenticationMiddleware<QQConnectOAuthOptions>
     {
         private readonly ILogger _logger;
 
-        public OwinQQConnectMiddleware(
+        public QQConnectOAuthMiddleware(
             OwinMiddleware next,
             IAppBuilder app,
-            OwinQQConnectOptions options)
-            : base(next, options)
+            QQConnectOAuthOptions oAuthOptions)
+            : base(next, oAuthOptions)
         {
             if (string.IsNullOrWhiteSpace(Options.ClientId))
             {
@@ -36,16 +36,16 @@ namespace OAuth2.QQConnect.Owin
 
             if (Options.StateDataFormat == null)
             {
-                var dataProtector = app.CreateDataProtector(typeof(OwinQQConnectMiddleware).FullName, Options.AuthenticationType, "v1");
+                var dataProtector = app.CreateDataProtector(typeof(QQConnectOAuthMiddleware).FullName, Options.AuthenticationType, "v1");
                 Options.StateDataFormat = new PropertiesDataFormat(dataProtector);
             }
 
-            _logger = app.CreateLogger<OwinQQConnectMiddleware>();
+            _logger = app.CreateLogger<QQConnectOAuthMiddleware>();
         }
 
-        protected override AuthenticationHandler<OwinQQConnectOptions> CreateHandler()
+        protected override AuthenticationHandler<QQConnectOAuthOptions> CreateHandler()
         {
-            return new OwinQQConnectHandler(_logger, new HttpClient());
+            return new QQConnectOAuthHandler(_logger, new HttpClient());
         }
     }
 }

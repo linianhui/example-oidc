@@ -1,35 +1,35 @@
+using Microsoft.Owin.Logging;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Infrastructure;
+using OAuth2.QQConnect.Extensions;
 using System;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.Owin.Logging;
-using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.Infrastructure;
-using OAuth2.QQConnect.Basic;
 
 namespace OAuth2.QQConnect.Owin
 {
-    public class OwinQQConnectHandler : AuthenticationHandler<OwinQQConnectOptions>
+    public class QQConnectOAuthHandler : AuthenticationHandler<QQConnectOAuthOptions>
     {
         private readonly ILogger _logger;
         private readonly HttpClient _httpClient;
 
-        private QQConnectHandler _innerHandler;
+        private QQConnectClient _innerClient;
 
-        private QQConnectHandler InnerHandler
+        private QQConnectClient InnerClient
         {
             get
             {
-                if (_innerHandler == null)
+                if (_innerClient == null)
                 {
                     var qqConnectOptions = Options.BuildQQConnectOptions(GetRedirectUrl);
-                    _innerHandler = new QQConnectHandler(_httpClient, qqConnectOptions);
+                    _innerClient = new QQConnectClient(_httpClient, qqConnectOptions);
                 }
-                return _innerHandler;
+                return _innerClient;
             }
         }
 
-        public OwinQQConnectHandler(ILogger logger, HttpClient httpClient)
+        public QQConnectOAuthHandler(ILogger logger, HttpClient httpClient)
         {
             _logger = logger;
             _httpClient = httpClient;
@@ -92,7 +92,7 @@ namespace OAuth2.QQConnect.Owin
                     return new AuthenticationTicket(null, properties);
                 }
 
-                var token = await InnerHandler.GetTokenAsync(
+                var token = await InnerClient.GetTokenAsync(
                     code,
                     Request.CallCancelled);
 
@@ -102,8 +102,7 @@ namespace OAuth2.QQConnect.Owin
                     return new AuthenticationTicket(null, properties);
                 }
 
-
-                var openId = await InnerHandler.GetOpenIdAsync(
+                var openId = await InnerClient.GetOpenIdAsync(
                     token.AccessToken,
                     Request.CallCancelled);
 
@@ -113,13 +112,14 @@ namespace OAuth2.QQConnect.Owin
                     return new AuthenticationTicket(null, properties);
                 }
 
-
-                var user = await InnerHandler.GetUserAsync(
+                var user = await InnerClient.GetUserAsync(
                     token.AccessToken,
                     openId.OpenId,
                     Request.CallCancelled);
 
-                var identity = QQConnectProfile.BuildClaimsIdentity(Options.AuthenticationType, token, openId, user);
+                var qqConnectProfile = QQConnectProfile.From(Options.AuthenticationType, token, openId, user);
+
+                var identity = qqConnectProfile.BuildClaimsIdentity();
 
                 return new AuthenticationTicket(identity, properties);
             }
@@ -164,7 +164,7 @@ namespace OAuth2.QQConnect.Owin
 
             var state = Options.StateDataFormat.Protect(authenticationProperties);
 
-            return InnerHandler.BuildAuthorizationUrl(qqConnectProperties, state);
+            return InnerClient.BuildAuthorizationUrl(qqConnectProperties, state);
         }
 
         private string GetRedirectUrl()

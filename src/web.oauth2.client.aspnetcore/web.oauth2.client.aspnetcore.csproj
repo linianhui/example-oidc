@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\oauth2.qqconnect.aspnetcore\oauth2.qqconnect.aspnetcore.csproj" />
-    <ProjectReference Include="..\oauth2.qqconnect.basic\oauth2.qqconnect.basic.csproj" />
   </ItemGroup>
 
   <ItemGroup>

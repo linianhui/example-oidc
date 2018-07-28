@@ -1,35 +1,33 @@
-using System;
-using System.Security.Claims;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using OAuth2.QQConnect.Basic;
-using BasicQQConnectHandler = OAuth2.QQConnect.Basic.QQConnectHandler;
+using OAuth2.QQConnect.Extensions;
+using System;
+using System.Text.Encodings.Web;
+using System.Threading.Tasks;
 
 namespace OAuth2.QQConnect.AspNetCore
 {
-    internal class QQConnectHandler : OAuthHandler<QQConnectOptions>
+    internal class QQConnectOAuthHandler : OAuthHandler<QQConnectOAuthOptions>
     {
-        private BasicQQConnectHandler _innerHandler;
+        private QQConnectClient _innerClient;
 
-        private BasicQQConnectHandler InnerHandler
+        private QQConnectClient InnerClient
         {
             get
             {
-                if (_innerHandler == null)
+                if (_innerClient == null)
                 {
-                    var basicQQConnectOptions = Options.BuildQQConnectOptions(GetRedirectUrl);
-                    _innerHandler = new BasicQQConnectHandler(Backchannel, basicQQConnectOptions);
+                    var qqConnectOptions = Options.BuildQQConnectOptions(GetRedirectUrl);
+                    _innerClient = new QQConnectClient(Backchannel, qqConnectOptions);
                 }
-                return _innerHandler;
+                return _innerClient;
             }
         }
 
-        public QQConnectHandler(
-            IOptionsMonitor<QQConnectOptions> options,
+        public QQConnectOAuthHandler(
+            IOptionsMonitor<QQConnectOAuthOptions> options,
             ILoggerFactory logger,
             UrlEncoder encoder,
             ISystemClock clock)
@@ -43,6 +41,11 @@ namespace OAuth2.QQConnect.AspNetCore
                 var code = Request.Query["code"].ToString();
                 var state = Request.Query["state"].ToString();
 
+                if (code == null)
+                {
+                    return HandleRequestResult.Fail("Code was not found.");
+                }
+
                 var properties = Options.StateDataFormat.Unprotect(state);
                 if (properties == null)
                 {
@@ -54,12 +57,7 @@ namespace OAuth2.QQConnect.AspNetCore
                     return HandleRequestResult.Fail("Correlation failed.");
                 }
 
-                if (code == null)
-                {
-                    return HandleRequestResult.Fail("Code was not found.");
-                }
-
-                var token = await InnerHandler.GetTokenAsync(
+                var token = await InnerClient.GetTokenAsync(
                     code,
                     Context.RequestAborted);
 
@@ -68,8 +66,7 @@ namespace OAuth2.QQConnect.AspNetCore
                     return HandleRequestResult.Fail("OAuth token endpoint failure.");
                 }
 
-
-                var openId = await InnerHandler.GetOpenIdAsync(
+                var openId = await InnerClient.GetOpenIdAsync(
                     token.AccessToken,
                     Context.RequestAborted);
 
@@ -78,15 +75,14 @@ namespace OAuth2.QQConnect.AspNetCore
                     return HandleRequestResult.Fail("openid was not found.");
                 }
 
-
-                var user = await InnerHandler.GetUserAsync(
+                var user = await InnerClient.GetUserAsync(
                     token.AccessToken,
                     openId.OpenId,
                     Context.RequestAborted);
 
-                var identity = QQConnectProfile.BuildClaimsIdentity(Scheme.Name, token, openId, user);
+                var qqConnectProfile = QQConnectProfile.From(Scheme.Name, token, openId, user);
 
-                var principal = new ClaimsPrincipal(identity);
+                var principal = qqConnectProfile.BuildClaimsPrincipal();
 
                 var ticket = new AuthenticationTicket(principal, properties, Scheme.Name);
 
@@ -105,7 +101,7 @@ namespace OAuth2.QQConnect.AspNetCore
 
             var state = Options.StateDataFormat.Protect(properties);
 
-            return InnerHandler.BuildAuthorizationUrl(qqConnectProperties, state);
+            return InnerClient.BuildAuthorizationUrl(qqConnectProperties, state);
         }
 
         private string GetRedirectUrl()

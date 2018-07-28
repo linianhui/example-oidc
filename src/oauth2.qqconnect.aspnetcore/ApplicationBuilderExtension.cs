@@ -1,18 +1,18 @@
-using System;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace OAuth2.QQConnect.AspNetCore
 {
     public static class ApplicationBuilderExtension
     {
-        public static AuthenticationBuilder AddQQConnect(
+        public static AuthenticationBuilder AddQQConnectAuthentication(
             this AuthenticationBuilder builder,
-            Action<QQConnectOptions> configureOptions,
+            Action<QQConnectOAuthOptions> configureOptions,
             string scheme = "qq.connect",
             string displayName = "QQ Connect")
         {
-            return builder.AddOAuth<QQConnectOptions, QQConnectHandler>(
+            return builder.AddOAuth<QQConnectOAuthOptions, QQConnectOAuthHandler>(
                   scheme,
                   displayName,
                   configureOptions);
