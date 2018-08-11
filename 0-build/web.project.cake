@@ -1,15 +1,16 @@
 #addin nuget:?package=cake.json&version=3.0.1
 #addin nuget:?package=newtonsoft.json&version=9.0.1
 
-IList<WebProject> GetWebProjects(String srcPath)
+IList<WebProject> GetWebProjects(String srcPath, String noCLRWWWPath)
 {
 
     List<WebProject> webProjects = new List<WebProject>();
 
-    var webJsonFiles = GetFiles(srcPath + "/**/web.json");
+    var webJsonFiles = GetFiles(srcPath + "**/web.json");
     foreach (var webJsonFile in webJsonFiles)
     {
         var webProject = DeserializeJsonFromFile<WebProject>(webJsonFile);
+        webProject.NoCLRWWWPath = noCLRWWWPath;
         webProject.ProjectPath = System.IO.Path.GetDirectoryName(webJsonFile.FullPath);
         webProjects.Add(webProject);
     }
@@ -34,6 +35,8 @@ public class WebProject
         MaxProcesses = 1,
         ManagedRuntimeVersion = "v4.0"
     };
+
+    public string NoCLRWWWPath { get; set; }
 
     public string Host { get; set; }
 
@@ -67,7 +70,7 @@ public class WebProject
         {
             if (IsNoCLR)
             {
-                return "./www/" + Host;
+                return NoCLRWWWPath + Host;
             }
             return ProjectPath;
         }

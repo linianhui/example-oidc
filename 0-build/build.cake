@@ -6,15 +6,21 @@
 /// params
 var target = Argument("target", "default");
 
-IList<WebProject> webProjects = GetWebProjects("./src");
+/// constant
+var rootPath = "../";
+var srcPath = rootPath + "src/";
+var wwwPath = rootPath + "www/";
+var slnPath = rootPath + "oidc.example.sln";
+
+IList<WebProject> webProjects = GetWebProjects(srcPath, wwwPath);
 
 Task("clean")
     .Description("清理项目缓存")
     .Does(() =>
 {
-    CleanDirectories("./www");
-    CleanDirectories("./src/**/bin");
-    CleanDirectories("./src/**/obj");
+    CleanDirectories(wwwPath + "*");
+    CleanDirectories(srcPath + "**/bin");
+    CleanDirectories(srcPath + "**/obj");
 });
 
 
@@ -22,7 +28,7 @@ Task("restore")
     .Description("还原项目依赖")
     .Does(() =>
 {
-    NuGetRestore("./oidc.example.sln");
+    NuGetRestore(slnPath);
 });
 
 
@@ -32,7 +38,7 @@ Task("build")
     .IsDependentOn("restore")
     .Does(() =>
 {
-    MSBuild("./oidc.example.sln", new MSBuildSettings {
+    MSBuild(slnPath, new MSBuildSettings {
         Verbosity = Verbosity.Minimal
     });
 });
