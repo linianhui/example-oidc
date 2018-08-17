@@ -21,7 +21,7 @@
 1. [1-src/oauth2.qqconnect.owin](1-src/oauth2.qqconnect.owin): asp.net owin.
 
 # How to run?
-Use administrator run `build.ps1` to deploy demo web site to local IIS. 
+Use administrator run `build.ps1` to deploy demo web site to local IIS. (Need install `vs 2017` with `.net framework 4.5+ sdk` and `.net core 2.1 sdk` )
 
 If you want use QQ Connect, please replace `ClientId` and `ClientSercet` in [1-src/_shared/QQConnectConfig.cs](1-src/_shared/QQConnectConfig.cs) file.
 ``` csharp
