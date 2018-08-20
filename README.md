@@ -1,5 +1,5 @@
 <!-- TOC -->
-
+# Table of content
 - [OIDC Servers](#oidc-servers)
 - [OIDC Clients](#oidc-clients)
 - [OAuth2 Protected Resource](#oauth2-protected-resource)
@@ -104,5 +104,5 @@ Authentication and Authorization: http://www.cnblogs.com/linianhui/category/9298
 OIDC in Action: http://www.cnblogs.com/linianhui/category/1121078.html
 
 # Old version(ids3 and owin)
-1. ids3: https://github.com/linianhui/oidc.example/tree/old-ids3
-1. ids4 and owin: https://github.com/linianhui/oidc.example/tree/old-owin
+1. ids3: https://github.com/linianhui/oidc.example/tree/ids3
+1. ids4 and owin: https://github.com/linianhui/oidc.example/tree/owin
