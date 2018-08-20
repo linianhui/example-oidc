@@ -44,7 +44,26 @@ public static class QQConnectConfig
 1. http://oauth2-client-aspnetcore.test
 1. http://oauth2-client-owin.test (only windows)
 
-## build.ps1 (windows)
+## docker-compose.yml (docker platform)
+```bash
+## start docker
+docker-compose up --detach --build
+
+## stop docker
+docker-compose down
+```
+
+Update local `/etc/hosts`.
+```bash
+echo "\
+\n127.0.0.1 oidc-server.test \
+\n127.0.0.1 oidc-client-hybrid.test \
+\n127.0.0.1 oidc-client-js.test \
+\n127.0.0.1 oauth2-resources-aspnetcore.test \
+\n127.0.0.1 oauth2-client-aspnetcore.test " | sudo tee -a /etc/hosts
+```
+
+## build.ps1 (windows platform)
 
 ```powershell
 build.ps1 -help
@@ -60,26 +79,6 @@ publish                       发布项目
 deploy                        部署到本机IIS
 open-browser                  用浏览器打开部署的站点
 default                       默认执行open-browser
-```
-
-## docker-start.sh (linux)
-If you want run with docker, run `docker-start.sh`.
-```bash
-## start docker
-./docker-start.sh
-
-## stop docker
-docker-compose down
-```
-
-Update local `/etc/hosts`.
-```bash
-echo "\
-\n127.0.0.1 oidc-server.test \
-\n127.0.0.1 oidc-client-hybrid.test \
-\n127.0.0.1 oidc-client-js.test \
-\n127.0.0.1 oauth2-resources-aspnetcore.test \
-\n127.0.0.1 oauth2-client-aspnetcore.test " | sudo tee -a /etc/hosts
 ```
 
 # Blog
