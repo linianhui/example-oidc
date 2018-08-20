@@ -1,3 +1,19 @@
+<!-- TOC -->
+
+- [OIDC Servers](#oidc-servers)
+- [OIDC Clients](#oidc-clients)
+- [OAuth2 Protected Resource](#oauth2-protected-resource)
+- [OAuth2 Clients](#oauth2-clients)
+- [OAuth2 QQConnect Middleware](#oauth2-qqconnect-middleware)
+    - [QQ Config](#qq-config)
+- [Deployed web site](#deployed-web-site)
+- [How to run?](#how-to-run)
+    - [docker-compose.yml (docker platform)](#docker-composeyml-docker-platform)
+    - [build.ps1 (windows platform)](#buildps1-windows-platform)
+- [Blog](#blog)
+- [Old version(ids3 and owin)](#old-versionids3-and-owin)
+
+<!-- /TOC -->
 # OIDC Servers
 1. [1-src/web.oidc.server.ids4](1-src/web.oidc.server.ids4) : ids4 (https://github.com/IdentityServer/IdentityServer4) example (with qqconnect external login).
 
@@ -20,7 +36,7 @@
 1. [1-src/oauth2.qqconnect.aspnetcore](1-src/oauth2.qqconnect.aspnetcore): asp.net core 2.
 1. [1-src/oauth2.qqconnect.owin](1-src/oauth2.qqconnect.owin): asp.net owin.
 
-# QQ
+## QQ Config
 If you want use QQ Connect, please replace `ClientId` and `ClientSercet` in [1-src/_shared/QQConnectConfig.cs](1-src/_shared/QQConnectConfig.cs) file.
 ``` csharp
 public static class QQConnectConfig
@@ -30,7 +46,7 @@ public static class QQConnectConfig
 }
 ```
 
-## deployed weh site
+# Deployed web site
 
 1. http://localhost:8080 (traefik web ui:only docker)
 1. http://oidc-server.test
@@ -87,6 +103,6 @@ Authentication and Authorization: http://www.cnblogs.com/linianhui/category/9298
 
 OIDC in Action: http://www.cnblogs.com/linianhui/category/1121078.html
 
-# old
+# Old version(ids3 and owin)
 1. ids3: https://github.com/linianhui/oidc.example/tree/old-ids3
 1. ids4 and owin: https://github.com/linianhui/oidc.example/tree/old-owin
