@@ -8,54 +8,54 @@ defaultEntryPoints = ["http"]
 
 [file]
 [frontends]
-  [frontends.oidc_server]
-  backend = "oidc_server"
+  [frontends.oidc-server]
+  backend = "oidc-server"
   passHostHeader = true
-    [frontends.oidc_server.routes.host]
+    [frontends.oidc-server.routes.host]
     rule = "Host:oidc-server.test"
   
-  [frontends.oidc_client_hybrid]
-  backend = "oidc_client_hybrid"
+  [frontends.oidc-client-hybrid]
+  backend = "oidc-client-hybrid"
   passHostHeader = true
-    [frontends.oidc_client_hybrid.routes.host]
+    [frontends.oidc-client-hybrid.routes.host]
     rule = "Host:oidc-client-hybrid.test"
   
-  [frontends.oidc_client_js]
-  backend = "oidc_client_js"
+  [frontends.oidc-client-js]
+  backend = "oidc-client-js"
   passHostHeader = true
-    [frontends.oidc_client_js.routes.host]
+    [frontends.oidc-client-js.routes.host]
     rule = "Host:oidc-client-js.test"
   
-  [frontends.oauth2_resources_aspnetcore]
-  backend = "oauth2_resources_aspnetcore"
+  [frontends.oauth2-resources-aspnetcore]
+  backend = "oauth2-resources-aspnetcore"
   passHostHeader = true
-    [frontends.oauth2_resources_aspnetcore.routes.host]
+    [frontends.oauth2-resources-aspnetcore.routes.host]
     rule = "Host:oauth2-resources-aspnetcore.test"
 
-  [frontends.oauth2_client_aspnetcore]
-  backend = "oauth2_client_aspnetcore"
+  [frontends.oauth2-client-aspnetcore]
+  backend = "oauth2-client-aspnetcore"
   passHostHeader = true
-    [frontends.oauth2_client_aspnetcore.routes.host]
+    [frontends.oauth2-client-aspnetcore.routes.host]
     rule = "Host:oauth2-client-aspnetcore.test"
 
 
 [backends]
-  [backends.oidc_server]
-    [backends.oidc_server.servers.server1]
+  [backends.oidc-server]
+    [backends.oidc-server.servers.server1]
     url = "http://oidc-server.test"
 
-  [backends.oidc_client_hybrid]
-    [backends.oidc_client_hybrid.servers.server1]
+  [backends.oidc-client-hybrid]
+    [backends.oidc-client-hybrid.servers.server1]
     url = "http://oidc-client-hybrid.test"
 
-  [backends.oidc_client_js]
-    [backends.oidc_client_js.servers.server1]
+  [backends.oidc-client-js]
+    [backends.oidc-client-js.servers.server1]
     url = "http://oidc-client-js.test"
 
-  [backends.oauth2_resources_aspnetcore]
-    [backends.oauth2_resources_aspnetcore.servers.server1]
+  [backends.oauth2-resources-aspnetcore]
+    [backends.oauth2-resources-aspnetcore.servers.server1]
     url = "http://oauth2-resources-aspnetcore.test"
 
-  [backends.oauth2_client_aspnetcore]
-    [backends.oauth2_client_aspnetcore.servers.server1]
+  [backends.oauth2-client-aspnetcore]
+    [backends.oauth2-client-aspnetcore.servers.server1]
     url = "http://oauth2-client-aspnetcore.test"
