@@ -24,7 +24,9 @@ services:
       dockerfile: web.oidc.client.hybrid.dockerfile
 
   oidc-client-js.test:
-    build: ./1-src/web.oidc.client.js/
+    build:
+      context: ./1-src/
+      dockerfile: web.oidc.client.js.dockerfile
 
   oauth2-resources-aspnetcore.test:
     build:
