@@ -20,9 +20,7 @@
 1. [1-src/oauth2.qqconnect.aspnetcore](1-src/oauth2.qqconnect.aspnetcore): asp.net core 2.
 1. [1-src/oauth2.qqconnect.owin](1-src/oauth2.qqconnect.owin): asp.net owin.
 
-# How to run?
-Use administrator run `build.ps1` to deploy demo web site to local IIS. (Need install `vs 2017` with `.net framework 4.5+ sdk` and `.net core 2.1 sdk` )
-
+# QQ
 If you want use QQ Connect, please replace `ClientId` and `ClientSercet` in [1-src/_shared/QQConnectConfig.cs](1-src/_shared/QQConnectConfig.cs) file.
 ``` csharp
 public static class QQConnectConfig
@@ -32,7 +30,7 @@ public static class QQConnectConfig
 }
 ```
 
-## deploy weh site
+## deployed weh site
 
 1. http://localhost:8080 (traefik web ui:only docker)
 1. http://oidc-server.test
@@ -43,6 +41,8 @@ public static class QQConnectConfig
 1. http://oauth2-resources-owin.test (only windows)
 1. http://oauth2-client-aspnetcore.test
 1. http://oauth2-client-owin.test (only windows)
+
+# How to run?
 
 ## docker-compose.yml (docker platform)
 ```bash
@@ -64,6 +64,7 @@ echo "\
 ```
 
 ## build.ps1 (windows platform)
+Use administrator run `build.ps1` to deploy demo web site to local IIS. (Need install `vs 2017` with `.net framework 4.5+ sdk` and `.net core 2.1 sdk` )
 
 ```powershell
 build.ps1 -help
@@ -86,5 +87,6 @@ Authentication and Authorization: http://www.cnblogs.com/linianhui/category/9298
 
 OIDC in Action: http://www.cnblogs.com/linianhui/category/1121078.html
 
-# ids3
-https://github.com/linianhui/oidc.example/tree/ids3 
+# old
+1. ids3: https://github.com/linianhui/oidc.example/tree/old-ids3
+1. ids4 and owin: https://github.com/linianhui/oidc.example/tree/old-owin
