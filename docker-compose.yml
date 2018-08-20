@@ -3,69 +3,35 @@ version: "3.6"
 
 services:
 
-  traefik_reverse_proxy:
+  traefik:
     build: ./1-src/traefik
     restart: on-failure
     command: --api
     ports:
       - "80:80"
       - "8080:8080"
-    networks:
-      oidc_network:
-        ipv4_address: 172.16.0.2
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  oidc_server:
+  oidc-server.test:
     build:
       context: ./1-src/
       dockerfile: web.oidc.server.ids4.dockerfile
-    networks:
-      oidc_network:
-        ipv4_address: 172.16.0.3
 
-  oidc_client_hybrid:
+  oidc-client-hybrid.test:
     build:
       context: ./1-src/
       dockerfile: web.oidc.client.hybrid.dockerfile
-    extra_hosts:
-      - "oidc-server.test:172.16.0.2"
-    networks:
-      oidc_network:
-        ipv4_address: 172.16.0.5
 
-  oidc_client_js:
+  oidc-client-js.test:
     build: ./1-src/web.oidc.client.js/
-    extra_hosts:
-      - "oidc-server.test:172.16.0.2"
-    networks:
-      oidc_network:
-        ipv4_address: 172.16.0.7
 
-  oauth2_resources_aspnetcore:
+  oauth2-resources-aspnetcore.test:
     build:
       context: ./1-src/
       dockerfile: web.oauth2.resources.aspnetcore.dockerfile
-    extra_hosts:
-      - "oidc-server.test:172.16.0.2"
-    networks:
-      oidc_network:
-        ipv4_address: 172.16.0.11
 
-  oauth2_client_aspnetcore:
+  oauth2-client-aspnetcore.test:
     build:
       context: ./1-src/
       dockerfile: web.oauth2.client.aspnetcore.dockerfile
-    extra_hosts:
-      - "oidc-server.test:172.16.0.2"
-    networks:
-      oidc_network:
-        ipv4_address: 172.16.0.13
-
-
-networks:
-  oidc_network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.16.0.0/16

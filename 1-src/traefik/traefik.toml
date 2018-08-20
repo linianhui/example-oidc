@@ -42,20 +42,20 @@ defaultEntryPoints = ["http"]
 [backends]
   [backends.oidc_server]
     [backends.oidc_server.servers.server1]
-    url = "http://172.16.0.3"
+    url = "http://oidc-server.test"
 
   [backends.oidc_client_hybrid]
     [backends.oidc_client_hybrid.servers.server1]
-    url = "http://172.16.0.5"
+    url = "http://oidc-client-hybrid.test"
 
   [backends.oidc_client_js]
     [backends.oidc_client_js.servers.server1]
-    url = "http://172.16.0.7"
+    url = "http://oidc-client-js.test"
 
   [backends.oauth2_resources_aspnetcore]
     [backends.oauth2_resources_aspnetcore.servers.server1]
-    url = "http://172.16.0.11"
+    url = "http://oauth2-resources-aspnetcore.test"
 
   [backends.oauth2_client_aspnetcore]
     [backends.oauth2_client_aspnetcore.servers.server1]
-    url = "http://172.16.0.13"
+    url = "http://oauth2-client-aspnetcore.test"
