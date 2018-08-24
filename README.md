@@ -25,8 +25,9 @@
 1. [1-src/console.oidc.client.client-credentials](1-src/console.oidc.client.client-credentials) ：console app，client credentials flow(oauth2).
 
 # OAuth2 Protected Resource
-1. [1-src/web.oauth2.resources.aspnetcore](1-src/web.oauth2.resources.aspnetcore): asp.net core 2).
+1. [1-src/web.oauth2.resources.aspnetcore](1-src/web.oauth2.resources.aspnetcore): asp.net core 2.
 1. [1-src/web.oauth2.resources.owin](1-src/web.oauth2.resources.owin): asp.net owin.
+1. [1-src/web.oauth2.resources.nodejs](1-src/web.oauth2.resources.nodejs): node.js.
 
 # OAuth2 Clients
 1. [1-src/web.oauth2.client.aspnetcore](1-src/web.oauth2.client.aspnetcore) : asp.net core 2.
@@ -54,6 +55,7 @@ public static class QQConnectConfig
 1. http://oidc-client-implicit.test (only windows)
 1. http://oidc-client-js.test
 1. http://oauth2-resources-aspnetcore.test
+1. http://oauth2-resources-nodejs.test (only docker)
 1. http://oauth2-resources-owin.test (only windows)
 1. http://oauth2-client-aspnetcore.test
 1. http://oauth2-client-owin.test (only windows)
