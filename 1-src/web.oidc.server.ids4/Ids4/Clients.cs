@@ -159,7 +159,7 @@ namespace ServerSite.Ids4
             ClientId = "client-credentials-client",
             AllowedGrantTypes = GrantTypes.ClientCredentials,
             ClientSecrets = { new Secret("lnh".Sha256()) },
-            AllowedScopes = { "my-api" }
+            AllowedScopes = { "api-1", "api-2", "api-3" }
         };
     }
 }
