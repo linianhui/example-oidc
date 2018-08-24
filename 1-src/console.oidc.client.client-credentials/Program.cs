@@ -32,7 +32,7 @@ namespace ClientCredentials
             }
 
             var tokenClient = new TokenClient(discoveryResponse.TokenEndpoint, "client-credentials-client", "lnh");
-            var tokenResponse = await tokenClient.RequestClientCredentialsAsync("my-api");
+            var tokenResponse = await tokenClient.RequestClientCredentialsAsync("api-1 api-2 api-3");
 
             if (tokenResponse.IsError)
             {

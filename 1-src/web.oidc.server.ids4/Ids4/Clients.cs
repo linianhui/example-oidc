@@ -27,7 +27,7 @@ namespace ServerSite.Ids4
 
                 return new Client
                 {
-                    ClientId = "implicit-client",
+                    ClientId = "oidc-client-implicit.test",
                     ClientName = "Implicit Client",
                     AllowedGrantTypes = GrantTypes.Implicit,
 
@@ -57,7 +57,7 @@ namespace ServerSite.Ids4
 
                 return new Client
                 {
-                    ClientId = "hybrid-client",
+                    ClientId = "oidc-client-hybrid.test",
                     ClientName = "Hybrid Client",
                     AllowedGrantTypes = GrantTypes.Hybrid,
                     ClientSecrets = new List<Secret>
@@ -90,7 +90,7 @@ namespace ServerSite.Ids4
                 const string host = "http://oidc-client-js.test";
                 return new Client
                 {
-                    ClientId = "js-client",
+                    ClientId = "oidc-client-js.test",
                     ClientName = "JS Client",
                     AllowedGrantTypes = GrantTypes.Implicit,
 
@@ -107,7 +107,9 @@ namespace ServerSite.Ids4
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email,
-                        "my-api"
+                        "api-1",
+                        "api-2",
+                        "api-3"
                     },
                     AccessTokenLifetime = 3600,
                     AllowAccessTokensViaBrowser = true,
@@ -124,7 +126,7 @@ namespace ServerSite.Ids4
 
                 return new Client
                 {
-                    ClientId = "oidc-authorization-code-client",
+                    ClientId = "oidc-client-authorization-code.test",
                     ClientName = "Oidc Authorization Code Client",
                     AllowedGrantTypes = GrantTypes.Code,
                     ClientSecrets = new List<Secret>

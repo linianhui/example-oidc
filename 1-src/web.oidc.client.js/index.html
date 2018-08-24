@@ -11,14 +11,14 @@
 
         var oidcOptions = {
             authority: 'http://oidc-server.test',
-            client_id: 'js-client',
+            client_id: 'oidc-client-js.test',
             post_logout_redirect_uri: host + '/index.html',
             redirect_uri: host + '/oidc/login-callback.html',
             silent_redirect_uri: host + '/oidc/refresh-token.html',
             accessTokenExpiringNotificationTime: 4,
             automaticSilentRenew: false,
             response_type: 'id_token token',
-            scope: 'openid profile my-api',
+            scope: 'openid profile api-1 api-2 api-3',
             filterProtocolClaims: true
         };
 
@@ -28,17 +28,34 @@
     </script>
 </head>
 <body>
-    <a href="https://github.com/IdentityModel/oidc-client-js/wiki" target="_blank">oidc-client.js wiki</a>
-    <nav>
+
+    <fieldset>
+        <legend>login/logout</legend>
+        <a href="https://github.com/IdentityModel/oidc-client-js/wiki" target="_blank">oidc-client.js wiki</a>
+        <br />
         <a href="javascript:login();">Login</a>
+        <br />
         <a href="javascript:logout();">Logout</a>
-        <a href="javascript:useAccessTokenCallAPI1();">Use Access Token Call API 1(aspnetcore)</a>
-        <a href="javascript:useAccessTokenCallAPI2();">Use Access Token Call API 2(aspnetcore)</a>
-        <a href="javascript:useAccessTokenCallAPI3();">Use Access Token Call API 3(owin)</a>
-    </nav>
+    </fieldset>
+
+    <fieldset>
+        <legend>Use AccessToken Call API</legend>
+        <a href="javascript:useAccessTokenCallAPI('http://oauth2-resources-aspnetcore.test');">
+            http://oauth2-resources-aspnetcore.test
+        </a>
+        <br />
+        <a href="javascript:useAccessTokenCallAPI('http://oauth2-resources-aspnetcore.test/books');">
+            http://oauth2-resources-aspnetcore.test/books
+        </a>
+        <br />
+        <a href="javascript:useAccessTokenCallAPI('http://oauth2-resources-owin.test');">
+            http://oauth2-resources-owin.test
+        </a>
+        <br />
+    </fieldset>
+
 
     <pre id="result" style="overflow-x: auto;"></pre>
-
     <script type="text/javascript">
         var manager = new Oidc.UserManager(oidcOptions);
         if (account.is_login) {
@@ -96,12 +113,12 @@
             });
         }
 
-        function useAccessTokenCallAPI1() {
+        function useAccessTokenCallAPI(url) {
             getUser(function (user) {
                 if (user) {
                     var accessToken = user.access_token;
                     $.ajax({
-                        url: "http://oauth2-resources-aspnetcore.test",
+                        url: url,
                         headers: {
                             Authorization: "Bearer " + accessToken
                         },
@@ -113,49 +130,7 @@
                     alert("请先登录！");
                 }
             });
-
         }
-
-        function useAccessTokenCallAPI2() {
-            getUser(function (user) {
-                if (user) {
-                    var accessToken = user.access_token;
-                    $.ajax({
-                        url: "http://oauth2-resources-aspnetcore.test/books",
-                        headers: {
-                            Authorization: "Bearer " + accessToken
-                        },
-                        dataType: "json",
-                        success: display,
-                        error: display,
-                    });
-                } else {
-                    alert("请先登录！");
-                }
-            });
-
-        }
-
-        function useAccessTokenCallAPI3() {
-            getUser(function (user) {
-                if (user) {
-                    var accessToken = user.access_token;
-                    $.ajax({
-                        url: "http://oauth2-resources-owin.test",
-                        headers: {
-                            Authorization: "Bearer " + accessToken
-                        },
-                        dataType: "json",
-                        success: display,
-                        error: display
-                    });
-                } else {
-                    alert("请先登录！");
-                }
-            });
-
-        }
-        
 
         function loginCore() {
             manager.signinRedirect()
@@ -186,5 +161,4 @@
         }
     </script>
 </body>
-
 </html>

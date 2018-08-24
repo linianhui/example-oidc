@@ -14,7 +14,9 @@ namespace ServerSite.Ids4
 
         public static IEnumerable<ApiResource> AllApiResources => new List<ApiResource>
         {
-            new ApiResource("my-api", "My API")
+            new ApiResource("api-1", "API 1"),
+            new ApiResource("api-2", "API 2"),
+            new ApiResource("api-3", "API 3")
         };
     }
 }

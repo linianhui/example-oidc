@@ -28,7 +28,7 @@ Task("restore")
     .Description("还原项目依赖")
     .Does(() =>
 {
-    NuGetRestore(slnPath);
+    DotNetCoreRestore(slnPath);
 });
 
 

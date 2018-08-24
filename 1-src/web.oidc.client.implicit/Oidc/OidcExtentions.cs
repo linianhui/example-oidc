@@ -32,7 +32,7 @@ namespace ClientSite.Oidc
             {
                 AuthenticationType = Constants.AuthenticationTypeOfOidc,
                 Authority = "http://oidc-server.test",
-                ClientId = "implicit-client",
+                ClientId = "oidc-client-implicit.test",
                 ResponseType = "id_token",
                 RequireHttpsMetadata = false,
                 CallbackPath = new PathString("/oidc/login-callback"),

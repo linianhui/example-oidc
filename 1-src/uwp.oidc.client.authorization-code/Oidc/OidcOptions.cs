@@ -10,7 +10,7 @@ namespace ClientUwp.Oidc
     {
         public string AuthorizeEndpoint => "http://oidc-server.test/connect/authorize";
         public string TokenEndpoint => "http://oidc-server.test/connect/token";
-        public string ClientId => "oidc-authorization-code-client";
+        public string ClientId => "oidc-client-authorization-code.test";
         public string ClientSecret => "lnh";
         public string RedirectUri => "http://oidc-client-authorization-code.test/oidc/login-callback";
 

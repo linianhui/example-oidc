@@ -28,7 +28,7 @@ namespace ClientSite.Oidc
                 _.SignInScheme = Constants.AuthenticationSchemeOfCookies;
                 _.Authority = "http://oidc-server.test";
                 _.RequireHttpsMetadata = false;
-                _.ClientId = "hybrid-client";
+                _.ClientId = "oidc-client-hybrid.test";
                 _.ClientSecret = "lnh";
                 _.ResponseType = "code id_token";
                 _.SaveTokens = true;
