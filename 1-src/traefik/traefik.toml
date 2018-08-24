@@ -25,12 +25,6 @@ defaultEntryPoints = ["http"]
   passHostHeader = true
     [frontends.oidc-client-js.routes.host]
     rule = "Host:oidc-client-js.test"
-  
-  [frontends.oauth2-resources-aspnetcore]
-  backend = "oauth2-resources-aspnetcore"
-  passHostHeader = true
-    [frontends.oauth2-resources-aspnetcore.routes.host]
-    rule = "Host:oauth2-resources-aspnetcore.test"
 
   [frontends.oauth2-client-aspnetcore]
   backend = "oauth2-client-aspnetcore"
@@ -38,6 +32,17 @@ defaultEntryPoints = ["http"]
     [frontends.oauth2-client-aspnetcore.routes.host]
     rule = "Host:oauth2-client-aspnetcore.test"
 
+  [frontends.oauth2-resources-aspnetcore]
+  backend = "oauth2-resources-aspnetcore"
+  passHostHeader = true
+    [frontends.oauth2-resources-aspnetcore.routes.host]
+    rule = "Host:oauth2-resources-aspnetcore.test"
+
+  [frontends.oauth2-resources-nodejs]
+  backend = "oauth2-resources-nodejs"
+  passHostHeader = true
+    [frontends.oauth2-resources-nodejs.routes.host]
+    rule = "Host:oauth2-resources-nodejs.test"
 
 [backends]
   [backends.oidc-server]
@@ -52,10 +57,14 @@ defaultEntryPoints = ["http"]
     [backends.oidc-client-js.servers.server1]
     url = "http://oidc-client-js.test"
 
+  [backends.oauth2-client-aspnetcore]
+    [backends.oauth2-client-aspnetcore.servers.server1]
+    url = "http://oauth2-client-aspnetcore.test"
+
   [backends.oauth2-resources-aspnetcore]
     [backends.oauth2-resources-aspnetcore.servers.server1]
     url = "http://oauth2-resources-aspnetcore.test"
 
-  [backends.oauth2-client-aspnetcore]
-    [backends.oauth2-client-aspnetcore.servers.server1]
-    url = "http://oauth2-client-aspnetcore.test"
+  [backends.oauth2-resources-nodejs]
+    [backends.oauth2-resources-nodejs.servers.server1]
+    url = "http://oauth2-resources-nodejs.test"

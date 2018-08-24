@@ -28,12 +28,17 @@ services:
       context: ./1-src/
       dockerfile: web.oidc.client.js.dockerfile
 
-  oauth2-resources-aspnetcore.test:
-    build:
-      context: ./1-src/
-      dockerfile: web.oauth2.resources.aspnetcore.dockerfile
-
   oauth2-client-aspnetcore.test:
     build:
       context: ./1-src/
       dockerfile: web.oauth2.client.aspnetcore.dockerfile
+
+  oauth2-resources-aspnetcore.test:
+    build:
+      context: ./1-src/
+      dockerfile: web.oauth2.resources.aspnetcore.dockerfile
+  
+  oauth2-resources-nodejs.test:
+    build:
+      context: ./1-src/
+      dockerfile: web.oauth2.resources.nodejs.dockerfile

@@ -262,3 +262,5 @@ paket-files/
 
 .vscode/
 www/*
+
+package-lock.json
