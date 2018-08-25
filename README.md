@@ -77,8 +77,10 @@ echo "\
 \n127.0.0.1 oidc-server.test \
 \n127.0.0.1 oidc-client-hybrid.test \
 \n127.0.0.1 oidc-client-js.test \
+\n127.0.0.1 oauth2-resources-nodejs.test \
 \n127.0.0.1 oauth2-resources-aspnetcore.test \
-\n127.0.0.1 oauth2-client-aspnetcore.test " | sudo tee -a /etc/hosts
+\n127.0.0.1 oauth2-client-aspnetcore.test " \
+| sudo tee -a /etc/hosts
 ```
 
 ## build.ps1 (windows platform)

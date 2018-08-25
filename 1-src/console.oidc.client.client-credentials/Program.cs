@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using IdentityModel.Client;
-using Newtonsoft.Json.Linq;
 
 namespace ClientCredentials
 {
@@ -10,11 +11,41 @@ namespace ClientCredentials
     {
         public static void Main()
         {
+            DiagnosticListener.AllListeners.Subscribe(new DiagnosticListenerObserver());
             MainAsync().GetAwaiter().GetResult();
+            Console.WriteLine("ok");
             Console.ReadKey();
         }
 
         private static async Task MainAsync()
+        {
+            var tokenResponse = await GetToken();
+            var client = new HttpClient();
+
+            client.SetBearerToken(tokenResponse.AccessToken);
+
+            var apis = new List<string>
+            {
+                "http://oauth2-resources-aspnetcore.test",
+                "http://oauth2-resources-aspnetcore.test/books",
+                "http://oauth2-resources-nodejs.test",
+                "http://oauth2-resources-owin.test"
+            };
+
+            foreach (var api in apis)
+            {
+                try
+                {
+                    await client.GetAsync(api);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+        }
+
+        private static async Task<TokenResponse> GetToken()
         {
             var discoveryClient = new DiscoveryClient("http://oidc-server.test")
             {
@@ -23,46 +54,11 @@ namespace ClientCredentials
                     RequireHttps = false
                 }
             };
-
             var discoveryResponse = await discoveryClient.GetAsync();
-            if (discoveryResponse.IsError)
-            {
-                Console.WriteLine(discoveryResponse.Error);
-                return;
-            }
 
             var tokenClient = new TokenClient(discoveryResponse.TokenEndpoint, "client-credentials-client", "lnh");
-            var tokenResponse = await tokenClient.RequestClientCredentialsAsync("api-1 api-2 api-3");
 
-            if (tokenResponse.IsError)
-            {
-                Console.WriteLine(tokenResponse.Error);
-                return;
-            }
-
-            Console.WriteLine(tokenResponse.Json);
-            Console.WriteLine("\n\n");
-
-            var client = new HttpClient();
-            client.SetBearerToken(tokenResponse.AccessToken);
-
-            var response = await client.GetAsync("http://oauth2-resources-aspnetcore.test");
-            await WriteLineResponse(response);
-            var response2 = await client.GetAsync("http://oauth2-resources-aspnetcore.test/books");
-            await WriteLineResponse(response2);
-        }
-
-        private static async Task WriteLineResponse(HttpResponseMessage response)
-        {
-            if (!response.IsSuccessStatusCode)
-            {
-                Console.WriteLine(response.StatusCode);
-            }
-            else
-            {
-                var content = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(JObject.Parse(content));
-            }
+            return await tokenClient.RequestClientCredentialsAsync("api-1 api-2 api-3");
         }
     }
 }
