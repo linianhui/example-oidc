@@ -22,6 +22,7 @@
 1. [1-src/web.oidc.client.implicit](1-src/web.oidc.client.implicit) : web site, implicit flow.
 1. [1-src/web.oidc.client.js](1-src/web.oidc.client.js) : web site(static), implicit flow .
 1. [1-src/uwp.oidc.client.authorization-code](1-src/uwp.oidc.client.authorization-code) : uwp app, authorization code flow.
+1. [1-src/wpf.oidc.client.authorization-code](1-src/wpf.oidc.client.authorization-code) : wpf app, authorization code flow.
 1. [1-src/console.oidc.client.client-credentials](1-src/console.oidc.client.client-credentials) ：console app，client credentials flow(oauth2).
 
 # OAuth2 Protected API Resources
