@@ -1,21 +1,14 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Storage;
+﻿using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using UWPClient.Models;
+using UWPClient.Oidc;
+using Windows.UI.Xaml;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
-namespace ClientUwp
+namespace UWPClient
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+
     public sealed partial class MainPage : Page
     {
         public MainPage()
@@ -25,67 +18,45 @@ namespace ClientUwp
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            var userJson = await ReadUserJson();
-            if (userJson != null)
-            {
-                ShowUser(userJson);
-            }
+            await RefreshUi();
             base.OnNavigatedTo(e);
         }
 
-        private void ShowUser(JToken userJson)
-        {
-            this.NameUserTextBlock.Text = userJson.ToString(Formatting.Indented);
-
-            var idTokenText = userJson.Value<string>("id_token");
-            var idTokenJwt = new JwtSecurityToken(idTokenText);
-            var idTokenJson = JwtToJson(idTokenJwt);
-            this.NameIdTokenTextBox.Text = idTokenJson.ToString(Formatting.Indented);
-
-            var accessTokenText = userJson.Value<string>("access_token");
-            var accessTokenJwt = new JwtSecurityToken(accessTokenText);
-            var accessTokenJson = JwtToJson(accessTokenJwt);
-            this.NameAccessTokenTextBox.Text = accessTokenJson.ToString(Formatting.Indented);
-        }
-
-        private void Login_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void Login_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(LoginPage));
         }
 
-        private void QQLogin_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void QQLogin_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(LoginPage), new { idp = "qq" });
         }
 
-        public async Task<JObject> ReadUserJson()
+        private async void Logout_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                using (var fileStream =
-                    await ApplicationData.Current.LocalFolder.OpenStreamForReadAsync("user-token.json"))
-                {
-                    var jsonBytes = new byte[fileStream.Length];
-                    fileStream.Read(jsonBytes, 0, jsonBytes.Length);
-                    var jsonText = Encoding.UTF8.GetString(jsonBytes);
-                    return JObject.Parse(jsonText);
-                }
-            }
-            catch (Exception e)
-            {
-                // ignored
-            }
-            return null;
+            await TokenFile.DeleteAsync();
+            await RefreshUi();
         }
 
-        public JObject JwtToJson(JwtSecurityToken jwt)
+        private async Task RefreshUi()
         {
-            var json = new JObject();
-            foreach (var claim in jwt.Claims)
+            this.DataContext = await GetTokenModel();
+        }
+
+        private async Task<TokenModel> GetTokenModel()
+        {
+            var token = await TokenFile.ReadAsync();
+            if (token == null)
             {
-                json.Add(claim.Type, claim.Value);
+                return new TokenModel();
             }
-            return json;
+
+            return new TokenModel
+            {
+                Token = token.ToString(Formatting.Indented),
+                IdToken = JwtModel.From(token.Value<string>("id_token")),
+                AccessToken = JwtModel.From(token.Value<string>("access_token")),
+            };
         }
     }
 }

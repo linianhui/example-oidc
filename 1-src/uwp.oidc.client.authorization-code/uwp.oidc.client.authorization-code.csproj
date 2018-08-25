@@ -7,8 +7,8 @@
     <ProjectGuid>{B101D8E1-7EE2-4884-9A72-6F4A6B4DBF2A}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClientUwp</RootNamespace>
-    <AssemblyName>uwp.Oidc.Client.AuthorizationCode</AssemblyName>
+    <RootNamespace>UWPClient</RootNamespace>
+    <AssemblyName>Oidc.Client.AuthorizationCode.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.15063.0</TargetPlatformVersion>
@@ -102,7 +102,11 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\JwtModel.cs" />
+    <Compile Include="Models\TokenModel.cs" />
+    <Compile Include="Oidc\OidcClient.cs" />
     <Compile Include="Oidc\OidcOptions.cs" />
+    <Compile Include="Oidc\TokenFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

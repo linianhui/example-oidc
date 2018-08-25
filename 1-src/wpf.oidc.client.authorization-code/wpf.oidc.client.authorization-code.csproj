@@ -107,8 +107,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\JwtModel.cs" />
+    <Compile Include="Models\TokenModel.cs" />
     <Compile Include="Oidc\OidcClient.cs" />
     <Compile Include="Oidc\OidcOptions.cs" />
+    <Compile Include="Oidc\TokenFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

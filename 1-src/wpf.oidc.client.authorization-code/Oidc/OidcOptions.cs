@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace WPFClient.Oidc
+﻿namespace WPFClient.Oidc
 {
     public class OidcOptions
     {

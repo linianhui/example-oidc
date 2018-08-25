@@ -1,22 +1,13 @@
 ﻿using System;
-using System.IO;
-using System.Net.Http;
-using System.Text;
-using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using ClientUwp.Oidc;
+using UWPClient.Oidc;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
-namespace ClientUwp
+namespace UWPClient
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class LoginPage : Page
     {
-        private readonly OidcOptions _oidcOptions = new OidcOptions();
+        private readonly OidcClient _oidcClient = new OidcClient();
 
         public LoginPage()
         {
@@ -28,7 +19,7 @@ namespace ClientUwp
             if (e.NavigationMode == NavigationMode.New)
             {
                 var idp = ((dynamic)e.Parameter)?.idp;
-                this.NameLoginWebView.Navigate(new Uri(this._oidcOptions.BuildAuthorizeUrl(idp?.ToString()), UriKind.Absolute));
+                this.NameLoginWebView.Navigate(new Uri(this._oidcClient.BuildAuthorizeUrl(idp?.ToString()), UriKind.Absolute));
             }
             base.OnNavigatedTo(e);
         }
@@ -36,20 +27,11 @@ namespace ClientUwp
         private async void NameLoginWebView_NavigationStarting(WebView sender, WebViewNavigationStartingEventArgs args)
         {
             var uri = args.Uri;
-            if (uri.ToString().StartsWith(this._oidcOptions.RedirectUri))
+            if (uri.ToString().StartsWith(OidcClient.Options.RedirectUri))
             {
-                var code = OidcOptions.GetCode(uri.Query);
-                var httpClient = new HttpClient();
-                var tokenParams = new FormUrlEncodedContent(this._oidcOptions.BuildTokenParams(code));
-                var tokenReponse = await httpClient.PostAsync(this._oidcOptions.TokenEndpoint, tokenParams);
-                var jsonText = await tokenReponse.Content.ReadAsStringAsync();
-                //todo:http://openid.net/specs/openid-connect-core-1_0.html#TokenResponseValidation
-                var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("user-token.json", CreationCollisionOption.ReplaceExisting);
-                using (var fileStream = await file.OpenStreamForWriteAsync())
-                {
-                    var jsonBytes = Encoding.UTF8.GetBytes(jsonText);
-                    fileStream.Write(jsonBytes, 0, jsonBytes.Length);
-                }
+                var code = OidcClient.GetCode(uri.Query);
+                var token = await this._oidcClient.GetTokenAsync(code);
+                await TokenFile.WriteAsync(token);
                 if (this.Frame.CanGoBack)
                 {
                     this.Frame.GoBack();

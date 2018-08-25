@@ -30,13 +30,12 @@
                     Visibility="{Binding LoginVisibility}" />
 
             <Button Content="Logout"
-                    Click="LogOut_Click"
+                    Click="Logout_Click"
                     Visibility="{Binding LogoutVisibility}" />
         </StackPanel>
 
         <StackPanel Grid.Row="1"
-                    Grid.Column="0"
-                    ScrollViewer.CanContentScroll="True">
+                    Grid.Column="0">
             <TextBlock Text="ID Token" />
             <TextBlock Text="{Binding IdToken}"
                        Margin="0,12,6,0"
@@ -45,8 +44,7 @@
 
         <StackPanel Grid.Row="1"
                     Grid.Column="1"
-                    Margin="6,0,0,0"
-                    ScrollViewer.CanContentScroll="True">
+                    Margin="6,0,0,0">
             <TextBlock Text="Access Token" />
             <TextBlock Text="{Binding AccessToken}"
                        Margin="0,12"

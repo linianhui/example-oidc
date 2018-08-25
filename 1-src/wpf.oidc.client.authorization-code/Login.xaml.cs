@@ -25,7 +25,7 @@ namespace WPFClient
             {
                 var code = OidcClient.GetCode(uri.Query);
                 var token = await _oidcClient.GetTokenAsync(code);
-                App.WriteToken(token);
+                TokenFile.Write(token);
                 this.Close();
             }
         }
