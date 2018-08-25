@@ -19,7 +19,7 @@ namespace ClientCredentials
 
         private static async Task MainAsync()
         {
-            var tokenResponse = await GetToken();
+            var tokenResponse = await GetTokenAsync();
             var client = new HttpClient();
 
             client.SetBearerToken(tokenResponse.AccessToken);
@@ -45,7 +45,7 @@ namespace ClientCredentials
             }
         }
 
-        private static async Task<TokenResponse> GetToken()
+        private static async Task<TokenResponse> GetTokenAsync()
         {
             var discoveryClient = new DiscoveryClient("http://oidc-server.test")
             {
