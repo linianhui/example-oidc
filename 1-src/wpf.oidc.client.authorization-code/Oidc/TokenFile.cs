@@ -6,7 +6,7 @@ namespace WPFClient.Oidc
 {
     public static class TokenFile
     {
-        private static string TokenFilePath => Environment.CurrentDirectory + "token.json";
+        private static string TokenFilePath => Environment.CurrentDirectory + "/token.json";
 
         public static JObject Read()
         {
