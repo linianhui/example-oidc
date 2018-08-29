@@ -16,10 +16,4 @@
     <ProjectReference Include="..\aspnetcore.filters.permissions\aspnetcore.filters.permissions.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Dockerfile">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

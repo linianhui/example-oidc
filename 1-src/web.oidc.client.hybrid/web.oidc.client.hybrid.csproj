@@ -14,10 +14,4 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Dockerfile">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
