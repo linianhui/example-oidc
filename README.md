@@ -34,17 +34,27 @@
 1. [1-src/web.oauth2.client.aspnetcore](1-src/web.oauth2.client.aspnetcore) : asp.net core 2.
 1. [1-src/web.oauth2.client.owin](1-src/web.oauth2.client.owin) : asp.net owin.
 
-# OAuth2 QQConnect Middleware
+# OAuth2 Middleware
+1. [1-src/oauth2.github.aspnetcore](1-src/oauth2.github.aspnetcore): asp.net core 2.
 1. [1-src/oauth2.qqconnect.aspnetcore](1-src/oauth2.qqconnect.aspnetcore): asp.net core 2.
 1. [1-src/oauth2.qqconnect.owin](1-src/oauth2.qqconnect.owin): asp.net owin.
 
-## QQ Config
-If you want use QQ Connect, please replace `ClientId` and `ClientSercet` in [1-src/_shared/QQConnectConfig.cs](1-src/_shared/QQConnectConfig.cs) file.
-``` csharp
-public static class QQConnectConfig
+## Global Config
+If you want use QQ Connect or Github, please replace `ClientId` and `ClientSercet` in [1-src/_shared/GlobalConfig.cs](1-src/_shared/GlobalConfig.cs) file.
+```csharp
+public static class GlobalConfig
 {
-    public static readonly string ClientId = "You App Id";
-    public static readonly string ClientSecret = "You App Secret";
+    public static class QQConnect
+    {
+        public static readonly string ClientId = "You App Id";
+        public static readonly string ClientSecret = "You App Secret";
+    }
+
+    public static class Github
+    {
+        public static readonly string ClientId = "You App Id";
+        public static readonly string ClientSecret = "You App Secret";
+    }
 }
 ```
 

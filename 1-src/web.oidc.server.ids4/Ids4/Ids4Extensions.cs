@@ -3,6 +3,7 @@ using IdentityServer4.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using OAuth2.QQConnect.AspNetCore;
+using OAuth2.Github.AspNetCore;
 
 namespace ServerSite.Ids4
 {
@@ -12,7 +13,8 @@ namespace ServerSite.Ids4
         {
             @this
                 .AddAuthentication()
-                .AddQQConnect("qq", "QQ Connect", SetQQConnectOptions);
+                .AddQQConnect("qq", "QQ Connect", SetQQConnectOptions)
+                .AddGithub("github", "Github", SetGithubOptions);
 
             @this
                 .AddIdentityServer(SetIdentityServerOptions)
@@ -35,6 +37,13 @@ namespace ServerSite.Ids4
             options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
             options.ClientId = GlobalConfig.QQConnect.ClientId;
             options.ClientSecret = GlobalConfig.QQConnect.ClientSecret;
+        }
+
+        private static void SetGithubOptions(GithubOAuthOptions options)
+        {
+            options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+            options.ClientId = GlobalConfig.Github.ClientId;
+            options.ClientSecret = GlobalConfig.Github.ClientSecret;
         }
 
         private static void SetIdentityServerOptions(IdentityServerOptions options)

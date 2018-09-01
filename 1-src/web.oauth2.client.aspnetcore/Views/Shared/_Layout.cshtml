@@ -8,16 +8,18 @@
     <header>
         <nav>
             @if (this.User != null
-                && this.User.Identity != null
-                && this.User.Identity.IsAuthenticated == true)
+               && this.User.Identity != null
+               && this.User.Identity.IsAuthenticated == true)
             {
                 @Html.RouteLink("Logout", "account-logout")
             }
             else
             {
-                @Html.RouteLink("QQ Login", "account-qq-login", new { returnUri = this.Context.Request.Path.Value })
+                @Html.RouteLink("Login (QQ)", "account-login", new { idp = "qq", returnUri = this.Context.Request.Path.Value })
                 <br />
-                @Html.RouteLink("QQ Login (Mobile)", "account-qq-login", new { returnUri = this.Context.Request.Path.Value, isMobile = true })
+                @Html.RouteLink("Login (QQ Mobile)", "account-login", new { idp = "qq", returnUri = this.Context.Request.Path.Value, isMobile = true })
+                <br />
+                @Html.RouteLink("Login (Github)", "account-login", new { idp = "github", returnUri = this.Context.Request.Path.Value})
             }
         </nav>
     </header>

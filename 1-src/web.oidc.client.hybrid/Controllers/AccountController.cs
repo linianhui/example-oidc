@@ -13,25 +13,17 @@ namespace ClientSite.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("login", Name = "account-login")]
-        public IActionResult Login(Uri returnUri)
-        {
-            if (User?.Identity?.IsAuthenticated==true)
-            {
-                return Redirect("/");
-            }
-            return Challenge(BuildAuthenticationProperties(returnUri), Constants.AuthenticationSchemeOfOidc);
-        }
-
-        [HttpGet]
-        [AllowAnonymous]
-        [Route("login-qq", Name = "account-login-qq")]
-        public IActionResult LoginQQ(Uri returnUri)
+        public IActionResult Login(string idp, Uri returnUri)
         {
             if (User?.Identity?.IsAuthenticated == true)
             {
                 return Redirect("/");
             }
-            base.HttpContext.Items["idp"] = "qq";
+
+            if (string.IsNullOrWhiteSpace(idp) == false)
+            {
+                base.HttpContext.Items["idp"] = idp.Trim();
+            }
             return Challenge(BuildAuthenticationProperties(returnUri), Constants.AuthenticationSchemeOfOidc);
         }
 

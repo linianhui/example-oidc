@@ -13,32 +13,20 @@ namespace ClientSite.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("login", Name = "account-login")]
-        public ActionResult Login(Uri returnUri)
+        public ActionResult Login(string idp, Uri returnUri)
         {
             if (User?.Identity?.IsAuthenticated == true)
             {
                 return Redirect("/");
             }
 
-            Request.GetOwinContext()
-                .Authentication
-                .Challenge(BuildAuthenticationProperties(returnUri), Constants.AuthenticationTypeOfOidc);
-
-            return new EmptyResult();
-        }
-
-        [HttpGet]
-        [AllowAnonymous]
-        [Route("login-qq", Name = "account-login-qq")]
-        public ActionResult LoginQQ(Uri returnUri)
-        {
-            if (User?.Identity?.IsAuthenticated == true)
+            var owinContext = Request.GetOwinContext();
+            if (string.IsNullOrWhiteSpace(idp) == false)
             {
-                return Redirect("/");
+                owinContext.Set("idp", idp.Trim());
             }
 
-            Request.GetOwinContext()
-                .Set("idp", "qq")
+            owinContext
                 .Authentication
                 .Challenge(BuildAuthenticationProperties(returnUri), Constants.AuthenticationTypeOfOidc);
 

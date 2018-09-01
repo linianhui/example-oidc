@@ -152,6 +152,9 @@ namespace ServerSite.Ids4.Account
                 await HttpContext.SignInAsync(user.SubjectId, user.Username, scheme, claims.ToArray());
                 return Redirect(resumeUrl);
             }
+
+            ViewBag.NickName = GetUserNickName(claims);
+            ViewBag.AvatarUrl = GetUserAvatar(claims);
             return View("ExternalLoginNewUser");
         }
 
@@ -214,6 +217,16 @@ namespace ServerSite.Ids4.Account
                 throw new Exception("Unknown userid");
             }
             return userIdClaim.Value;
+        }
+
+        private static string GetUserNickName(ICollection<Claim> claims)
+        {
+            return claims.FirstOrDefault(x => x.Type == JwtClaimTypes.NickName)?.Value;
+        }
+
+        private static string GetUserAvatar(ICollection<Claim> claims)
+        {
+            return claims.FirstOrDefault(x => x.Type == "avatar")?.Value;
         }
 
     }

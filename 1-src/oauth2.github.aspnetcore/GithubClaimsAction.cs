@@ -11,18 +11,27 @@ namespace OAuth2.Github.AspNetCore
         {
         }
 
-        public override void Run(JObject userData, ClaimsIdentity identity, string issuer)
+        public override void Run(JObject user, ClaimsIdentity identity, string issuer)
         {
-            if (userData != null)
+            if (user == null)
             {
-                foreach (var userDatum in userData)
-                {
-                    var key = userDatum.Key;
-                    var value = userDatum.Value.ToString();
-                    identity.AddClaim(new Claim("github." + key, value, ClaimValueTypes.String, issuer));
-                }
-                identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, userData.GetValue("id").ToString(), ClaimValueTypes.String, issuer));
+                return;
             }
+
+            foreach (var item in user)
+            {
+                var key = item.Key;
+                var value = item.Value.ToString();
+                identity.AddClaim(new Claim("github." + key, value, ClaimValueTypes.String, issuer));
+            }
+
+            var userId = user.GetValue("id").ToString();
+            var userName = user.GetValue("name").ToString();
+            var userAvatar = user.GetValue("avatar_url").ToString();
+
+            identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, userId, ClaimValueTypes.String, issuer));
+            identity.AddClaim(new Claim("nickname", userName, ClaimValueTypes.String, issuer));
+            identity.AddClaim(new Claim("avatar", userAvatar, ClaimValueTypes.String, issuer));
         }
     }
 }

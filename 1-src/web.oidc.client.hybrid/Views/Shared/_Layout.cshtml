@@ -9,8 +9,8 @@
     <header>
         <nav>
             @if (this.User != null
-                && this.User.Identity != null
-                && this.User.Identity.IsAuthenticated == true)
+              && this.User.Identity != null
+              && this.User.Identity.IsAuthenticated == true)
             {
                 @Html.RouteLink("Logout", "account-logout")
             }
@@ -18,7 +18,9 @@
             {
                 @Html.RouteLink("Oidc Login", "account-login", new { returnUri = this.Context.Request.GetDisplayUrl() })
                 <br />
-                @Html.RouteLink("Oidc Login(QQ)", "account-login-qq", new { returnUri = this.Context.Request.GetDisplayUrl() })
+                @Html.RouteLink("Oidc Login(QQ)", "account-login", new { idp = "qq", returnUri = this.Context.Request.GetDisplayUrl() })
+                <br />
+                @Html.RouteLink("Oidc Login(Github)", "account-login", new { idp = "github", returnUri = this.Context.Request.GetDisplayUrl() })
             }
         </nav>
     </header>
