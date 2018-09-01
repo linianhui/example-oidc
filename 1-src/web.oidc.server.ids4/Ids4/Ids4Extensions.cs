@@ -8,23 +8,33 @@ namespace ServerSite.Ids4
 {
     public static class Ids4Extensions
     {
-        public static void AddIds4(this IServiceCollection services)
+        public static IServiceCollection AddIds4(this IServiceCollection @this)
         {
+            @this
+                .AddAuthentication()
+                .AddQQConnect("qq", "QQ Connect", SetQQConnectOptions);
 
-            services.AddAuthentication()
-                .AddQQConnectAuthentication(options =>
-                {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                    options.ClientId = QQConnectConfig.ClientId;
-                    options.ClientSecret = QQConnectConfig.ClientSecret;
-                }, "qq");
-            services
+            @this
                 .AddIdentityServer(SetIdentityServerOptions)
                 .AddDeveloperSigningCredential()
                 .AddInMemoryIdentityResources(Resources.AllIdentityResources)
                 .AddInMemoryApiResources(Resources.AllApiResources)
                 .AddInMemoryClients(Clients.All)
                 .AddTestUsers(Users.All);
+
+            return @this;
+        }
+
+        public static IApplicationBuilder UseIds4(this IApplicationBuilder @this)
+        {
+            return @this.UseIdentityServer();
+        }
+
+        private static void SetQQConnectOptions(QQConnectOAuthOptions options)
+        {
+            options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+            options.ClientId = GlobalConfig.QQConnect.ClientId;
+            options.ClientSecret = GlobalConfig.QQConnect.ClientSecret;
         }
 
         private static void SetIdentityServerOptions(IdentityServerOptions options)
@@ -39,12 +49,6 @@ namespace ServerSite.Ids4
                 ErrorUrl = "/ids4/error",
                 ErrorIdParameter = "errorId"
             };
-        }
-
-
-        public static void UseIds4(this IApplicationBuilder app)
-        {
-            app.UseIdentityServer();
         }
     }
 }

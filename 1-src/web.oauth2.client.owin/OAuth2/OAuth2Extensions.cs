@@ -7,20 +7,20 @@ namespace ClientSite.OAuth2
 {
     public static class OAuth2Extensions
     {
-        public static IAppBuilder UseQQConnect(this IAppBuilder app)
+        public static IAppBuilder UseQQConnect(this IAppBuilder @this)
         {
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationType = OAuth2Constants.AuthenticationTypeOfCookie
-            });
-
-            return app.UseQQConnectAuthentication(new QQConnectOAuthOptions
-            {
-                AuthenticationType = OAuth2Constants.AuthenticationTypeOfQQ,
-                SignInAsAuthenticationType = OAuth2Constants.AuthenticationTypeOfCookie,
-                ClientId = QQConnectConfig.ClientId,
-                ClientSecret = QQConnectConfig.ClientSecret
-            });
+            return @this
+                .UseCookieAuthentication(new CookieAuthenticationOptions
+                {
+                    AuthenticationType = OAuth2Constants.AuthenticationTypeOfCookie
+                })
+                .UseQQConnectAuthentication(new QQConnectOAuthOptions
+                {
+                    AuthenticationType = OAuth2Constants.AuthenticationTypeOfQQ,
+                    SignInAsAuthenticationType = OAuth2Constants.AuthenticationTypeOfCookie,
+                    ClientId = GlobalConfig.QQConnect.ClientId,
+                    ClientSecret = GlobalConfig.QQConnect.ClientSecret
+                });
         }
     }
 }

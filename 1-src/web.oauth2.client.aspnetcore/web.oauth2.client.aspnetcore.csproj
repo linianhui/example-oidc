@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\_shared\QQConnectConfig.cs" Link="OAuth2\QQConnectConfig.cs" />
+    <Compile Include="..\_shared\GlobalConfig.cs" Link="GlobalConfig.cs" />
   </ItemGroup>
 
   <ItemGroup>

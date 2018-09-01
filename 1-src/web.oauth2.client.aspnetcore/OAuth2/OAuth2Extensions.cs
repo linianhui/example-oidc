@@ -6,15 +6,18 @@ namespace ClientSite.OAuth2
 {
     public static class OAuth2Extensions
     {
-        public static AuthenticationBuilder AddQQConnect(this IServiceCollection services)
+        public static AuthenticationBuilder AddQQConnect(this IServiceCollection @this)
         {
-            return services.AddAuthentication(OAuth2Constants.AuthenticationSchemeOfCookie)
-                .AddQQConnectAuthentication(options =>
-                  {
-                      options.SignInScheme = OAuth2Constants.AuthenticationSchemeOfCookie;
-                      options.ClientId = QQConnectConfig.ClientId;
-                      options.ClientSecret = QQConnectConfig.ClientSecret;
-                  }, scheme: OAuth2Constants.AuthenticationSchemeOfQQ);
+            return @this
+                .AddAuthentication(OAuth2Constants.AuthenticationSchemeOfCookie)
+                .AddQQConnect(OAuth2Constants.AuthenticationSchemeOfQQ, "QQ Connect", SetQQConnectOptions);
+        }
+
+        private static void SetQQConnectOptions(QQConnectOAuthOptions options)
+        {
+            options.SignInScheme = OAuth2Constants.AuthenticationSchemeOfCookie;
+            options.ClientId = GlobalConfig.QQConnect.ClientId;
+            options.ClientSecret = GlobalConfig.QQConnect.ClientSecret;
         }
     }
 }

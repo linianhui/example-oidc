@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oidc.servers", "oidc.server
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_shared", "_shared", "{7BED3B30-A933-4783-BB29-209D53B8938D}"
 	ProjectSection(SolutionItems) = preProject
-		1-src\_shared\QQConnectConfig.cs = 1-src\_shared\QQConnectConfig.cs
+		1-src\_shared\GlobalConfig.cs = 1-src\_shared\GlobalConfig.cs
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "oauth2.qqconnect", "1-src\oauth2.qqconnect\oauth2.qqconnect.csproj", "{C6E8379B-9F94-4174-918B-565F02BEEA2B}"
