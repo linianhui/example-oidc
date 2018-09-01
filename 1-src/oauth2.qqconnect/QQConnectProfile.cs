@@ -98,8 +98,10 @@ namespace OAuth2.QQConnect
                         BuildClaim(ClaimTypes.RefreshToken, RefreshToken),
                         BuildClaim(ClaimTypes.ExpiresIn, ExpiresIn.ToString()),
                         BuildClaim(ClaimTypes.NickName, NickName),
-                        BuildClaim(ClaimTypes.Avatar, Avatar)
-                    };
+                        BuildClaim(ClaimTypes.Avatar, Avatar),
+                        BuildClaim("nickname", NickName),
+                        BuildClaim("avatar", Avatar)
+                };
                 }
                 return _claims;
             }

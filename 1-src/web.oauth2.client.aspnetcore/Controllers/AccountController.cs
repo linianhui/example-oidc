@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using ClientSite.OAuth2;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -14,8 +15,8 @@ namespace ClientSite.Controllers
     {
         [HttpGet]
         [AllowAnonymous]
-        [Route("qq-login", Name = "account-qq-login")]
-        public async void QQLogin(string returnUri, bool isMobile = false)
+        [Route("login", Name = "account-login")]
+        public async void Login(string idp, string returnUri, bool isMobile = false)
         {
             var properties = new AuthenticationProperties();
             if (returnUri != null)
@@ -23,12 +24,15 @@ namespace ClientSite.Controllers
                 properties.RedirectUri = returnUri;
             }
 
-            properties.Items.SetQQConnectProperties(new QQConnectProperties
+            if (OAuth2Constants.AuthenticationSchemeOfQQ.Equals(idp, StringComparison.OrdinalIgnoreCase))
             {
-                IsMobile = isMobile
-            });
+                properties.Items.SetQQConnectProperties(new QQConnectProperties
+                {
+                    IsMobile = isMobile
+                });
+            }
 
-            await HttpContext.ChallengeAsync(OAuth2Constants.AuthenticationSchemeOfQQ, properties);
+            await HttpContext.ChallengeAsync(idp, properties);
         }
 
         [HttpGet]

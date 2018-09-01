@@ -17,7 +17,9 @@
             {
                 @Html.RouteLink("Oidc Login", "account-login", new { returnUri = this.Request.Url })
                 <br />
-                @Html.RouteLink("Oidc Login(QQ)", "account-login-qq", new { returnUri = this.Request.Url })
+                @Html.RouteLink("Oidc Login(QQ)", "account-login", new { idp = "qq", returnUri = this.Request.Url })
+                <br />
+                @Html.RouteLink("Oidc Login(Github)", "account-login", new { idp = "github", returnUri = this.Request.Url })
             }
         </nav>
     </header>

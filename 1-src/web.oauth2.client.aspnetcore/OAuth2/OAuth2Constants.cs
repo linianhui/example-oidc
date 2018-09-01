@@ -5,5 +5,7 @@
         public const string AuthenticationSchemeOfCookie = "lnh";
 
         public const string AuthenticationSchemeOfQQ = "qq";
+
+        public const string AuthenticationSchemeOfGithub = "github";
     }
 }
