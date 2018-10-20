@@ -1,11 +1,11 @@
 ﻿using IdentityServer3.AccessTokenValidation;
 using Microsoft.Owin;
+using Microsoft.Owin.Security.OAuth;
 using Owin;
-using System.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using Microsoft.Owin.Security.OAuth;
 
 [assembly: OwinStartup(typeof(Web.OAuth2.Resources.Startup))]
 
@@ -15,12 +15,13 @@ namespace Web.OAuth2.Resources
     {
         public void Configuration(IAppBuilder app)
         {
-            JwtSecurityTokenHandler.InboundClaimTypeMap.Clear();
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
             app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
             {
                 Authority = "http://oidc-server.test",
                 ValidationMode = ValidationMode.Both,
+                RequireHttps = false,
                 TokenProvider = new OAuthBearerAuthenticationProvider
                 {
                     OnRequestToken = HandlerRequestToken,
