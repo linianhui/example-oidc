@@ -60,16 +60,18 @@ public static class GlobalConfig
 
 # Deployed web site
 
-1. http://localhost:8080 (traefik web ui:only docker)
-1. http://oidc-server.test
-1. http://oidc-client-hybrid.test
-1. http://oidc-client-implicit.test (only windows)
-1. http://oidc-client-js.test (use oidc login and use access_token call api)
-1. http://oauth2-resources-aspnetcore.test
-1. http://oauth2-resources-nodejs.test (only docker)
-1. http://oauth2-resources-owin.test (only windows)
-1. http://oauth2-client-aspnetcore.test
-1. http://oauth2-client-owin.test (only windows)
+| web site                                | docker | windows | note                                                                     |
+| --------------------------------------- | ------ | ------- | ------------------------------------------------------------------------ |
+| http://localhost:8080                   | ✔      |         | reverse proxy ：traefik                                                  |
+| http://oidc-server.test                 | ✔      | ✔       | oidc server : asp.net core 2.1                                           |
+| http://oidc-client-hybrid.test          | ✔      | ✔       | oidc client : asp.net core 2.1                                           |
+| http://oidc-client-implicit.test        |        | ✔       | oidc client : owin 4                                                     |
+| http://oidc-client-js.test              | ✔      | ✔       | oidc client : html js css( use oidc login and use access_token call api) |
+| http://oauth2-resources-aspnetcore.test | ✔      | ✔       | oauth2 resources api : asp.net core 2                                    |
+| http://oauth2-resources-nodejs.test     | ✔      |         | oauth2 resources api : node.js                                           |
+| http://oauth2-resources-owin.test       |        | ✔       | oauth2 resources api : asp.net webapi 2                                  |
+| http://oauth2-client-aspnetcore.test    | ✔      | ✔       | oauth2 client : asp.net core 2                                           |
+| http://oauth2-client-owin.test          |        | ✔       | oauth2 client : owin 4                                                   |
 
 # How to run?
 
