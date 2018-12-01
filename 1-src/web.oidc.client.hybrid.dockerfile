@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1-sdk-alpine3.7 AS builder
+FROM microsoft/dotnet:2.1-sdk-alpine AS builder
 
 COPY . /src
 
@@ -8,7 +8,7 @@ RUN dotnet publish ./web.oidc.client.hybrid/web.oidc.client.hybrid.csproj --outp
 
 
 
-FROM microsoft/dotnet:2.1-aspnetcore-runtime-alpine3.7
+FROM microsoft/dotnet:2.1.6-aspnetcore-runtime-alpine
  
 COPY --from=builder /publish /app
 
