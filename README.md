@@ -1,15 +1,16 @@
 <!-- TOC -->
 # Table of content
+- [Table of content](#table-of-content)
 - [OIDC Servers](#oidc-servers)
 - [OIDC Clients](#oidc-clients)
-- [OAuth2 Protected Resource](#oauth2-protected-resource)
+- [OAuth2 Protected API Resources](#oauth2-protected-api-resources)
 - [OAuth2 Clients](#oauth2-clients)
-- [OAuth2 QQConnect Middleware](#oauth2-qqconnect-middleware)
-    - [QQ Config](#qq-config)
+- [OAuth2 Middleware](#oauth2-middleware)
+  - [Global Config](#global-config)
 - [Deployed web site](#deployed-web-site)
 - [How to run?](#how-to-run)
-    - [docker-compose.yml (docker platform)](#docker-composeyml-docker-platform)
-    - [build.ps1 (windows platform)](#buildps1-windows-platform)
+  - [docker-compose.yml (docker platform)](#docker-composeyml-docker-platform)
+  - [build.ps1 (windows platform)](#buildps1-windows-platform)
 - [Blog](#blog)
 - [Old version(ids3 and owin)](#old-versionids3-and-owin)
 
