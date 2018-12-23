@@ -86,14 +86,14 @@ docker-compose down
 
 Update local `/etc/hosts`.
 ```bash
-echo "\
-\n127.0.0.1 oidc-server.test \
-\n127.0.0.1 oidc-client-hybrid.test \
-\n127.0.0.1 oidc-client-js.test \
-\n127.0.0.1 oauth2-resources-nodejs.test \
-\n127.0.0.1 oauth2-resources-aspnetcore.test \
-\n127.0.0.1 oauth2-client-aspnetcore.test " \
-| sudo tee -a /etc/hosts
+sudo cat << \EOF >> /etc/hosts
+127.0.0.1 oidc-server.test
+127.0.0.1 oidc-client-hybrid.test
+127.0.0.1 oidc-client-js.test
+127.0.0.1 oauth2-resources-nodejs.test
+127.0.0.1 oauth2-resources-aspnetcore.test
+127.0.0.1 oauth2-client-aspnetcore.test
+EOF
 ```
 
 ## build.ps1 (windows platform)
