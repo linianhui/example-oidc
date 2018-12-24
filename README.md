@@ -87,7 +87,7 @@ docker-compose down
 
 Update local `/etc/hosts`.
 ```bash
-sudo cat << \EOF >> /etc/hosts
+cat <<EOF >> /etc/hosts
 127.0.0.1 oidc-server.test
 127.0.0.1 oidc-client-hybrid.test
 127.0.0.1 oidc-client-js.test
