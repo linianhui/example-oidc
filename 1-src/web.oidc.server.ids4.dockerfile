@@ -8,7 +8,7 @@ RUN dotnet publish ./web.oidc.server.ids4/web.oidc.server.ids4.csproj --output /
 
 
 
-FROM microsoft/dotnet:2.2-aspnetcore-runtime-alpine
+FROM microsoft/dotnet:2.2.0-aspnetcore-runtime-alpine
 
 COPY --from=builder /publish /app
 

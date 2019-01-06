@@ -8,7 +8,7 @@ RUN dotnet publish ./web.oauth2.client.aspnetcore/web.oauth2.client.aspnetcore.c
 
 
 
-FROM microsoft/dotnet:2.2-aspnetcore-runtime-alpine
+FROM microsoft/dotnet:2.2.0-aspnetcore-runtime-alpine
  
 COPY --from=builder /publish /app
 
