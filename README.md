@@ -98,7 +98,7 @@ EOF
 ```
 
 ## build.ps1 (windows platform)
-Use administrator run `build.ps1` to deploy demo web site to local IIS. (Need install `vs 2017` with `.net framework 4.5+ sdk` and `.net core 2.1 sdk` )
+Use administrator run `build.ps1` to deploy demo web site to local IIS. (Need install `vs 2017` with `.net framework 4.5+ sdk` and `.net core 2.2 sdk` )
 
 ```powershell
 build.ps1 -help
