@@ -13,6 +13,8 @@ namespace Web.OAuth2.Resources
         {
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
+            services.AddLogging(_ => _.AddConsole());
+
             services.AddMvcCore()
                     .AddJsonFormatters();
 
@@ -28,10 +30,8 @@ namespace Web.OAuth2.Resources
             services.AddCors();
         }
 
-        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app)
         {
-            loggerFactory.AddConsole();
-
             app.UseDeveloperExceptionPage();
 
             app.UseAuthentication();

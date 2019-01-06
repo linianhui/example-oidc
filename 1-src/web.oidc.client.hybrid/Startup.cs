@@ -9,6 +9,8 @@ namespace ClientSite
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLogging(_ => _.AddConsole());
+
             services.AddMvc();
 
             services.AddOidcAuthentication();
@@ -16,9 +18,8 @@ namespace ClientSite
 
 
 
-        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app)
         {
-            loggerFactory.AddConsole();
             app.UseDeveloperExceptionPage();
 
             app.UseStaticFiles();

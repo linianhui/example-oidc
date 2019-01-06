@@ -1,9 +1,6 @@
-﻿using IdentityServer4;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using OAuth2.QQConnect.AspNetCore;
 using ServerSite.Ids4;
 
 namespace ServerSite
@@ -12,14 +9,15 @@ namespace ServerSite
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLogging(_ => _.AddConsole());
+
             services.AddMvc();
 
             services.AddIds4();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app)
         {
-            loggerFactory.AddConsole();
             app.UseDeveloperExceptionPage();
 
             app.UseIds4();

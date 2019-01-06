@@ -9,6 +9,8 @@ namespace ClientCredentials
 {
     class Program
     {
+        private static HttpClient httpClient = new HttpClient();
+
         public static void Main()
         {
             DiagnosticListener.AllListeners.Subscribe(new DiagnosticListenerObserver());
@@ -20,9 +22,8 @@ namespace ClientCredentials
         private static async Task MainAsync()
         {
             var tokenResponse = await GetTokenAsync();
-            var client = new HttpClient();
-
-            client.SetBearerToken(tokenResponse.AccessToken);
+ 
+            httpClient.SetBearerToken(tokenResponse.AccessToken);
 
             var apis = new List<string>
             {
@@ -36,7 +37,7 @@ namespace ClientCredentials
             {
                 try
                 {
-                    await client.GetAsync(api);
+                    await httpClient.GetAsync(api);
                 }
                 catch (Exception e)
                 {
@@ -47,18 +48,25 @@ namespace ClientCredentials
 
         private static async Task<TokenResponse> GetTokenAsync()
         {
-            var discoveryClient = new DiscoveryClient("http://oidc-server.test")
+            var discoveryResponse = await httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
             {
-                Policy =
+                Address = "http://oidc-server.test",
+                Policy = new DiscoveryPolicy
                 {
                     RequireHttps = false
                 }
-            };
-            var discoveryResponse = await discoveryClient.GetAsync();
+            });
 
-            var tokenClient = new TokenClient(discoveryResponse.TokenEndpoint, "client-credentials-client", "lnh");
-
-            return await tokenClient.RequestClientCredentialsAsync("api-1 api-2 api-3");
+            return await httpClient.RequestTokenAsync(new TokenRequest
+            {
+                Address = discoveryResponse.TokenEndpoint,
+                ClientId = "client-credentials-client",
+                ClientSecret = "lnh",
+                Parameters =
+                {
+                    ["scope"]="api-1 api-2 api-3"
+                }
+            });
         }
     }
 }
