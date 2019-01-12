@@ -47,3 +47,5 @@ services:
     build:
       context: ./1-src/
       dockerfile: web.oauth2.resources.java.dockerfile
+    depends_on:
+      - oidc-server.test
