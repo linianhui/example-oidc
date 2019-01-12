@@ -44,6 +44,12 @@ defaultEntryPoints = ["http"]
     [frontends.oauth2-resources-nodejs.routes.host]
     rule = "Host:oauth2-resources-nodejs.test"
 
+  [frontends.oauth2-resources-java]
+  backend = "oauth2-resources-java"
+  passHostHeader = true
+    [frontends.oauth2-resources-java.routes.host]
+    rule = "Host:oauth2-resources-java.test"
+
 [backends]
   [backends.oidc-server]
     [backends.oidc-server.servers.server1]
@@ -68,3 +74,7 @@ defaultEntryPoints = ["http"]
   [backends.oauth2-resources-nodejs]
     [backends.oauth2-resources-nodejs.servers.server1]
     url = "http://oauth2-resources-nodejs.test"
+
+  [backends.oauth2-resources-java]
+    [backends.oauth2-resources-java.servers.server1]
+    url = "http://oauth2-resources-java.test"
