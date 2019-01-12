@@ -30,6 +30,7 @@
 1. [1-src/web.oauth2.resources.aspnetcore](1-src/web.oauth2.resources.aspnetcore): asp.net core 2.
 1. [1-src/web.oauth2.resources.owin](1-src/web.oauth2.resources.owin): asp.net owin.
 1. [1-src/web.oauth2.resources.nodejs](1-src/web.oauth2.resources.nodejs): node.js.
+1. [1-src/web.oauth2.resources.java](1-src/web.oauth2.resources.java): java (spring boot).
 
 # OAuth2 Clients
 1. [1-src/web.oauth2.client.aspnetcore](1-src/web.oauth2.client.aspnetcore) : asp.net core 2.
@@ -70,6 +71,7 @@ public static class GlobalConfig
 | http://oidc-client-js.test              | ✔      | ✔       | oidc client : html js css( use oidc login and use access_token call api) |
 | http://oauth2-resources-aspnetcore.test | ✔      | ✔       | oauth2 resources api : asp.net core 2                                    |
 | http://oauth2-resources-nodejs.test     | ✔      |         | oauth2 resources api : node.js                                           |
+| http://oauth2-resources-java.test       | ✔      |         | oauth2 resources api : java (spring boot)                                |
 | http://oauth2-resources-owin.test       |        | ✔       | oauth2 resources api : asp.net webapi 2                                  |
 | http://oauth2-client-aspnetcore.test    | ✔      | ✔       | oauth2 client : asp.net core 2                                           |
 | http://oauth2-client-owin.test          |        | ✔       | oauth2 client : owin 4                                                   |
@@ -93,6 +95,7 @@ cat <<EOF >> /etc/hosts
 127.0.0.1 oidc-client-js.test
 127.0.0.1 oauth2-resources-nodejs.test
 127.0.0.1 oauth2-resources-aspnetcore.test
+127.0.0.1 oauth2-resources-java.test
 127.0.0.1 oauth2-client-aspnetcore.test
 EOF
 ```
