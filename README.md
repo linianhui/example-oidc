@@ -62,19 +62,19 @@ public static class GlobalConfig
 
 # Deployed web site
 
-| web site                                | docker | windows | note                                                                     |
-| --------------------------------------- | ------ | ------- | ------------------------------------------------------------------------ |
-| http://localhost:8080                   | ✔      |         | reverse proxy ：traefik                                                  |
-| http://oidc-server.test                 | ✔      | ✔       | oidc server : asp.net core 2.1                                           |
-| http://oidc-client-hybrid.test          | ✔      | ✔       | oidc client : asp.net core 2.1                                           |
-| http://oidc-client-implicit.test        |        | ✔       | oidc client : owin 4                                                     |
-| http://oidc-client-js.test              | ✔      | ✔       | oidc client : html js css( use oidc login and use access_token call api) |
-| http://oauth2-resources-aspnetcore.test | ✔      | ✔       | oauth2 resources api : asp.net core 2                                    |
-| http://oauth2-resources-nodejs.test     | ✔      |         | oauth2 resources api : node.js                                           |
-| http://oauth2-resources-java.test       | ✔      |         | oauth2 resources api : java (spring boot)                                |
-| http://oauth2-resources-owin.test       |        | ✔       | oauth2 resources api : asp.net webapi 2                                  |
-| http://oauth2-client-aspnetcore.test    | ✔      | ✔       | oauth2 client : asp.net core 2                                           |
-| http://oauth2-client-owin.test          |        | ✔       | oauth2 client : owin 4                                                   |
+| web site                                       | docker | windows | description                                                 |
+| :--------------------------------------------- | :----: | :-----: | :---------------------------------------------------------- |
+| http://localhost:8080                          |   ✔    |         | reverse proxy ：traefik                                     |
+| http://oidc-server.test                        |   ✔    |    ✔    | oidc server : asp.net core 2.2                              |
+| http://oidc-client-hybrid.test                 |   ✔    |    ✔    | oidc client : asp.net core 2.2                              |
+| http://oidc-client-implicit.test               |        |    ✔    | oidc client : asp.net owin 4                                |
+| http://oidc-client-js.test                     |   ✔    |    ✔    | oidc client : html js(use `access_token` call resource api) |
+| http://oauth2-resources-aspnetcore.test &nbsp; |   ✔    |    ✔    | oauth2 resources api : asp.net core 2.2                     |
+| http://oauth2-resources-nodejs.test            |   ✔    |         | oauth2 resources api : node.js                              |
+| http://oauth2-resources-java.test              |   ✔    |         | oauth2 resources api : java (spring boot)                   |
+| http://oauth2-resources-owin.test              |        |    ✔    | oauth2 resources api : asp.net webapi 2                     |
+| http://oauth2-client-aspnetcore.test           |   ✔    |    ✔    | oauth2 client : asp.net core 2.2                            |
+| http://oauth2-client-owin.test                 |        |    ✔    | oauth2 client : asp.net owin 4                              |
 
 # How to run?
 
@@ -126,4 +126,4 @@ OIDC in Action: http://www.cnblogs.com/linianhui/category/1121078.html
 
 # Old version(ids3 and owin)
 1. ids3: https://github.com/linianhui/oidc.example/tree/ids3
-1. ids4 and owin: https://github.com/linianhui/oidc.example/tree/owin
+2. ids4 and owin: https://github.com/linianhui/oidc.example/tree/owin
