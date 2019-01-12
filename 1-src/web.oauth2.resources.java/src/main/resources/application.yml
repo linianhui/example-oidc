@@ -7,6 +7,6 @@ spring:
 
   security: # https://docs.spring.io/spring-security/site/docs/current/reference/html5
     oauth2:
-      resourceserver: # https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-security-oauth2-server
+      resourceserver: # https://docs.spring.io/spring-security/site/docs/current/reference/html5/#webflux-oauth2-resource-server
         jwt:
           issuer-uri: http://oidc-server.test
