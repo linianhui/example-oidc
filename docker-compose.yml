@@ -42,3 +42,8 @@ services:
     build:
       context: ./1-src/
       dockerfile: web.oauth2.resources.nodejs.dockerfile
+
+  oauth2-resources-java.test:
+    build:
+      context: ./1-src/
+      dockerfile: web.oauth2.resources.java.dockerfile

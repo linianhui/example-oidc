@@ -1,0 +1,12 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: api
+
+  security:
+    oauth2:
+      resourceserver: # https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-security-oauth2-server
+        jwt:
+          issuer-uri: http://oidc-server.test
