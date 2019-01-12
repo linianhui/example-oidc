@@ -5,7 +5,7 @@ spring:
   application:
     name: api
 
-  security:
+  security: # https://docs.spring.io/spring-security/site/docs/current/reference/html5
     oauth2:
       resourceserver: # https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-security-oauth2-server
         jwt:
