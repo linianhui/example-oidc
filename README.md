@@ -3,7 +3,7 @@
 - [Table of content](#table-of-content)
 - [OIDC Servers](#oidc-servers)
 - [OIDC Clients](#oidc-clients)
-- [OAuth2 Protected API Resources](#oauth2-protected-api-resources)
+- [OAuth2 Resources Servers](#oauth2-resources-servers)
 - [OAuth2 Clients](#oauth2-clients)
 - [OAuth2 Middleware](#oauth2-middleware)
   - [Global Config](#global-config)
@@ -26,7 +26,7 @@
 1. [1-src/wpf.oidc.client.authorization-code](1-src/wpf.oidc.client.authorization-code) : wpf app, authorization code flow.
 1. [1-src/console.oidc.client.client-credentials](1-src/console.oidc.client.client-credentials) ：console app，client credentials flow(oauth2).
 
-# OAuth2 Protected API Resources
+# OAuth2 Resources Servers
 1. [1-src/web.oauth2.resources.aspnetcore](1-src/web.oauth2.resources.aspnetcore): asp.net core 2.
 1. [1-src/web.oauth2.resources.owin](1-src/web.oauth2.resources.owin): asp.net owin.
 1. [1-src/web.oauth2.resources.nodejs](1-src/web.oauth2.resources.nodejs): node.js.
