@@ -10,3 +10,7 @@ spring:
       resourceserver: # https://docs.spring.io/spring-security/site/docs/current/reference/html5/#webflux-oauth2-resource-server
         jwt:
           issuer-uri: http://oidc-server.test
+
+logging:
+  level:
+    org.springframework.security: DEBUG
