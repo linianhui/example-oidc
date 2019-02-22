@@ -4,7 +4,9 @@ version: "3.6"
 services:
 
   traefik:
-    build: ./1-src/traefik
+    build: 
+      context: ./1-src/
+      dockerfile: web.reverse-proxy.dockerfile
     restart: on-failure
     command: --api
     ports:
