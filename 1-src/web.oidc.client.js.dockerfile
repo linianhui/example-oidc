@@ -1,4 +1,5 @@
-FROM nginx:1.15.1-alpine
+# https://hub.docker.com/_/nginx
+FROM nginx:1.15.8-alpine
  
 COPY ./web.oidc.client.js/ /usr/share/nginx/html
 
