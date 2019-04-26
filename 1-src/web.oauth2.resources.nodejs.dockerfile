@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/node
-FROM node:10.15.1-alpine
+FROM node:10-alpine
 
 COPY ./web.oauth2.resources.nodejs/package.json \
      ./web.oauth2.resources.nodejs/app.js \
