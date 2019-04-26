@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/traefik
-FROM traefik:v1.7.9-alpine
+FROM traefik:1.7-alpine
 
 COPY ./traefik/ /app
 
