@@ -1,6 +1,7 @@
 <!-- TOC -->
 # Table of content
 - [Table of content](#table-of-content)
+- [CI](#ci)
 - [OIDC Servers](#oidc-servers)
 - [OIDC Clients](#oidc-clients)
 - [OAuth2 Resources Servers](#oauth2-resources-servers)
@@ -15,6 +16,12 @@
 - [Old version(ids3 and owin)](#old-versionids3-and-owin)
 
 <!-- /TOC -->
+
+# CI
+| CI Service | Build Platform | Stauts                                                                                                                                           |
+| ---------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| AppVeyor   | Windows        | [![Build status](https://ci.appveyor.com/api/projects/status/qx3m0b5etxe339yt?svg=true)](https://ci.appveyor.com/project/linianhui/oidc-example) |
+
 # OIDC Servers
 1. [1-src/web.oidc.server.ids4](1-src/web.oidc.server.ids4) : ids4 (https://github.com/IdentityServer/IdentityServer4) example (with qqconnect external login).
 
