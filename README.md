@@ -101,7 +101,11 @@ EOF
 ```
 
 ## build.ps1 (windows platform)
-Use administrator run `build.ps1` to deploy demo web site to local IIS. (Need install `vs 2017` with `.net framework 4.5+ sdk` and `.net core 2.2 sdk` )
+Use administrator run `build.ps1` to deploy demo web site to local IIS. Required : 
+1. vs 2019
+2. .net framework 4.5+ sdk
+3. .net core 2.2 sdk
+4. ASP.NET Core Module
 
 ```powershell
 build.ps1 -help
