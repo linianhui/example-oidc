@@ -1,6 +1,6 @@
-#addin Microsoft.Win32.Registry&version=4.0.0.0
-#addin System.Reflection.TypeExtensions&version=4.1.0.0
-#addin System.ServiceProcess.ServiceController&version=4.1.0.0
+#addin nuget:?package=microsoft.win32.registry&version=4.0.0.0
+#addin nuget:?package=system.reflection.typeextensions&version=4.1.0.0
+#addin nuget:?package=system.serviceprocess.servicecontroller&version=4.1.0.0
 #addin nuget:?package=cake.iis&version=0.4.2
 #addin nuget:?package=cake.hosts&version=1.5.1
 #addin nuget:?package=cake.powershell&version=0.4.7
