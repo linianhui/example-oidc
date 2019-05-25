@@ -43,8 +43,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IdentityModel, Version=3.10.9.0, Culture=neutral, PublicKeyToken=e7877f4675df049f, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\IdentityModel.3.10.9\lib\net452\IdentityModel.dll</HintPath>
+    <Reference Include="IdentityModel, Version=3.10.10.0, Culture=neutral, PublicKeyToken=e7877f4675df049f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IdentityModel.3.10.10\lib\net452\IdentityModel.dll</HintPath>
     </Reference>
     <Reference Include="IdentityServer3.AccessTokenValidation, Version=4.0.36.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\IdentityServer3.Contrib.AccessTokenValidation.4.0.36\lib\net461\IdentityServer3.AccessTokenValidation.dll</HintPath>
