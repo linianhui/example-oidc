@@ -1,16 +1,22 @@
-#addin nuget:?package=cake.iis&version=0.3.0
-#addin nuget:?package=cake.hosts&version=1.1.0
-#addin nuget:?package=cake.powershell&version=0.4.5
+#addin Microsoft.Win32.Registry&version=4.0.0.0
+#addin System.Reflection.TypeExtensions&version=4.1.0.0
+#addin System.ServiceProcess.ServiceController&version=4.1.0.0
+#addin nuget:?package=cake.iis&version=0.4.2
+#addin nuget:?package=cake.hosts&version=1.5.1
+#addin nuget:?package=cake.powershell&version=0.4.7
+
 #load web.project.cake
+
+using Cake.Common.Tools.MSBuild;
 
 /// params
 var target = Argument("target", "default");
 
 /// constant
 var rootPath = "../";
-var srcPath = rootPath + "1-src/";
-var wwwPath = rootPath + "www/";
-var slnPath = rootPath + "oidc.example.sln";
+var srcPath  = rootPath + "1-src/";
+var wwwPath  = rootPath + "www/";
+var slnPath  = rootPath + "oidc.example.sln";
 
 IList<WebProject> webProjects = GetWebProjects(srcPath, wwwPath);
 
@@ -39,7 +45,8 @@ Task("build")
     .Does(() =>
 {
     MSBuild(slnPath, new MSBuildSettings {
-        Verbosity = Verbosity.Minimal
+        Verbosity   = Verbosity.Minimal,
+        ToolVersion = MSBuildToolVersion.VS2019
     });
 });
 
@@ -52,10 +59,10 @@ Task("publish")
 
         if(webProject.IsNetCore){
             DotNetCorePublish(webProject.ProjectFile, new DotNetCorePublishSettings {
-                ArgumentCustomization = args=>args.Append("/p:DebugType=None"),
-                Framework = webProject.Framework,
-                OutputDirectory = webProject.WWWPath,
-                Configuration = "Release"
+                ArgumentCustomization = args => args.Append("/p:DebugType=None"),
+                Framework             = webProject.Framework,
+                OutputDirectory       = webProject.WWWPath,
+                Configuration         = "Release"
             });
         }
 
@@ -76,14 +83,14 @@ Task("deploy")
         DeleteSite(webProject.Host);
 
         CreateWebsite(new WebsiteSettings {
-            Name = webProject.Host,
-            Binding = IISBindings.Http
-                                 .SetHostName(webProject.Host)
-                                 .SetIpAddress("*")
-                                 .SetPort(80),
-            ServerAutoStart = true,
+            Name              = webProject.Host,
+            Binding           = IISBindings.Http
+                                   .SetHostName(webProject.Host)
+                                   .SetIpAddress("*")
+                                   .SetPort(80),
+            ServerAutoStart   = true,
             PhysicalDirectory = webProject.WWWPath,
-            ApplicationPool = webProject.ApplicationPool
+            ApplicationPool   = webProject.ApplicationPool
         });
         
         AddHostsRecord("127.0.0.1", webProject.Host);
