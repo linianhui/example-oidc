@@ -3,9 +3,9 @@
 #addin nuget:?package=system.serviceprocess.servicecontroller&version=4.1.0.0
 #addin nuget:?package=cake.iis&version=0.4.2
 #addin nuget:?package=cake.hosts&version=1.5.1
-#addin nuget:?package=cake.powershell&version=0.4.7
+#addin nuget:?package=cake.powershell&version=0.4.8
 
-#load web.project.cake
+#load website.cake
 
 using Cake.Common.Tools.MSBuild;
 
@@ -13,18 +13,16 @@ using Cake.Common.Tools.MSBuild;
 var target = Argument("target", "default");
 
 /// constant
-var rootPath = "../";
-var srcPath  = rootPath + "1-src/";
-var wwwPath  = rootPath + "www/";
-var slnPath  = rootPath + "oidc.example.sln";
-
-IList<WebProject> webProjects = GetWebProjects(srcPath, wwwPath);
+var rootPath    = "../";
+var srcPath     = rootPath + "1-src/";
+var wwwPath     = rootPath + "www/";
+var slnPath     = rootPath + "oidc.example.sln";
+var webSiteList = GetWebSiteList(srcPath);
 
 Task("clean")
     .Description("清理项目缓存")
     .Does(() =>
 {
-    CleanDirectories(wwwPath + "*");
     CleanDirectories(srcPath + "**/bin");
     CleanDirectories(srcPath + "**/obj");
 });
@@ -52,51 +50,29 @@ Task("build")
 });
 
 
-Task("publish")
-    .Description("发布项目")
-    .Does(() =>
-{
-    foreach(var webProject in webProjects){
-
-        if(webProject.IsNetCore){
-            DotNetCorePublish(webProject.ProjectFile, new DotNetCorePublishSettings {
-                ArgumentCustomization = args => args.Append("/p:DebugType=None"),
-                Framework             = webProject.Framework,
-                OutputDirectory       = webProject.WWWPath,
-                Configuration         = "Release"
-            });
-        }
-
-        if(webProject.IsStatic){
-            CopyDirectory(webProject.ProjectPath, webProject.WWWPath);
-        }
-    }
-});
-
-
-Task("deploy")
+Task("deploy-iis")
     .Description("部署到本机IIS")
     .Does(() =>
 {
 
-    foreach(var webProject in webProjects){
-
-        DeleteSite(webProject.Host);
+    foreach(var webSite in webSiteList)
+    {
+        DeleteSite(webSite.Host);
 
         CreateWebsite(new WebsiteSettings {
-            Name              = webProject.Host,
+            Name              = webSite.Host,
             Binding           = IISBindings.Http
-                                   .SetHostName(webProject.Host)
+                                   .SetHostName(webSite.Host)
                                    .SetIpAddress("*")
                                    .SetPort(80),
             ServerAutoStart   = true,
-            PhysicalDirectory = webProject.WWWPath,
-            ApplicationPool   = webProject.ApplicationPool
+            PhysicalDirectory = webSite.Path,
+            ApplicationPool   = webSite.ApplicationPool
         });
         
-        AddHostsRecord("127.0.0.1", webProject.Host);
+        AddHostsRecord("127.0.0.1", webSite.Host);
 
-        StartSite(webProject.Host);
+        StartSite(webSite.Host);
     }
 });
 
@@ -108,8 +84,8 @@ Task("open-browser")
     StartPowershellScript("Start-Process", args =>
     {
         var urls = "";
-        foreach(var webProject in webProjects){
-            urls += ",'http://" + webProject.Host + "/'";
+        foreach(var webSite in webSiteList){
+            urls += ",'http://" + webSite.Host + "/'";
         }
 
         args.Append("chrome.exe")
@@ -122,8 +98,7 @@ Task("open-browser")
 Task("default")
     .Description("默认执行open-browser")
     .IsDependentOn("build")
-    .IsDependentOn("publish")
-    .IsDependentOn("deploy")
+    .IsDependentOn("deploy-iis")
     .IsDependentOn("open-browser");
 
 RunTarget(target);
