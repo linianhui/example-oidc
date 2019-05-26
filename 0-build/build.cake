@@ -80,17 +80,10 @@ Task("open-browser")
     .Description("用浏览器打开部署的站点")
     .Does(() =>
 {
-    StartPowershellScript("Start-Process", args =>
-    {
-        var urls = "";
-        foreach(var webSite in webSiteList){
-            urls += ",'http://" + webSite.Host + "/'";
-        }
-
-        args.Append("chrome.exe")
-            .Append("'-incognito'")
-            .Append(urls);
-    });
+    var hostList = webSiteList.Select(_ => "http://" + _.Host).ToList();
+    var urlList = string.Join(" , ", hostList);
+    var script = "Start-Process -FilePath chrome.exe -ArgumentList '-incognito' , " + urlList;
+    StartPowershellScript(script);
 });
 
 
