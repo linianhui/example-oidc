@@ -15,7 +15,6 @@ var target = Argument("target", "default");
 /// constant
 var rootPath    = "../";
 var srcPath     = rootPath + "1-src/";
-var wwwPath     = rootPath + "www/";
 var slnPath     = rootPath + "oidc.example.sln";
 var webSiteList = GetWebSiteList(srcPath);
 
