@@ -3,3 +3,4 @@ image: Visual Studio 2019
 build: off
 build_script:
 - ps: ./build.ps1 -target build
+- ps: ./build.ps1 -target deploy-iis
