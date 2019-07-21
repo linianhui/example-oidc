@@ -7,8 +7,6 @@
 
 #load website.cake
 
-using Cake.Common.Tools.MSBuild;
-
 /// params
 var target = Argument("target", "default");
 
@@ -43,8 +41,7 @@ Task("build")
     .Does(() =>
 {
     MSBuild(slnPath, new MSBuildSettings {
-        Verbosity   = Verbosity.Minimal,
-        ToolVersion = MSBuildToolVersion.VS2019
+        Verbosity   = Verbosity.Minimal
     });
 });
 
