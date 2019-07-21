@@ -23,7 +23,7 @@
 | AppVeyor   | Windows        | [![Build status](https://ci.appveyor.com/api/projects/status/qx3m0b5etxe339yt?svg=true)](https://ci.appveyor.com/project/linianhui/oidc-example) |
 
 # OIDC Servers
-1. [1-src/web.oidc.server.ids4](1-src/web.oidc.server.ids4) : ids4 (https://github.com/IdentityServer/IdentityServer4) example (with qqconnect external login).
+1. [1-src/web.oidc.server.ids4](1-src/web.oidc.server.ids4) : ids4 (https://github.com/IdentityServer/IdentityServer4) example (with github, qqconnect external login).
 
 # OIDC Clients
 1. [1-src/web.oidc.client.hybrid](1-src/web.oidc.client.hybrid) : web site, hybrid flow.
