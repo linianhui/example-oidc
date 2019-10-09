@@ -1,6 +1,6 @@
 # https://hub.docker.com/_/microsoft-dotnet-core-aspnet/
 # https://github.com/dotnet/dotnet-docker/blob/master/samples/aspnetapp/Dockerfile.alpine-x64
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2-alpine AS builder
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0-alpine AS builder
 
 COPY . /src
 
@@ -10,7 +10,7 @@ RUN dotnet publish ./web.oidc.client.hybrid/web.oidc.client.hybrid.csproj --outp
 
 
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-alpine
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-alpine
  
 COPY --from=builder /publish /app
 
