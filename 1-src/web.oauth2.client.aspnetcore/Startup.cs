@@ -26,6 +26,8 @@ namespace ClientSite
 
             app.UseAuthentication();
 
+            app.UseAuthorization();
+
             app.UseRouting();
 
             app.UseEndpoints(_ => _.MapDefaultControllerRoute());

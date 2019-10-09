@@ -37,6 +37,8 @@ namespace Web.OAuth2.Resources
 
             app.UseAuthentication();
 
+            app.UseAuthorization();
+
             app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
             app.UseRouting();
