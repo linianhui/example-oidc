@@ -41,15 +41,15 @@ namespace WPFClient.Oidc
                 ["redirect_uri"] = Options.RedirectUri
             });
 
-            var tokenReponse = await Http.PostAsync(Options.TokenEndpoint, tokenParams);
-            return await tokenReponse.Content.ReadAsStringAsync();
+            var tokenResponse = await Http.PostAsync(Options.TokenEndpoint, tokenParams);
+            return await tokenResponse.Content.ReadAsStringAsync();
         }
 
-        public static string GetCode(string querySring)
+        public static string GetCode(string queryString)
         {
-            querySring = querySring.TrimStart('?');
-            var namevalues = querySring.Split('&');
-            foreach (var nameValue in namevalues)
+            queryString = queryString.TrimStart('?');
+            var nameValues = queryString.Split('&');
+            foreach (var nameValue in nameValues)
             {
                 if (nameValue.StartsWith("code="))
                 {
