@@ -16,13 +16,13 @@ namespace OAuth2.Github.AspNetCore
             foreach (var item in user.EnumerateObject())
             {
                 var key = item.Name;
-                var value = item.Value.GetString();
+                var value = item.Value.ToString();
                 identity.AddClaim(new Claim("github." + key, value, ClaimValueTypes.String, issuer));
             }
 
-            var userId = user.GetProperty("id").GetString();
-            var userName = user.GetProperty("name").GetString();
-            var userAvatar = user.GetProperty("avatar_url").GetString();
+            var userId = user.GetProperty("id").ToString();
+            var userName = user.GetProperty("name").ToString();
+            var userAvatar = user.GetProperty("avatar_url").ToString();
 
             identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, userId, ClaimValueTypes.String, issuer));
             identity.AddClaim(new Claim("nickname", userName, ClaimValueTypes.String, issuer));
