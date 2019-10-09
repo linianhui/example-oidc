@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <AssemblyName>Web.OAuth2.Resources.AspNetCore</AssemblyName>
     <RootNamespace>Web.OAuth2.Resources</RootNamespace>
+    <IsWebConfigTransformDisabled>true</IsWebConfigTransformDisabled>
   </PropertyGroup>
 
   <ItemGroup>

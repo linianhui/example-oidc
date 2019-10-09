@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <AssemblyName>Web.Oidc.Client.Hybrid</AssemblyName>
     <RootNamespace>ClientSite</RootNamespace>
+    <IsWebConfigTransformDisabled>true</IsWebConfigTransformDisabled>
   </PropertyGroup>
   
   <ItemGroup>
