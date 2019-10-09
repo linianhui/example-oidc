@@ -1,14 +1,13 @@
-using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json.Linq;
 
 namespace OAuth2.Github.AspNetCore
 {
@@ -33,8 +32,8 @@ namespace OAuth2.Github.AspNetCore
             {
                 throw new HttpRequestException($"An error occurred when retrieving Github user information ({httpResponseMessage.StatusCode}).");
             }
-            var user = JObject.Parse(await httpResponseMessage.Content.ReadAsStringAsync());
-            var context = new OAuthCreatingTicketContext(new ClaimsPrincipal(identity), properties, base.Context, base.Scheme, base.Options, base.Backchannel, tokens, user);
+            var user = JsonDocument.Parse(await httpResponseMessage.Content.ReadAsStringAsync());
+            var context = new OAuthCreatingTicketContext(new ClaimsPrincipal(identity), properties, base.Context, base.Scheme, base.Options, base.Backchannel, tokens, user.RootElement);
             context.RunClaimActions();
             await base.Events.CreatingTicket(context);
             return new AuthenticationTicket(context.Principal, context.Properties, base.Scheme.Name);
