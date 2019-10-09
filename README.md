@@ -34,18 +34,18 @@
 1. [1-src/console.oidc.client.client-credentials](1-src/console.oidc.client.client-credentials) ：console app，client credentials flow(oauth2).
 
 # OAuth2 Resources Servers
-1. [1-src/web.oauth2.resources.aspnetcore](1-src/web.oauth2.resources.aspnetcore): asp.net core 2.
+1. [1-src/web.oauth2.resources.aspnetcore](1-src/web.oauth2.resources.aspnetcore): asp.net core 3.0.
 1. [1-src/web.oauth2.resources.owin](1-src/web.oauth2.resources.owin): asp.net owin.
 1. [1-src/web.oauth2.resources.nodejs](1-src/web.oauth2.resources.nodejs): node.js.
-1. [1-src/web.oauth2.resources.java](1-src/web.oauth2.resources.java): java (spring boot).
+1. [1-src/web.oauth2.resources.java](1-src/web.oauth2.resources.java): java (spring boot 2.1.9).
 
 # OAuth2 Clients
-1. [1-src/web.oauth2.client.aspnetcore](1-src/web.oauth2.client.aspnetcore) : asp.net core 2.
+1. [1-src/web.oauth2.client.aspnetcore](1-src/web.oauth2.client.aspnetcore) : asp.net core 3.0.
 1. [1-src/web.oauth2.client.owin](1-src/web.oauth2.client.owin) : asp.net owin.
 
 # OAuth2 Middleware
-1. [1-src/oauth2.github.aspnetcore](1-src/oauth2.github.aspnetcore): asp.net core 2.
-1. [1-src/oauth2.qqconnect.aspnetcore](1-src/oauth2.qqconnect.aspnetcore): asp.net core 2.
+1. [1-src/oauth2.github.aspnetcore](1-src/oauth2.github.aspnetcore): asp.net core 3.0.
+1. [1-src/oauth2.qqconnect.aspnetcore](1-src/oauth2.qqconnect.aspnetcore): asp.net core 3.0.
 1. [1-src/oauth2.qqconnect.owin](1-src/oauth2.qqconnect.owin): asp.net owin.
 
 ## Global Config
@@ -72,15 +72,15 @@ public static class GlobalConfig
 | web site                                       | docker | windows | description                                                 |
 | :--------------------------------------------- | :----: | :-----: | :---------------------------------------------------------- |
 | http://localhost:8080                          |   ✔    |         | reverse proxy ：traefik                                     |
-| http://oidc-server.test                        |   ✔    |    ✔    | oidc server : asp.net core 2.2                              |
-| http://oidc-client-hybrid.test                 |   ✔    |    ✔    | oidc client : asp.net core 2.2                              |
+| http://oidc-server.test                        |   ✔    |    ✔    | oidc server : asp.net core 3.0                              |
+| http://oidc-client-hybrid.test                 |   ✔    |    ✔    | oidc client : asp.net core 3.0                              |
 | http://oidc-client-implicit.test               |        |    ✔    | oidc client : asp.net owin 4                                |
 | http://oidc-client-js.test                     |   ✔    |    ✔    | oidc client : html js(use `access_token` call resource api) |
-| http://oauth2-resources-aspnetcore.test &nbsp; |   ✔    |    ✔    | oauth2 resources api : asp.net core 2.2                     |
+| http://oauth2-resources-aspnetcore.test &nbsp; |   ✔    |    ✔    | oauth2 resources api : asp.net core 3.0                     |
 | http://oauth2-resources-nodejs.test            |   ✔    |         | oauth2 resources api : node.js                              |
 | http://oauth2-resources-java.test              |   ✔    |         | oauth2 resources api : java (spring boot)                   |
 | http://oauth2-resources-owin.test              |        |    ✔    | oauth2 resources api : asp.net webapi 2                     |
-| http://oauth2-client-aspnetcore.test           |   ✔    |    ✔    | oauth2 client : asp.net core 2.2                            |
+| http://oauth2-client-aspnetcore.test           |   ✔    |    ✔    | oauth2 client : asp.net core 3.0                            |
 | http://oauth2-client-owin.test                 |        |    ✔    | oauth2 client : asp.net owin 4                              |
 
 # How to run?
