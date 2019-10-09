@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="IdentityServer4" Version="3.0.1" />
   </ItemGroup>
 
