@@ -109,10 +109,10 @@ EOF
 
 ## build.ps1 (windows platform)
 Use administrator run `build.ps1` to deploy demo web site to local IIS. Required : 
-1. vs 2019
-2. .net framework 4.5+ sdk
-3. .net core 2.2 sdk
-4. ASP.NET Core Module
+1. vs 2019 16.3 + 
+2. .net framework 4.6.1 sdk
+3. .net core 3.0 sdk : https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-3.0.100-windows-x64-installer
+4. ASP.NET Core Module : https://dotnet.microsoft.com/download/thank-you/dotnet-runtime-3.0.0-windows-hosting-bundle-installer
 
 ```powershell
 build.ps1 -help
