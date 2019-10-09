@@ -11,10 +11,10 @@ namespace ClientCredentials
     {
         private static HttpClient httpClient = new HttpClient();
 
-        public static void Main()
+        public static async Task Main()
         {
             DiagnosticListener.AllListeners.Subscribe(new DiagnosticListenerObserver());
-            MainAsync().GetAwaiter().GetResult();
+            await MainAsync();
             Console.WriteLine("ok");
             Console.ReadKey();
         }
@@ -22,7 +22,7 @@ namespace ClientCredentials
         private static async Task MainAsync()
         {
             var tokenResponse = await GetTokenAsync();
- 
+
             httpClient.SetBearerToken(tokenResponse.AccessToken);
 
             var apis = new List<string>
@@ -62,6 +62,7 @@ namespace ClientCredentials
                 Address = discoveryResponse.TokenEndpoint,
                 ClientId = "client-credentials-client",
                 ClientSecret = "lnh",
+                GrantType = "client_credentials",
                 Parameters =
                 {
                     ["scope"]="api-1 api-2 api-3"
