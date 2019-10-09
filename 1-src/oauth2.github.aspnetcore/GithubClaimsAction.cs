@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
+using System.Text.Json;
 using Microsoft.AspNetCore.Authentication.OAuth.Claims;
-using Newtonsoft.Json.Linq;
 
 namespace OAuth2.Github.AspNetCore
 {
@@ -11,23 +11,18 @@ namespace OAuth2.Github.AspNetCore
         {
         }
 
-        public override void Run(JObject user, ClaimsIdentity identity, string issuer)
+        public override void Run(JsonElement user, ClaimsIdentity identity, string issuer)
         {
-            if (user == null)
+            foreach (var item in user.EnumerateObject())
             {
-                return;
-            }
-
-            foreach (var item in user)
-            {
-                var key = item.Key;
-                var value = item.Value.ToString();
+                var key = item.Name;
+                var value = item.Value.GetString();
                 identity.AddClaim(new Claim("github." + key, value, ClaimValueTypes.String, issuer));
             }
 
-            var userId = user.GetValue("id").ToString();
-            var userName = user.GetValue("name").ToString();
-            var userAvatar = user.GetValue("avatar_url").ToString();
+            var userId = user.GetProperty("id").GetString();
+            var userName = user.GetProperty("name").GetString();
+            var userAvatar = user.GetProperty("avatar_url").GetString();
 
             identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, userId, ClaimValueTypes.String, issuer));
             identity.AddClaim(new Claim("nickname", userName, ClaimValueTypes.String, issuer));
