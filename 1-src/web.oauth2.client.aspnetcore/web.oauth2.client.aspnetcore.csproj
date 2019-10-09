@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App"/>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\oauth2.github.aspnetcore\oauth2.github.aspnetcore.csproj" />
     <ProjectReference Include="..\oauth2.qqconnect.aspnetcore\oauth2.qqconnect.aspnetcore.csproj" />
   </ItemGroup>

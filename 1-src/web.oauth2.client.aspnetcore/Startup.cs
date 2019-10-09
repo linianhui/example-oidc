@@ -12,7 +12,9 @@ namespace ClientSite
         {
             services.AddLogging(_ => _.AddConsole());
 
-            services.AddMvc();
+            services.AddRouting();
+
+            services.AddControllersWithViews();
 
             services.AddQQConnect();
         }
@@ -24,7 +26,9 @@ namespace ClientSite
 
             app.UseAuthentication();
 
-            app.UseMvcWithDefaultRoute();
+            app.UseRouting();
+
+            app.UseEndpoints(_ => _.MapDefaultControllerRoute());
         }
     }
 }

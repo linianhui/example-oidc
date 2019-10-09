@@ -15,8 +15,9 @@ namespace Web.OAuth2.Resources
 
             services.AddLogging(_ => _.AddConsole());
 
-            services.AddMvcCore()
-                    .AddJsonFormatters();
+            services.AddRouting();
+
+            services.AddControllersWithViews();
 
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                     .AddIdentityServerAuthentication(options =>
@@ -38,7 +39,9 @@ namespace Web.OAuth2.Resources
 
             app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
-            app.UseMvc();
+            app.UseRouting();
+
+            app.UseEndpoints(_ => _.MapDefaultControllerRoute());
         }
     }
 }

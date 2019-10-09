@@ -11,7 +11,9 @@ namespace ServerSite
         {
             services.AddLogging(_ => _.AddConsole());
 
-            services.AddMvc();
+            services.AddRouting();
+
+            services.AddControllersWithViews();
 
             services.AddIds4();
         }
@@ -23,7 +25,10 @@ namespace ServerSite
             app.UseIds4();
 
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+
+            app.UseRouting();
+
+            app.UseEndpoints(_ => _.MapDefaultControllerRoute());
         }
     }
 }
