@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <AssemblyName>Web.Oidc.Server.Ids4</AssemblyName>
     <RootNamespace>ServerSite</RootNamespace>
+    <IsWebConfigTransformDisabled>true</IsWebConfigTransformDisabled>
   </PropertyGroup>
 
   <ItemGroup>
