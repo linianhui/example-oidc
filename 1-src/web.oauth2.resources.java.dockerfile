@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/gradle
-FROM gradle:5.4-jdk8-alpine as builder
+FROM gradle:5.6-jdk8 as builder
 
 USER root
 
