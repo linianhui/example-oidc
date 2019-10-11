@@ -1,0 +1,59 @@
+traefik:
+  routers:
+    api:
+      rule: PathPrefix(`/api`) || PathPrefix(`/dashboard`)
+      service: api@internal
+
+http:
+  routers:
+    oidc-server:
+      rule: "Host(`oidc-server.test`)"
+      service: oidc-server
+    oidc-client-hybrid:
+      rule: "Host(`oidc-client-hybrid.test`)"
+      service: oidc-client-hybrid
+    oidc-client-js:
+      rule: "Host(`oidc-client-js.test`)"
+      service: oidc-client-js
+    oauth2-client-aspnetcore:
+      rule: "Host(`oauth2-client-aspnetcore.test`)"
+      service: oauth2-client-aspnetcore
+    oauth2-resources-aspnetcore:
+      rule: "Host(`oauth2-resources-aspnetcore.test`)"
+      service: oauth2-resources-aspnetcore
+    oauth2-resources-nodejs:
+      rule: "Host(`oauth2-resources-nodejs.test`)"
+      service: oauth2-resources-nodejs
+    oauth2-resources-java:
+      rule: "Host(`oauth2-resources-java.test`)"
+      service: oauth2-resources-java
+
+  services:
+    oidc-server:
+      loadBalancer:
+        servers:
+          - url: http://oidc-server.test
+    oidc-client-hybrid:
+      loadBalancer:
+        servers:
+          - url: http://oidc-client-hybrid.test
+    oidc-client-js:
+      loadBalancer:
+        servers:
+          - url: http://oidc-client-js.test
+    oauth2-client-aspnetcore:
+      loadBalancer:
+        servers:
+          - url: http://oauth2-client-aspnetcore.test
+    oauth2-resources-aspnetcore:
+      loadBalancer:
+        servers:
+          - url: http://oauth2-resources-aspnetcore.test
+    oauth2-resources-nodejs:
+      loadBalancer:
+        servers:
+          - url: http://oauth2-resources-nodejs.test
+    oauth2-resources-java:
+      loadBalancer:
+        servers:
+          - url: http://oauth2-resources-java.test
