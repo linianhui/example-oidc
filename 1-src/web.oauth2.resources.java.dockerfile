@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/gradle
-FROM gradle:5.6-jdk8 as builder
+FROM gradle:6.0-jdk8 as builder
 
 USER root
 
@@ -14,7 +14,7 @@ FROM openjdk:8-jre-alpine
 
 WORKDIR /
 
-COPY --from=builder /src/build/libs/api-0.0.1-SNAPSHOT.jar /app.jar
+COPY --from=builder /src/build/libs/api-0.0.1.jar /app.jar
 
 EXPOSE 80
 
