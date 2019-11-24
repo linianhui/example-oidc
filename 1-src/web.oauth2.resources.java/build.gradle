@@ -1,39 +1,36 @@
 buildscript {
-    ext {
-        springBootVersion = '2.2.0.RELEASE'
-    }
     repositories {
         mavenLocal()
         maven {
-            name "aliyun"
+            url 'https://maven.aliyun.com/repository/gradle-plugin'
+        }
+        maven {
             url 'https://maven.aliyun.com/repository/public'
         }
         mavenCentral()
     }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    }
 }
 
-apply plugin: 'java'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.2.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+}
+
 
 group = 'api'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = '1.8'
 
 repositories {
     mavenLocal()
     maven {
-        name "aliyun"
         url 'https://maven.aliyun.com/repository/public'
     }
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
-    compileOnly 'org.projectlombok:lombok'
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-resource-server')
 }
