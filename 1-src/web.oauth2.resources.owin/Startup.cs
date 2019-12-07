@@ -22,6 +22,7 @@ namespace Web.OAuth2.Resources
                 Authority = "http://oidc-server.test",
                 ValidationMode = ValidationMode.Both,
                 RequireHttps = false,
+                ValidAudiences = new string[] { "api-1" },
                 TokenProvider = new OAuthBearerAuthenticationProvider
                 {
                     OnRequestToken = HandlerRequestToken,
