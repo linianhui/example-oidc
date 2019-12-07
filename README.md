@@ -5,7 +5,7 @@
 - [How to run?](#how-to-run)
   - [docker-compose.yml (docker platform)](#docker-composeyml-docker-platform)
   - [build.ps1 (windows platform)](#buildps1-windows-platform)
-- [Deployed web site](#deployed-web-site)
+  - [Deployed web site](#deployed-web-site)
 - [OIDC Servers](#oidc-servers)
 - [OIDC Clients](#oidc-clients)
 - [OAuth2 Resources Servers](#oauth2-resources-servers)
@@ -69,7 +69,7 @@ default                       默认执行open-browser
 ```
 
 
-# Deployed web site
+## Deployed web site
 
 | web site                                       | docker | windows | description                                                 |
 | :--------------------------------------------- | :----: | :-----: | :---------------------------------------------------------- |
