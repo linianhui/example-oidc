@@ -16,6 +16,6 @@ public class CustomizedAccessDeniedHandler implements AccessDeniedHandler {
             AccessDeniedException accessDeniedException
     ) throws IOException {
         response.setStatus(403);
-        response.getOutputStream().print("403" + accessDeniedException.toString());
+        response.getOutputStream().print("403 " + accessDeniedException.toString());
     }
 }

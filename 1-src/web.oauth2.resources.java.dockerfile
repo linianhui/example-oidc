@@ -7,7 +7,7 @@ COPY ./web.oauth2.resources.java/ /src/
 
 WORKDIR /src
 
-RUN gradle assemble
+RUN gradle assemble --info
 
 # https://hub.docker.com/_/openjdk
 FROM openjdk:8-jre-alpine

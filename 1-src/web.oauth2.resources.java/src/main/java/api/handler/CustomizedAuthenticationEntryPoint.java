@@ -16,6 +16,6 @@ public class CustomizedAuthenticationEntryPoint implements AuthenticationEntryPo
             AuthenticationException authenticationException
     ) throws IOException {
         response.setStatus(401);
-        response.getOutputStream().print("401" + authenticationException.toString());
+        response.getOutputStream().print("401 " + authenticationException.toString());
     }
 }
