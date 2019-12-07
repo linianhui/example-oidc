@@ -2,6 +2,9 @@
 # Table of content
 - [Table of content](#table-of-content)
 - [CI](#ci)
+- [How to run?](#how-to-run)
+  - [docker-compose.yml (docker platform)](#docker-composeyml-docker-platform)
+  - [build.ps1 (windows platform)](#buildps1-windows-platform)
 - [OIDC Servers](#oidc-servers)
 - [OIDC Clients](#oidc-clients)
 - [OAuth2 Resources Servers](#oauth2-resources-servers)
@@ -9,9 +12,6 @@
 - [OAuth2 Middleware](#oauth2-middleware)
   - [Global Config](#global-config)
 - [Deployed web site](#deployed-web-site)
-- [How to run?](#how-to-run)
-  - [docker-compose.yml (docker platform)](#docker-composeyml-docker-platform)
-  - [build.ps1 (windows platform)](#buildps1-windows-platform)
 - [Blog](#blog)
 - [Old version(ids3 and owin)](#old-versionids3-and-owin)
 
@@ -21,6 +21,52 @@
 | CI Service | Build Platform | Stauts                                                                                                                                           |
 | ---------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | AppVeyor   | Windows        | [![Build status](https://ci.appveyor.com/api/projects/status/qx3m0b5etxe339yt?svg=true)](https://ci.appveyor.com/project/linianhui/oidc-example) |
+
+# How to run?
+
+## docker-compose.yml (docker platform)
+```bash
+## start docker
+docker-compose up --detach --build
+
+## stop docker
+docker-compose down
+```
+
+Update local `/etc/hosts`.
+```bash
+cat <<EOF >> /etc/hosts
+127.0.0.1 oidc-server.test
+127.0.0.1 oidc-client-hybrid.test
+127.0.0.1 oidc-client-js.test
+127.0.0.1 oauth2-resources-nodejs.test
+127.0.0.1 oauth2-resources-aspnetcore.test
+127.0.0.1 oauth2-resources-java.test
+127.0.0.1 oauth2-client-aspnetcore.test
+EOF
+```
+
+## build.ps1 (windows platform)
+Use administrator run `build.ps1` to deploy demo web site to local IIS. Required : 
+1. vs 2019 16.3 + 
+2. .net framework 4.6.1 sdk
+3. .net core 3.0 sdk : https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-3.0.100-windows-x64-installer
+4. ASP.NET Core Module : https://dotnet.microsoft.com/download/thank-you/dotnet-runtime-3.0.0-windows-hosting-bundle-installer
+
+```powershell
+build.ps1 -help
+
+build.ps1 -target {Task}
+
+Task                          Description
+================================================================================
+clean                         清理项目缓存
+restore                       还原项目依赖
+build                         编译项目
+deploy-iis                    部署到本机IIS
+open-browser                  用浏览器打开部署的站点
+default                       默认执行open-browser
+```
 
 # OIDC Servers
 1. [1-src/web.oidc.server.ids4](1-src/web.oidc.server.ids4) : ids4 (https://github.com/IdentityServer/IdentityServer4) example (with github, qqconnect external login).
@@ -82,52 +128,6 @@ public static class GlobalConfig
 | http://oauth2-resources-owin.test              |        |    ✔    | oauth2 resources api : asp.net webapi 2                     |
 | http://oauth2-client-aspnetcore.test           |   ✔    |    ✔    | oauth2 client : asp.net core 3.1                            |
 | http://oauth2-client-owin.test                 |        |    ✔    | oauth2 client : asp.net owin 4                              |
-
-# How to run?
-
-## docker-compose.yml (docker platform)
-```bash
-## start docker
-docker-compose up --detach --build
-
-## stop docker
-docker-compose down
-```
-
-Update local `/etc/hosts`.
-```bash
-cat <<EOF >> /etc/hosts
-127.0.0.1 oidc-server.test
-127.0.0.1 oidc-client-hybrid.test
-127.0.0.1 oidc-client-js.test
-127.0.0.1 oauth2-resources-nodejs.test
-127.0.0.1 oauth2-resources-aspnetcore.test
-127.0.0.1 oauth2-resources-java.test
-127.0.0.1 oauth2-client-aspnetcore.test
-EOF
-```
-
-## build.ps1 (windows platform)
-Use administrator run `build.ps1` to deploy demo web site to local IIS. Required : 
-1. vs 2019 16.3 + 
-2. .net framework 4.6.1 sdk
-3. .net core 3.0 sdk : https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-3.0.100-windows-x64-installer
-4. ASP.NET Core Module : https://dotnet.microsoft.com/download/thank-you/dotnet-runtime-3.0.0-windows-hosting-bundle-installer
-
-```powershell
-build.ps1 -help
-
-build.ps1 -target {Task}
-
-Task                          Description
-================================================================================
-clean                         清理项目缓存
-restore                       还原项目依赖
-build                         编译项目
-deploy-iis                    部署到本机IIS
-open-browser                  用浏览器打开部署的站点
-default                       默认执行open-browser
-```
 
 # Blog
 Authentication and Authorization: http://www.cnblogs.com/linianhui/category/929878.html
