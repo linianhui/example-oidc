@@ -1,0 +1,15 @@
+name: build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v1
+      - name: dotnet info
+        run: dotnet info
+      - name: build
+        run: ./build.ps1 -target build
