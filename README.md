@@ -18,9 +18,10 @@
 <!-- /TOC -->
 
 # CI
-| CI Service | Build Platform | Stauts                                                                                                                                           |
-| ---------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| AppVeyor   | Windows        | [![Build status](https://ci.appveyor.com/api/projects/status/qx3m0b5etxe339yt?svg=true)](https://ci.appveyor.com/project/linianhui/oidc-example) |
+
+| CI            | Platform | Stauts                                      |
+| ------------- | -------- | ------------------------------------------- |
+| GitHub Action | Windows  | [![GitHub-Actions-Img]][GitHub-Actions-Url] |
 
 # How to run?
 
@@ -154,3 +155,7 @@ OIDC in Action: http://www.cnblogs.com/linianhui/category/1121078.html
 
 1. ids3: https://github.com/linianhui/oidc.example/tree/ids3
 2. ids4 and owin: https://github.com/linianhui/oidc.example/tree/owin
+
+
+[GitHub-Actions-Img]:https://github.com/linianhui/oidc.example/workflows/build/badge.svg
+[GitHub-Actions-Url]:https://github.com/linianhui/oidc.example/actions
