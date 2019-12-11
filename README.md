@@ -37,6 +37,7 @@ docker-compose down
 Update local `/etc/hosts`.
 ```bash
 cat <<EOF >> /etc/hosts
+127.0.0.1 traefik.test
 127.0.0.1 oidc-server.test
 127.0.0.1 oidc-client-hybrid.test
 127.0.0.1 oidc-client-js.test
@@ -74,7 +75,7 @@ default                       默认执行open-browser
 
 | web site                                       | docker | windows | description                                                 |
 | :--------------------------------------------- | :----: | :-----: | :---------------------------------------------------------- |
-| http://localhost:8080                          |   ✔    |         | reverse proxy ：traefik                                     |
+| http://traefik.test                            |   ✔    |         | reverse proxy ：traefik                                     |
 | http://oidc-server.test                        |   ✔    |    ✔    | oidc server : asp.net core 3.1                              |
 | http://oidc-client-hybrid.test                 |   ✔    |    ✔    | oidc client : asp.net core 3.1                              |
 | http://oidc-client-implicit.test               |        |    ✔    | oidc client : asp.net owin 4                                |
