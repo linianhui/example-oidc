@@ -1,3 +1,4 @@
+# https://docs.traefik.io
 global:
   checkNewVersion: true
   sendAnonymousUsage: false
@@ -12,9 +13,12 @@ api:
 entryPoints:
   http:
     address: :80
-  traefik:
-    address: :8080
 
+# https://docs.traefik.io/providers/docker/
 providers:
-  file:
-    filename: providers.yml
+  docker:
+    endpoint: 'unix:///var/run/docker.sock'
+    exposedByDefault: false
+    useBindPortIP: false
+    swarmMode: false
+    swarmModeRefreshSeconds: '10s'

@@ -1,17 +1,13 @@
-version: "3.6"
-
+version: '3'
 
 services:
-
   traefik:
-    build: 
+    build:
       context: ./1-src/
-      dockerfile: web.reverse-proxy.dockerfile
-    restart: on-failure
-    command: --api
+      dockerfile: web.traefik.dockerfile
     ports:
-      - "80:80"
-      - "8080:8080"
+      - '80:80'
+      - '8080:8080'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
@@ -19,31 +15,59 @@ services:
     build:
       context: ./1-src/
       dockerfile: web.oidc.server.ids4.dockerfile
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.oidc-server.rule=Host(`oidc-server.test`)
+      - traefik.http.services.oidc-server.loadbalancer.server.port=80
 
   oidc-client-hybrid.test:
     build:
       context: ./1-src/
       dockerfile: web.oidc.client.hybrid.dockerfile
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.oidc-client-hybrid.rule=Host(`oidc-client-hybrid.test`)
+      - traefik.http.services.oidc-client-hybrid.loadbalancer.server.port=80
 
   oidc-client-js.test:
     build:
       context: ./1-src/
       dockerfile: web.oidc.client.js.dockerfile
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.oidc-client-js.rule=Host(`oidc-client-js.test`)
+      - traefik.http.services.oidc-client-js.loadbalancer.server.port=80
 
   oauth2-client-aspnetcore.test:
     build:
       context: ./1-src/
       dockerfile: web.oauth2.client.aspnetcore.dockerfile
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.oauth2-client-aspnetcore.rule=Host(`oauth2-client-aspnetcore.test`)
+      - traefik.http.services.oauth2-client-aspnetcore.loadbalancer.server.port=80
 
   oauth2-resources-aspnetcore.test:
     build:
       context: ./1-src/
       dockerfile: web.oauth2.resources.aspnetcore.dockerfile
-  
+    depends_on:
+      - oidc-server.test
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.oauth2-resources-aspnetcore.rule=Host(`oauth2-resources-aspnetcore.test`)
+      - traefik.http.services.oauth2-resources-aspnetcore.loadbalancer.server.port=80
+
   oauth2-resources-nodejs.test:
     build:
       context: ./1-src/
       dockerfile: web.oauth2.resources.nodejs.dockerfile
+    depends_on:
+      - oidc-server.test
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.oauth2-resources-nodejs.rule=Host(`oauth2-resources-nodejs.test`)
+      - traefik.http.services.oauth2-resources-nodejs.loadbalancer.server.port=80
 
   oauth2-resources-java.test:
     build:
@@ -51,3 +75,7 @@ services:
       dockerfile: web.oauth2.resources.java.dockerfile
     depends_on:
       - oidc-server.test
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.oauth2-resources-java.rule=Host(`oauth2-resources-java.test`)
+      - traefik.http.services.oauth2-resources-java.loadbalancer.server.port=80
