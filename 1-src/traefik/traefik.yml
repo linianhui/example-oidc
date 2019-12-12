@@ -9,9 +9,10 @@ log:
 api:
   dashboard: true
   insecure: true
+  debug: true
 
 entryPoints:
-  web:
+  http:
     address: :80
 
 # https://docs.traefik.io/providers/docker/

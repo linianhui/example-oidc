@@ -14,7 +14,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.traefik.rule=Host(`traefik.test`)
-      - traefik.http.routers.traefik.entrypoints=web
+      - traefik.http.routers.traefik.entrypoints=http
       - traefik.http.routers.traefik.service=api@internal
 
   oidc-server.test:
@@ -24,7 +24,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.oidc-server.rule=Host(`oidc-server.test`)
-      - traefik.http.routers.oidc-server.entrypoints=web
+      - traefik.http.routers.oidc-server.entrypoints=http
       - traefik.http.services.oidc-server.loadbalancer.server.port=80
 
   oidc-client-hybrid.test:
@@ -34,7 +34,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.oidc-client-hybrid.rule=Host(`oidc-client-hybrid.test`)
-      - traefik.http.routers.oidc-client-hybrid.entrypoints=web
+      - traefik.http.routers.oidc-client-hybrid.entrypoints=http
       - traefik.http.services.oidc-client-hybrid.loadbalancer.server.port=80
 
   oidc-client-js.test:
@@ -44,7 +44,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.oidc-client-js.rule=Host(`oidc-client-js.test`)
-      - traefik.http.routers.oidc-client-js.entrypoints=web
+      - traefik.http.routers.oidc-client-js.entrypoints=http
       - traefik.http.services.oidc-client-js.loadbalancer.server.port=80
 
   oauth2-client-aspnetcore.test:
@@ -54,7 +54,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.oauth2-client-aspnetcore.rule=Host(`oauth2-client-aspnetcore.test`)
-      - traefik.http.routers.oauth2-client-aspnetcore.entrypoints=web
+      - traefik.http.routers.oauth2-client-aspnetcore.entrypoints=http
       - traefik.http.services.oauth2-client-aspnetcore.loadbalancer.server.port=80
 
   oauth2-resources-aspnetcore.test:
@@ -66,7 +66,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.oauth2-resources-aspnetcore.rule=Host(`oauth2-resources-aspnetcore.test`)
-      - traefik.http.routers.oauth2-resources-aspnetcore.entrypoints=web
+      - traefik.http.routers.oauth2-resources-aspnetcore.entrypoints=http
       - traefik.http.services.oauth2-resources-aspnetcore.loadbalancer.server.port=80
 
   oauth2-resources-nodejs.test:
@@ -78,7 +78,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.oauth2-resources-nodejs.rule=Host(`oauth2-resources-nodejs.test`)
-      - traefik.http.routers.oauth2-resources-nodejs.entrypoints=web
+      - traefik.http.routers.oauth2-resources-nodejs.entrypoints=http
       - traefik.http.services.oauth2-resources-nodejs.loadbalancer.server.port=80
 
   oauth2-resources-java.test:
@@ -90,5 +90,5 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.oauth2-resources-java.rule=Host(`oauth2-resources-java.test`)
-      - traefik.http.routers.oauth2-resources-java.entrypoints=web
+      - traefik.http.routers.oauth2-resources-java.entrypoints=http
       - traefik.http.services.oauth2-resources-java.loadbalancer.server.port=80
