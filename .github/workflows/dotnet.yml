@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: git checkout
         uses: actions/checkout@v1
-      - name: dotnet --info
-        run: dotnet --info
+      - name: dotnet --list-sdks
+        run: dotnet --list-sdks
       - name: build
         run: ./build.ps1 -target build
