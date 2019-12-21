@@ -69,7 +69,7 @@ namespace Http.Diagnostic
             var responseContent = httpContent.ReadAsStringAsync().GetAwaiter().GetResult();
             if (httpContent.Headers.ContentType.MediaType.Contains("json"))
             {
-                LogLine(JObject.Parse(responseContent), color);
+                LogLine(JToken.Parse(responseContent), color);
             }
             else
             {
