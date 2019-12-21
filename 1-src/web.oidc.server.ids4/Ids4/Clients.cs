@@ -15,7 +15,8 @@ namespace ServerSite.Ids4
             ImplicitClient,
             JsClient,
             AuthorizationCodeClient,
-            ClientCredentialsClient
+            ClientCredentialsClient,
+            ResourceOwnerPasswordCredentialsClient
         };
 
         private static Client ImplicitClient
@@ -161,5 +162,15 @@ namespace ServerSite.Ids4
             ClientSecrets = { new Secret("lnh".Sha256()) },
             AllowedScopes = { "api-1", "api-2", "api-3" }
         };
+
+        private static Client ResourceOwnerPasswordCredentialsClient => new Client
+        {
+            ClientId = "resource-owner-password-credentials-client",
+            AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+            RequireClientSecret = false,
+            AllowedScopes = { "api-1", "api-2", "api-3" }
+        };
+
+
     }
 }
