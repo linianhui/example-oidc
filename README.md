@@ -75,7 +75,7 @@ default                       默认执行open-browser
 
 | web site                                       | docker | windows | description                                                 |
 | :--------------------------------------------- | :----: | :-----: | :---------------------------------------------------------- |
-| http://traefik.test                            |   ✔    |         | reverse proxy ：traefik                                     |
+| http://traefik.test                            |   ✔    |         | reverse proxy : traefik                                     |
 | http://oidc-server.test                        |   ✔    |    ✔    | oidc server : asp.net core 3.1                              |
 | http://oidc-client-hybrid.test                 |   ✔    |    ✔    | oidc client : asp.net core 3.1                              |
 | http://oidc-client-implicit.test               |        |    ✔    | oidc client : asp.net owin 4                                |
@@ -106,8 +106,8 @@ default                       默认执行open-browser
 
 1. [1-src/web.oauth2.client.aspnetcore](1-src/web.oauth2.client.aspnetcore) : asp.net core 3.1.
 1. [1-src/web.oauth2.client.owin](1-src/web.oauth2.client.owin) : asp.net owin.
-1. [1-src/console.oauth2.client.client-credentials](1-src/console.oauth2.client.client-credentials) ：console app，client credentials flow(oauth2).
-1. [1-src/console.oauth2.client.resource-owner-password-credentials](1-src/console.oauth2.client.resource-owner-password-credentials) ：console app，resource owner password credentials flow(oauth2).
+1. [1-src/console.oauth2.client.client-credentials](1-src/console.oauth2.client.client-credentials) : console app, client credentials flow(oauth2).
+1. [1-src/console.oauth2.client.resource-owner-password-credentials](1-src/console.oauth2.client.resource-owner-password-credentials) : console app, resource owner password credentials flow(oauth2).
 
 
 # OAuth2 Resources Servers
