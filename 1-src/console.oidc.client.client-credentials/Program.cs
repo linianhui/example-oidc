@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Http.Diagnostic;
 using IdentityModel.Client;
 
 namespace ClientCredentials
@@ -13,7 +14,7 @@ namespace ClientCredentials
 
         public static async Task Main()
         {
-            DiagnosticListener.AllListeners.Subscribe(new DiagnosticListenerObserver());
+            DiagnosticListener.AllListeners.Subscribe(new HttpDiagnosticListenerObserver());
             await MainAsync();
             Console.WriteLine("ok");
             Console.ReadKey();
