@@ -8,8 +8,8 @@
   - [Deployed web site](#deployed-web-site)
 - [OIDC Servers](#oidc-servers)
 - [OIDC Clients](#oidc-clients)
-- [OAuth2 Resources Servers](#oauth2-resources-servers)
 - [OAuth2 Clients](#oauth2-clients)
+- [OAuth2 Resources Servers](#oauth2-resources-servers)
 - [OAuth2 Middleware](#oauth2-middleware)
   - [Global Config](#global-config)
 - [Blog](#blog)
@@ -100,8 +100,13 @@ default                       默认执行open-browser
 1. [1-src/web.oidc.client.js](1-src/web.oidc.client.js) : web site(static), implicit flow .
 1. [1-src/uwp.oidc.client.authorization-code](1-src/uwp.oidc.client.authorization-code) : uwp app, authorization code flow.
 1. [1-src/wpf.oidc.client.authorization-code](1-src/wpf.oidc.client.authorization-code) : wpf app, authorization code flow.
-1. [1-src/console.oidc.client.client-credentials](1-src/console.oidc.client.client-credentials) ：console app，client credentials flow(oauth2).
 
+
+# OAuth2 Clients
+
+1. [1-src/web.oauth2.client.aspnetcore](1-src/web.oauth2.client.aspnetcore) : asp.net core 3.1.
+1. [1-src/web.oauth2.client.owin](1-src/web.oauth2.client.owin) : asp.net owin.
+1. [1-src/console.oauth2.client.client-credentials](1-src/console.oauth2.client.client-credentials) ：console app，client credentials flow(oauth2).
 
 # OAuth2 Resources Servers
 
@@ -109,12 +114,6 @@ default                       默认执行open-browser
 1. [1-src/web.oauth2.resources.owin](1-src/web.oauth2.resources.owin): asp.net owin.
 1. [1-src/web.oauth2.resources.nodejs](1-src/web.oauth2.resources.nodejs): node.js.
 1. [1-src/web.oauth2.resources.java](1-src/web.oauth2.resources.java): java (spring boot 2.2.1).
-
-
-# OAuth2 Clients
-
-1. [1-src/web.oauth2.client.aspnetcore](1-src/web.oauth2.client.aspnetcore) : asp.net core 3.1.
-1. [1-src/web.oauth2.client.owin](1-src/web.oauth2.client.owin) : asp.net owin.
 
 
 # OAuth2 Middleware

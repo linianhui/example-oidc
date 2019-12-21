@@ -45,7 +45,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web.oidc.client.hybrid", "1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uwp.oidc.client.authorization-code", "1-src\uwp.oidc.client.authorization-code\uwp.oidc.client.authorization-code.csproj", "{B101D8E1-7EE2-4884-9A72-6F4A6B4DBF2A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "console.oidc.client.client-credentials", "1-src\console.oidc.client.client-credentials\console.oidc.client.client-credentials.csproj", "{E9C6A35A-D909-499C-BC9F-1F65A02B732B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "console.oauth2.client.client-credentials", "1-src\console.oidc.client.client-credentials\console.oauth2.client.client-credentials.csproj", "{E9C6A35A-D909-499C-BC9F-1F65A02B732B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "filters", "filters", "{AC8AAA8F-4684-4158-B1B3-4FBC1870CFA8}"
 EndProject
@@ -61,7 +61,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "oauth2.github.aspnetcore", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wpf.oidc.client.authorization-code", "1-src\wpf.oidc.client.authorization-code\wpf.oidc.client.authorization-code.csproj", "{BF96A910-9614-4C8C-BFE9-5AEB322625A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "http.diagnostic", "1-src\http.diagnostic\http.diagnostic.csproj", "{DD4702C4-3500-44DA-A7C5-824AE557449E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "http.diagnostic", "1-src\http.diagnostic\http.diagnostic.csproj", "{DD4702C4-3500-44DA-A7C5-824AE557449E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "diagnostic", "diagnostic", "{6773FFFA-7647-49CC-93D1-62C8D9BEA698}"
 EndProject
@@ -217,7 +217,7 @@ Global
 		{10655652-C13C-4921-88B1-EC23C095F3F3} = {04E113C1-CFAD-463F-9EA1-53ED81C301AD}
 		{868A5075-A471-4EE0-8573-20DA53A62D31} = {CB88D70E-F90F-407A-8680-C8327076B3F9}
 		{B101D8E1-7EE2-4884-9A72-6F4A6B4DBF2A} = {CB88D70E-F90F-407A-8680-C8327076B3F9}
-		{E9C6A35A-D909-499C-BC9F-1F65A02B732B} = {CB88D70E-F90F-407A-8680-C8327076B3F9}
+		{E9C6A35A-D909-499C-BC9F-1F65A02B732B} = {04E113C1-CFAD-463F-9EA1-53ED81C301AD}
 		{7E592C54-3E5C-4666-84DC-3C4115CA71A6} = {ABBE4B77-AA7C-4B50-B7AB-BC854C44D0C9}
 		{F5AD4B2E-000A-4F9B-9223-2AC1B7E9DF4C} = {AC8AAA8F-4684-4158-B1B3-4FBC1870CFA8}
 		{DED7DCFE-9D7D-4E46-90A8-8D2A70729A41} = {ABBE4B77-AA7C-4B50-B7AB-BC854C44D0C9}
