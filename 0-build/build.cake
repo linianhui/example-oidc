@@ -20,6 +20,7 @@ Task("clean")
     .Description("清理项目缓存")
     .Does(() =>
 {
+    DeleteFiles(srcPath + "**/_*.log");
     CleanDirectories(srcPath + "**/bin");
     CleanDirectories(srcPath + "**/obj");
 });
