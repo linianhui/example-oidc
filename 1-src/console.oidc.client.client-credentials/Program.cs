@@ -31,6 +31,7 @@ namespace ClientCredentials
                 "http://oauth2-resources-aspnetcore.test",
                 "http://oauth2-resources-aspnetcore.test/books",
                 "http://oauth2-resources-nodejs.test",
+                "http://oauth2-resources-java.test",
                 "http://oauth2-resources-owin.test"
             };
 
