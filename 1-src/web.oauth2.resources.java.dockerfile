@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/gradle
-FROM gradle:6.0-jdk8 as builder
+FROM gradle:6.0-jdk11 as builder
 
 USER root
 
@@ -10,7 +10,7 @@ WORKDIR /src
 RUN gradle assemble --info
 
 # https://hub.docker.com/_/openjdk
-FROM openjdk:8-jre-alpine
+FROM openjdk:11
 
 WORKDIR /
 
