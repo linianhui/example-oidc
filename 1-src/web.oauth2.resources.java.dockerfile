@@ -10,7 +10,7 @@ WORKDIR /src
 RUN gradle assemble --info
 
 # https://hub.docker.com/_/openjdk
-FROM openjdk:11
+FROM openjdk:11.0.5
 
 WORKDIR /
 
