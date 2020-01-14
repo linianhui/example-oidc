@@ -1,0 +1,97 @@
+*.7z                binary
+*.XRM-MS            binary
+*.adoc              text eol=lf
+*.appxmanifest      text eol=crlf
+*.asax              text eol=crlf
+*.aspx              text eol=crlf
+*.bash              text eol=lf
+*.bat               text eol=crlf
+*.bmp               binary
+*.cake              text eol=lf
+*.class             binary
+*.cmd               text eol=crlf
+*.cs                text eol=crlf
+*.cshtml            text eol=crlf
+*.csproj            text eol=crlf
+*.css               text eol=lf
+*.csv               text eol=lf
+*.db                binary
+*.dll               binary
+*.dockerfile        text eol=lf
+*.ear               binary
+*.exe               binary
+*.gif               binary
+*.gradle            text eol=lf
+*.gradle.kts        text eol=lf
+*.gz                binary
+*.htm               text eol=lf
+*.html              text eol=lf
+*.http              text eol=lf
+*.rest              text eol=lf
+*.ico               binary
+*.ini               text eol=lf
+*.jar               binary
+*.java              text eol=lf
+*.jpeg              binary
+*.jpg               binary
+*.js                text eol=lf
+*.json              text eol=lf
+*.less              text eol=lf
+*.lua               text eol=lf
+*.m4a               binary
+*.markdown          text eol=lf
+*.md                text eol=lf
+*.mp3               binary
+*.mp4               binary
+*.mpeg              binary
+*.ogg               binary
+*.otf               binary
+*.pcap              binary
+*.pcapng            binary
+*.pfx               binary
+*.png               binary
+*.properties        text eol=lf
+*.props             text eol=crlf
+*.ps1               text eol=crlf
+*.rar               binary
+*.reg               text eol=crlf
+*.rs                text eol=lf
+*.rsa               text eol=lf
+*.sass              text eol=lf
+*.scss              text eol=lf
+*.sh                text eol=lf
+*.sln               text eol=crlf
+*.so                binary
+*.sql               text eol=lf
+*.svg               text eol=lf
+*.tar               binary
+*.tif               binary
+*.tiff              binary
+*.toml              text eol=lf
+*.tsv               text eol=lf
+*.ttf               binary
+*.txt               text eol=lf
+*.vue               text eol=lf
+*.war               binary
+*.webm              binary
+*.webp              binary
+*.woff              binary
+*.woff2             binary
+*.xaml              text eol=crlf
+*.xhtml             text eol=lf
+*.xml               text eol=lf
+*.yaml              text eol=lf
+*.yml               text eol=lf
+*.zip               binary
+.dockerignore       text eol=lf
+.editorconfig       text eol=lf
+.env                text eol=lf
+.gitattributes      text eol=lf
+.gitconfig          text eol=lf
+.gitignore          text eol=lf
+.gitkeep            text eol=lf
+Caddyfile           text eol=lf
+Dockerfile          text eol=lf
+LICENSE             text eol=lf
+gradlew             text eol=lf
+mvnw                text eol=lf
