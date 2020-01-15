@@ -1,0 +1,36 @@
+# http://editorconfig.org
+
+# VS 2017 : 15.6+ 内置支持；Tools > Options > Text Editor > "Follow project coding conventions"
+# VS Code : (Ctrl+E) ext install editorconfig
+# http://editorconfig.org
+
+root = true
+
+[*]
+charset                  = utf-8
+end_of_line              = lf
+indent_size              = 2
+indent_style             = space
+insert_final_newline     = true
+trim_trailing_whitespace = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.{cs,cake}]
+indent_size              = 4
+end_of_line              = crlf
+
+[*.csproj]
+end_of_line              = crlf
+
+[*.sln]
+end_of_line              = crlf
+
+[*.xaml]
+end_of_line              = crlf
+indent_size              = 4
+
+[*.ps1]
+indent_size              = 4
+end_of_line              = crlf
