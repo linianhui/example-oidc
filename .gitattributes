@@ -1,0 +1,13 @@
+# text   : 使用 lf 换行符进行存储.
+# binary : 原样存储.
+
+# 自动识别文件是否为text
+*          text=auto eol=lf
+
+# 使用 lf 存储, checkout 时替换为 crlf.
+*.ps1      text eol=crlf
+*.cs       text eol=crlf
+*.cake     text eol=crlf
+*.csproj   text eol=crlf
+*.sln      text eol=crlf
+*.xaml     text eol=crlf
