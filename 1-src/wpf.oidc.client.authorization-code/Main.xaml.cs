@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using Newtonsoft.Json;
 using WPFClient.Models;
 using WPFClient.Oidc;
