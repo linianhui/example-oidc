@@ -11,7 +11,7 @@ RUN dotnet publish ./web.oidc.client.hybrid/web.oidc.client.hybrid.csproj --outp
 
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine
- 
+
 COPY --from=builder /publish /app
 
 WORKDIR /app
