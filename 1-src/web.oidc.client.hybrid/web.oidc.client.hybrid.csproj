@@ -6,13 +6,14 @@
     <RootNamespace>ClientSite</RootNamespace>
     <IsWebConfigTransformDisabled>true</IsWebConfigTransformDisabled>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <Content Remove="Properties\launchSettings.json" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="3.1.1" />
   </ItemGroup>
 
 </Project>
