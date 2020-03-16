@@ -9,8 +9,8 @@ WORKDIR /src
 
 RUN gradle assemble --info
 
-# https://hub.docker.com/_/openjdk
-FROM openjdk:11.0.5
+# https://hub.docker.com/r/lnhcode/openjdk/tags
+FROM lnhcode/openjdk:11.0.6
 
 WORKDIR /
 
