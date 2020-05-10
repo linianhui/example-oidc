@@ -31,6 +31,7 @@ Task("restore")
     .Does(() =>
 {
     DotNetCoreRestore(slnPath);
+    NuGetRestore(slnPath);
 });
 
 
