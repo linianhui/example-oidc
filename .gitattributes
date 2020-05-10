@@ -14,3 +14,4 @@
 *.appxmanifest   text eol=crlf
 *.sln            text eol=crlf
 *.xaml           text eol=crlf
+*.config         text eol=crlf
