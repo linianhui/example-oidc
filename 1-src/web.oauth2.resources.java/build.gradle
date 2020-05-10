@@ -13,20 +13,18 @@ buildscript {
 
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.2.5.RELEASE'
+    id 'org.springframework.boot' version '2.2.7.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 }
 
 
 group = 'api'
 version = '0.0.1'
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
 
 repositories {
     mavenLocal()
-    maven {
-        url 'https://maven.aliyun.com/repository/public'
-    }
+    maven { url 'https://maven.aliyun.com/repository/public' }
     mavenCentral()
 }
 

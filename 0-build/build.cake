@@ -30,7 +30,7 @@ Task("restore")
     .Description("还原项目依赖")
     .Does(() =>
 {
-    DotNetCoreRestore(slnPath);   
+    DotNetCoreRestore(slnPath);
     NuGetRestore(slnPath);
 });
 
@@ -66,7 +66,7 @@ Task("deploy-iis")
             PhysicalDirectory = webSite.Path,
             ApplicationPool   = webSite.ApplicationPool
         });
-        
+
         AddHostsRecord("127.0.0.1", webSite.Host);
 
         StartSite(webSite.Host);
