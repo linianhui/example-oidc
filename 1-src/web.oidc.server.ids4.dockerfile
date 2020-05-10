@@ -18,4 +18,4 @@ WORKDIR /app
 
 EXPOSE 80
 
-ENTRYPOINT ["dotnet", "Web.Oidc.Server.Ids4.dll"]
+ENTRYPOINT ["/bin/bash", "-c", "dotnet Web.Oidc.Server.Ids4.dll"]

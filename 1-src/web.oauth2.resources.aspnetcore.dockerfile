@@ -18,4 +18,4 @@ WORKDIR /app
 
 EXPOSE 80
 
-ENTRYPOINT ["dotnet", "Web.OAuth2.Resources.AspNetCore.dll"]
+ENTRYPOINT ["/bin/bash", "-c", "dotnet Web.OAuth2.Resources.AspNetCore.dll"]

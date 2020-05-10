@@ -11,4 +11,4 @@ RUN npm install --registry=https://registry.npm.taobao.org
 
 EXPOSE 80
 
-ENTRYPOINT ["node", "app.js"]
+ENTRYPOINT ["/bin/bash", "-c", "node app.js"]
