@@ -5,6 +5,7 @@
 *          text=auto eol=lf
 
 # 使用 lf 存储, checkout 时替换为 crlf.
+# git add --renormalize .
 *.bat            text eol=crlf
 *.ps1            text eol=crlf
 *.cs             text eol=crlf
