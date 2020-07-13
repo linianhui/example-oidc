@@ -1,22 +1,22 @@
 buildscript {
     repositories {
         mavenLocal()
-        maven {
-            url 'https://maven.aliyun.com/repository/gradle-plugin'
-        }
-        maven {
-            url 'https://maven.aliyun.com/repository/public'
-        }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
         mavenCentral()
     }
+  dependencies {
+    classpath "org.springframework.boot:spring-boot-gradle-plugin:2.2.7.RELEASE"
+    classpath "io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE"
+  }
 }
 
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.2.7.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 }
 
+apply plugin: "org.springframework.boot"
+apply plugin: "io.spring.dependency-management"
 
 group = 'api'
 version = '0.0.1'
