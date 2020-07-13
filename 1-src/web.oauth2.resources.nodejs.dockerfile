@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/node
-FROM node:10
+FROM node:12
 
 COPY ./web.oauth2.resources.nodejs/package.json \
      ./web.oauth2.resources.nodejs/app.js \
