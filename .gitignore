@@ -267,7 +267,6 @@ paket-files/
 www/*
 
 # nodejs
-package-lock.json
 
 # gradle
 .gradle
