@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/gradle
-FROM gradle:6.0-jdk8 as builder
+FROM gradle:6.5-jdk8 as builder
 
 USER root
 
