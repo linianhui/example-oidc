@@ -21,6 +21,7 @@ namespace ServerSite.Ids4
                 .AddDeveloperSigningCredential()
                 .AddInMemoryApiScopes(Resources.AllApiScopes)
                 .AddInMemoryIdentityResources(Resources.AllIdentityResources)
+                .AddInMemoryApiResources(Resources.AllApiResources)
                 .AddInMemoryClients(Clients.All)
                 .AddTestUsers(Users.All);
 
