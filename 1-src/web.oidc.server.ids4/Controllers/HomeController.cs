@@ -21,7 +21,8 @@ namespace ServerSite.Controllers
                     ["client"] = this.Url.Link("debug.client.get", null),
                     ["user"] = this.Url.Link("debug.user.get", null),
                     ["user_claim"] = this.Url.Link("debug.user_claim.get", null),
-                    ["api_scope"] = this.Url.Link("debug.api_resource.get", null),
+                    ["api_scope"] = this.Url.Link("debug.api_scope.get", null),
+                    ["api_resource"] = this.Url.Link("debug.api_resource.get", null),
                     ["identity_resource"] = this.Url.Link("debug.identity_resource.get", null)
                 }
             });

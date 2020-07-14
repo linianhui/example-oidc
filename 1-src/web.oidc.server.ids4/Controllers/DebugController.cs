@@ -35,9 +35,15 @@ namespace ServerSite.Controllers
         }
 
         [HttpGet("api-scope", Name = "debug.api_scope.get")]
-        public IEnumerable<ApiScope> GetApiResources()
+        public IEnumerable<ApiScope> GetApiScopes()
         {
             return Ids4.Resources.AllApiScopes;
+        }
+
+        [HttpGet("api-resource", Name = "debug.api_resource.get")]
+        public IEnumerable<ApiResource> GetApiResources()
+        {
+            return Ids4.Resources.AllApiResources;
         }
 
         [HttpGet("identity-resource", Name = "debug.identity_resource.get")]
