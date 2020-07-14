@@ -9,6 +9,6 @@ module.exports = jwt({
     jwksUri: "http://oidc-server.test/.well-known/openid-configuration/jwks"
   }),
   algorithms: ["RS256"],
-  audience: "api-2",
+  audience: "api",
   issuer: "http://oidc-server.test"
 });

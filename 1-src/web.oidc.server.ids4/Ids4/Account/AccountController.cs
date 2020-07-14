@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -90,7 +90,11 @@ namespace ServerSite.Ids4.Account
                     IsPersistent = true,
                     ExpiresUtc = DateTimeOffset.UtcNow.AddHours(1)
                 };
-                await HttpContext.SignInAsync(user.SubjectId, user.Username, properties);
+                var isuser = new IdentityServerUser(user.SubjectId)
+                {
+                    DisplayName = user.Username
+                };
+                await HttpContext.SignInAsync(isuser, properties);
 
                 if (_idsInteraction.IsValidReturnUrl(form.ResumeUrl) || Url.IsLocalUrl(form.ResumeUrl))
                 {
@@ -149,7 +153,13 @@ namespace ServerSite.Ids4.Account
             if (user != null)
             {
                 await HttpContext.SignOutAsync(IdentityServerConstants.ExternalCookieAuthenticationScheme);
-                await HttpContext.SignInAsync(user.SubjectId, user.Username, scheme, claims.ToArray());
+                var isuser = new IdentityServerUser(user.SubjectId)
+                {
+                    DisplayName = user.Username,
+                    IdentityProvider = scheme,
+                    AdditionalClaims = claims
+                };
+                await HttpContext.SignInAsync(isuser);
                 return Redirect(resumeUrl);
             }
 
@@ -172,7 +182,13 @@ namespace ServerSite.Ids4.Account
 
             await HttpContext.SignOutAsync(IdentityServerConstants.ExternalCookieAuthenticationScheme);
 
-            await HttpContext.SignInAsync(user.SubjectId, user.Username, scheme, claims.ToArray());
+            var isuser = new IdentityServerUser(user.SubjectId)
+            {
+                DisplayName = user.Username,
+                IdentityProvider = scheme,
+                AdditionalClaims = claims
+            };
+            await HttpContext.SignInAsync(isuser);
 
             return Redirect(resumeUrl);
         }

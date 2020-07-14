@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Linq;
 using IdentityServer4.Models;
 
 namespace ServerSite.Ids4
@@ -12,11 +13,19 @@ namespace ServerSite.Ids4
             new IdentityResources.Email()
         };
 
+        public static IEnumerable<ApiScope> AllApiScopes => new List<ApiScope>
+        {
+            new ApiScope("api-1", "Scope 1"),
+            new ApiScope("api-2", "Scope 2"),
+            new ApiScope("api-3", "Scope 3")
+        };
+
         public static IEnumerable<ApiResource> AllApiResources => new List<ApiResource>
         {
-            new ApiResource("api-1", "API 1"),
-            new ApiResource("api-2", "API 2"),
-            new ApiResource("api-3", "API 3")
+            new ApiResource("api", "Some API")
+            {
+                Scopes=AllApiScopes.Select(x=>x.Name).ToList()
+            }
         };
     }
 }
