@@ -1,4 +1,4 @@
-﻿using IdentityServer4.Models;
+using IdentityServer4.Models;
 using IdentityServer4.Test;
 using Microsoft.AspNetCore.Mvc;
 using ServerSite.Ids4;
@@ -12,19 +12,19 @@ namespace ServerSite.Controllers
     public class DebugController : Controller
     {
 
-        [HttpGet("clients", Name = "debug.clients.get")]
+        [HttpGet("client", Name = "debug.client.get")]
         public IEnumerable<Client> GetClients()
         {
             return Clients.All;
         }
 
-        [HttpGet("users", Name = "debug.users.get")]
+        [HttpGet("user", Name = "debug.user.get")]
         public IEnumerable<TestUser> GetUsers()
         {
             return Users.All;
         }
 
-        [HttpGet("user-claims", Name = "debug.user_claims.get")]
+        [HttpGet("user-claim", Name = "debug.user_claim.get")]
         public JsonResult GetUser()
         {
             return Json(base.User?.Claims.Select(_ => new
@@ -34,13 +34,13 @@ namespace ServerSite.Controllers
             }));
         }
 
-        [HttpGet("api-resources", Name = "debug.api_resources.get")]
-        public IEnumerable<ApiResource> GetApiResources()
+        [HttpGet("api-scope", Name = "debug.api_scope.get")]
+        public IEnumerable<ApiScope> GetApiResources()
         {
-            return Ids4.Resources.AllApiResources;
+            return Ids4.Resources.AllApiScopes;
         }
 
-        [HttpGet("identity-resources", Name = "debug.identity_resources.get")]
+        [HttpGet("identity-resource", Name = "debug.identity_resource.get")]
         public IEnumerable<IdentityResource> GetIdentityResources()
         {
             return Ids4.Resources.AllIdentityResources;
