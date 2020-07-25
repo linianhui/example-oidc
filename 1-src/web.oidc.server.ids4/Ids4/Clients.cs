@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using IdentityServer4;
 using IdentityServer4.Models;
 
@@ -43,9 +43,9 @@ namespace ServerSite.Ids4
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email
                     },
-
                     FrontChannelLogoutUri = home + OidcFrontChannelLogoutCallback,
-                    FrontChannelLogoutSessionRequired = true
+                    FrontChannelLogoutSessionRequired = true,
+                    RequirePkce = false
                 };
             }
         }
@@ -79,7 +79,8 @@ namespace ServerSite.Ids4
                     },
 
                     FrontChannelLogoutUri = home + OidcFrontChannelLogoutCallback,
-                    FrontChannelLogoutSessionRequired = true
+                    FrontChannelLogoutSessionRequired = true,
+                    RequirePkce = false
                 };
             }
         }
@@ -115,6 +116,7 @@ namespace ServerSite.Ids4
                     AccessTokenLifetime = 3600,
                     AllowAccessTokensViaBrowser = true,
                     RequireConsent = false,
+                    RequirePkce = false
                 };
             }
         }
@@ -149,7 +151,8 @@ namespace ServerSite.Ids4
                     },
 
                     FrontChannelLogoutUri = home + OidcFrontChannelLogoutCallback,
-                    FrontChannelLogoutSessionRequired = true
+                    FrontChannelLogoutSessionRequired = true,
+                    RequirePkce = false
                 };
             }
         }
@@ -160,7 +163,8 @@ namespace ServerSite.Ids4
             ClientId = "client-credentials-client",
             AllowedGrantTypes = GrantTypes.ClientCredentials,
             ClientSecrets = { new Secret("lnh".Sha256()) },
-            AllowedScopes = { "api-1", "api-2", "api-3" }
+            AllowedScopes = { "api-1", "api-2", "api-3" },
+            RequirePkce = false
         };
 
         private static Client ResourceOwnerPasswordCredentialsClient => new Client
@@ -168,7 +172,8 @@ namespace ServerSite.Ids4
             ClientId = "resource-owner-password-credentials-client",
             AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
             RequireClientSecret = false,
-            AllowedScopes = { "api-1", "api-2", "api-3" }
+            AllowedScopes = { "api-1", "api-2", "api-3" },
+            RequirePkce = false
         };
 
 

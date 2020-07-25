@@ -1,4 +1,4 @@
-﻿using IdentityServer3.AccessTokenValidation;
+using IdentityServer3.AccessTokenValidation;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
@@ -22,7 +22,7 @@ namespace Web.OAuth2.Resources
                 Authority = "http://oidc-server.test",
                 ValidationMode = ValidationMode.Both,
                 RequireHttps = false,
-                ValidAudiences = new string[] { "api-1" },
+                ValidAudiences = new string[] { "api" },
                 TokenProvider = new OAuthBearerAuthenticationProvider
                 {
                     OnRequestToken = HandlerRequestToken,
