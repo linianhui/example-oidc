@@ -1,7 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>AspNetCore.Filters.Permissions</AssemblyName>
     <RootNamespace>AspNetCore.Filters.Permissions</RootNamespace>
   </PropertyGroup>
