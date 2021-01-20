@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
@@ -58,17 +58,15 @@ namespace ClientCredentials
                     RequireHttps = false
                 }
             });
-
+            Parameters parameters = new Parameters();
+            parameters.Add("scope", "api-1 api-2 api-3");
             return await httpClient.RequestTokenAsync(new TokenRequest
             {
                 Address = discoveryResponse.TokenEndpoint,
                 ClientId = "client-credentials-client",
                 ClientSecret = "lnh",
                 GrantType = "client_credentials",
-                Parameters =
-                {
-                    ["scope"]="api-1 api-2 api-3"
-                }
+                Parameters = parameters
             });
         }
     }

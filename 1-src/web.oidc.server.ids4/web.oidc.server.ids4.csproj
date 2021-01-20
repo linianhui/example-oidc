@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>Web.Oidc.Server.Ids4</AssemblyName>
     <RootNamespace>ServerSite</RootNamespace>
     <IsWebConfigTransformDisabled>true</IsWebConfigTransformDisabled>
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="IdentityServer4" Version="4.0.4" />
+    <PackageReference Include="IdentityServer4" Version="4.1.1" />
   </ItemGroup>
 
   <ItemGroup>

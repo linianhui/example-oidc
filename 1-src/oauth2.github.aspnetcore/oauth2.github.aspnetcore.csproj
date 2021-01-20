@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5</TargetFramework>
     <AssemblyName>OAuth2.Github.AspNetCore</AssemblyName>
     <RootNamespace>OAuth2.Github.AspNetCore</RootNamespace>
   </PropertyGroup>
