@@ -45,6 +45,7 @@ Task("restore")
 Task("build")
     .Description("编译项目")
     .IsDependentOn("clean")
+    .IsDependentOn("restore")
     .Does(() =>
 {
     MSBuild(slnPath, new MSBuildSettings {
