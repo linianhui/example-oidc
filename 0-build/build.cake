@@ -8,7 +8,14 @@
 #load website.cake
 
 /// params
-var target = Argument("target", "default");
+var target  = Argument("target", "default");
+var browser = Argument("browser", "chrome");
+
+/// browser
+var browsers = new Dictionary<string, string>(){
+    ["chrome"] = "chrome -ArgumentList --incognito",
+    ["edge"] = "msedge -ArgumentList --inprivate",
+};
 
 /// constant
 var rootPath    = "../";
@@ -74,21 +81,21 @@ Task("deploy-iis")
 });
 
 
-Task("open-browser")
+Task("open")
     .Description("用浏览器打开部署的站点")
     .Does(() =>
 {
     var hostList = webSiteList.Select(_ => "http://" + _.Host).ToList();
     var urlList = string.Join(" , ", hostList);
-    var script = "Start-Process -FilePath chrome.exe -ArgumentList '-incognito' , " + urlList;
+    var script = "Start-Process -FilePath " + browsers[browser] + " , " + urlList;
     StartPowershellScript(script);
 });
 
 
 Task("default")
-    .Description("默认执行open-browser")
+    .Description("默认执行open")
     .IsDependentOn("build")
     .IsDependentOn("deploy-iis")
-    .IsDependentOn("open-browser");
+    .IsDependentOn("open");
 
 RunTarget(target);
