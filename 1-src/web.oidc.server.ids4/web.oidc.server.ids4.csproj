@@ -16,12 +16,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="IdentityServer4" Version="4.0.4" />
+    <PackageReference Include="IdentityServer4" Version="4.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\oauth2.github.aspnetcore\oauth2.github.aspnetcore.csproj" />
     <ProjectReference Include="..\oauth2.qqconnect.aspnetcore\oauth2.qqconnect.aspnetcore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="tempkey.jwk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
