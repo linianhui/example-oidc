@@ -1,4 +1,4 @@
-﻿using IdentityServer4;
+using IdentityServer4;
 using IdentityServer4.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,7 +18,7 @@ namespace ServerSite.Ids4
 
             @this
                 .AddIdentityServer(SetIdentityServerOptions)
-                .AddDeveloperSigningCredential()
+                .AddDeveloperSigningCredential(persistKey:true)
                 .AddInMemoryApiScopes(Resources.AllApiScopes)
                 .AddInMemoryIdentityResources(Resources.AllIdentityResources)
                 .AddInMemoryApiResources(Resources.AllApiResources)

@@ -24,4 +24,10 @@
     <ProjectReference Include="..\oauth2.qqconnect.aspnetcore\oauth2.qqconnect.aspnetcore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="tempkey.jwk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
