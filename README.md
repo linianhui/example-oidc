@@ -25,6 +25,8 @@
 
 # How to run?
 
+<mark><em>⚠️ disable chrome samesite for test: <em></mark> <a href="chrome://flags/#same-site-by-default-cookies">chrome://flags/#same-site-by-default-cookies</a>
+
 ## docker-compose.yml (docker platform)
 ```bash
 ## start docker

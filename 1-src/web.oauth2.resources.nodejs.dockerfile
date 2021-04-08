@@ -8,7 +8,7 @@ COPY ./web.oauth2.resources.nodejs/package.json \
 
 WORKDIR /app
 
-RUN npm install --registry=https://registry.npm.taobao.org
+RUN npm install
 
 EXPOSE 80
 
