@@ -1,4 +1,4 @@
-debug: true
+debug: false
 server:
   port: 80
 
@@ -14,4 +14,4 @@ spring:
 
 logging:
   level:
-    org.springframework.security: DEBUG
+    org.springframework.security: TRACE
