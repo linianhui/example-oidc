@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/gradle
-FROM gradle:6.5-jdk8 as builder
+FROM maven:3.8-jdk-11 as builder
 
 USER root
 
@@ -7,14 +7,14 @@ COPY ./web.oauth2.resources.java/ /src/
 
 WORKDIR /src
 
-RUN gradle assemble --info
+RUN mvn package
 
 # https://hub.docker.com/r/lnhcode/openjdk/tags
 FROM lnhcode/openjdk:8u242
 
 WORKDIR /
 
-COPY --from=builder /src/build/libs/api-0.0.1.jar /app.jar
+COPY --from=builder /src/target/java-api-0.1.jar /app.jar
 
 EXPOSE 80
 
