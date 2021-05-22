@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
@@ -59,16 +59,13 @@ namespace ClientCredentials
                 }
             });
 
-            return await httpClient.RequestTokenAsync(new TokenRequest
+            return await httpClient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
             {
                 Address = discoveryResponse.TokenEndpoint,
                 ClientId = "client-credentials-client",
                 ClientSecret = "lnh",
                 GrantType = "client_credentials",
-                Parameters =
-                {
-                    ["scope"]="api-1 api-2 api-3"
-                }
+                Scope= "api-1 api-2 api-3"
             });
         }
     }
