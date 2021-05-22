@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
@@ -30,10 +30,6 @@ namespace Http.Diagnostic
         private void LogHttp(HttpResponseMessage httpResponseMessage)
         {
             var color = ConsoleColor.Green;
-            if (httpResponseMessage==null)
-            {
-                return;
-            }
             if (httpResponseMessage.IsSuccessStatusCode == false)
             {
                 color = ConsoleColor.Red;
