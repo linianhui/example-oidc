@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
+using System.Text.Json;
 
 namespace WPFClient.Oidc
 {
@@ -8,11 +8,11 @@ namespace WPFClient.Oidc
     {
         private static string TokenFilePath => Environment.CurrentDirectory + "/token.json";
 
-        public static JObject Read()
+        public static JsonDocument Read()
         {
             if (File.Exists(TokenFilePath))
             {
-                return JObject.Parse(File.ReadAllText(TokenFilePath));
+                return JsonDocument.Parse(File.ReadAllText(TokenFilePath));
             }
 
             return null;
