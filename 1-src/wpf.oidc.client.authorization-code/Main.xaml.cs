@@ -1,5 +1,4 @@
 using System.Windows;
-using Newtonsoft.Json;
 using WPFClient.Models;
 using WPFClient.Oidc;
 
@@ -44,11 +43,13 @@ namespace WPFClient
                 return new TokenModel();
             }
 
+            var json= token.RootElement;
+
             return new TokenModel
             {
-                Token = token.ToString(Formatting.Indented),
-                IdToken = JwtModel.From(token.Value<string>("id_token")),
-                AccessToken = JwtModel.From(token.Value<string>("access_token")),
+                Token = json.ToString(),
+                IdToken = JwtModel.From(json.GetProperty("id_token").GetString()),
+                AccessToken = JwtModel.From(json.GetProperty("access_token").GetString()),
             };
         }
     }

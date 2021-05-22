@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,8 +8,8 @@
     <header>
         <nav>
             @if (this.User != null
-               && this.User.Identity != null
-               && this.User.Identity.IsAuthenticated == true)
+             && this.User.Identity != null
+             && this.User.Identity.IsAuthenticated == true)
             {
                 @Html.RouteLink("Logout", "account-logout")
             }
@@ -19,11 +19,35 @@
                 <br />
                 @Html.RouteLink("Login (QQ Mobile)", "account-login", new { idp = "qq", returnUri = this.Context.Request.Path.Value, isMobile = true })
                 <br />
-                @Html.RouteLink("Login (Github)", "account-login", new { idp = "github", returnUri = this.Context.Request.Path.Value})
+                @Html.RouteLink("Login (Github)", "account-login", new { idp = "github", returnUri = this.Context.Request.Path.Value })
             }
         </nav>
     </header>
     <br />
     @RenderBody()
+    <footer>
+        @{ var OSArchitecture = System.Runtime.InteropServices.RuntimeInformation.OSArchitecture.ToString();
+            var OSDescription = System.Runtime.InteropServices.RuntimeInformation.OSDescription;
+            var ProcessArchitecture = System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString();
+            var FrameworkDescription = System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription; }
+        <br />
+        <table>
+            <tr>
+                <td colspan="2">Runtime Info</td>
+            </tr>
+            <tr>
+                <td>OS</td>
+                <td>@OSDescription @OSArchitecture</td>
+            </tr>
+            <tr>
+                <td>CPU</td>
+                <td>@ProcessArchitecture</td>
+            </tr>
+            <tr>
+                <td>Framework</td>
+                <td>@FrameworkDescription</td>
+            </tr>
+        </table>
+    </footer>
 </body>
 </html>

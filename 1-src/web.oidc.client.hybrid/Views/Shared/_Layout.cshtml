@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.Http.Extensions
+@using Microsoft.AspNetCore.Http.Extensions
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +9,8 @@
     <header>
         <nav>
             @if (this.User != null
-              && this.User.Identity != null
-              && this.User.Identity.IsAuthenticated == true)
+            && this.User.Identity != null
+            && this.User.Identity.IsAuthenticated == true)
             {
                 @Html.RouteLink("Logout", "account-logout")
             }
@@ -26,5 +26,30 @@
     </header>
     <br />
     @RenderBody()
+
+    <footer>
+        @{ var OSArchitecture = System.Runtime.InteropServices.RuntimeInformation.OSArchitecture.ToString();
+            var OSDescription = System.Runtime.InteropServices.RuntimeInformation.OSDescription;
+            var ProcessArchitecture = System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString();
+            var FrameworkDescription = System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription; }
+        <br />
+        <table>
+            <tr>
+                <td colspan="2">Runtime Info</td>
+            </tr>
+            <tr>
+                <td>OS</td>
+                <td>@OSDescription @OSArchitecture</td>
+            </tr>
+            <tr>
+                <td>CPU</td>
+                <td>@ProcessArchitecture</td>
+            </tr>
+            <tr>
+                <td>Framework</td>
+                <td>@FrameworkDescription</td>
+            </tr>
+        </table>
+    </footer>
 </body>
 </html>

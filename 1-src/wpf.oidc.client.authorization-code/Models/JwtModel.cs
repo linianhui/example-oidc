@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
 using System.IdentityModel.Tokens.Jwt;
+using System.Text.Json;
 
 namespace WPFClient.Models
 {
@@ -13,7 +13,10 @@ namespace WPFClient.Models
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonSerializer.Serialize(this, new JsonSerializerOptions
+            {
+                WriteIndented = true
+            });
         }
 
         public static JwtModel From(string jwtString)
