@@ -12,60 +12,60 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oidc.servers", "oidc.server
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_shared", "_shared", "{7BED3B30-A933-4783-BB29-209D53B8938D}"
 	ProjectSection(SolutionItems) = preProject
-		1-src\_shared\GlobalConfig.cs = 1-src\_shared\GlobalConfig.cs
+		src\_shared\GlobalConfig.cs = src\_shared\GlobalConfig.cs
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "oauth2.qqconnect", "1-src\oauth2.qqconnect\oauth2.qqconnect.csproj", "{C6E8379B-9F94-4174-918B-565F02BEEA2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "oauth2.qqconnect", "src\oauth2.qqconnect\oauth2.qqconnect.csproj", "{C6E8379B-9F94-4174-918B-565F02BEEA2B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "oauth2.qqconnect.owin", "1-src\oauth2.qqconnect.owin\oauth2.qqconnect.owin.csproj", "{75208FB9-233E-462F-8437-075234F8225C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "oauth2.qqconnect.owin", "src\oauth2.qqconnect.owin\oauth2.qqconnect.owin.csproj", "{75208FB9-233E-462F-8437-075234F8225C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web.oauth2.client.owin", "1-src\web.oauth2.client.owin\web.oauth2.client.owin.csproj", "{582EFA98-3ECA-4185-8026-49AC734569E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web.oauth2.client.owin", "src\web.oauth2.client.owin\web.oauth2.client.owin.csproj", "{582EFA98-3ECA-4185-8026-49AC734569E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web.oidc.client.implicit", "1-src\web.oidc.client.implicit\web.oidc.client.implicit.csproj", "{FF7A1991-5B44-4C78-8E97-E29E739189F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web.oidc.client.implicit", "src\web.oidc.client.implicit\web.oidc.client.implicit.csproj", "{FF7A1991-5B44-4C78-8E97-E29E739189F3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web.oidc.client.js", "web.oidc.client.js", "{0D2741E3-A8BC-4930-A4D8-444AF6988224}"
 	ProjectSection(SolutionItems) = preProject
-		1-src\web.oidc.client.js\index.html = 1-src\web.oidc.client.js\index.html
-		1-src\web.oidc.client.js\README.md = 1-src\web.oidc.client.js\README.md
+		src\web.oidc.client.js\index.html = src\web.oidc.client.js\index.html
+		src\web.oidc.client.js\README.md = src\web.oidc.client.js\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oidc", "oidc", "{477BFAC1-F7DC-495D-B823-113B7692B265}"
 	ProjectSection(SolutionItems) = preProject
-		1-src\web.oidc.client.js\oidc\login-callback.html = 1-src\web.oidc.client.js\oidc\login-callback.html
-		1-src\web.oidc.client.js\oidc\refresh-token.html = 1-src\web.oidc.client.js\oidc\refresh-token.html
+		src\web.oidc.client.js\oidc\login-callback.html = src\web.oidc.client.js\oidc\login-callback.html
+		src\web.oidc.client.js\oidc\refresh-token.html = src\web.oidc.client.js\oidc\refresh-token.html
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web.oidc.server.ids4", "1-src\web.oidc.server.ids4\web.oidc.server.ids4.csproj", "{ACEBC330-D4F6-4C4D-98CD-18FF4CA45260}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web.oidc.server.ids4", "src\web.oidc.server.ids4\web.oidc.server.ids4.csproj", "{ACEBC330-D4F6-4C4D-98CD-18FF4CA45260}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "oauth2.qqconnect.aspnetcore", "1-src\oauth2.qqconnect.aspnetcore\oauth2.qqconnect.aspnetcore.csproj", "{B306A07A-DFD6-48E2-A629-5FF38934B9B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "oauth2.qqconnect.aspnetcore", "src\oauth2.qqconnect.aspnetcore\oauth2.qqconnect.aspnetcore.csproj", "{B306A07A-DFD6-48E2-A629-5FF38934B9B9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web.oauth2.client.aspnetcore", "1-src\web.oauth2.client.aspnetcore\web.oauth2.client.aspnetcore.csproj", "{10655652-C13C-4921-88B1-EC23C095F3F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web.oauth2.client.aspnetcore", "src\web.oauth2.client.aspnetcore\web.oauth2.client.aspnetcore.csproj", "{10655652-C13C-4921-88B1-EC23C095F3F3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web.oidc.client.hybrid", "1-src\web.oidc.client.hybrid\web.oidc.client.hybrid.csproj", "{868A5075-A471-4EE0-8573-20DA53A62D31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web.oidc.client.hybrid", "src\web.oidc.client.hybrid\web.oidc.client.hybrid.csproj", "{868A5075-A471-4EE0-8573-20DA53A62D31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uwp.oidc.client.authorization-code", "1-src\uwp.oidc.client.authorization-code\uwp.oidc.client.authorization-code.csproj", "{B101D8E1-7EE2-4884-9A72-6F4A6B4DBF2A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uwp.oidc.client.authorization-code", "src\uwp.oidc.client.authorization-code\uwp.oidc.client.authorization-code.csproj", "{B101D8E1-7EE2-4884-9A72-6F4A6B4DBF2A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "console.oauth2.client.client-credentials", "1-src\console.oidc.client.client-credentials\console.oauth2.client.client-credentials.csproj", "{E9C6A35A-D909-499C-BC9F-1F65A02B732B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "console.oauth2.client.client-credentials", "src\console.oidc.client.client-credentials\console.oauth2.client.client-credentials.csproj", "{E9C6A35A-D909-499C-BC9F-1F65A02B732B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "filters", "filters", "{AC8AAA8F-4684-4158-B1B3-4FBC1870CFA8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web.oauth2.resources.aspnetcore", "1-src\web.oauth2.resources.aspnetcore\web.oauth2.resources.aspnetcore.csproj", "{7E592C54-3E5C-4666-84DC-3C4115CA71A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web.oauth2.resources.aspnetcore", "src\web.oauth2.resources.aspnetcore\web.oauth2.resources.aspnetcore.csproj", "{7E592C54-3E5C-4666-84DC-3C4115CA71A6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aspnetcore.filters.permissions", "1-src\aspnetcore.filters.permissions\aspnetcore.filters.permissions.csproj", "{F5AD4B2E-000A-4F9B-9223-2AC1B7E9DF4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aspnetcore.filters.permissions", "src\aspnetcore.filters.permissions\aspnetcore.filters.permissions.csproj", "{F5AD4B2E-000A-4F9B-9223-2AC1B7E9DF4C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "oauth2.resources", "oauth2.resources", "{ABBE4B77-AA7C-4B50-B7AB-BC854C44D0C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web.oauth2.resources.owin", "1-src\web.oauth2.resources.owin\web.oauth2.resources.owin.csproj", "{DED7DCFE-9D7D-4E46-90A8-8D2A70729A41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web.oauth2.resources.owin", "src\web.oauth2.resources.owin\web.oauth2.resources.owin.csproj", "{DED7DCFE-9D7D-4E46-90A8-8D2A70729A41}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "oauth2.github.aspnetcore", "1-src\oauth2.github.aspnetcore\oauth2.github.aspnetcore.csproj", "{5DEA7015-9157-452C-8AD8-3A3733073168}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "oauth2.github.aspnetcore", "src\oauth2.github.aspnetcore\oauth2.github.aspnetcore.csproj", "{5DEA7015-9157-452C-8AD8-3A3733073168}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wpf.oidc.client.authorization-code", "1-src\wpf.oidc.client.authorization-code\wpf.oidc.client.authorization-code.csproj", "{BF96A910-9614-4C8C-BFE9-5AEB322625A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wpf.oidc.client.authorization-code", "src\wpf.oidc.client.authorization-code\wpf.oidc.client.authorization-code.csproj", "{BF96A910-9614-4C8C-BFE9-5AEB322625A3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "http.diagnostic", "1-src\http.diagnostic\http.diagnostic.csproj", "{DD4702C4-3500-44DA-A7C5-824AE557449E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "http.diagnostic", "src\http.diagnostic\http.diagnostic.csproj", "{DD4702C4-3500-44DA-A7C5-824AE557449E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "diagnostic", "diagnostic", "{6773FFFA-7647-49CC-93D1-62C8D9BEA698}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "console.oauth2.client.resource-owner-password-credentials", "1-src\console.oauth2.client.resource-owner-password-credentials\console.oauth2.client.resource-owner-password-credentials.csproj", "{F656EDC6-12C9-4A08-B821-2C5815A1A4E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "console.oauth2.client.resource-owner-password-credentials", "src\console.oauth2.client.resource-owner-password-credentials\console.oauth2.client.resource-owner-password-credentials.csproj", "{F656EDC6-12C9-4A08-B821-2C5815A1A4E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -92,44 +92,44 @@ default                       默认执行open-browser
 
 # OIDC Servers
 
-1. [1-src/web.oidc.server.ids4](1-src/web.oidc.server.ids4) : ids4 (https://github.com/IdentityServer/IdentityServer4) example (with github, qqconnect external login).
+1. [src/web.oidc.server.ids4](src/web.oidc.server.ids4) : ids4 (https://github.com/IdentityServer/IdentityServer4) example (with github, qqconnect external login).
 
 
 # OIDC Clients
 
-1. [1-src/web.oidc.client.hybrid](1-src/web.oidc.client.hybrid) : web site, hybrid flow.
-1. [1-src/web.oidc.client.implicit](1-src/web.oidc.client.implicit) : web site, implicit flow.
-1. [1-src/web.oidc.client.js](1-src/web.oidc.client.js) : web site(static), implicit flow .
-1. [1-src/uwp.oidc.client.authorization-code](1-src/uwp.oidc.client.authorization-code) : uwp app, authorization code flow.
-1. [1-src/wpf.oidc.client.authorization-code](1-src/wpf.oidc.client.authorization-code) : wpf app, authorization code flow.
+1. [src/web.oidc.client.hybrid](src/web.oidc.client.hybrid) : web site, hybrid flow.
+1. [src/web.oidc.client.implicit](src/web.oidc.client.implicit) : web site, implicit flow.
+1. [src/web.oidc.client.js](src/web.oidc.client.js) : web site(static), implicit flow .
+1. [src/uwp.oidc.client.authorization-code](src/uwp.oidc.client.authorization-code) : uwp app, authorization code flow.
+1. [src/wpf.oidc.client.authorization-code](src/wpf.oidc.client.authorization-code) : wpf app, authorization code flow.
 
 
 # OAuth2 Clients
 
-1. [1-src/web.oauth2.client.aspnetcore](1-src/web.oauth2.client.aspnetcore) : asp.net core 3.1.
-1. [1-src/web.oauth2.client.owin](1-src/web.oauth2.client.owin) : asp.net owin.
-1. [1-src/console.oauth2.client.client-credentials](1-src/console.oauth2.client.client-credentials) : console app, client credentials flow(oauth2).
-1. [1-src/console.oauth2.client.resource-owner-password-credentials](1-src/console.oauth2.client.resource-owner-password-credentials) : console app, resource owner password credentials flow(oauth2).
+1. [src/web.oauth2.client.aspnetcore](src/web.oauth2.client.aspnetcore) : asp.net core 3.1.
+1. [src/web.oauth2.client.owin](src/web.oauth2.client.owin) : asp.net owin.
+1. [src/console.oauth2.client.client-credentials](src/console.oauth2.client.client-credentials) : console app, client credentials flow(oauth2).
+1. [src/console.oauth2.client.resource-owner-password-credentials](src/console.oauth2.client.resource-owner-password-credentials) : console app, resource owner password credentials flow(oauth2).
 
 
 # OAuth2 Resources Servers
 
-1. [1-src/web.oauth2.resources.aspnetcore](1-src/web.oauth2.resources.aspnetcore): asp.net core 3.1.
-1. [1-src/web.oauth2.resources.owin](1-src/web.oauth2.resources.owin): asp.net owin.
-1. [1-src/web.oauth2.resources.nodejs](1-src/web.oauth2.resources.nodejs): node.js.
-1. [1-src/web.oauth2.resources.java](1-src/web.oauth2.resources.java): java (spring boot 2.2.1).
+1. [src/web.oauth2.resources.aspnetcore](src/web.oauth2.resources.aspnetcore): asp.net core 3.1.
+1. [src/web.oauth2.resources.owin](src/web.oauth2.resources.owin): asp.net owin.
+1. [src/web.oauth2.resources.nodejs](src/web.oauth2.resources.nodejs): node.js.
+1. [src/web.oauth2.resources.java](src/web.oauth2.resources.java): java (spring boot 2.2.1).
 
 
 # OAuth2 Middleware
 
-1. [1-src/oauth2.github.aspnetcore](1-src/oauth2.github.aspnetcore): asp.net core 3.1.
-1. [1-src/oauth2.qqconnect.aspnetcore](1-src/oauth2.qqconnect.aspnetcore): asp.net core 3.1.
-1. [1-src/oauth2.qqconnect.owin](1-src/oauth2.qqconnect.owin): asp.net owin.
+1. [src/oauth2.github.aspnetcore](src/oauth2.github.aspnetcore): asp.net core 3.1.
+1. [src/oauth2.qqconnect.aspnetcore](src/oauth2.qqconnect.aspnetcore): asp.net core 3.1.
+1. [src/oauth2.qqconnect.owin](src/oauth2.qqconnect.owin): asp.net owin.
 
 
 ## Global Config
 
-If you want use QQ Connect or Github, please replace `ClientId` and `ClientSercet` in [1-src/_shared/GlobalConfig.cs](1-src/_shared/GlobalConfig.cs) file.
+If you want use QQ Connect or Github, please replace `ClientId` and `ClientSercet` in [src/_shared/GlobalConfig.cs](src/_shared/GlobalConfig.cs) file.
 ```csharp
 public static class GlobalConfig
 {
