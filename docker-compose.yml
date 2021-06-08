@@ -8,7 +8,7 @@ version: '3'
 services:
   traefik.test:
     build:
-      context: ./1-src/
+      context: ./src/
       dockerfile: web.traefik.dockerfile
     ports:
       - '80:80'
@@ -24,7 +24,7 @@ services:
 
   oidc-server.test:
     build:
-      context: ./1-src/
+      context: ./src/
       dockerfile: web.oidc.server.ids4.dockerfile
     labels:
       - traefik.enable=true
@@ -34,7 +34,7 @@ services:
 
   oidc-client-hybrid.test:
     build:
-      context: ./1-src/
+      context: ./src/
       dockerfile: web.oidc.client.hybrid.dockerfile
     labels:
       - traefik.enable=true
@@ -44,7 +44,7 @@ services:
 
   oidc-client-js.test:
     build:
-      context: ./1-src/
+      context: ./src/
       dockerfile: web.oidc.client.js.dockerfile
     labels:
       - traefik.enable=true
@@ -54,7 +54,7 @@ services:
 
   oauth2-client-aspnetcore.test:
     build:
-      context: ./1-src/
+      context: ./src/
       dockerfile: web.oauth2.client.aspnetcore.dockerfile
     labels:
       - traefik.enable=true
@@ -64,7 +64,7 @@ services:
 
   oauth2-resources-aspnetcore.test:
     build:
-      context: ./1-src/
+      context: ./src/
       dockerfile: web.oauth2.resources.aspnetcore.dockerfile
     depends_on:
       - oidc-server.test
@@ -76,7 +76,7 @@ services:
 
   oauth2-resources-nodejs.test:
     build:
-      context: ./1-src/
+      context: ./src/
       dockerfile: web.oauth2.resources.nodejs.dockerfile
     depends_on:
       - oidc-server.test
@@ -88,7 +88,7 @@ services:
 
   oauth2-resources-java.test:
     build:
-      context: ./1-src/
+      context: ./src/
       dockerfile: web.oauth2.resources.java.dockerfile
     depends_on:
       - oidc-server.test
