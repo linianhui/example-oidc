@@ -1,5 +1,5 @@
-# https://hub.docker.com/_/gradle
-FROM maven:3.8-jdk-11 as builder
+# https://github.com/linianhui/docker/pkgs/container/maven
+FROM ghcr.io/linianhui/maven:3.8-openjdk-11 as builder
 
 USER root
 

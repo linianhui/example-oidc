@@ -1,5 +1,5 @@
-# https://hub.docker.com/_/traefik
-FROM traefik:v2.1
+# https://github.com/linianhui/docker/pkgs/container/traefik
+FROM ghcr.io/linianhui/traefik:v2.6
 
 COPY ./traefik/ /app
 
