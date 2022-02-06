@@ -9,8 +9,8 @@ WORKDIR /src
 
 RUN mvn package
 
-# https://hub.docker.com/r/lnhcode/openjdk/tags
-FROM lnhcode/openjdk:11.0.10
+# https://github.com/linianhui/docker/pkgs/container/openjdk
+FROM ghcr.io/linianhui/openjdk:11.0.13
 
 WORKDIR /
 
