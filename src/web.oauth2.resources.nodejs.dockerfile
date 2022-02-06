@@ -1,5 +1,5 @@
-# https://hub.docker.com/_/node
-FROM node:12
+# https://github.com/linianhui/docker/pkgs/container/node
+FROM ghcr.io/linianhui/node:16.13
 
 COPY ./web.oauth2.resources.nodejs/package.json \
      ./web.oauth2.resources.nodejs/package-lock.json \

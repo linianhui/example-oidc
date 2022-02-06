@@ -1,8 +1,4 @@
-# https://hub.docker.com/_/traefik
-FROM traefik:v2.1
-
-COPY ./traefik/ /app
-
-WORKDIR /app
+# https://github.com/linianhui/docker/pkgs/container/traefik
+FROM ghcr.io/linianhui/traefik:v2.6
 
 EXPOSE 80 8080
