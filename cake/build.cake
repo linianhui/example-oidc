@@ -13,7 +13,7 @@ var target = Argument("target", "default");
 /// constant
 var rootPath    = "../";
 var srcPath     = rootPath + "src/";
-var slnPath     = rootPath + "oidc.example.sln";
+var slnPath     = rootPath + "example-oidc.sln";
 var webSiteList = GetWebSiteList(srcPath);
 
 Task("clean")

@@ -20,7 +20,7 @@ namespace Web.OAuth2.Resources.Apis
             {
                 _claims = claims,
                 author = "lnhcode@outlook.com",
-                github = "https://github.com/linianhui/oidc.example",
+                github = "https://github.com/linianhui/example-oidc",
                 text = "this is a api.",
                 values = this.Url.Link("books", null)
             };

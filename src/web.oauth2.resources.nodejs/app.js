@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
   const json = {
     user: req.user,
     author: "lnhcode@outlook.com",
-    github: "https://github.com/linianhui/oidc.example",
+    github: "https://github.com/linianhui/example-oidc",
     text: "this is a node.js api.",
   };
 

@@ -19,7 +19,7 @@ public class ApiController {
         Map map = new LinkedHashMap();
         map.put("text", "this is a java api");
         map.put("author", "lnhcode@outlook.com");
-        map.put("github", "https://github.com/linianhui/oidc.example");
+        map.put("github", "https://github.com/linianhui/example-oidc");
         map.put("user", request.getUserPrincipal());
         return map;
     }

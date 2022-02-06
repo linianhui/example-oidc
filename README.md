@@ -157,9 +157,9 @@ OIDC in Action: http://www.cnblogs.com/linianhui/category/1121078.html
 
 # Old version(ids3 and owin)
 
-1. ids3: https://github.com/linianhui/oidc.example/tree/ids3
-2. ids4 and owin: https://github.com/linianhui/oidc.example/tree/owin
+1. ids3: https://github.com/linianhui/example-oidc/tree/ids3
+2. ids4 and owin: https://github.com/linianhui/example-oidc/tree/owin
 
 
-[GitHub-Actions-Img]:https://github.com/linianhui/oidc.example/workflows/build/badge.svg
-[GitHub-Actions-Url]:https://github.com/linianhui/oidc.example/actions
+[GitHub-Actions-Img]:https://github.com/linianhui/example-oidc/workflows/build/badge.svg
+[GitHub-Actions-Url]:https://github.com/linianhui/example-oidc/actions
