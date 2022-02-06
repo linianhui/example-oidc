@@ -64,7 +64,7 @@ public class WebSite
 
 public static ApplicationPoolSettings ApplicationPoolNoCLR = new ApplicationPoolSettings
 {
-    Name = "oidc.example.noclr",
+    Name = "example-oidc.noclr",
     IdentityType = IdentityType.LocalSystem,
     MaxProcesses = 1,
     ManagedRuntimeVersion = null
@@ -72,7 +72,7 @@ public static ApplicationPoolSettings ApplicationPoolNoCLR = new ApplicationPool
 
 public static ApplicationPoolSettings ApplicationPoolCLR4 = new ApplicationPoolSettings
 {
-    Name = "oidc.example.clr4",
+    Name = "example-oidc.clr4",
     IdentityType = IdentityType.LocalSystem,
     MaxProcesses = 1,
     ManagedRuntimeVersion = "v4.0"
