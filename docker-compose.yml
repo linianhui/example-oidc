@@ -2,8 +2,8 @@ version: '3'
 
 # networks:
 #   default:
-#     external:
-#       name: traefik-network
+#     external: true
+#     name: traefik-network
 
 services:
   traefik.test:
