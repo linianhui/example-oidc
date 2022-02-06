@@ -10,6 +10,8 @@ services:
     build:
       context: ./src/
       dockerfile: web.traefik.dockerfile
+    hostname: traefik
+    container_name: example-oidc-traefik
     ports:
       - '80:80'
     volumes:
@@ -26,6 +28,8 @@ services:
     build:
       context: ./src/
       dockerfile: web.oidc.server.ids4.dockerfile
+    hostname: oidc-server
+    container_name: example-oidc-server
     labels:
       - traefik.enable=true
       - traefik.http.routers.oidc-server.rule=Host(`oidc-server.test`)
@@ -36,6 +40,8 @@ services:
     build:
       context: ./src/
       dockerfile: web.oidc.client.hybrid.dockerfile
+    hostname: oidc-client-hybrid
+    container_name: example-oidc-client-hybrid
     labels:
       - traefik.enable=true
       - traefik.http.routers.oidc-client-hybrid.rule=Host(`oidc-client-hybrid.test`)
@@ -46,6 +52,8 @@ services:
     build:
       context: ./src/
       dockerfile: web.oidc.client.js.dockerfile
+    hostname: oidc-client-js
+    container_name: example-oidc-client-js
     labels:
       - traefik.enable=true
       - traefik.http.routers.oidc-client-js.rule=Host(`oidc-client-js.test`)
@@ -56,6 +64,8 @@ services:
     build:
       context: ./src/
       dockerfile: web.oauth2.client.aspnetcore.dockerfile
+    hostname: oauth2-client-aspnetcore
+    container_name: example-oidc-oauth2-client-aspnetcore
     labels:
       - traefik.enable=true
       - traefik.http.routers.oauth2-client-aspnetcore.rule=Host(`oauth2-client-aspnetcore.test`)
@@ -66,6 +76,8 @@ services:
     build:
       context: ./src/
       dockerfile: web.oauth2.resources.aspnetcore.dockerfile
+    hostname: oauth2-resources-aspnetcore
+    container_name: example-oidc-oauth2-resources-aspnetcore
     depends_on:
       - oidc-server.test
     labels:
@@ -78,6 +90,8 @@ services:
     build:
       context: ./src/
       dockerfile: web.oauth2.resources.nodejs.dockerfile
+    hostname: oauth2-resources-nodejs
+    container_name: example-oidc-oauth2-resources-nodejs
     depends_on:
       - oidc-server.test
     labels:
@@ -90,6 +104,8 @@ services:
     build:
       context: ./src/
       dockerfile: web.oauth2.resources.java.dockerfile
+    hostname: oauth2-resources-java
+    container_name: example-oidc-oauth2-resources-java
     depends_on:
       - oidc-server.test
     labels:
