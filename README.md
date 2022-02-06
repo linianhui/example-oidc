@@ -25,7 +25,11 @@
 
 # How to run?
 
-<mark><b>⚠️ disable chrome samesite for test: </b></mark> <a href="chrome://flags/#same-site-by-default-cookies">chrome://flags/#same-site-by-default-cookies</a>
+** use ie11 to run**
+
+>
+> <https://github.com/linianhui/example-oidc/issues/34>  
+> <mark><b>⚠️ disable chrome samesite for test: </b></mark> <a href="chrome://flags/#same-site-by-default-cookies">chrome://flags/#same-site-by-default-cookies</a>
 
 ## docker-compose.yml (docker platform)
 ```bash
