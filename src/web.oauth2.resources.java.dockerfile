@@ -1,5 +1,5 @@
 # https://github.com/linianhui/docker/pkgs/container/maven
-FROM ghcr.io/linianhui/maven:3.8-openjdk-11 as builder
+FROM ghcr.io/linianhui/maven:3.8-openjdk-8 as builder
 
 USER root
 
@@ -10,7 +10,7 @@ WORKDIR /src
 RUN mvn package
 
 # https://github.com/linianhui/docker/pkgs/container/openjdk
-FROM ghcr.io/linianhui/openjdk:11.0.13
+FROM ghcr.io/linianhui/openjdk:8u322
 
 WORKDIR /
 
